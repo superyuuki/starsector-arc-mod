@@ -1,0 +1,22 @@
+id,type,text1,text2,text3,notes
+unionrailsystems_flag,SHIP,"The pride of URS engineering and a result of questionably singular design philosophy, the Flag is the signature craft of URS built entirely around the wyrmthunder Rail Cannon. With vast sections of the internals dedicated to fully utilising the rail cannon, it greatly lacks in defence in both structure and mounting options. It is advised only the most skilled crew and officers take this delicate eccentric into combat.
+",,,
+unionrailsystems_darner,SHIP,"The Darner was developed after the completion of the Flag to downscale the Wyrmthunder Rail Cannon and allow the resulting weapon to quickly flank larger and slower vessels. Few have even been built due to the engineering challenges in construction and high maintenance of fitting a high-power rail cannon into a small form factor.
+
+Though it’s a swift strike frigate of outstanding mobility and momentary firepower, much of the available hull and space for armour has been taken by the incorporation of the Wyrmfire Rail Cannon, leaving it incredibly fragile and prone to fighter swarms and missiles. ",,,
+unionrailsystems_mastiff,SHIP,"The standard by which most URS ships are based off, the Mastiff sports a medium hardpoint at the bow and a defence capable rear. A hearty and reliable design that most URS captains have experienced early on in their careers, it can be found in most fleets as capable harassers and escorts where necessary.
+",,,
+unionrailsystems_gunbird,SHIP,"The Gunbird was designed as a mainstay attack frigate with full forward battery. As with many Union-designed ships, much of the defence considerations were put aside for a greater offence and an accelerated ammo feeder was installed in the already tight hull of the Gunbird, allowing it to have some alpha strike potential.
+",,,
+unionrailsystems_wyrmthunder,WEAPON,"A devastating weapon firing large metal projectiles at sub-relativistic speeds, greatly limited by the heavy capacitors and consequence disposable heatsinks for it to function at such output. The Wyrmthunder Rail Cannon was designed to be built into the Flag from early concept due to major power requirements and the general exploration for a high-mobility heavy weapons platform.
+
+An absurdity dreamed up by a group of extremely enthusiastic scientists and engineers not long before the collapse, its development was funded in secrecy by a few motivated wealthy individuals who saw the potential in its ability to quickly tear through shields and still hold effect on armour. The first prototype saw completion in the decades to follow. The Flag was later designed with the Wyrmthunder as its central point, following the Unionï¿½s doctrine of highly mobile spacecrafts capable of threatening well above their class. The metal projectiles arenï¿½t particularly remarkable other than their size, but the speed at which they travel is enough to shear through armour and leave devastation in its wake due to pressure heating the round and armour to absurd temperatures, continuing well into hull sections.
+
+Whispers of complaints are constant amongst maintenance crews due to the unending quality assurance checks and high maintenance of the weapon, especially given the cramped hull and few available crew members.",,,
+unionrailsystems_wyrmfire,WEAPON,"A crushing weapon that is capable in punching through shields and armour alike. Much like it’s predecessor, it’s limited by its need for powerful capacitors and heatsinks, and high power requirements demand the Darner to be built around the Wyrmfire in its entirety.
+",,,
+unionrailsystems_wyrmfang,WEAPON,The smallest of the Wyrm-series Rail Cannons. It's miniturisation has severly limited it's power output and has to be compensated through a 2 shot sequence.,,,
+unionrailsystems_magneticstapler,WEAPON,"A point defence weapon capable of spitting out hundreds of flechettes through its rails in seconds.
+Ammo starved, it’s incapable of its full sustained output by itself.
+
+Conceptualised during a light quarrel in a discussion of research done centuries past and the topic of paper weights was brought up. The idea of punching thin strips of metal was taken far in excess of its original intent as the designers became obsessive in seeing this weapon brought the field. ",,,

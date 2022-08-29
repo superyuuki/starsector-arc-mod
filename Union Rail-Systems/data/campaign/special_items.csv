@@ -1,0 +1,2 @@
+name,id,tags,rarity,base price,stack size,cargo space,icon,sound id,sound id drop,plugin,plugin params,desc,order
+Union Rail-Systems Ship Blueprint Package,unionrailsystems_ship_package,package_bp,0.5,50000,1000,1,graphics/icons/cargo/blueprint_hightech.png,ui_chip_pickup,ui_bp_package_drop,com.fs.starfarer.api.campaign.impl.items.MultiBlueprintItemPlugin,unionrailsystems_bp,Enables heavy industry to construct ship hulls designed by Union Rail-Systems.,3141
