@@ -1,5 +1,4 @@
 {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
     "editor.formatOnPaste": false,
     "files.exclude": {
@@ -7,5 +6,8 @@
     },
     "java.configuration.updateBuildConfiguration": "automatic",
     "java.import.gradle.home": "./",
-    "prettier.prettierPath": "node_modules/prettier"
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar"
+    ],
+    "java.dependency.packagePresentation": "hierarchical"
 }
