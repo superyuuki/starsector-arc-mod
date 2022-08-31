@@ -1,0 +1,2 @@
+name,id,tier,rarity,tech/manufacturer,tags,uiTags,base value,unlocked,hidden,hiddenEverywhere,cost_frigate,cost_dest,cost_cruiser,cost_capital,script,desc,short,sprite
+URS Engineering,urs_engineering,0,,,weapon mod,Shields,,,true,,3,6,9,15,unionrailsystem.URSShipHullMod,Makes gun shooty more powerful,Increases damage,assets/graphics/hull_mods/unionrailsystems_hullmod.png

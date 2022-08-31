@@ -15,5 +15,5 @@
 	"coreColor":[245,245,225,80],
 	"textureScrollSpeed":64.0,
 	"pixelsPerTexel":5.0,
-	"bulletSprite":"graphics/missiles/unionrailsystems_stapler_shot.png"
+	"bulletSprite":"assets/graphics/missiles/unionrailsystems_stapler_shot.png"
 }

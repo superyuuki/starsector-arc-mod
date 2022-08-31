@@ -2,7 +2,7 @@
   "hullName": "unionrailsystems_flag",
   "hullId": "unionrailsystems_flag",
   "hullSize": "DESTROYER",
-  "spriteName": "graphics/ships/unionrailsystems_flag.png",
+  "spriteName": "assets/graphics/ships/unionrailsystems_flag.png",
   "style": "HIGH_TECH",
   "height": 178,
   "width": 80,

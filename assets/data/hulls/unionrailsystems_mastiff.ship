@@ -2,7 +2,7 @@
   "hullName": "Mastiff",
   "hullId": "unionrailsystems_mastiff",
   "hullSize": "FRIGATE",
-  "spriteName": "graphics/ships/unionrailsystems_mastiff.png",
+  "spriteName": "assets/graphics/ships/unionrailsystems_mastiff.png",
   "style": "HIGH_TECH",
   "height": 122,
   "width": 72,

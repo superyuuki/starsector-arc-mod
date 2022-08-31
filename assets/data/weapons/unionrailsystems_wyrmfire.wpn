@@ -5,7 +5,7 @@
   "type": "BALLISTIC",
   "size": "MEDIUM",
   "turretSprite": "",
-  "turretGlowSprite": "graphics/weapons/unionrailsystems_wyrmfire_glow.png",
+  "turretGlowSprite": "assets/graphics/weapons/unionrailsystems_wyrmfire_glow.png",
   "hardpointSprite": "",
   "glowColor": [
     255,

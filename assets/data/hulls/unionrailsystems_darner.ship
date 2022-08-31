@@ -2,7 +2,7 @@
   "hullName": "unionrailsystems_darner",
   "hullId": "unionrailsystems_darner",
   "hullSize": "FRIGATE",
-  "spriteName": "graphics/ships/unionrailsystems_darner.png",
+  "spriteName": "assets/graphics/ships/unionrailsystems_darner.png",
   "style": "HIGH_TECH",
   "height": 112,
   "width": 60,

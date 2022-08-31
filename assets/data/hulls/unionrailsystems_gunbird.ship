@@ -2,7 +2,7 @@
   "hullName": "Gunbird",
   "hullId": "unionrailsystems_gunbird",
   "hullSize": "FRIGATE",
-  "spriteName": "graphics/ships/unionrailsystems_gunbird.png",
+  "spriteName": "assets/graphics/ships/unionrailsystems_gunbird.png",
   "style": "HIGH_TECH",
   "height": 122,
   "width": 72,

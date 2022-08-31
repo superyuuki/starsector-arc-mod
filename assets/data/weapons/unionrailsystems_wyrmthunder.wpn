@@ -7,7 +7,7 @@
   "turretSprite": "",
   "turretGlowSprite": "",
   "hardpointSprite": "",
-  "hardpointGlowSprite": "graphics/weapons/unionrailsystems_wyrmthunder_h_glow.png",
+  "hardpointGlowSprite": "assets/graphics/weapons/unionrailsystems_wyrmthunder_h_glow.png",
   "glowColor": [
     255,
     0,

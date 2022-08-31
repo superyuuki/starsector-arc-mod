@@ -20,5 +20,5 @@
 	"textureScrollSpeed":64.0,
 	"pixelsPerTexel":5.0,
 	"passThroughMissiles":true,
-	"bulletSprite":"graphics/missiles/unionrailsystems_rail_shot.png"
+	"bulletSprite":"assets/graphics/missiles/unionrailsystems_rail_shot.png"
 }
