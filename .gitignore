@@ -11,7 +11,6 @@
 .mtj.tmp/
 
 # Package Files #
-*.jar
 *.war
 *.nar
 *.ear
@@ -40,3 +39,6 @@ package-lock.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+
+/*.jar

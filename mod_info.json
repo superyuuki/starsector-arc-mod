@@ -6,7 +6,7 @@
 	"description": "Currently a custom ship and weapons pack, with plans for more in future.",
 	"gameVersion": "0.95.1a-RC6",
 	"jars": [
-		"./starsector-urs-mod.jar"
+		"./jars/starsector-urs-mod.jar"
 	],
 	"modPlugin": "unionrailsystem.URSPlugin"
 }
