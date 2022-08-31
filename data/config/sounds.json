@@ -1,0 +1,23 @@
+{        
+	"stapler_fire":
+	[
+		{"file":"sounds/sfx_wpn_guns/light_machinegun_fire_01.ogg","pitch":1.1,"volume":0.1}
+	],
+
+	"stapler_spinup":
+	[
+		{"file":"sounds/sfx_wpn_guns/thumper_spinup_01.ogg","pitch":1,"volume":0.1}
+	],	
+
+	"wyrm_shot":[
+		{"file":"sounds/sfx_wpn_energy/rift_explosion_01.ogg","pitch":1.1,"volume":0.8},
+		{"file":"sounds/sfx_wpn_energy/rift_explosion_01.ogg","pitch":1.3,"volume":0.8},
+		{"file":"sounds/sfx_wpn_energy/rift_explosion_01.ogg","pitch":1.2,"volume":0.8},
+		{"file":"sounds/sfx_wpn_energy/rift_explosion_02.ogg","pitch":1.1,"volume":0.8},
+		{"file":"sounds/sfx_wpn_energy/rift_explosion_02.ogg","pitch":1.3,"volume":0.8},
+		{"file":"sounds/sfx_wpn_energy/rift_explosion_02.ogg","pitch":1.2,"volume":0.8},
+		{"file":"sounds/sfx_wpn_energy/rift_explosion_03.ogg","pitch":1.1,"volume":0.8},
+		{"file":"sounds/sfx_wpn_energy/rift_explosion_03.ogg","pitch":1.3,"volume":0.8},
+		{"file":"sounds/sfx_wpn_energy/rift_explosion_03.ogg","pitch":1.2,"volume":0.8}
+	]
+}	

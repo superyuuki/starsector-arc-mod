@@ -1,0 +1,15 @@
+{
+	"designTypeColors": {
+		"Union Rail-Systems": [
+			67,
+			107,
+			149,
+			255
+		]
+	},
+	"graphics": {
+		"blueprint_packages": {
+			"unionrailsystems_ship_package": "graphics/icons/cargo/unionrailsystems_ship_package.png"
+		}
+	}
+}

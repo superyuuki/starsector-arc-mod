@@ -1,0 +1,119 @@
+{
+  "hullName": "unionrailsystems_darner",
+  "hullId": "unionrailsystems_darner",
+  "hullSize": "FRIGATE",
+  "spriteName": "graphics/ships/unionrailsystems_darner.png",
+  "style": "HIGH_TECH",
+  "height": 112,
+  "width": 60,
+  "center": [31, 48],
+  "collisionRadius": 80,
+  "shieldCenter": [0, -0],
+  "shieldRadius": 70,
+  "viewOffset": 0,
+  "builtInMods": [
+    "high_maintenance"
+  ],
+  "builtInWeapons": {
+    "WS0001": "unionrailsystems_wyrmfire",
+    "WS0004": "unionrailsystems_darner_deco"
+  },
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "MEDIUM",
+      "type": "BUILT_IN",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [2, 4]
+    },
+    {
+      "id": "WS0002",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "HARDPOINT",
+      "arc": 5,
+      "angle": 0,
+      "locations": [18, -9]
+    },
+    {
+      "id": "WS0003",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 160,
+      "angle": -120,
+      "locations": [-8, -10]
+    },
+    {
+      "id": "WS0004",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [30, -10],
+      "renderOrderMod": 50
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-33, 11],
+      "length": 75,
+      "width": 10,
+      "angle": 180,
+      "contrailSize": 10,
+      "style": "HIGH_TECH"
+    },
+    {
+      "location": [-33, -3],
+      "length": 75,
+      "width": 10,
+      "angle": -180,
+      "contrailSize": 10,
+      "style": "HIGH_TECH"
+    },
+    {
+      "location": [-31, 15],
+      "length": 30,
+      "width": 8,
+      "angle": 180,
+      "contrailSize": 8,
+      "style": "HIGH_TECH"
+    },
+    {
+      "location": [-31, -7],
+      "length": 30,
+      "width": 8,
+      "angle": 180,
+      "contrailSize": 8,
+      "style": "HIGH_TECH"
+    },
+    {
+      "location": [-26, -15.5],
+      "length": 20,
+      "width": 6,
+      "angle": 180,
+      "contrailSize": 6,
+      "style": "HIGH_TECH"
+    }
+  ],
+  "bounds": [
+    48.5, 11,
+    45.5, 7.5,
+    45.5, 1.5,
+    58.5, 1.5,
+    62.5, -3,
+    37.5, -5.5,
+    31.5, -16,
+    -2.5, -20,
+    -23, -14.5,
+    -34, -0,
+    -47, -0,
+    -47, 8,
+    -34, 8,
+    -25, 19.5,
+    -7, 21.5
+  ]
+}
