@@ -1,9 +1,0 @@
-name,id,rarity,base_value,range,damage/second,damage/shot,emp,impact,turn rate,OPs,ammo,ammo/sec,reload size,type,energy/shot,energy/second,chargeup,chargedown,burst size,burst delay,min spread,max spread,spread/shot,spread decay/sec,beam speed,proj speed,launch speed,flight time,proj hitpoints,autofireAccBonus,extraArcForAI,hints,tags,groupTag,tech/manufacturer,for weapon tooltip>>,primaryRoleStr,speedStr,trackingStr,turnRateStr,accuracyStr,customPrimary,customPrimaryHL,customAncillary,customAncillaryHL,noDPSInTooltip,number
-Wyrmthunder Rail Cannon,unionrailsystems_wyrmthunder,5,,900,,900,,200,0,25,6,0.5,4,KINETIC,1080,,0.1,0.9,1,0,0,0,0,0,,3000,,,,,,"STRIKE, USE_VS_FRIGATES, CONSERVE_2","kinetic 20, no_drop, no_sell, no_drop_salvage",,Union Rail Systems,,"Strike, Anti-Shield",,,,,,,,,,3120.1
-Wyrmfire Rail Cannon,unionrailsystems_wyrmfire,5,,800,,600,,200,0,12,6,0.5,4,KINETIC,660,,0.1,0.9,1,0,0,0,0,0,,2500,,,,,,"STRIKE, USE_VS_FRIGATES, CONSERVE_2","kinetic 20, no_drop, no_sell, no_drop_salvage",,Union Rail Systems,,"Strike, Anti-Shield",,,,,,,,,,3120.2
-Wyrmfang Railgun,unionrailsystems_wyrmfang,0.1,1000,700,,150,,100,20,6,12,0.5,4,KINETIC,165,,0.1,0.8,2,0.1,0,4,2,1,,1500,,,,,,,kinetic3,,Union Rail Systems,,Anti-Shield,,,,,,,,,,3120.3
-Magnetic Stapler,unionrailsystems_magneticstapler,,300,400,,20,,1,75,4,400,10,40,FRAGMENTATION,2,,0,0.1,8,0,0,15,1,15,,1000,,,,,,"PD, ANTI_FTR, EXTRA_RANGE_ON_FIGHTER","pd7, kinetic 2, SR",,Union Rail Systems,,Point Defense,,,,,,,,,,3120.4
-URS Flag Deco,unionrailsystems_flag_deco,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,3121.1
-URS Darner Deco,unionrailsystems_darner_deco,,,,,,,,,,,,,,,,,," ",,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,3121.2
-URS Mastiff Deco,unionrailsystems_mastiff_deco,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,3121.3
-URS Gunbird Deco,unionrailsystems_gunbird_deco,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,3121.4
