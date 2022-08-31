@@ -11,6 +11,9 @@
   "shieldCenter": [0, -0],
   "shieldRadius": 80,
   "viewOffset": 0,
+  "builtInMods": [
+    "urs_engineering"
+  ],
   "builtInWeapons": {
     "WS0005": "unionrailsystems_gunbird_deco"
   },

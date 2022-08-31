@@ -12,7 +12,8 @@
   "shieldRadius": 100,
   "viewOffset": 0,
   "builtInMods": [
-    "high_maintenance"
+    "high_maintenance",
+    "urs_engineering"
   ],
   "builtInWeapons": {
     "WS0001": "unionrailsystems_wyrmthunder",
