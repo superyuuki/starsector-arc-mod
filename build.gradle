@@ -30,9 +30,13 @@ sourceSets.main.java.srcDirs = ['src/']
 build {
     doLast {
         copy {
-            from 'assets'
             from jar
-            into '.'
+            from '.'
+            
+            into 'build'
+            include 'data/**'
+            include 'graphics/**'
+            include 'mod_info.json'
         }
     }
 }
@@ -56,18 +60,27 @@ dependencies {
 }
 
 // custom tasks
-task release(type: Zip) {
+
+tasks.register('release', Zip) {
     dependsOn build
     archiveFileName = "${project.name}-${readModInfoJson().version}.zip"
     destinationDirectory = file(rootDir)
-    from 'assets'
-    from jar
-    into project.name
-}
+    
+    from(layout.buildDirectory) {
+        include 'data/**'
+        include 'graphics/**'
+        include 'mod_info.json'
+        include 'build/**'
+    }
 
+    from(jar.outputs.files){
+        into "jars"
+    } 
+
+}
 // methods
 def readModInfoJson() {
-    def jsonFile = file('assets/mod_info.json')
+    def jsonFile = file('./mod_info.json')
     def slurper = new JsonSlurper()
     return slurper.parse(jsonFile)
 }
