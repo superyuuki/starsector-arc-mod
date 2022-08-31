@@ -30,7 +30,8 @@ public class URSFactionDamageMod implements DamageDealtModifier {
         ShipAPI owner = projectile.getSource();
         WeaponAPI weapon = projectile.getWeapon();
 
-        if (owner.getHullSpec().getManufacturer().equals(MANUFACTURER_NAME)) {
+        System.out.println("Checking if weapon mod should be applied");
+        if (!(owner.getHullSpec().getManufacturer().equals(MANUFACTURER_NAME))) {
             return null;
         }
 
@@ -38,10 +39,13 @@ public class URSFactionDamageMod implements DamageDealtModifier {
             return null;
         }
 
+        System.out.println("Applying mod");
+
         MutableStat currentDamage = damage.getModifier();
 
         String id = this.getClass().getSimpleName();
         currentDamage.modifyFlat(id, 1000f, "Passive Bonus applied for URS Ships");
+        System.out.println("mod applied, current value = " + currentDamage.modified);
 
         return id;
     }
