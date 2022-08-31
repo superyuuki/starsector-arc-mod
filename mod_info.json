@@ -1,0 +1,12 @@
+{
+	"id": "unionrailsystems",
+	"name": "Union Rail Systems",
+	"author": "Quacken",
+	"version": "0.1",
+	"description": "Currently a custom ship and weapons pack, with plans for more in future.",
+	"gameVersion": "0.95.1a-RC6",
+	"jars": [
+		"./starsector-urs-mod.jar"
+	],
+	"modPlugin": "unionrailsystem.URSPlugin"
+}
