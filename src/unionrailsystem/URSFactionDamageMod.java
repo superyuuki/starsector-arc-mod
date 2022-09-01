@@ -12,9 +12,13 @@ import com.fs.starfarer.api.combat.listeners.DamageDealtModifier;
 
 public class URSFactionDamageMod implements DamageDealtModifier {
 
-    private final float WEAPON_PERCENT_MODIFIER = 0f;
-
     private final String MANUFACTURER_NAME = "Union Rail Systems";
+    private final float WEAPON_PERCENT_MODIFIER;
+    
+
+    public URSFactionDamageMod(float weaponPercentModifier) {
+        WEAPON_PERCENT_MODIFIER = weaponPercentModifier;
+    }
 
     @Override
     public String modifyDamageDealt(Object param, CombatEntityAPI target, DamageAPI damage, Vector2f point,
