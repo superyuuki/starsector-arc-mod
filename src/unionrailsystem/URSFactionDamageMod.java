@@ -12,6 +12,8 @@ import com.fs.starfarer.api.combat.listeners.DamageDealtModifier;
 
 public class URSFactionDamageMod implements DamageDealtModifier {
 
+    private final float WEAPON_PERCENT_MODIFIER = 0f;
+
     private final String MANUFACTURER_NAME = "Union Rail Systems";
 
     @Override
@@ -44,8 +46,11 @@ public class URSFactionDamageMod implements DamageDealtModifier {
         MutableStat currentDamage = damage.getModifier();
 
         String id = this.getClass().getSimpleName();
-        currentDamage.modifyFlat(id, 1000f, "Passive Bonus applied for URS Ships");
-        System.out.println("mod applied, current value = " + currentDamage.modified);
+
+        currentDamage.modifyPercent(id, WEAPON_PERCENT_MODIFIER, "Passive Bonus applied for URS Ships");
+
+        System.out.println("-- mod applied -- \r\nbase value = " + currentDamage.getBaseValue()
+                + "\r\ncurrent value = " + currentDamage.getModifiedValue());
 
         return id;
     }
