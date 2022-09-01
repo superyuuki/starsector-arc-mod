@@ -71,10 +71,11 @@ tasks.register('release', Zip) {
         include 'graphics/**'
         include 'mod_info.json'
         include 'build/**'
+        into "${project.name}"
     }
 
     from(jar.outputs.files){
-        into "jars"
+        into "${project.name}/jars"
     } 
 
 }
