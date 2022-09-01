@@ -1,2 +1,2 @@
 name,id,tier,rarity,tech/manufacturer,tags,uiTags,base value,unlocked,hidden,hiddenEverywhere,cost_frigate,cost_dest,cost_cruiser,cost_capital,script,desc,short,sprite
-URS Engineering,urs_engineering,0,,,weapon mod,Shields,,,true,,3,6,9,15,unionrailsystem.URSShipHullMod,Makes gun shooty more powerful,Increases damage,graphics/hull_mods/unionrailsystems_hullmod.png
+URS Engineering,urs_engineering,0,,,weapon mod,Shields,,,true,,3,6,9,15,unionrailsystem.URSShipHullMod,"Union Rail Systems (URS) ships are designed to synchronise perfectly with URS weaponry. All URS manufactured weapons recieve a %s boost to damage.",Increases damage,graphics/hull_mods/unionrailsystems_hullmod.png
