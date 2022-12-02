@@ -6,12 +6,16 @@ import com.fs.starfarer.api.combat.listeners.WeaponBaseRangeModifier;
 
 public class URSFactionRangeMod implements WeaponBaseRangeModifier {
     
-    private final String MANUFACTURER_NAME = "Union Rail Systems";
-    private final float WEAPON_RANGE_FLAT_MODIFIER;
+    private final static String MANUFACTURER_NAME = "Union Rail Systems";
 
-    public URSFactionRangeMod(float weaponRangeFlatModifier){
-        WEAPON_RANGE_FLAT_MODIFIER = weaponRangeFlatModifier;
+    final float rangeModifierNormal;
+    final float rangeModifierURS;
+
+    public URSFactionRangeMod(float rangeModifierNormal, float rangeModifierURS) {
+        this.rangeModifierNormal = rangeModifierNormal;
+        this.rangeModifierURS = rangeModifierURS;
     }
+
 
     @Override
     public float getWeaponBaseRangePercentMod(ShipAPI ship, WeaponAPI weapon) {
@@ -25,11 +29,10 @@ public class URSFactionRangeMod implements WeaponBaseRangeModifier {
 
     @Override
     public float getWeaponBaseRangeFlatMod(ShipAPI ship, WeaponAPI weapon) {
-        if (!(weapon.getSpec().getManufacturer().equals(MANUFACTURER_NAME))) {
-            return 0f;
-        }
-        
-        return WEAPON_RANGE_FLAT_MODIFIER;
+        float bonus = rangeModifierNormal;
+        if (weapon.getSpec().getManufacturer().equals(MANUFACTURER_NAME)) bonus += rangeModifierURS;
+
+        return bonus;
     }
 
     
