@@ -1,11 +1,11 @@
 {
-  "id": "unionrailsystems_gunbird_deco",
+  "id": "urs_gunbird_deco",
   "specClass": "beam",
   "type": "DECORATIVE",
   "size": "SMALL",
   "collisionClass": "RAY",
   "collisionClassByFighter": "RAY_FIGHTER",
-  "turretSprite": "graphics/weapons/unionrailsystems_gunbird_deco.png",
+  "turretSprite": "graphics/weapons/urs_gunbird_deco.png",
   "hardpointSprite": "",
   "showDamageWhenDecorative": true,
   "glowColor": [

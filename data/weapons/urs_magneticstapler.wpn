@@ -1,13 +1,13 @@
 {
-  "id": "unionrailsystems_magneticstapler",
+  "id": "urs_magneticstapler",
   "specClass": "projectile",
-  "projectileSpecId": "unionrailsystems_stapler_shot",
+  "projectileSpecId": "urs_stapler_shot",
   "type": "BALLISTIC",
   "size": "SMALL",
-  "turretSprite": "graphics/weapons/magnetic stapler/unionrailsystems_magnetic_stapler_turret.png",
-  "turretGunSprite": "graphics/weapons/magnetic stapler/unionrailsystems_magnetic_stapler_turret_recoil.png",
-  "hardpointSprite": "graphics/weapons/magnetic stapler/unionrailsystems_hardpoint_magnetic_stapler.png",
-  "hardpointGunSprite": "graphics/weapons/magnetic stapler/unionrailsystems_hardpoint_magnetic_stapler_recoil.png",
+  "turretSprite": "graphics/weapons/magnetic stapler/urs_magnetic_stapler_turret.png",
+  "turretGunSprite": "graphics/weapons/magnetic stapler/urs_magnetic_stapler_turret_recoil.png",
+  "hardpointSprite": "graphics/weapons/magnetic stapler/urs_hardpoint_magnetic_stapler.png",
+  "hardpointGunSprite": "graphics/weapons/magnetic stapler/urs_hardpoint_magnetic_stapler_recoil.png",
   "visualRecoil": 3,
   "renderHints": [
     RENDER_BARREL_BELOW

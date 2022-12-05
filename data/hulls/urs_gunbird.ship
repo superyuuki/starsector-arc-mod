@@ -1,8 +1,8 @@
 {
   "hullName": "Gunbird",
-  "hullId": "unionrailsystems_gunbird",
+  "hullId": "urs_gunbird",
   "hullSize": "FRIGATE",
-  "spriteName": "graphics/ships/unionrailsystems_gunbird.png",
+  "spriteName": "graphics/ships/urs_gunbird.png",
   "style": "HIGH_TECH",
   "height": 122,
   "width": 72,
@@ -12,10 +12,10 @@
   "shieldRadius": 80,
   "viewOffset": 0,
   "builtInMods": [
-    "urs_engineering"
+    "urs_advanced_ballistics"
   ],
   "builtInWeapons": {
-    "WS0005": "unionrailsystems_gunbird_deco"
+    "WS0005": "urs_gunbird_deco"
   },
   "weaponSlots": [
     {

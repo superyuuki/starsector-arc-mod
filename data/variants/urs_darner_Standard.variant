@@ -1,6 +1,6 @@
 {
-  "variantId": "unionrailsystems_darner_Standard",
-  "hullId": "unionrailsystems_darner",
+  "variantId": "urs_darner_Standard",
+  "hullId": "urs_darner",
   "displayName": "Standard",
   "goalVariant": true,
   "fluxCapacitors": 5,
@@ -13,21 +13,21 @@
       "autofire": false,
       "mode": "LINKED",
       "weapons": {
-        "WS0001": "unionrailsystems_wyrmfire"
+        "WS0001": "urs_wyrmfire"
       }
     },
     {
       "autofire": true,
       "mode": "LINKED",
       "weapons": {
-        "WS0002": "unionrailsystems_wyrmfang"
+        "WS0002": "urs_wyrmfang"
       }
     },
     {
       "autofire": true,
       "mode": "LINKED",
       "weapons": {
-        "WS0003": "unionrailsystems_magneticstapler"
+        "WS0003": "urs_magneticstapler"
       }
     }
   ],

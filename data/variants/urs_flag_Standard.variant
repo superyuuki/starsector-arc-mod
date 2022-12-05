@@ -1,6 +1,6 @@
 {
-  "variantId": "unionrailsystems_flag_Standard",
-  "hullId": "unionrailsystems_flag",
+  "variantId": "urs_flag_Standard",
+  "hullId": "urs_flag",
   "displayName": "Standard",
   "goalVariant": true,
   "fluxCapacitors": 10,
@@ -15,23 +15,23 @@
       "autofire": false,
       "mode": "LINKED",
       "weapons": {
-        "WS0001": "unionrailsystems_wyrmthunder"
+        "WS0001": "urs_wyrmthunder"
       }
     },
     {
       "autofire": true,
       "mode": "LINKED",
       "weapons": {
-        "WS0002": "unionrailsystems_wyrmfang",
-        "WS0003": "unionrailsystems_wyrmfang"
+        "WS0002": "urs_wyrmfang",
+        "WS0003": "urs_wyrmfang"
       }
     },
     {
       "autofire": true,
       "mode": "LINKED",
       "weapons": {
-        "WS0004": "unionrailsystems_magneticstapler",
-        "WS0005": "unionrailsystems_magneticstapler"
+        "WS0004": "urs_magneticstapler",
+        "WS0005": "urs_magneticstapler"
       }
     }
   ],

@@ -1,5 +1,5 @@
 {
-	"id":"unionrailsystems_stapler_shot",
+	"id":"urs_stapler_shot",
 	"specClass":"projectile",
 	"spawnType":"BALLISTIC_AS_BEAM",
 	"collisionClass":"RAY",
@@ -15,5 +15,5 @@
 	"coreColor":[245,245,225,80],
 	"textureScrollSpeed":64.0,
 	"pixelsPerTexel":5.0,
-	"bulletSprite":"graphics/missiles/unionrailsystems_stapler_shot.png"
+	"bulletSprite":"graphics/missiles/urs_stapler_shot.png"
 }

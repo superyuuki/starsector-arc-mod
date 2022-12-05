@@ -8,5 +8,11 @@
 	"jars": [
 		"./jars/starsector-urs-mod.jar"
 	],
-	"modPlugin": "unionrailsystem.URSPlugin"
+	"modPlugin": "urs.URSPlugin",
+	"dependencies": [
+		{
+			"id": "MagicLib",
+			"name": "MagicLib"
+		}
+	]
 }

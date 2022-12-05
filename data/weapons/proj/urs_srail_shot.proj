@@ -1,5 +1,5 @@
 {
-	"id":"unionrailsystems_srail_shot",
+	"id":"urs_srail_shot",
 	"specClass":"projectile",
 	#"onHitEffect":"com.fs.starfarer.api.impl.combat.BreachOnHitEffect",
 	"spawnType":"BALLISTIC_AS_BEAM",
@@ -20,5 +20,5 @@
 	"textureScrollSpeed":64.0,
 	"pixelsPerTexel":5.0,
 	"passThroughMissiles":false,
-	"bulletSprite":"graphics/missiles/unionrailsystems_srail_shot.png"
+	"bulletSprite":"graphics/missiles/urs_srail_shot.png"
 }

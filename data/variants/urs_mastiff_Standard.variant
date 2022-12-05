@@ -1,6 +1,6 @@
 {
-  "variantId": "unionrailsystems_mastiff_Standard",
-  "hullId": "unionrailsystems_mastiff",
+  "variantId": "urs_mastiff_Standard",
+  "hullId": "urs_mastiff",
   "displayName": "Standard",
   "goalVariant": true,
   "fluxCapacitors": 7,
@@ -20,15 +20,15 @@
       "autofire": false,
       "mode": "LINKED",
       "weapons": {
-        "WS0002": "unionrailsystems_wyrmfang",
-        "WS0003": "unionrailsystems_wyrmfang"
+        "WS0002": "urs_wyrmfang",
+        "WS0003": "urs_wyrmfang"
       }
     },
     {
       "autofire": false,
       "mode": "LINKED",
       "weapons": {
-        "WS0004": "unionrailsystems_magneticstapler"
+        "WS0004": "urs_magneticstapler"
       }
     }
   ],

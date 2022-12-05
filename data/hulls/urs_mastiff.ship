@@ -1,8 +1,8 @@
 {
   "hullName": "Mastiff",
-  "hullId": "unionrailsystems_mastiff",
+  "hullId": "urs_mastiff",
   "hullSize": "FRIGATE",
-  "spriteName": "graphics/ships/unionrailsystems_mastiff.png",
+  "spriteName": "graphics/ships/urs_mastiff.png",
   "style": "HIGH_TECH",
   "height": 122,
   "width": 72,
@@ -12,10 +12,10 @@
   "shieldRadius": 70,
   "viewOffset": 0,
   "builtInMods": [
-    "urs_engineering"
+    "urs_advanced_ballistics"
   ],
   "builtInWeapons": {
-    "WS0005": "unionrailsystems_mastiff_deco"
+    "WS0005": "urs_mastiff_deco"
   },
   "weaponSlots": [
     {

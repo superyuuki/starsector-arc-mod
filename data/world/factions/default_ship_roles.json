@@ -1,11 +1,11 @@
 {
 
 	"combatSmall":{
-		"unionrailsystems_darner_Standard":2,
-		"unionrailsystems_mastiff_Standard":10,
-		"unionrailsystems_gunbird_Standard":10
+		"urs_darner_Standard":2,
+		"urs_mastiff_Standard":10,
+		"urs_gunbird_Standard":10
 	},
 	"combatMedium":{
-		"unionrailsystems_flag_Standard":2
+		"urs_flag_Standard":2
 	}
 }

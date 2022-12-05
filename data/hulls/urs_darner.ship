@@ -1,8 +1,8 @@
 {
-  "hullName": "unionrailsystems_darner",
-  "hullId": "unionrailsystems_darner",
+  "hullName": "urs_darner",
+  "hullId": "urs_darner",
   "hullSize": "FRIGATE",
-  "spriteName": "graphics/ships/unionrailsystems_darner.png",
+  "spriteName": "graphics/ships/urs_darner.png",
   "style": "HIGH_TECH",
   "height": 112,
   "width": 60,
@@ -13,11 +13,11 @@
   "viewOffset": 0,
   "builtInMods": [
     "high_maintenance",
-    "urs_engineering"
+    "urs_advanced_ballistics"
   ],
   "builtInWeapons": {
-    "WS0001": "unionrailsystems_wyrmfire",
-    "WS0004": "unionrailsystems_darner_deco"
+    "WS0001": "urs_wyrmfire",
+    "WS0004": "urs_darner_deco"
   },
   "weaponSlots": [
     {

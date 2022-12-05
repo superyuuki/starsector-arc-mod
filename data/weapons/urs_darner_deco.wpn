@@ -1,11 +1,11 @@
 {
-  "id": "unionrailsystems_darner_deco",
+  "id": "urs_darner_deco",
   "specClass": "beam",
   "type": "DECORATIVE",
   "size": "SMALL",
   "collisionClass": "RAY",
   "collisionClassByFighter": "RAY_FIGHTER",
-  "turretSprite": "graphics/weapons/unionrailsystems_darner_deco.png",
+  "turretSprite": "graphics/weapons/urs_darner_deco.png",
   "hardpointSprite": "",
   "showDamageWhenDecorative": true,
   "glowColor": [

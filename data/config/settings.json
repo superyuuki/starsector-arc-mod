@@ -1,6 +1,6 @@
 {
 	"designTypeColors": {
-		"Union Rail-Systems": [
+		"Union Rail Systems": [
 			67,
 			107,
 			149,
@@ -8,8 +8,11 @@
 		]
 	},
 	"graphics": {
+		"fx":{
+			"trails_clean":"graphics/fx/trails_clean.png"
+		},
 		"blueprint_packages": {
-			"unionrailsystems_ship_package": "graphics/icons/cargo/unionrailsystems_ship_package.png"
+			"urs_ship_package": "graphics/icons/cargo/urs_ship_package.png"
 		}
 	}
 }

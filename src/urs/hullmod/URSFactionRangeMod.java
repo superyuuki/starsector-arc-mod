@@ -1,4 +1,4 @@
-package unionrailsystem;
+package urs.hullmod;
 
 import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.combat.WeaponAPI;

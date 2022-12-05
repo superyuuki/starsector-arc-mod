@@ -1,11 +1,11 @@
 {
-  "id": "unionrailsystems_mastiff_deco",
+  "id": "urs_flag_deco",
   "specClass": "beam",
   "type": "DECORATIVE",
   "size": "SMALL",
   "collisionClass": "RAY",
   "collisionClassByFighter": "RAY_FIGHTER",
-  "turretSprite": "graphics/weapons/unionrailsystems_mastiff_deco.png",
+  "turretSprite": "graphics/weapons/urs_flag_deco.png",
   "hardpointSprite": "",
   "showDamageWhenDecorative": true,
   "glowColor": [

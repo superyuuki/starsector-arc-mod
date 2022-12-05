@@ -1,12 +1,13 @@
 {
-  "id": "unionrailsystems_wyrmfire",
+  "id": "urs_wyrmthunder",
   "specClass": "projectile",
-  "projectileSpecId": "unionrailsystems_rail_shot",
+  "projectileSpecId": "urs_rail_shot",
   "type": "BALLISTIC",
-  "size": "MEDIUM",
+  "size": "LARGE",
   "turretSprite": "",
-  "turretGlowSprite": "graphics/weapons/unionrailsystems_wyrmfire_glow.png",
+  "turretGlowSprite": "",
   "hardpointSprite": "",
+  "hardpointGlowSprite": "graphics/weapons/urs_wyrmthunder_h_glow.png",
   "glowColor": [
     255,
     0,
@@ -14,7 +15,7 @@
     255
   ],
   "turretOffsets": [
-    0,
+    27,
     0
   ],
   "turretAngleOffsets": [
@@ -29,12 +30,13 @@
   ],
   "barrelMode": "LINKED",
   "animationType": "GLOW_AND_FLASH",
+  "requiresFullCharge": true,
   "muzzleFlashSpec": {
-    "length": 100,
+    "length": 400,
     "spread": 1,
     "particleSizeMin": 10,
     "particleSizeRange": 15,
-    "particleDuration": 1.5,
+    "particleDuration": 2,
     "particleCount": 50,
     "particleColor": [
       255,

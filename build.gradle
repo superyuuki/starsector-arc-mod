@@ -6,6 +6,9 @@ plugins {
 
 repositories {
     mavenCentral()
+    flatDir {
+        dirs 'libs'
+    }
     ivy {
         url 'https://github.com/'
         patternLayout {
@@ -44,6 +47,7 @@ build {
 // compile time dependencies
 dependencies {
     implementation "jaghaimo:starsector-api:0.95.1a-RC6@starfarer.api.jar"
+    implementation files('libs/MagicLib.jar')
 
     // game dependencies
     implementation group: 'com.thoughtworks.xstream', name: 'xstream', version: '1.4.10'

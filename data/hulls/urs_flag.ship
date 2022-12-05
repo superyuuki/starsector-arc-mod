@@ -1,8 +1,8 @@
 {
-  "hullName": "unionrailsystems_flag",
-  "hullId": "unionrailsystems_flag",
+  "hullName": "Flag",
+  "hullId": "urs_flag",
   "hullSize": "DESTROYER",
-  "spriteName": "graphics/ships/unionrailsystems_flag.png",
+  "spriteName": "graphics/ships/urs_flag.png",
   "style": "HIGH_TECH",
   "height": 178,
   "width": 80,
@@ -13,11 +13,11 @@
   "viewOffset": 0,
   "builtInMods": [
     "high_maintenance",
-    "urs_engineering"
+    "urs_advanced_ballistics"
   ],
   "builtInWeapons": {
-    "WS0001": "unionrailsystems_wyrmthunder",
-    "WS0006": "unionrailsystems_flag_deco"
+    "WS0001": "urs_wyrmthunder",
+    "WS0006": "urs_flag_deco"
   },
   "weaponSlots": [
     {

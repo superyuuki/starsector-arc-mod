@@ -1,7 +1,7 @@
 {
-	"id":"unionrailsystems_rail_shot",
+	"id":"urs_rail_shot",
 	"specClass":"projectile",
-	#"onHitEffect":"com.fs.starfarer.api.impl.combat.BreachOnHitEffect",
+	"onHitEffect":"urs.weapon.RailgunOnHitEffect",
 	"spawnType":"BALLISTIC_AS_BEAM",
 	"collisionClass":"RAY",
 	"collisionClassByFighter":"RAY_FIGHTER",	
@@ -20,5 +20,5 @@
 	"textureScrollSpeed":64.0,
 	"pixelsPerTexel":5.0,
 	"passThroughMissiles":true,
-	"bulletSprite":"graphics/missiles/unionrailsystems_rail_shot.png"
+	"bulletSprite":"graphics/missiles/urs_rail_shot.png"
 }
