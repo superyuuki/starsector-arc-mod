@@ -9,8 +9,8 @@ Magnetic Coiler,urs_magneticcoiler,,500,800,,90,160,20,50,8,,,,KINETIC,160,,0.2,
 Magnetic Coiler Battery,urs_magneticcoilerbattery,,2000,900,,180,160,20,40,14,,,,KINETIC,180,,0.2,0.4,,,0,4,1,1.5,,1200,,,,,,,"kinetic14, pd6",,Union Rail Systems,,Pressure,,,,,,,,,,3120.8
 Haywire Bolt Thrower,urs_haywireboltthrower,0.1,3000,450,,800,800,100,50,9,10,,,KINETIC,400,,0.2,7.3,,,0,0,0,0,,1500,,,,,,STRIKE,"kinetic12, SR",,Union Rail Systems,,"Strike, Anti-Shield",,,,,,,,,,3120.9
 Haywire Bolt Thrower Array,urs_haywireboltthrowerarray,0.3,7000,600,,800,800,100,20,28,25,,,KINETIC,500,,0.2,0.55,,,0,0,0,0,,1500,,,,,,STRIKE,"kinetic19, SR",,Union Rail Systems,,"Strike, Anti-Shield",,,,,,,,,,3120.10
-Impact Driver,urs_impactdriver,,1600,700,,1200,,150,20,12,,,,FRAGMENTATION,140,,0.2,1.8,,,4,6,2,0.4,,800,,,,,,,,,Union Rail Systems,,Finisher,,,,,,,,,,3120.11
-Heavy Impact Driver,urs_heavyimpactdriver,,3200,900,,2400,,200,10,18,,,,FRAGMENTATION,360,,0.2,1.8,,,4,6,2,0.4,,800,,,,,,,,,Union Rail Systems,,Finisher,,,,,,,,,,3120.12
+Impact Driver,urs_impactdriver,,1600,700,,1200,,150,20,12,,,,FRAGMENTATION,240,,0.2,1.8,,,4,6,2,0.4,,800,,,,,,,,,Union Rail Systems,,Finisher,,,,,,,,,,3120.11
+Heavy Impact Driver,urs_heavyimpactdriver,,3200,900,,2400,,200,10,18,,,,FRAGMENTATION,600,,0.2,2.8,,,4,6,2,0.4,,800,,,,,,,,,Union Rail Systems,,Finisher,,,,,,,,,,3120.12
 Gauss Repeater,urs_gaussrepeater,,1200,800,,90,,10,75,9,4,1,6,ENERGY,60,,0.1,0.15,,,0,0,0,0,,1200,,,,,,"PD_ONLY, ANTI_FTR","kinetic0, pd8, LR",,Union Rail Systems,,Point Defense,,,,,,,,,,3120.13
 Assault Driver,urs_assaultdriver,,1600,500,,90,,20,50,10,,,,KINETIC,120,,0.1,0.15,,,0,20,1,10,,900,,,,,,,kinetic15,,Union Rail Systems,,Anti-Shield,,,,,,,,,,3120.14
 URS Flag Deco,urs_flag_deco,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,3121.1
