@@ -1,0 +1,45 @@
+{
+  "id": "urs_haywireboltthrower",
+  "specClass": "projectile",
+  "projectileSpecId": "urs_haywireboltthrower_shot",
+  "type": "BALLISTIC",
+  "size": "SMALL",
+  "turretSprite": "graphics/weapons/Haywire Bolt Thrower/urs_haywire_bolt_thrower_turret.png",
+  "turretGunSprite": "graphics/weapons/Haywire Bolt Thrower/urs_haywire_bolt_thrower_turret_recoil.png",
+  "hardpointSprite": "graphics/weapons/Haywire Bolt Thrower/urs_haywire_bolt_thrower_hardpoint.png",
+  "hardpointGunSprite": "graphics/weapons/Haywire Bolt Thrower/urs_haywire_bolt_thrower_hardpoint_recoil.png",
+  "visualRecoil": 3,
+  "renderHints": [
+    RENDER_BARREL_BELOW
+  ],
+  "turretOffsets": [
+    -2,
+    0
+  ],
+  "turretAngleOffsets": [
+    0
+  ],
+  "hardpointOffsets": [
+    -2,
+    0
+  ],
+  "hardpointAngleOffsets": [
+    0
+  ],
+  "barrelMode": "ALTERNATING",
+  "animationType": "MUZZLE_FLASH",
+  "muzzleFlashSpec": {
+    "length": 30,
+    "spread": 20,
+    "particleSizeMin": 10,
+    "particleSizeRange": 10,
+    "particleDuration": 0.5,
+    "particleCount": 10,
+    "particleColor": [
+      50,
+      255,
+      255,
+      255
+    ]
+  }
+}

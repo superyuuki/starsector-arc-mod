@@ -1,0 +1,17 @@
+{
+	"id":"urs_wyrmflare_shot",
+	"specClass":"projectile",
+	"spawnType":"BALLISTIC_AS_BEAM",
+	"collisionClass":"RAY",
+	"collisionClassByFighter":"RAY_FIGHTER",
+	"length":100.0,
+	"hitGlowRadius":250,
+	"width":10.0,
+	"fadeTime":0.2,
+	"fringeColor":[50,255,255,255],
+	"coreColor":[100,255,255,255],
+	"textureScrollSpeed":64.0,
+	"pixelsPerTexel":5.0,
+	"passThroughMissiles":true,
+	"bulletSprite":"graphics/missiles/urs_shell_rail_cannon_large.png"	
+}

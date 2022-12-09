@@ -1,0 +1,14 @@
+{
+	"id":"urs_haywireboltthrower_shot",
+	"specClass":"projectile",
+	"spawnType":"PLASMA",
+	"collisionClass":"PROJECTILE_FF",
+	"collisionClassByFighter":"PROJECTILE_FIGHTER",
+	"width":45.0,
+	"fadeTime":0.5,
+	"hitGlowRadius":50,
+	"fringeColor":[50,255,150,255],
+	"coreColor":[150,255,200,255],
+	"passThroughMissiles":false,	
+	"bulletSprite":"graphics/missiles/urs_shell_haywire_bolt_large.png"
+}
