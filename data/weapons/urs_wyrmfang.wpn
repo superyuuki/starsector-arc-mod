@@ -13,7 +13,7 @@
   "renderHints":[RENDER_BARREL_BELOW],
   "visualRecoil": 6,
   "glowColor": [
-    255,
+    58,
     0,
     0,
     255
@@ -39,14 +39,9 @@
     "spread": 1,
     "particleSizeMin": 10,
     "particleSizeRange": 15,
-    "particleDuration": 1,
+    "particleDuration": 0.7,
     "particleCount": 15,
-    "particleColor": [
-      255,
-      70,
-      10,
-      255
-    ]
+    "particleColor": [160,160,255,255]
   },
   "fireSoundTwo": "shock_repeater_fire"
 }

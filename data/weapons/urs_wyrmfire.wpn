@@ -8,7 +8,7 @@
   "turretGlowSprite": "graphics/weapons/urs_wyrmfire_glow.png",
   "hardpointSprite": "",
   "glowColor": [
-    255,
+    58,
     0,
     0,
     255
@@ -30,18 +30,13 @@
   "barrelMode": "LINKED",
   "animationType": "GLOW_AND_FLASH",
   "muzzleFlashSpec": {
-    "length": 100,
+    "length": 50,
     "spread": 1,
     "particleSizeMin": 10,
     "particleSizeRange": 15,
-    "particleDuration": 1.5,
+    "particleDuration": 0.7,
     "particleCount": 50,
-    "particleColor": [
-      255,
-      70,
-      10,
-      255
-    ]
+    "particleColor": [160,160,255,255]
   },
   "fireSoundTwo": "wyrm_shot"
 }

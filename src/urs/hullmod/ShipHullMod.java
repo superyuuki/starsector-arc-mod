@@ -11,9 +11,8 @@ import com.fs.starfarer.api.combat.ShipAPI.HullSize;
 import com.fs.starfarer.api.ui.Alignment;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
-import urs.hullmod.URSFactionRangeMod;
 
-public class URSShipHullMod extends BaseHullMod {
+public class ShipHullMod extends BaseHullMod {
 
     private static final Map<HullSize,Float> BASE_RANGE_FLAT_BONUS = new HashMap<>();
     private static final Map<HullSize,Float> URS_RANGE_FLAT_BONUS = new HashMap<>();
@@ -46,7 +45,7 @@ public class URSShipHullMod extends BaseHullMod {
     public void applyEffectsAfterShipCreation(ShipAPI ship, String id) {
         HullSize key = ship.getHullSize();
 
-        ship.addListener(new URSFactionRangeMod(BASE_RANGE_FLAT_BONUS.get(key), URS_RANGE_FLAT_BONUS.get(key)));
+        ship.addListener(new UrsRangeModifier(BASE_RANGE_FLAT_BONUS.get(key), URS_RANGE_FLAT_BONUS.get(key)));
     }
 
     static final Color[] STYLING = new Color[] { Misc.getGrayColor(), Misc.getPositiveHighlightColor() };
@@ -55,9 +54,10 @@ public class URSShipHullMod extends BaseHullMod {
     public void addPostDescriptionSection(TooltipMakerAPI tooltip, HullSize hullSize, ShipAPI ship, float width, boolean isForModSpec) {
         tooltip.addSectionHeading("Modifies", Alignment.MID, 3f);
         tooltip.addPara("",0f);
-        tooltip.addPara("• Increases range of all ballistic weapons by a flat %s, depending on hull size", 0f, Misc.getPositiveHighlightColor(), "25/50/75/100");
-        tooltip.addPara("• Further increases range of all URS ballistic weapons by a flat %s, depending on hull size", 0f, Misc.getPositiveHighlightColor(), "25/25/50/50");
-        tooltip.addPara("• Reduces flux cost of ballistics by %s percent, depending on hull size", 0f, Misc.getPositiveHighlightColor(), "");
+        tooltip.setBulletedListMode("  • ");
+        tooltip.addPara("Increases range of all ballistic weapons by a flat %s, depending on hull size", 0f, Misc.getPositiveHighlightColor(), "25/50/75/100");
+        tooltip.addPara("Further increases range of all URS ballistic weapons by a flat %s, depending on hull size", 0f, Misc.getPositiveHighlightColor(), "25/25/50/50");
+        tooltip.addPara("Reduces flux cost of ballistics by %s percent, depending on hull size", 0f, Misc.getPositiveHighlightColor(), "");
         tooltip.addPara("",0f);
 
         String name = ship.getName();

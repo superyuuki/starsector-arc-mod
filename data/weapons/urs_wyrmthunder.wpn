@@ -9,7 +9,7 @@
   "hardpointSprite": "",
   "hardpointGlowSprite": "graphics/weapons/urs_wyrmthunder_h_glow.png",
   "glowColor": [
-    255,
+    58,
     0,
     0,
     255
@@ -36,14 +36,9 @@
     "spread": 1,
     "particleSizeMin": 10,
     "particleSizeRange": 15,
-    "particleDuration": 2,
+    "particleDuration": 1,
     "particleCount": 50,
-    "particleColor": [
-      255,
-      70,
-      10,
-      255
-    ]
+    "particleColor": [160,160,255,255]
   },
   "fireSoundTwo": "wyrm_shot"
 }

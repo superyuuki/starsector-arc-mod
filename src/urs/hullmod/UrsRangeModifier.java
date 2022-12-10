@@ -4,14 +4,14 @@ import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.combat.WeaponAPI;
 import com.fs.starfarer.api.combat.listeners.WeaponBaseRangeModifier;
 
-public class URSFactionRangeMod implements WeaponBaseRangeModifier {
+public class UrsRangeModifier implements WeaponBaseRangeModifier {
     
     private final static String MANUFACTURER_NAME = "Union Rail Systems";
 
     final float rangeModifierNormal;
     final float rangeModifierURS;
 
-    public URSFactionRangeMod(float rangeModifierNormal, float rangeModifierURS) {
+    public UrsRangeModifier(float rangeModifierNormal, float rangeModifierURS) {
         this.rangeModifierNormal = rangeModifierNormal;
         this.rangeModifierURS = rangeModifierURS;
     }
@@ -34,6 +34,8 @@ public class URSFactionRangeMod implements WeaponBaseRangeModifier {
 
         return bonus;
     }
+
+
 
     
 }
