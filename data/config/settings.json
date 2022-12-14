@@ -9,7 +9,8 @@
 	},
 	"graphics": {
 		"fx":{
-			"trails_clean":"graphics/fx/trails_clean.png"
+			"trails_clean":"graphics/fx/trails_clean.png",
+			"trails_flame":"graphics/fx/trails_flame.png"
 		},
 		"blueprint_packages": {
 			"urs_ship_package": "graphics/icons/cargo/urs_ship_package.png"
