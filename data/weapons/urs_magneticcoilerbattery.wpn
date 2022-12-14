@@ -4,18 +4,18 @@
   "projectileSpecId": "urs_railgunsmall_shot",
   "type": "BALLISTIC",
   "size": "MEDIUM",
-  "turretSprite": "graphics/weapons/Magnetic Coiler Battery/urs_magnetic_coiler_battery_turret.png",
-  "turretGunSprite": "graphics/weapons/Magnetic Coiler Battery/urs_magnetic_coiler_battery_turret_recoil.png",
-  "hardpointSprite": "graphics/weapons/Magnetic Coiler Battery/urs_magnetic_coiler_battery_hardpoint.png",
-  "hardpointGunSprite": "graphics/weapons/Magnetic Coiler Battery/urs_magnetic_coiler_battery_hardpoint_recoil.png",
+  "turretSprite": "graphics/weapons/Magnetic Coiler Battery/urs_magneticcoilerbattery_turret.png",
+  "turretGunSprite": "graphics/weapons/Magnetic Coiler Battery/urs_magneticcoilerbattery_turret_recoil.png",
+  "hardpointSprite": "graphics/weapons/Magnetic Coiler Battery/urs_magneticcoilerbattery_hardpoint.png",
+  "hardpointGunSprite": "graphics/weapons/Magnetic Coiler Battery/urs_magneticcoilerbattery_hardpoint_recoil.png",
   "visualRecoil": 4,
   "renderHints": [
     RENDER_BARREL_BELOW
   ],
   "turretOffsets": [
-    -2,
+    12,
     5,
-    -2,
+    12,
     -5
   ],
   "turretAngleOffsets": [
@@ -23,9 +23,9 @@
     0
   ],
   "hardpointOffsets": [
-    -2,
+    12,
     5,
-    -2,
+    12,
     -5
   ],
   "hardpointAngleOffsets": [

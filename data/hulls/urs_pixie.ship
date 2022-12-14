@@ -1,0 +1,68 @@
+{
+  "hullName": "Pixie",
+  "hullId": "urs_pixie",
+  "hullSize": "FIGHTER",
+  "spriteName": "graphics/ships/fighters/urs_pixie.png",
+  "style": "HIGH_TECH",
+  "height": 18,
+  "width": 12,
+  "center": [6, 8],
+  "collisionRadius": 20,
+  "shieldCenter": [0, -0],
+  "shieldRadius": 15,
+  "viewOffset": 0,
+  "builtInMods": [
+    "pointdefenseai"
+  ],
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "HIDDEN",
+      "arc": 5,
+      "angle": 0,
+      "locations": [5, -0]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-8, 3],
+      "length": 7,
+      "width": 3,
+      "angle": 170,
+      "contrailSize": 3,
+      "style": "HIGH_TECH"
+    },
+    {
+      "location": [-8, -3],
+      "length": 7,
+      "width": 3,
+      "angle": -170,
+      "contrailSize": 3,
+      "style": "HIGH_TECH"
+    },
+    {
+      "location": [-5, 5],
+      "length": 5,
+      "width": 3,
+      "angle": 160,
+      "contrailSize": 3,
+      "style": "HIGH_TECH"
+    },
+    {
+      "location": [-5, -5],
+      "length": 5,
+      "width": 3,
+      "angle": -160,
+      "contrailSize": 3,
+      "style": "HIGH_TECH"
+    }
+  ],
+  "bounds": [
+    10, -3,
+    -5, -5,
+    -5, 5,
+    10, 3
+  ]
+}

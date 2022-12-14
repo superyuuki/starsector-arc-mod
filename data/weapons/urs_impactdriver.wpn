@@ -4,23 +4,23 @@
   "projectileSpecId": "urs_impactdriver_shot",
   "type": "BALLISTIC",
   "size": "MEDIUM",
-  "turretSprite": "graphics/weapons/Impact Driver/urs_impact_driver_turret.png",
-  "turretGunSprite": "graphics/weapons/Impact Driver/urs_impact_driver_turret_recoil.png",
-  "hardpointSprite": "graphics/weapons/Impact Driver/urs_impact_driver_hardpoint.png",
-  "hardpointGunSprite": "graphics/weapons/Impact Driver/urs_impact_driver_hardpoint_recoil.png",
+  "turretSprite": "graphics/weapons/Impact Driver/urs_impactdriver_turret.png",
+  "turretGunSprite": "graphics/weapons/Impact Driver/urs_impactdriver_turret_recoil.png",
+  "hardpointSprite": "graphics/weapons/Impact Driver/urs_impactdriver_hardpoint.png",
+  "hardpointGunSprite": "graphics/weapons/Impact Driver/urs_impactdriver_hardpoint_recoil.png",
   "visualRecoil": 6,
   "renderHints": [
     RENDER_BARREL_BELOW
   ],
   "turretOffsets": [
-    -3,
+    9,
     0
   ],
   "turretAngleOffsets": [
     0
   ],
   "hardpointOffsets": [
-    -7,
+    9,
     0
   ],
   "hardpointAngleOffsets": [

@@ -1,26 +1,26 @@
 {
   "id": "urs_gaussrepeater",
   "specClass": "projectile",
-  "projectileSpecId": "urs_railgunsmall_shot",
+  "projectileSpecId": "urs_haywireboltthrower_shot",
   "type": "BALLISTIC",
   "size": "SMALL",
-  "turretSprite": "graphics/weapons/Gauss Repeater/urs_gauss_repeater_turret.png",
-  "turretGunSprite": "graphics/weapons/Gauss Repeater/urs_gauss_repeater_turret_recoil.png",
-  "hardpointSprite": "graphics/weapons/Gauss Repeater/urs_gauss_repeater_hardpoint.png",
-  "hardpointGunSprite": "graphics/weapons/Gauss Repeater/urs_gauss_repeater_hardpoint_recoil.png",
+  "turretSprite": "graphics/weapons/Gauss Repeater/urs_gaussrepeater_turret.png",
+  "turretGunSprite": "graphics/weapons/Gauss Repeater/urs_gaussrepeater_turret_recoil.png",
+  "hardpointSprite": "graphics/weapons/Gauss Repeater/urs_gaussrepeater_hardpoint.png",
+  "hardpointGunSprite": "graphics/weapons/Gauss Repeater/urs_gaussrepeater_hardpoint_recoil.png",
   "visualRecoil": 4,
   "renderHints": [
     RENDER_BARREL_BELOW
   ],
   "turretOffsets": [
-    -5,
+    5,
     0
   ],
   "turretAngleOffsets": [
     0
   ],
   "hardpointOffsets": [
-    -5,
+    5,
     0
   ],
   "hardpointAngleOffsets": [

@@ -1,19 +1,26 @@
-name,id,rarity,base_value,range,damage/second,damage/shot,emp,impact,turn rate,OPs,ammo,ammo/sec,reload size,type,energy/shot,energy/second,chargeup,chargedown,burst size,burst delay,min spread,max spread,spread/shot,spread decay/sec,beam speed,proj speed,launch speed,flight time,proj hitpoints,autofireAccBonus,extraArcForAI,hints,tags,groupTag,tech/manufacturer,for weapon tooltip>>,primaryRoleStr,speedStr,trackingStr,turnRateStr,accuracyStr,customPrimary,customPrimaryHL,customAncillary,customAncillaryHL,noDPSInTooltip,number
-Wyrmthunder Rail Cannon,urs_wyrmthunder,5,,900,,900,,200,0,25,6,0.5,4,KINETIC,1080,,0.1,0.9,1,0,0,0,0,0,,3000,,,,,,"STRIKE, USE_VS_FRIGATES, CONSERVE_2, SYSTEM, SHOW_IN_CODEX","kinetic 20, no_drop, no_sell, no_drop_salvage",,Union Rail Systems,,"Strike, Anti-Shield",,,,,,,,,,3120.1
-Wyrmfire Rail Cannon,urs_wyrmfire,5,,800,,600,,200,0,12,6,0.5,4,KINETIC,660,,0.1,0.9,1,0,0,0,0,0,,2500,,,,,,"STRIKE, USE_VS_FRIGATES, CONSERVE_2, SYSTEM, SHOW_IN_CODEX","kinetic 20, no_drop, no_sell, no_drop_salvage",,Union Rail Systems,,"Strike, Anti-Shield",,,,,,,,,,3120.2
-Wyrmfang Railgun,urs_wyrmfang,,700,700,,150,,100,20,6,12,0.5,4,KINETIC,165,,0.1,0.8,2,0.1,0,4,2,1,,1500,,,,,,,kinetic8,,Union Rail Systems,,Anti-Shield,,,,,,,,,,3120.3
+name,id,rarity,base_value,range,damage/second,damage/shot,emp,impact,turn rate,OPs,ammo,ammo/sec,reload size,type,energy/shot,energy/second,chargeup,chargedown,burst size,burst delay,min spread,max spread,spread/shot,spread decay/sec,beam speed,proj speed,launch speed,flight time,proj hitpoints,autofireAccBonus,extraArcForAI,hints," ",groupTag,tech/manufacturer,for weapon tooltip>>,primaryRoleStr,speedStr,trackingStr,turnRateStr,accuracyStr,customPrimary,customPrimaryHL,customAncillary,customAncillaryHL,noDPSInTooltip,number
+Wyrmflare Rail Cannon,urs_wyrmflare,5,,900,,2100,,250,0,35,4,0.4,6,KINETIC,2520,,0.2,1.3,,,0,0,0,0,,3000,,,,,,"STRIKE, USE_VS_FRIGATES, CONSERVE_2, SYSTEM, SHOW_IN_CODEX","kinetic 20, no_drop, no_sell, no_drop_salvage",,Union Rail Systems,,"Strike, Anti-Shield",,,,,,,,,,3120.1
+Wyrmthunder Rail Cannon,urs_wyrmthunder,5,,900,,900,,200,0,25,6,0.5,4,KINETIC,1080,,0.1,0.9,,,0,0,0,0,,3000,,,,,,"STRIKE, USE_VS_FRIGATES, CONSERVE_2, SYSTEM, SHOW_IN_CODEX","kinetic 20, no_drop, no_sell, no_drop_salvage",,Union Rail Systems,,"Strike, Anti-Shield",,,,,,,,,,3120.2
+Wyrmfire Rail Cannon,urs_wyrmfire,5,,800,,600,,150,0,12,6,0.5,4,KINETIC,660,,0.1,0.9,,,0,0,0,0,,2500,,,,,,"STRIKE, USE_VS_FRIGATES, CONSERVE_2, SYSTEM, SHOW_IN_CODEX"," ",,Union Rail Systems,,"Strike, Anti-Shield",,,,,,,,,,3120.3
 Magnetic Stapler,urs_magneticstapler,,300,400,,20,,1,75,4,400,10,40,FRAGMENTATION,2,,0,0.1,8,0,0,15,1,15,,1000,,,,,,PD,"pd10, SR",,Union Rail Systems,,Point Defense,,,,,,,,,,3120.4
-Magnetic Stapler Battery,urs_magneticstaplerbattery,,1500,500,,25,,1,75,8,800,20,80,FRAGMENTATION,2,,0,0.1,8,0,0,15,1,15,,1000,,,,,,PD,"pd12, SR",,Union Rail Systems,,Point Defense,,,,,,,,,,3120.5
-Magnetic Shredder,urs_magneticshredder,,3000,600,,40,,1,40,20,1600,40,160,FRAGMENTATION,2,,0,0.1,8,0,0,20,1,15,,1000,,,,,,PD,"pd15, SR",,Union Rail Systems,,Point Defense,,,,,,,,,,3120.6
-Magnetic Coiler,urs_magneticcoiler,,500,800,,90,160,20,50,8,,,,KINETIC,160,,0.2,0.4,,,0,1,1,2,,1200,,,,,,,"kinetic10, pd6",,Union Rail Systems,,Pressure,,,,,,,,,,3120.7
-Magnetic Coiler Battery,urs_magneticcoilerbattery,,2000,900,,180,160,20,40,14,,,,KINETIC,180,,0.2,0.4,,,0,4,1,1.5,,1200,,,,,,,"kinetic14, pd6",,Union Rail Systems,,Pressure,,,,,,,,,,3120.8
-Haywire Bolt Thrower,urs_haywireboltthrower,0.1,3000,450,,800,800,100,50,9,10,,,KINETIC,400,,0.2,7.3,,,0,0,0,0,,1500,,,,,,STRIKE,"kinetic12, SR",,Union Rail Systems,,"Strike, Anti-Shield",,,,,,,,,,3120.9
-Haywire Bolt Thrower Array,urs_haywireboltthrowerarray,0.3,7000,600,,800,800,100,20,28,25,,,KINETIC,500,,0.2,0.55,,,0,0,0,0,,1500,,,,,,STRIKE,"kinetic19, SR",,Union Rail Systems,,"Strike, Anti-Shield",,,,,,,,,,3120.10
-Impact Driver,urs_impactdriver,,1600,700,,1200,,150,20,12,,,,FRAGMENTATION,240,,0.2,1.8,,,4,6,2,0.4,,800,,,,,,,,,Union Rail Systems,,Finisher,,,,,,,,,,3120.11
-Heavy Impact Driver,urs_heavyimpactdriver,,3200,900,,2400,,200,10,18,,,,FRAGMENTATION,600,,0.2,2.8,,,4,6,2,0.4,,800,,,,,,,,,Union Rail Systems,,Finisher,,,,,,,,,,3120.12
-Gauss Repeater,urs_gaussrepeater,,1200,800,,90,,10,75,9,4,1,6,ENERGY,60,,0.1,0.15,,,0,0,0,0,,1200,,,,,,"PD_ONLY, ANTI_FTR","kinetic0, pd8, LR",,Union Rail Systems,,Point Defense,,,,,,,,,,3120.13
-Assault Driver,urs_assaultdriver,,1600,500,,90,,20,50,10,,,,KINETIC,120,,0.1,0.15,,,0,20,1,10,,900,,,,,,,kinetic15,,Union Rail Systems,,Anti-Shield,,,,,,,,,,3120.14
-URS Flag Deco,urs_flag_deco,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,3121.1
-URS Darner Deco,urs_darner_deco,,,,,,,,,,,,,,,,,," ",,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,3121.2
-URS Mastiff Deco,urs_mastiff_deco,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,3121.3
-URS Gunbird Deco,urs_gunbird_deco,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,3121.4
+Magnetic Stapler Battery,urs_magneticstaplerbattery,,1500,500,,20,,1,75,8,800,20,80,FRAGMENTATION,2,,0,0.1,8,0,0,12,1,15,,1000,,,,,,PD,"pd12, SR",,Union Rail Systems,,Point Defense,,,,,,,,,,3120.6
+Magnetic Shredder,urs_magneticshredder,,3000,600,,20,,1,40,20,1600,40,160,FRAGMENTATION,2,,0,0.1,8,0,0,10,1,15,,1000,,,,,,PD,"pd15, SR",,Union Rail Systems,,Point Defense,,,,,,,,,,3120.7
+Magnetic Coiler,urs_magneticcoiler,,500,800,,90,160,20,50,8,,,,KINETIC,160,,0.2,0.4,,,0,1,1,2,,1200,,,,,,,"kinetic10, pd6",,Union Rail Systems,,Pressure,,,,,,,,,,3120.8
+Magnetic Coiler Battery,urs_magneticcoilerbattery,,2000,900,,180,160,20,40,14,,,,KINETIC,180,,0.2,0.4,,,0,4,1,1.5,,1200,,,,,,,"kinetic14, pd6",,Union Rail Systems,,Pressure,,,,,,,,,,3120.9
+Haywire Bolt Thrower,urs_haywireboltthrower,0.1,3000,450,,800,800,100,50,9,10,,,KINETIC,400,,0.2,7.3,,,0,0,0,0,,1500,,,,,,STRIKE,"kinetic12, SR",,Union Rail Systems,,"Strike, Anti-Shield",,,,,,,,,,3120.1
+Haywire Bolt Thrower Array,urs_haywireboltthrowerarray,0.3,7000,600,,800,800,100,20,28,25,,,KINETIC,500,,0.2,0.55,,,0,0,0,0,,1500,,,,,,STRIKE,"kinetic19, SR",,Union Rail Systems,,"Strike, Anti-Shield",,,,,,,,,,3120.11
+Impact Driver,urs_impactdriver,,1600,700,,1200,,150,20,12,,,,FRAGMENTATION,240,,0.2,1.8,,,4,6,2,0.4,,800,,,,,,,,,Union Rail Systems,,Finisher,,,,,,,,,,3120.12
+Heavy Impact Driver,urs_heavyimpactdriver,,3200,900,,2400,,200,10,22,,,,FRAGMENTATION,600,,0.2,2.8,,,4,6,2,0.4,,800,,,,,,,,,Union Rail Systems,,Finisher,,,,,,,,,,3120.13
+Gauss Repeater,urs_gaussrepeater,,1200,800,,90,,10,75,9,4,1,1,ENERGY,60,,0.1,0.15,,,0,0,0,0,,2000,,,,,,"PD_ONLY, ANTI_FTR","kinetic0, pd8, LR",,Union Rail Systems,,Point Defense,,,,,,,,,,3120.14
+Assault Driver,urs_assaultdriver,,1600,500,,90,,20,50,10,,,,KINETIC,120,,0.1,0.15,,,0,20,1,10,,900,,,,,,,"kinetic15",,Union Rail Systems,,Anti-Shield,,,,,,,,,,3120.15
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Magnetic Stapler (f),urs_magneticstaplerfighter,,0,350,,15,,1,75,4,200,10,20,FRAGMENTATION,2,,0,0,4,0.1,0,15,1,15,,1000,,,,,,"PD, SYSTEM","pd10, SR, no_drop, no_sell, no_drop_salvage",,Union Rail Systems,,Point Defense,,,,,,,,,,3120.50
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+URS Darner Deco,urs_darner_deco1,,,,,,,,,,,,,,,,,," ",,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,3121.1
+URS Flag Deco Left,urs_flag_deco1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,3121.2
+URS Flag Deco Right,urs_flag_deco2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,3121.3
+URS Setter Deco Front,urs_setter_deco1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,3121.4
+URS Setter Deco Left,urs_setter_deco2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,3121.5
+URS Setter Deco Right,urs_setter_deco3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,3121.6
+URS Gunbird Deco Left,urs_gunbird_deco1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,3121.7
+URS Gunbird Deco Right,urs_gunbird_deco2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,3121.8

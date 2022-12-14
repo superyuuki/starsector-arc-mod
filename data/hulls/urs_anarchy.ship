@@ -1,0 +1,182 @@
+{
+  "hullName": "Anarchy",
+  "hullId": "urs_anarchy",
+  "hullSize": "CRUISER",
+  "spriteName": "graphics/ships/urs_anarchy.png",
+  "style": "HIGH_TECH",
+  "height": 318,
+  "width": 140,
+  "center": [70, 159],
+  "collisionRadius": 190,
+  "shieldCenter": [0, 0],
+  "shieldRadius": 180,
+  "viewOffset": 0,
+  "builtInMods": [
+    "urs_advanced_ballistics"
+  ],
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "LARGE",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 120,
+      "angle": 0,
+      "locations": [-14, -0]
+    },
+    {
+      "id": "WS0002",
+      "size": "MEDIUM",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 120,
+      "angle": 0,
+      "locations": [82, -0]
+    },
+    {
+      "id": "WS0003",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 120,
+      "angle": 60,
+      "locations": [31, 20]
+    },
+    {
+      "id": "WS0004",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 120,
+      "angle": -60,
+      "locations": [31, -20]
+    },
+    {
+      "id": "WS0005",
+      "size": "SMALL",
+      "type": "UNIVERSAL",
+      "mount": "TURRET",
+      "arc": 120,
+      "angle": 90,
+      "locations": [-62, 55]
+    },
+    {
+      "id": "WS0006",
+      "size": "SMALL",
+      "type": "UNIVERSAL",
+      "mount": "TURRET",
+      "arc": 120,
+      "angle": -90,
+      "locations": [-62, -55]
+    },
+    {
+      "id": "WS0007",
+      "size": "SMALL",
+      "type": "UNIVERSAL",
+      "mount": "TURRET",
+      "arc": 120,
+      "angle": 135,
+      "locations": [-81, 31]
+    },
+    {
+      "id": "WS0008",
+      "size": "SMALL",
+      "type": "UNIVERSAL",
+      "mount": "TURRET",
+      "arc": 120,
+      "angle": -135,
+      "locations": [-81, -31]
+    },
+    {
+      "id": "LB 1",
+      "size": "LARGE",
+      "type": "LAUNCH_BAY",
+      "mount": "HIDDEN",
+      "arc": 360,
+      "angle": 0,
+      "locations": [
+        -18, 40.5,
+        -21, 43.5,
+        -15, 37.5
+      ]
+    },
+    {
+      "id": "LB 2",
+      "size": "LARGE",
+      "type": "LAUNCH_BAY",
+      "mount": "HIDDEN",
+      "arc": 360,
+      "angle": 0,
+      "locations": [
+        -18, -40.5,
+        -15, -37.5,
+        -21, -43.5
+      ]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-139, 26.5],
+      "length": 30,
+      "width": 18,
+      "angle": 180,
+      "contrailSize": 18,
+      "style": "HIGH_TECH"
+    },
+    {
+      "location": [-139, -26.5],
+      "length": 30,
+      "width": 18,
+      "angle": -180,
+      "contrailSize": 18,
+      "style": "HIGH_TECH"
+    },
+    {
+      "location": [-159, -0],
+      "length": 45,
+      "width": 15,
+      "angle": 180,
+      "contrailSize": 15,
+      "style": "HIGH_TECH"
+    },
+    {
+      "location": [-155, 4],
+      "length": 20,
+      "width": 15,
+      "angle": 165,
+      "contrailSize": 15,
+      "style": "HIGH_TECH"
+    },
+    {
+      "location": [-155, -4],
+      "length": 20,
+      "width": 15,
+      "angle": -165,
+      "contrailSize": 15,
+      "style": "HIGH_TECH"
+    }
+  ],
+  "bounds": [
+    -142.5, -13.5,
+    -133, -33,
+    -123, -37.5,
+    -132, -49,
+    -88.5, -60,
+    -53, -68.5,
+    19.5, -52.5,
+    20.5, -34,
+    57, -34,
+    157.5, -5,
+    157.5, 5,
+    57, 34,
+    20.5, 34,
+    19.5, 52.5,
+    -53, 68.5,
+    -88.5, 60,
+    -132, 49,
+    -120.5, 38,
+    -133, 33,
+    -142.5, 13.5,
+    -158, -0
+  ]
+}

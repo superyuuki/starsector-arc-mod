@@ -12,5 +12,5 @@
 	"coreColor":[255,255,200,80],
 	"textureScrollSpeed":64.0,
 	"pixelsPerTexel":5.0,
-	"bulletSprite":"graphics/missiles/urs_shell_impact_driver_large.png"
+	"bulletSprite":"graphics/missiles/urs_shell_impactdriver_large.png"
 }

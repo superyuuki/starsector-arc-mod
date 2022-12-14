@@ -10,5 +10,5 @@
 	"fringeColor":[50,255,150,255],
 	"coreColor":[150,255,200,255],
 	"passThroughMissiles":false,	
-	"bulletSprite":"graphics/missiles/urs_shell_haywire_bolt.png"
+	"bulletSprite":"graphics/missiles/urs_shell_haywirebolt.png"
 }

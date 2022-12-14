@@ -4,23 +4,23 @@
   "projectileSpecId": "urs_haywireboltthrower_shot",
   "type": "BALLISTIC",
   "size": "SMALL",
-  "turretSprite": "graphics/weapons/Haywire Bolt Thrower/urs_haywire_bolt_thrower_turret.png",
-  "turretGunSprite": "graphics/weapons/Haywire Bolt Thrower/urs_haywire_bolt_thrower_turret_recoil.png",
-  "hardpointSprite": "graphics/weapons/Haywire Bolt Thrower/urs_haywire_bolt_thrower_hardpoint.png",
-  "hardpointGunSprite": "graphics/weapons/Haywire Bolt Thrower/urs_haywire_bolt_thrower_hardpoint_recoil.png",
+  "turretSprite": "graphics/weapons/Haywire Bolt Thrower/urs_haywireboltthrower_turret.png",
+  "turretGunSprite": "graphics/weapons/Haywire Bolt Thrower/urs_haywireboltthrower_turret_recoil.png",
+  "hardpointSprite": "graphics/weapons/Haywire Bolt Thrower/urs_haywireboltthrower_hardpoint.png",
+  "hardpointGunSprite": "graphics/weapons/Haywire Bolt Thrower/urs_haywireboltthrower_hardpoint_recoil.png",
   "visualRecoil": 3,
   "renderHints": [
     RENDER_BARREL_BELOW
   ],
   "turretOffsets": [
-    -2,
+    7,
     0
   ],
   "turretAngleOffsets": [
     0
   ],
   "hardpointOffsets": [
-    -2,
+    7,
     0
   ],
   "hardpointAngleOffsets": [

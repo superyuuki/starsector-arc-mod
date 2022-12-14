@@ -1,6 +1,7 @@
 {
 	"id":"urs_wyrmthunder_shot",
 	"specClass":"projectile",
+	"onHitEffect":"urs.weapon.RailgunOnHitEffect",
 	"spawnType":"BALLISTIC_AS_BEAM",
 	"collisionClass":"RAY",
 	"collisionClassByFighter":"RAY_FIGHTER",
@@ -13,5 +14,5 @@
 	"textureScrollSpeed":64.0,
 	"pixelsPerTexel":5.0,
 	"passThroughMissiles":true,
-	"bulletSprite":"graphics/missiles/urs_shell_rail_cannon.png"	
+	"bulletSprite":"graphics/missiles/urs_shell_railcannon.png"	
 }

@@ -4,18 +4,18 @@
   "projectileSpecId": "urs_railgunsmall_shot",
   "type": "BALLISTIC",
   "size": "MEDIUM",
-  "turretSprite": "graphics/weapons/Assault Driver/urs_assault_driver_turret.png",
-  "turretGunSprite": "graphics/weapons/Assault Driver/urs_assault_driver_turret_recoil.png",
-  "hardpointSprite": "graphics/weapons/Assault Driver/urs_assault_driver_hardpoint.png",
-  "hardpointGunSprite": "graphics/weapons/Assault Driver/urs_assault_driver_hardpoint_recoil.png",
+  "turretSprite": "graphics/weapons/Assault Driver/urs_assaultdriver_turret.png",
+  "turretGunSprite": "graphics/weapons/Assault Driver/urs_assaultdriver_turret_recoil.png",
+  "hardpointSprite": "graphics/weapons/Assault Driver/urs_assaultdriver_hardpoint.png",
+  "hardpointGunSprite": "graphics/weapons/Assault Driver/urs_assaultdriver_hardpoint_recoil.png",
   "visualRecoil": 4,
   "renderHints": [
     RENDER_BARREL_BELOW
   ],
   "turretOffsets": [
-    -3,
+    9,
     7,
-    -3,
+    9,
     -7
   ],
   "turretAngleOffsets": [
@@ -23,9 +23,9 @@
     0
   ],
   "hardpointOffsets": [
-    -3,
+    9,
     7,
-    -3,
+    9,
     -7
   ],
   "hardpointAngleOffsets": [

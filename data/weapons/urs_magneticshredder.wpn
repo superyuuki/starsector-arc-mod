@@ -4,22 +4,22 @@
   "projectileSpecId": "urs_stapler_shot",
   "type": "BALLISTIC",
   "size": "LARGE",
-  "turretSprite": "graphics/weapons/Magnetic Stapler Shredder/urs_magnetic_shredder_turret.png",
-  "turretGunSprite": "graphics/weapons/Magnetic Stapler Shredder/urs_magnetic_shredder_turret_recoil.png",
-  "hardpointSprite": "graphics/weapons/Magnetic Stapler Shredder/urs_magnetic_shredder_hardpoint.png",
-  "hardpointGunSprite": "graphics/weapons/Magnetic Stapler Shredder/urs_magnetic_shredder_hardpoint_recoil.png",
+  "turretSprite": "graphics/weapons/Magnetic Stapler Shredder/urs_magneticshredder_turret.png",
+  "turretGunSprite": "graphics/weapons/Magnetic Stapler Shredder/urs_magneticshredder_turret_recoil.png",
+  "hardpointSprite": "graphics/weapons/Magnetic Stapler Shredder/urs_magneticshredder_hardpoint.png",
+  "hardpointGunSprite": "graphics/weapons/Magnetic Stapler Shredder/urs_magneticshredder_hardpoint_recoil.png",
   "visualRecoil": 3,
   "renderHints": [
     RENDER_BARREL_BELOW
   ],
   "turretOffsets": [
-    -3,
+    13,
     10,
-    -3,
+    13,
     -10,
-    -8,
+    8,
     4,
-    -8,
+    8,
     -4
   ],
   "turretAngleOffsets": [
@@ -29,13 +29,13 @@
     0
   ],
   "hardpointOffsets": [
-    -3,
+    13,
     10,
-    -3,
+    13,
     -10,
-    -8,
+    8,
     4,
-    -8,
+    8,
     -4
   ],
   "hardpointAngleOffsets": [
@@ -44,7 +44,7 @@
     0,
     0
   ],
-  "barrelMode": "ALTERNATING",
+  "barrelMode": "LINKED",
   "animationType": "MUZZLE_FLASH",
   "muzzleFlashSpec": {
     "length": 30,

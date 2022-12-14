@@ -4,18 +4,18 @@
   "projectileSpecId": "urs_stapler_shot",
   "type": "BALLISTIC",
   "size": "MEDIUM",
-  "turretSprite": "graphics/weapons/Magnetic Stapler Battery/urs_magnetic_stapler_battery_turret.png",
-  "turretGunSprite": "graphics/weapons/Magnetic Stapler Battery/urs_magnetic_stapler_battery_turret_recoil.png",
-  "hardpointSprite": "graphics/weapons/Magnetic Stapler Battery/urs_magnetic_stapler_battery_hardpoint.png",
-  "hardpointGunSprite": "graphics/weapons/Magnetic Stapler Battery/urs_magnetic_stapler_battery_hardpoint_recoil.png",
+  "turretSprite": "graphics/weapons/Magnetic Stapler Battery/urs_magneticstaplerbattery_turret.png",
+  "turretGunSprite": "graphics/weapons/Magnetic Stapler Battery/urs_magneticstaplerbattery_turret_recoil.png",
+  "hardpointSprite": "graphics/weapons/Magnetic Stapler Battery/urs_magneticstaplerbattery_hardpoint.png",
+  "hardpointGunSprite": "graphics/weapons/Magnetic Stapler Battery/urs_magneticstaplerbattery_hardpoint_recoil.png",
   "visualRecoil": 3,
   "renderHints": [
     RENDER_BARREL_BELOW
   ],
   "turretOffsets": [
-    -4,
+    7,
     4,
-    -4,
+    7,
     -4
   ],
   "turretAngleOffsets": [
@@ -23,16 +23,16 @@
     0
   ],
   "hardpointOffsets": [
-    -4,
+    7,
     4,
-    -4,
+    7,
     -4
   ],
   "hardpointAngleOffsets": [
     0,
     0
   ],
-  "barrelMode": "ALTERNATING",
+  "barrelMode": "LINKED",
   "animationType": "MUZZLE_FLASH",
   "muzzleFlashSpec": {
     "length": 30,

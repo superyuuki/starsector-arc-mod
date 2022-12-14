@@ -1,5 +1,5 @@
 {
-	"id":"urs_haywireboltthrower_shot",
+	"id":"urs_haywireboltthrowerarray_shot",
 	"specClass":"projectile",
 	"spawnType":"PLASMA",
 	"collisionClass":"PROJECTILE_FF",
@@ -10,5 +10,5 @@
 	"fringeColor":[50,255,150,255],
 	"coreColor":[150,255,200,255],
 	"passThroughMissiles":false,	
-	"bulletSprite":"graphics/missiles/urs_shell_haywire_bolt_large.png"
+	"bulletSprite":"graphics/missiles/urs_shell_haywirebolt_large.png"
 }
