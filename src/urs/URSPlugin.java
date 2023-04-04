@@ -2,6 +2,7 @@ package urs;
 
 import com.fs.starfarer.api.BaseModPlugin;
 import com.fs.starfarer.api.Global;
+import urs.world.PrimoGen;
 
 public class URSPlugin extends BaseModPlugin {
     @Override
@@ -15,4 +16,8 @@ public class URSPlugin extends BaseModPlugin {
         }
     }
 
+    @Override
+    public void onNewGame() {
+        new PrimoGen().generate(Global.getSector());
+    }
 }
