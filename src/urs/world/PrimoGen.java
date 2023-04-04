@@ -101,7 +101,7 @@ public class PrimoGen {
     static void tulm(StarSystemAPI system, PlanetAPI primo, float radiusAfter) {
         PlanetAPI tulm = system.addPlanet(Tokens.TULM,
                 primo,
-                "Kalideus",
+                "Tulm",
                 "toxic_cold",
                 360f*(float)Math.random(),
                 180,
@@ -112,7 +112,7 @@ public class PrimoGen {
         tulm.setCustomDescriptionId(Tokens.TULM_DESC);
 
         SectorEntityToken tulmStation = system.addCustomEntity(Tokens.TULM_STATION, "Catalyst Station", "station_side06", Tokens.FACTION);
-        tulmStation.setCircularOrbitPointingDown(tulm, 360f * (float)Math.random(), radiusAfter + 700f, 600f);
+        tulmStation.setCircularOrbitPointingDown(tulm, 360f * (float)Math.random(), radiusAfter + 200f, 600f);
         tulmStation.setCustomDescriptionId(Tokens.TULM_STATION_DESC);
         tulmStation.setInteractionImage("illustrations", "orbital");
 
