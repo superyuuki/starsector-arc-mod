@@ -6,6 +6,7 @@
   "size": "LARGE",
   "turretSprite": "graphics/weapons/Haywire Bolt Thrower Array/urs_haywireboltthrowerarray_turret.png",
   "hardpointSprite": "graphics/weapons/Haywire Bolt Thrower Array/urs_haywireboltthrowerarray_hardpoint.png",
+  "visualRecoil": 3,
   "turretOffsets": [
     8,
     0

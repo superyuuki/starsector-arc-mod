@@ -1,5 +1,5 @@
 {
-	"id":"tahlan_legioinfernalis",
+	"id":"urs",
 	"color":[25,25,180,255],
 	
 	"baseUIColor":[25,25,180,255],
@@ -7,10 +7,10 @@
 	"gridUIColor":[255,0,0,75],
 	"brightUIColor":[231,98,103,255],
 	
-	"entityNamePrefix":"Urs",
-	"personNamePrefix":"Urs",
-	"displayName":"Legio Infernalis",
-	"displayNameWithArticle":"the Legio Infernalis",
+	"entityNamePrefix":"URS",
+	"personNamePrefix":"URS",
+	"displayName":"YRS",
+	"displayNameWithArticle":"the URS",
 	"displayNameIsOrAre":"is",
 	"logo":"graphics/factions/urs_flag.png",
 	"crest":"graphics/factions/urs_crest.png",
@@ -130,6 +130,9 @@
 			"baseCommander":{"name":"High Commander"},
 			"administrator":{"name":"Admin"}
 		}
+	},
+	"portraits": {
+
 	},
 	"custom":{
 		"offersCommissions":true,		

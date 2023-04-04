@@ -16,6 +16,7 @@ import com.fs.starfarer.api.impl.campaign.procgen.themes.SalvageSpecialAssigner;
 import com.fs.starfarer.api.impl.campaign.rulecmd.salvage.special.ShipRecoverySpecial;
 import com.fs.starfarer.api.impl.campaign.terrain.HyperspaceTerrainPlugin;
 import com.fs.starfarer.api.util.Misc;
+import org.lwjgl.Sys;
 import urs.Tokens;
 
 import java.awt.*;
@@ -51,8 +52,7 @@ public class PrimoGen {
                                 Conditions.POLLUTION,
                                 Conditions.FARMLAND_POOR,
                                 Conditions.ORE_MODERATE,
-                                Conditions.RARE_ORE_SPARSE,
-                                Conditions.ORBITAL_BURNS
+                                Conditions.RARE_ORE_SPARSE
                         )
                 ),
                 new ArrayList<>(
@@ -208,8 +208,7 @@ public class PrimoGen {
                                 Conditions.VERY_COLD,
                                 Conditions.FARMLAND_POOR,
                                 Conditions.ORE_MODERATE,
-                                Conditions.ORGANICS_TRACE,
-                                Conditions.ORBITAL_BURNS
+                                Conditions.ORGANICS_TRACE
                         )
                 ),
                 new ArrayList<>(
@@ -336,6 +335,8 @@ public class PrimoGen {
         String marketID = planetID + "_market";
 
         MarketAPI newMarket = Global.getFactory().createMarket(marketID, name, size);
+
+        System.out.println("f:"+factionID);
         newMarket.setFactionId(factionID);
         newMarket.setPrimaryEntity(primaryEntity);
         newMarket.getTariff().modifyFlat("generator", tarrif);
