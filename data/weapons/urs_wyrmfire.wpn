@@ -1,0 +1,48 @@
+{
+  "id": "urs_wyrmfire",
+  "specClass": "projectile",
+  "projectileSpecId": "urs_wyrmfire_shot",
+  "type": "BALLISTIC",
+  "size": "MEDIUM",
+  "turretSprite": "",
+  "hardpointSprite": "",
+  "hardpointGlowSprite": "graphics/weapons/Wyrmfire Railcannon/urs_wyrmfire_hardpoint_glow.png",
+  "glowColor": [
+    255,
+    10,
+    0,
+    255
+  ],
+  "turretOffsets": [
+    0,
+    0
+  ],
+  "turretAngleOffsets": [
+    0
+  ],
+  "hardpointOffsets": [
+    0,
+    0
+  ],
+  "hardpointAngleOffsets": [
+    0
+  ],
+  "barrelMode": "ALTERNATING",
+  "animationType": "GLOW_AND_FLASH",
+  "interruptibleBurst": true,
+  "muzzleFlashSpec": {
+    "length": 100,
+    "spread": 1,
+    "particleSizeMin": 10,
+    "particleSizeRange": 15,
+    "particleDuration": 1.5,
+    "particleCount": 50,
+    "particleColor": [
+      50,
+      150,
+      255,
+      255
+    ]
+  },
+  "fireSoundTwo": "wyrm_shot"
+}

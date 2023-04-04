@@ -1,0 +1,161 @@
+{
+  "hullName": "Vexilla",
+  "hullId": "urs_vexilla",
+  "hullSize": "DESTROYER",
+  "spriteName": "graphics/ships/urs_vexilla.png",
+  "style": "HIGH_TECH",
+  "height": 162,
+  "width": 128,
+  "center": [64, 81],
+  "collisionRadius": 115,
+  "shieldCenter": [0, 0],
+  "shieldRadius": 105,
+  "viewOffset": 0,
+  "builtInMods": [
+    "urs_advanced_ballistics",
+    "urs_pd_matrix"
+  ],
+  "builtInWings": [
+    "urs_pixie_Pddrone_wing",
+    "urs_pixie_Pddrone_wing"
+  ],
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "MEDIUM",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 270,
+      "angle": 180,
+      "locations": [-28, -0]
+    },
+    {
+      "id": "WS0002",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 150,
+      "angle": 45,
+      "locations": [6, 27]
+    },
+    {
+      "id": "WS0003",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 150,
+      "angle": -45,
+      "locations": [6, -27]
+    },
+    {
+      "id": "WS0004",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 150,
+      "angle": -70,
+      "locations": [-14, -36]
+    },
+    {
+      "id": "WS0005",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 150,
+      "angle": 70,
+      "locations": [-14, 36]
+    },
+    {
+      "id": "LB 1",
+      "size": "LARGE",
+      "type": "LAUNCH_BAY",
+      "mount": "HIDDEN",
+      "arc": 360,
+      "angle": 0,
+      "locations": [
+        -45, 2.5,
+        -47, 2.5
+      ]
+    },
+    {
+      "id": "LB 2",
+      "size": "LARGE",
+      "type": "LAUNCH_BAY",
+      "mount": "HIDDEN",
+      "arc": 360,
+      "angle": 0,
+      "locations": [
+        -45, -2.5,
+        -47, -2.5
+      ]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-62, 21.5],
+      "length": 25,
+      "width": 8,
+      "angle": 180,
+      "contrailSize": 8,
+      "style": "HIGH_TECH"
+    },
+    {
+      "location": [-62, -21.5],
+      "length": 25,
+      "width": 8,
+      "angle": -180,
+      "contrailSize": 8,
+      "style": "HIGH_TECH"
+    },
+    {
+      "location": [-62, -16],
+      "length": 25,
+      "width": 8,
+      "angle": -180,
+      "contrailSize": 8,
+      "style": "HIGH_TECH"
+    },
+    {
+      "location": [-62, 16],
+      "length": 25,
+      "width": 8,
+      "angle": 180,
+      "contrailSize": 8,
+      "style": "HIGH_TECH"
+    },
+    {
+      "location": [-36.5, 45.5],
+      "length": 20,
+      "width": 10,
+      "angle": 135,
+      "contrailSize": 10,
+      "style": "HIGH_TECH"
+    },
+    {
+      "location": [-36.5, -45.5],
+      "length": 20,
+      "width": 10,
+      "angle": -135,
+      "contrailSize": 10,
+      "style": "HIGH_TECH"
+    }
+  ],
+  "bounds": [
+    -80.5, -11.5,
+    -60, -13,
+    -60, -23.5,
+    -66.5, -27,
+    -39.5, -32,
+    -33.5, -46.5,
+    -39.5, -63.5,
+    79, -4,
+    79, 4,
+    -39.5, 63.5,
+    -33.5, 46.5,
+    -39.5, 32,
+    -66.5, 27,
+    -60, 23.5,
+    -60, 13,
+    -80.5, 11.5
+  ]
+}

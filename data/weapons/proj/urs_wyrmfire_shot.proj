@@ -1,0 +1,18 @@
+{
+	"id":"urs_wyrmfire_shot",
+	"specClass":"projectile",
+	"onHitEffect":"urs.weapon.RailgunOnHitEffect",
+	"spawnType":"BALLISTIC_AS_BEAM",
+	"collisionClass":"RAY",
+	"collisionClassByFighter":"RAY_FIGHTER",
+	"length":50.0,
+	"hitGlowRadius":50,
+	"width":4.0,
+	"fadeTime":0.16,
+	"fringeColor":[50,255,255,255],
+	"coreColor":[100,255,255,255],
+	"textureScrollSpeed":64.0,
+	"pixelsPerTexel":5.0,
+	"passThroughMissiles":true,
+	"bulletSprite":"graphics/missiles/urs_shell_railcannon.png"	
+}

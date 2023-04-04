@@ -1,0 +1,65 @@
+{
+  "id": "urs_magneticshredder",
+  "specClass": "projectile",
+  "projectileSpecId": "urs_stapler_shot",
+  "type": "BALLISTIC",
+  "size": "LARGE",
+  "turretSprite": "graphics/weapons/Magnetic Stapler Shredder/urs_magneticshredder_turret.png",
+  "turretGunSprite": "graphics/weapons/Magnetic Stapler Shredder/urs_magneticshredder_turret_recoil.png",
+  "hardpointSprite": "graphics/weapons/Magnetic Stapler Shredder/urs_magneticshredder_hardpoint.png",
+  "hardpointGunSprite": "graphics/weapons/Magnetic Stapler Shredder/urs_magneticshredder_hardpoint_recoil.png",
+  "visualRecoil": 3,
+  "renderHints": [
+    RENDER_BARREL_BELOW
+  ],
+  "turretOffsets": [
+    13,
+    10,
+    13,
+    -10,
+    8,
+    4,
+    8,
+    -4
+  ],
+  "turretAngleOffsets": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "hardpointOffsets": [
+    13,
+    10,
+    13,
+    -10,
+    8,
+    4,
+    8,
+    -4
+  ],
+  "hardpointAngleOffsets": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "barrelMode": "LINKED",
+  "animationType": "MUZZLE_FLASH",
+  "muzzleFlashSpec": {
+    "length": 30,
+    "spread": 0,
+    "particleSizeMin": 5,
+    "particleSizeRange": 10,
+    "particleDuration": 0.05,
+    "particleCount": 5,
+    "particleColor": [
+      255,
+      255,
+      255,
+      170
+    ]
+  },
+  "fireSoundOne": "stapler_spinup",
+  "fireSoundTwo": "stapler_loop"
+}

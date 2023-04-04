@@ -1,0 +1,4 @@
+trail,projectile,sprite,minLength,fadeIn,duration,fadeOut,sizeIn,sizeOut,colorIn,colorOut,opacity,textLength,textScroll,randomTextureOffset,distance,dispersion,drift,fadeOnFadeOut,angleAdjustment,additive,velocityIn,velocityOut,randomVelocity,angle,rotationIn,rotationOut,randomRotation,renderBelowExplosions
+trails_rail_1,urs_rail_shot,trails_clean,10,0.1,0,0.8,7,3,"[160,160,255]","[180,210,255]",0.4,-1,0,TRUE,30,0,1,TRUE,FALSE,TRUE,15,80,0.6,0,0,200,true,false
+trails_rail_2,urs_rail_shot,trails_flame,10,0.1,0,0.8,7,3,"[160,160,255]","[180,210,255]",0.4,-1,0,TRUE,30,0,1,TRUE,FALSE,TRUE,15,80,0.4,0,0,200,true,false
+trails_rail_glow,urs_rail_shot,trails_clean,10,0,0.05,0.15,60,30,"[160,160,255]","[100,100,25]",0.5,-1,0,TRUE,30,0,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
