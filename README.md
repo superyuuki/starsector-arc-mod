@@ -1,4 +1,4 @@
-# starsector-urs-mod
+# starsector-arc-mod
 
 # How to install
 

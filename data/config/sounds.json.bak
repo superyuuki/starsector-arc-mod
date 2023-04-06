@@ -1,0 +1,22 @@
+{
+	"arc_overdrive_startup":
+	[
+		{"file":"sounds/ARC/overdrive_startup.ogg","pitch":1.0,"volume":1.0},
+	],
+	"arc_overdrive_loop":
+	[
+		{"file":"sounds/ARC/overdrive_loop.ogg","pitch":1.0,"volume":1.0},
+	],
+	"arc_overdrive_shutdown":
+	[
+		{"file":"sounds/ARC/overdrive_shutdown.ogg","pitch":1.0,"volume":1.0},
+	],
+	"arc_beam_chargeup":
+	[
+		{"file":"sounds/ARC/beam_chargeup","pitch":0.7,"volume":1.5},
+	],
+	"arc_beam_loop":
+	[
+		{"file":"sounds/ARC/beam_loop.ogg","pitch":0.7,"volume":1.0},
+	]
+}

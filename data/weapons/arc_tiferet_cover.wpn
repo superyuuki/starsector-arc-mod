@@ -1,0 +1,25 @@
+{
+  "id": "arc_tiferet_cover",
+  "specClass":"beam",
+  "type": "DECORATIVE",
+  "size": "SMALL",
+  "turretSprite": "graphics/ARC/ships/tiferet_cover.png",
+  "showDamageWhenDecorative":true,
+  "hardpointSprite": "",
+  "turretOffsets": [
+    0,
+    0
+  ],
+  "turretAngleOffsets": [
+    0
+  ],
+  "hardpointOffsets": [
+    0,
+    0
+  ],
+  "hardpointAngleOffsets": [
+    0
+  ],
+  "animationType": "NONE",
+  "textureType": ROUGH
+}

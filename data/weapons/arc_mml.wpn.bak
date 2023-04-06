@@ -1,0 +1,79 @@
+{
+  "animationType": "SMOKE",
+  "autocharge": true,
+  "barrelMode": "ALTERNATING",
+  "fireSoundTwo": "diableavionics_micromissile_firing",
+  "hardpointAngleOffsets": [
+    0
+  ],
+  "hardpointOffsets": [
+    0,
+    0
+  ],
+  "hardpointSprite": "",
+  "id": "arc_mml",
+  "projectileSpecId": "arc_mml_missile",
+  "size": "LARGE",
+  "smokeSpec": {
+    "blowbackDuration": 0.45,
+    "blowbackLength": 20,
+    "blowbackParticleCount": 3,
+    "blowbackSpread": 6,
+    "cloudDuration": 1.5,
+    "cloudParticleCount": 1,
+    "cloudRadius": 12,
+    "particleColor": [
+      190,
+      180,
+      160,
+      95
+    ],
+    "particleSizeMin": 10,
+    "particleSizeRange": 14
+  },
+  "specClass": "projectile",
+  "textureType": ROUGH,
+  "turretAngleOffsets": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "turretOffsets": [
+    1.5,
+    11,
+    -1.5,
+    9,
+    1.5,
+    7,
+    -1.5,
+    5,
+    1.5,
+    3,
+    -1.5,
+    1,
+    1.5,
+    -1,
+    -1.5,
+    -3,
+    1.5,
+    -5,
+    -1.5,
+    -7,
+    1.5,
+    -9,
+    -1.5,
+    -11,
+
+  ],
+  "turretSprite": "graphics/ARC/weapons/arc_mml.png",
+  "type": "MISSILE"
+}

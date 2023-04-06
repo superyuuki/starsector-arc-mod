@@ -1,19 +1,5 @@
 {
-	"designTypeColors": {
-		"Union Rail Systems": [
-			67,
-			107,
-			149,
-			255
-		]
-	},
-	"graphics": {
-		"fx":{
-			"trails_clean":"graphics/fx/trails_clean.png",
-			"trails_flame":"graphics/fx/trails_flame.png"
-		},
-		"blueprint_packages": {
-			"urs_ship_package": "graphics/icons/cargo/urs_ship_package.png"
-		}
+	"designTypeColors":{
+        "ARC":[200,120,100,255]
 	}
 }

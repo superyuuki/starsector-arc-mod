@@ -1,23 +1,26 @@
-{        
-	"stapler_fire":
+{
+	"arc_overdrive_startup":
 	[
-		{"file":"sounds/sfx_wpn_guns/light_machinegun_fire_01.ogg","pitch":1.1,"volume":0.1}
+		{"file":"sounds/ARC/overdrive_startup.ogg","pitch":1.0,"volume":1.0},
 	],
-
-	"stapler_spinup":
+	"arc_overdrive_loop":
 	[
-		{"file":"sounds/sfx_wpn_guns/thumper_spinup_01.ogg","pitch":1,"volume":0.1}
-	],	
-
-	"wyrm_shot":[
-		{"file":"sounds/sfx_wpn_energy/rift_explosion_01.ogg","pitch":1.1,"volume":0.8},
-		{"file":"sounds/sfx_wpn_energy/rift_explosion_01.ogg","pitch":1.3,"volume":0.8},
-		{"file":"sounds/sfx_wpn_energy/rift_explosion_01.ogg","pitch":1.2,"volume":0.8},
-		{"file":"sounds/sfx_wpn_energy/rift_explosion_02.ogg","pitch":1.1,"volume":0.8},
-		{"file":"sounds/sfx_wpn_energy/rift_explosion_02.ogg","pitch":1.3,"volume":0.8},
-		{"file":"sounds/sfx_wpn_energy/rift_explosion_02.ogg","pitch":1.2,"volume":0.8},
-		{"file":"sounds/sfx_wpn_energy/rift_explosion_03.ogg","pitch":1.1,"volume":0.8},
-		{"file":"sounds/sfx_wpn_energy/rift_explosion_03.ogg","pitch":1.3,"volume":0.8},
-		{"file":"sounds/sfx_wpn_energy/rift_explosion_03.ogg","pitch":1.2,"volume":0.8}
+		{"file":"sounds/ARC/overdrive_loop.ogg","pitch":1.0,"volume":1.0},
+	],
+	"arc_overdrive_shutdown":
+	[
+		{"file":"sounds/ARC/overdrive_shutdown.ogg","pitch":1.0,"volume":1.0},
+	],
+	"arc_beam_chargeup":
+	[
+		{"file":"sounds/ARC/AL_deitygun_charge.ogg","pitch":0.7,"volume":1.5},
+	],
+	"arc_beam_loop":
+	[
+		{"file":"sounds/ARC/AL_deitygun_loop.ogg","pitch":0.5,"volume":2.0},
+	],
+	"arc_beam_fire":
+	[
+		{"file":"sounds/ARC/AL_deitygun_fire.ogg","pitch":0.5,"volume":2.0},
 	]
-}	
+}

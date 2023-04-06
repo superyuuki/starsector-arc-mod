@@ -1,14 +1,14 @@
 {
-	"id":"urs",
-	"name":"Union Rail Systems",
-	"author":"Quacken",
+	"id":"arc",
+	"name":"ARC",
+	"author":"Raycrasher, superyuuki",
 	"version":"0.2",
-	"description":"Created by Quacken and assisted by Caliger194, Messy and SuperYuuki",
+	"description":"Created by Raycrasher, extended by superyuuki",
 	"gameVersion": "0.95.1a-RC6",
 	"jars": [
-		"./jars/starsector-urs-mod.jar"
+		"./jars/starsector-arc-mod.jar"
 	],
-	"modPlugin": "urs.URSPlugin",
+	"modPlugin": "arc.ARCPlugin",
 	"dependencies": [
 		{
 			"id": "MagicLib",

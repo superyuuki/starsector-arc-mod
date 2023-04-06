@@ -1,0 +1,185 @@
+{
+  "hullName": "Tiferet",
+  "hullId": "arc_tiferet",
+  "hullSize": "FRIGATE",
+  "spriteName": "graphics/ARC/ships/tiferet.png",
+  "style": "LOW_TECH",
+  "height": 139,
+  "width": 94,
+  "center": [47, 69.5],
+  "collisionRadius": 96.5,
+  "shieldCenter": [0, 0],
+  "shieldRadius": 88,
+  "viewOffset": 0,
+  "builtInMods": [
+    "arc_coronal_hypershunt",
+    "diableavionics_avionics",
+    "arc_temporal_fluxcore"
+  ],
+  "builtInWeapons": {
+    "WS0001": "arc_tiferet_cover",
+    "WS0010": "arc_tiferet_lights",
+    "WS0011": "arc_tiferet_flux"
+  },
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "LARGE",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [0, 0],
+      "renderOrderMod": 200
+    },
+    {
+      "id": "WS0002",
+      "size": "MEDIUM",
+      "type": "UNIVERSAL",
+      "mount": "HARDPOINT",
+      "arc": 0,
+      "angle": 0,
+      "locations": [53, -0],
+      "renderOrderMod": 1
+    },
+    {
+      "id": "WS0003",
+      "size": "MEDIUM",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 116,
+      "angle": 47,
+      "locations": [-16.5, 26],
+      "renderOrderMod": 1
+    },
+    {
+      "id": "WS0004",
+      "size": "MEDIUM",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 116,
+      "angle": -47,
+      "locations": [-16.5, -26],
+      "renderOrderMod": 1
+    },
+    {
+      "id": "WS0005",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 360,
+      "angle": 0,
+      "locations": [-22, -0],
+      "renderOrderMod": 500
+    },
+    {
+      "id": "WS0008",
+      "size": "SMALL",
+      "type": "MISSILE",
+      "mount": "HARDPOINT",
+      "arc": 0,
+      "angle": -90,
+      "locations": [12.5, -14],
+      "renderOrderMod": 1
+    },
+    {
+      "id": "WS0006",
+      "size": "SMALL",
+      "type": "MISSILE",
+      "mount": "HARDPOINT",
+      "arc": 0,
+      "angle": 90,
+      "locations": [12.5, 14],
+      "renderOrderMod": 1
+    },
+    {
+      "id": "WS0009",
+      "size": "SMALL",
+      "type": "MISSILE",
+      "mount": "HARDPOINT",
+      "arc": 0,
+      "angle": -90,
+      "locations": [-1.5, -16],
+      "renderOrderMod": 1
+    },
+    {
+      "id": "WS0007",
+      "size": "SMALL",
+      "type": "MISSILE",
+      "mount": "HARDPOINT",
+      "arc": 0,
+      "angle": 90,
+      "locations": [-1.5, 16],
+      "renderOrderMod": 1
+    },
+    {
+      "id": "WS0010",
+      "size": "LARGE",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [0, -0],
+      "renderOrderMod": 300
+    },
+    {
+      "id": "WS0011",
+      "size": "LARGE",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -0,
+      "locations": [0, 0],
+      "renderOrderMod": 400
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-61.5, -0],
+      "length": 44,
+      "width": 9,
+      "angle": 180,
+      "contrailSize": 9,
+      "style": "HIGH_TECH"
+    },
+    {
+      "location": [-55.5, 10],
+      "length": 31,
+      "width": 7,
+      "angle": 178,
+      "contrailSize": 7,
+      "style": "HIGH_TECH"
+    },
+    {
+      "location": [-55.5, -10],
+      "length": 31,
+      "width": 7,
+      "angle": -178,
+      "contrailSize": 7,
+      "style": "HIGH_TECH"
+    },
+    {
+      "location": [-50, 19.5],
+      "length": 29.5,
+      "width": 5,
+      "angle": 176,
+      "contrailSize": 5,
+      "style": "HIGH_TECH"
+    },
+    {
+      "location": [-50, -19.5],
+      "length": 29.5,
+      "width": 5,
+      "angle": -176,
+      "contrailSize": 5,
+      "style": "HIGH_TECH"
+    }
+  ],
+  "bounds": [
+    -33, -40,
+    66.5, -12,
+    66.5, 12,
+    -33, 40,
+    -55.5, -0
+  ]
+}

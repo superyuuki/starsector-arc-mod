@@ -1,0 +1,63 @@
+{
+  "id": "arc_sephiroth_spinal",
+  "beamEffect": "data.scripts.weapons.Arc_SunspearBeamEffect",
+  "specClass": "beam",
+  "type": "ENERGY",
+  "size": "LARGE",
+  "collisionClass": "RAY",
+  "collisionClassByFighter": "RAY_FIGHTER",
+  "turretSprite": "graphics/ARC/weapons/sephiroth_spinal.png",
+  "turretGlowSprite": "graphics/ARC/weapons/sephiroth_spinal_glow.png",
+  "hardpointSprite": "graphics/ARC/weapons/sephiroth_spinal.png",
+  "hardpointGlowSprite": "graphics/ARC/weapons/sephiroth_spinal_glow.png",  
+  "renderAboveAllWeapons": 0,
+  "glowColor": [
+    255,
+    80,
+    2,
+    255
+  ],
+  "hitGlowRadius": 400,
+  "turretOffsets": [
+    60.5,
+    21,
+    60.5,
+    -21
+  ],
+  "turretAngleOffsets": [
+    0,
+    0
+  ],
+  "hardpointOffsets": [
+    0,
+    0
+  ],
+  "hardpointAngleOffsets": [
+    0
+  ],
+  "fringeColor": [
+    255,
+    64,
+    10,
+    255
+  ],
+  "coreColor": [
+    255,
+    220,
+    10,
+    255
+  ],
+  "width": 50,
+  "textureType": ROUGH,
+  "textureScrollSpeed": 128,
+  "pixelsPerTexel": 5,
+  "pierceSet": [
+    PROJECTILE_FF,
+    PROJECTILE_NO_FF,
+    PROJECTILE_FIGHTER,
+    MISSILE_FF,
+    MISSILE_NO_FF
+  ],
+  "fireSoundOne": "laser_intro",
+  "fireSoundTwo": "tachyon_lance_fire"
+}

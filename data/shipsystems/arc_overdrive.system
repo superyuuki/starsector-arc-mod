@@ -1,0 +1,40 @@
+{
+	"id":"arc_overdrive",
+	"type":"ENGINE_MOD",
+	"aiType":"BURN_DRIVE",
+	
+	"statsScript":"arc.shipsystems.Overdrive",
+	"useSound":"arc_overdrive_startup",
+	"loopSound":"arc_overdrive_loop",
+	"deactivateSound":"arc_overdrive_shutdown",
+
+	"engineGlowColor":[255,50,0,255],
+	#"engineGlowContrailColor":[100,165,255,25],
+	"engineGlowLengthMult":3,
+	"engineGlowWidthMult":2,
+	"engineGlowGlowMult":1.5,
+	
+	"jitterUnderColor":[255,80,30,135],
+	"jitterUnderCopies":25,
+	"jitterUnderMinRange":0,
+	"jitterUnderRange":14,
+	"jitterUnderRangeRadiusFraction":0,
+	
+	"jitterColor":[255,140,60,65],
+	"jitterCopies":2,
+	"jitterMinRange":0,
+	"jitterRange":5,
+	"jitterRangeRadiusFraction":0,
+
+	"weaponGlowColor":[255,150,0,55],
+	"weaponTypes":[BALLISTIC, ENERGY],
+	
+	"clampMaxSpeedAfter":true,
+	"flameoutOnImpactChance":0,
+	
+	"aiHints":{
+		"activeSpeedIncrease":100,
+		"burstMovementPotential":200,
+		"averageSpeedIncrease":100,
+	}	
+}

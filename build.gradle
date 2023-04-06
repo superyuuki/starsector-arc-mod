@@ -42,6 +42,7 @@ build {
             
             into 'build'
             include 'data/**'
+            include 'sounds/**'
             include 'graphics/**'
             include 'mod_info.json'
         }
@@ -52,6 +53,9 @@ build {
 dependencies {
     implementation "jaghaimo:starsector-api:0.95.1a-RC6@starfarer.api.jar"
     implementation files('libs/MagicLib.jar')
+    implementation files('libs/LazyLib.jar')
+    implementation files('libs/Graphics.jar')
+
 
     // game dependencies
     implementation group: 'com.thoughtworks.xstream', name: 'xstream', version: '1.4.10'
@@ -73,6 +77,7 @@ tasks.register('release', Zip) {
     
     from(layout.buildDirectory) {
         include 'data/**'
+        include 'sounds/**'
         include 'graphics/**'
         include 'mod_info.json'
         include 'build/**'
@@ -90,3 +95,4 @@ def readModInfoJson() {
     def slurper = new JsonSlurper()
     return slurper.parse(jsonFile)
 }
+
