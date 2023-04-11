@@ -12,10 +12,10 @@
   "shieldRadius": 90,
   "viewOffset": 0,
   "builtInMods": [
+    "arc_laminate_armor",
     "arc_coronal_hypershunt",
     "arc_temporal_fluxcore",
-	"phasefield",
-    "diableavionics_avionics"
+	"phasefield"
   ],
   "builtInWeapons": {
     "WS0008": "arc_tiferet_cover",
@@ -26,28 +26,28 @@
     {
       "id": "WS0001",
       "size": "MEDIUM",
-      "type": "HYBRID",
+      "type": "ENERGY",
       "mount": "HARDPOINT",
-      "arc": 0,
+      "arc": 10,
       "angle": 0,
       "locations": [69.5, -0]
     },
     {
       "id": "WS0002",
-      "size": "MEDIUM",
-      "type": "ENERGY",
-      "mount": "TURRET",
-      "arc": 109,
-      "angle": 45.5,
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "HARDPOINT",
+      "arc": 10,
+      "angle": 0,
       "locations": [-4.5, 23]
     },
     {
       "id": "WS0003",
-      "size": "MEDIUM",
-      "type": "ENERGY",
-      "mount": "TURRET",
-      "arc": 109,
-      "angle": -45.5,
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "HARDPOINT",
+      "arc": 10,
+      "angle": 0,
       "locations": [-4.5, -23]
     },
     {
@@ -81,7 +81,7 @@
     {
       "id": "WS0009",
       "size": "SMALL",
-      "type": "HYBRID",
+      "type": "UNIVERSAL",
       "mount": "TURRET",
       "arc": 360,
       "angle": 0,
@@ -91,7 +91,7 @@
     {
       "id": "WS0010",
       "size": "SMALL",
-      "type": "SYNERGY",
+      "type": "HYBRID",
       "mount": "HARDPOINT",
       "arc": 0,
       "angle": 0,
@@ -100,7 +100,7 @@
     {
       "id": "WS0011",
       "size": "SMALL",
-      "type": "SYNERGY",
+      "type": "HYBRID",
       "mount": "HARDPOINT",
       "arc": 0,
       "angle": -0,

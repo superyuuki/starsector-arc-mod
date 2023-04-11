@@ -3,6 +3,9 @@
 package arc.shipsystems.ai;
 
 import com.fs.starfarer.api.combat.*;
+import com.fs.starfarer.api.impl.combat.PhaseCloakStats;
+import com.fs.starfarer.api.impl.hullmods.PhaseAnchor;
+import com.fs.starfarer.api.impl.hullmods.PhaseField;
 import com.fs.starfarer.api.util.IntervalUtil;
 import org.lazywizard.lazylib.CollisionUtils;
 import org.lazywizard.lazylib.MathUtils;
@@ -27,6 +30,7 @@ public class PhaseDiveAI implements ShipSystemAIScript {
 	@SuppressWarnings("unchecked")
 	public void advance(float amount, Vector2f missileDangerDir, Vector2f collisionDangerDir, ShipAPI target) {
 		//Only run after our tracker has passed
+
 		tracker.advance(amount);
 		if (tracker.intervalElapsed()) {
 
@@ -37,6 +41,13 @@ public class PhaseDiveAI implements ShipSystemAIScript {
 				if (weaponAPI.getSpec().getTags().contains("hyper") && weaponAPI.isFiring()) {
 					return;
 				}
+
+
+
+				if (weaponAPI.isBurstBeam() && weaponAPI.isFiring()) return;
+
+				//TODO stop phasing while shooting needlers, etc
+
 			}
 
 			//Shorthand declaration of things we check often
@@ -51,21 +62,28 @@ public class PhaseDiveAI implements ShipSystemAIScript {
 			if (charges > maxCharges*0.5f &&
 					!enemiesInRange(3000f)) {
 				useSystem(charges);
+
+				return;
 			}
+
 			
 			//If we're not above 70% hardflux, 90% flux, and performing a direct retreat, activate to get the heck away!
-			else if (ship.isDirectRetreat() &&
+			if (ship.isDirectRetreat() &&
 					hFluxLevel < 0.7f &&
 					fluxLevel < 0.9f) {
 				useSystem(charges);
+
+				return;
 			}
 			
 			//If there's a dangerous amount of shield damage incoming (20%, and within 500 SU, looking 1 second into the future),
 			// we're below 60% flux, and we're below 50% hardflux, use our system
-			else if (hFluxLevel < 0.5f &&
+			if (hFluxLevel < 0.5f &&
 					fluxLevel < 0.6f &&
 					tooMuchShieldDamageIncoming(0.20f, 500f, 1f)) {
 				useSystem(charges);
+
+				return;
 			}
 
 //                      Depricated condition
@@ -86,23 +104,31 @@ public class PhaseDiveAI implements ShipSystemAIScript {
 					hFluxLevel < 0.5f &&
 					ship.getShipTarget() != null &&
 					MathUtils.getDistance(ship.getLocation(), ship.getShipTarget().getLocation()) > getShortestOffensiveWeaponRange(ship) * 1.2f &&
-					ship.getShipTarget().getMaxSpeed() > ship.getMaxSpeed()*0.95f) {
+					ship.getShipTarget().getMaxSpeed() * 0.9 > ship.getMaxSpeed()
+			) {
 				useSystem(charges);
+
+				return;
+
 			}
 
 			//If we're backing off currently, and have enemies with weapons that could shoot us, we want to use the system no matter what
-			else if (flags.hasFlag(ShipwideAIFlags.AIFlags.BACKING_OFF) &&
+			if (flags.hasFlag(ShipwideAIFlags.AIFlags.BACKING_OFF) &&
 					enemiesWithWeaponsInRange(3000f)) {
 				useSystem(charges);
+
+				return;
 			}
 
 			//If we're at above 70% flux, our target is above 80% flux, but we're at below 30% hardflux, use the
 			// system to give us a short venting respite
-			else if (fluxLevel > 0.70f &&
+			if (fluxLevel > 0.70f &&
 						hFluxLevel < 0.3f &&
 						ship.getShipTarget() != null &&
 						ship.getShipTarget().getFluxLevel() > 0.8f) {
 				useSystem(charges);
+
+				return;
 			}
 
 

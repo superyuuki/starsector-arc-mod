@@ -13,11 +13,10 @@
   "viewOffset": 0,
   "builtInMods": [
     "arc_coronal_hypershunt",
-    "diableavionics_avionics",
-    "diableavionics_universaldecks",
-    "advanced_ground_support",
+    "arc_laminate_armor",
     "arc_temporal_fluxcore",
-    "stealth_minefield"
+    "diableavionics_universaldecksExtra",
+    "advanced_ground_support"
   ],
   "builtInWeapons": {
     "WS0001": "arc_sephiroth_spinal",

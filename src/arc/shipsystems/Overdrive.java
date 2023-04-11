@@ -7,7 +7,7 @@ import com.fs.starfarer.api.impl.combat.BaseShipSystemScript;
 
 public class Overdrive extends BaseShipSystemScript {
 
-    private static final float SPEED_BOOST = 400f;
+    private static final float SPEED_BOOST = 250f;
 	private static final float TURNRATE_MULT = 0.2f;
 	private static final float DAMAGE_MULT = 0.1f;
 	private static final float TIME_MULT = 2.0f;

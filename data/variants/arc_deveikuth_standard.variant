@@ -1,0 +1,42 @@
+{
+  "displayName": "10th gen Wanzer Derivative",
+  "fluxCapacitors": 0,
+  "fluxVents": 0,
+  "hullId": "arc_deveikuth",
+  "hullMods": [
+    "arc_laminate_armor",
+    "diableavionics_wanzer",
+    "autorepair"
+  ],
+  "quality": 0,
+  "variantId": "arc_deveikuth_standard",
+  "weaponGroups": [
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0002": "arc_deveikuth_left"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0003": "arc_deveikuth_right"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "ALTERNATING",
+      "weapons": {
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0001": "arc_deveikuth_head"
+      }
+    }
+  ]
+}

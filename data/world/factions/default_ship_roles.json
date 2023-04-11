@@ -1,0 +1,14 @@
+{
+  "combatSmall": {
+    "arc_daat_prototype":2,
+    "arc_tiferet_prototype":2
+  },
+  "combatMedium": {
+    "arc_gevurah_prototype":2,
+    "arc_daat_prototype":2
+  },
+  "combatCapital":{
+    "arc_netzach_prototype":1,
+    "arc_sephiroth_prototype":1
+  }
+}

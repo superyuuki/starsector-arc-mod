@@ -2,13 +2,10 @@
   "variantId": "arc_sephiroth_prototype",
   "hullId": "arc_sephiroth",
   "displayName": "Prototype",
-  "goalVariant": false,
+  "goalVariant": true,
   "fluxCapacitors": 28,
   "fluxVents": 50,
   "quality": 1,
-  "permaMods": [
-    "solar_shielding"
-  ],
   "hullMods": [
     "heavyarmor",
     "hardenedshieldemitter",
@@ -93,6 +90,8 @@
   "wings": [
     "diableavionics_zephyr_wing",
     "diableavionics_valiant_wing",
+    "diableavionics_blizzaia_wing",
+    "diableavionics_blizzaia_wing",
     "diableavionics_blizzaia_wing",
     "diableavionics_avalanche_wing"
   ]

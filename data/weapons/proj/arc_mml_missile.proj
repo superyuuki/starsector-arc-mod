@@ -3,27 +3,26 @@
 	"specClass":"missile",	
 	"missileType":"MISSILE",
 	"sprite":"graphics/da/missiles/diableavionics_micromissile.png",
-	"onHitEffect":"arc.weapons.MacrossOnHitEffect",
-	"size":[6,14],	
+	"size":[6,14],
 	"center":[3,7],
 	"collisionRadius":12,
 	"collisionClass":"MISSILE_NO_FF",
-	"explosionColor":[255,165,50,255],  # purely visual, will get a white additively blended core on top of this color
-	"explosionRadius":50, # purely visual
+	"explosionColor":[255,165,50,255],
+	"explosionRadius":50,
 		"maxFlightTime":15,
 	"engineSpec":{"turnAcc":500,
 				  "turnRate":180,
-				  "acc":400,
-				  "dec":200},
+				  "acc":500,
+				  "dec":500},
 	"engineSlots":[{"id":"ES1",
 					"loc":[-3, 0],
 				    "style":"CUSTOM",
 					"styleSpec":{
-						"mode":"QUAD_STRIP", # PARTICLES or QUAD_STRIP, determines which params are used
+						"mode":"QUAD_STRIP",
 						"engineColor":[255,2,2,255],
 						"contrailDuration":0.75,
 						"contrailWidthMult":0.6,
-						"contrailWidthAddedFractionAtEnd":2.5,  # can be negative. makes trail spread out/narrow at the end
+						"contrailWidthAddedFractionAtEnd":2.5,
 						"contrailMinSeg":5, # min segment length, in pixels
 						"contrailMaxSpeedMult":0.75f,
 						"contrailAngularVelocityMult":0.3f,

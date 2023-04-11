@@ -1,7 +1,8 @@
 {
-	"id":"arc_burstphase",
+	"id":"arc_burstphasemicro",
 	"type":"PHASE_CLOAK",
 	"aiType":"PHASE_CLOAK",
+
 	"statsScript":"arc.shipsystems.PhaseDiveStats",
 	"runScriptWhilePaused":true, # only for the player's ship
 	"runScriptWhileIdle":true,  # this means unapply() never gets called
@@ -21,22 +22,20 @@
     "engineGlowContrailColor":[150,20,0,30],
     "engineGlowLengthMult": 0.1,
     "engineGlowWidthMult":0.5,
-    "engineGlowGlowMult": 3,
+    "engineGlowGlowMult": 8,
 	
 	"soundFilterType":"LOWPASS",
 	"soundFilterGain":0.8,
 	"soundFilterGainHF":0.25,
-	
+
 	"shipAlpha":1, # handled in stats script, don't change
 
-	"useSound":"arc_whitespace_in",
-	"loopSound":"arc_whitespace_loop",
-
+	"useSound":"phase_cloak_activate",
 	"deactivateSound":"phase_cloak_deactivate",
 	"outOfUsesSound":"phase_cloak_collision",
 
-	"aiHints":{
-            "burstMovementPotential":200,
 
+	"aiHints":{
+    		"burstMovementPotential":100,
     }
 }

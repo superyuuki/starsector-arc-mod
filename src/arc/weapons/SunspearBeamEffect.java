@@ -34,6 +34,7 @@ public class SunspearBeamEffect implements BeamEffectPlugin {
 
     @Override
     public void advance(float amount, CombatEngineAPI combatEngineAPI, BeamAPI beamAPI) {
+
         if (combatEngineAPI.isPaused()) return;
 
         Vector2f beamTarget = beamAPI.getTo();
@@ -62,6 +63,8 @@ public class SunspearBeamEffect implements BeamEffectPlugin {
             cachedRippleDistortion.setIntensity(0);
         }
 
+        if (beamAPI.getBrightness() <= 0.6) return;
+
         MagicLensFlare.createSharpFlare(
                 combatEngineAPI,
                 beamAPI.getSource(),
@@ -78,7 +81,7 @@ public class SunspearBeamEffect implements BeamEffectPlugin {
 
 
         Vector2f fxVel = MathUtils.getRandomPointInCircle(beamTarget, 2f);
-        float blastDamage = beamAPI.getWeapon().getDerivedStats().getBurstDamage() * 0.1f;
+        float blastDamage = beamAPI.getWeapon().getDerivedStats().getBurstDamage() * 0.05f;
 
         DamagingExplosionSpec blast = new DamagingExplosionSpec(0.2f,
                 160f,

@@ -30,11 +30,12 @@ public class MacrossOnHitEffect implements OnHitEffectPlugin {
         }
 
         final RippleDistortion ripple = new RippleDistortion(point, new Vector2f());
-        ripple.setSize(40f);
+        ripple.setSize(80f);
         ripple.setIntensity(30.0f);
         ripple.setFrameRate(60.0f);
         ripple.fadeInSize(0.3f);
         ripple.fadeOutIntensity(0.3f);
+        ripple.flip(true);
         DistortionShader.addDistortion(ripple);
         final List<MissileAPI> missileAPIs = AIUtils.getNearbyEnemyMissiles((CombatEntityAPI)projectile, 300.0f);
         for (final MissileAPI missileAPI : missileAPIs) {

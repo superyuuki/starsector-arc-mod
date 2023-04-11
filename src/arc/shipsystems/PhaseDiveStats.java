@@ -1,11 +1,18 @@
 package arc.shipsystems;
 
 import com.fs.starfarer.api.Global;
+import com.fs.starfarer.api.combat.CombatEngineLayers;
 import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.combat.ShipSystemAPI;
+import com.fs.starfarer.api.graphics.SpriteAPI;
 import com.fs.starfarer.api.impl.campaign.ids.Stats;
 import com.fs.starfarer.api.impl.combat.BaseShipSystemScript;
+import data.scripts.util.MagicRender;
+import org.lazywizard.lazylib.FastTrig;
+import org.lwjgl.util.vector.Vector2f;
+
+import java.awt.*;
 
 public class PhaseDiveStats extends BaseShipSystemScript {
     //The opacity of the ship when in phase
@@ -18,13 +25,13 @@ public class PhaseDiveStats extends BaseShipSystemScript {
     public static final float MAX_TIME_MULT = 3f;
     
     //What is the maximum percentage of flux we can have and still activate the system?
-    public static final float FLUX_CAP_FOR_USE = 0.79f;
+    public static final float FLUX_CAP_FOR_USE = 0.91f;
 
     //These are for the speed and mobility bonuses: experiment as you see fit
-    public static final float MAX_SPEED_MULT = 2.5f;
-    public static final float ACCELERATION_MULT = 4f;
+    public static final float MAX_SPEED_MULT = 3f;
+    public static final float ACCELERATION_MULT = 6f;
     public static final float MAX_TURN_SPEED_MULT = 2.5f;
-    public static final float TURN_ACCELERATION_MULT = 3f;
+    public static final float TURN_ACCELERATION_MULT = 5f;
 
     //These are just used to display our status messages, ignore them
     private Object STATUSKEY1 = new Object();
@@ -54,8 +61,12 @@ public class PhaseDiveStats extends BaseShipSystemScript {
         }
     }
 
+    static final Color WISP_COLOR = new Color(133, 126, 116, 50);
+
 
     public void apply(MutableShipStatsAPI stats, String id, State state, float effectLevel) {
+
+
         //Basic checks to avoid nullpointers and to know if we're the player
         ShipAPI ship = null;
         boolean player = false;
@@ -97,9 +108,37 @@ public class PhaseDiveStats extends BaseShipSystemScript {
             levelForAlpha = level;
         }
 
+
+
+
+        // Sprite offset fuckery - Don't you love trigonometry?
+        SpriteAPI sprite = ship.getSpriteAPI();
+        float offsetX = sprite.getWidth()/2 - sprite.getCenterX();
+        float offsetY = sprite.getHeight()/2 - sprite.getCenterY();
+
+        float trueOffsetX = (float) FastTrig.cos(Math.toRadians(ship.getFacing()-90f))*offsetX - (float)FastTrig.sin(Math.toRadians(ship.getFacing()-90f))*offsetY;
+        float trueOffsetY = (float)FastTrig.sin(Math.toRadians(ship.getFacing()-90f))*offsetX + (float)FastTrig.cos(Math.toRadians(ship.getFacing()-90f))*offsetY;
+
+        MagicRender.battlespace(
+                Global.getSettings().getSprite(ship.getHullSpec().getSpriteName()),
+                new Vector2f(ship.getLocation().getX() + trueOffsetX, ship.getLocation().getY() + trueOffsetY),
+                new Vector2f(0, 0),
+                new Vector2f(ship.getSpriteAPI().getWidth(), ship.getSpriteAPI().getHeight()),
+                new Vector2f(0, 0),
+                ship.getFacing() - 90f,
+                0f,
+                WISP_COLOR,
+                true,
+                0f,
+                0.1f,
+                0.1f,
+                CombatEngineLayers.BELOW_SHIPS_LAYER
+        )
+        ;
+
         //Sets our ship's alpha
         ship.setExtraAlphaMult(1f - (1f - SHIP_ALPHA_MULT) * levelForAlpha);
-        ship.setApplyExtraAlphaToEngines(true);
+        ship.setApplyExtraAlphaToEngines(false);
 
         //Applies the time mult, both locally and (if we're the player ship) globally
         float shipTimeMult = 1f + (getMaxTimeMult(stats) - 1f) * levelForAlpha;

@@ -2,19 +2,13 @@
   "variantId": "arc_netzach_prototype",
   "hullId": "arc_netzach",
   "displayName": "Prototype",
-  "goalVariant": false,
+  "goalVariant": true,
   "fluxCapacitors": 6,
   "fluxVents": 50,
   "quality": 1,
-  "permaMods": [
-	"solar_shielding"
-  ],
   "hullMods": [
     "eccm",
-    "fluxcoil",
-    "heavyarmor",
-    "hardenedshieldemitter",
-    "solar_shielding",
+    "frontemitter",
     "targetingunit"
   ],
   "weaponGroups": [
@@ -92,6 +86,7 @@
   ],
   "modules": [],
   "wings": [
+    "diableavionics_valiant_wing",
     "diableavionics_valiant_wing",
     "diableavionics_warlust_wing",
     "diableavionics_raven_wing"

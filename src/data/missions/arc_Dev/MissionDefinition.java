@@ -18,7 +18,13 @@ public class MissionDefinition implements MissionDefinitionPlugin {
         api.setFleetTagline(FleetSide.PLAYER, "player");
         api.setFleetTagline(FleetSide.ENEMY, "enemy");
         api.addBriefingItem("kill them all!");
+        api.addToFleet(FleetSide.PLAYER, "wolf_Assault", FleetMemberType.SHIP, "ARC watcher", true);
         api.addToFleet(FleetSide.PLAYER, "arc_netzach_prototype", FleetMemberType.SHIP, "ARC cummo", true);
+        api.addToFleet(FleetSide.PLAYER, "arc_tiferet_prototype", FleetMemberType.SHIP, "ARC bean", true);
+        api.addToFleet(FleetSide.PLAYER, "arc_tiferet_prototype", FleetMemberType.SHIP, "ARC nuggy", true);
+
+
+
         api.addToFleet(FleetSide.ENEMY, "paragon_Elite", FleetMemberType.SHIP, false);
         api.addToFleet(FleetSide.ENEMY, "astral_Elite", FleetMemberType.SHIP, false);
         api.addToFleet(FleetSide.ENEMY, "odyssey_Balanced", FleetMemberType.SHIP, false);

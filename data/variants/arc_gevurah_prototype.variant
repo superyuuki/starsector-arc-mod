@@ -2,19 +2,13 @@
   "variantId": "arc_gevurah_prototype",
   "hullId": "arc_gevurah",
   "displayName": "Prototype",
-  "goalVariant": false,
+  "goalVariant": true,
   "fluxCapacitors": 17,
   "fluxVents": 30,
   "quality": 1,
-  "permaMods": [
-    "solar_shielding"
-  ],
   "hullMods": [
-    "blast_doors",
-    "eccm",
     "hardenedshieldemitter",
-    "heavyarmor",
-    "fluxcoil",
+    "frontemitter",
     "targetingunit"
   ],
   "weaponGroups": [

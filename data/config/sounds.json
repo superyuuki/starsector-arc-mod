@@ -1,26 +1,42 @@
 {
 	"arc_overdrive_startup":
 	[
-		{"file":"sounds/ARC/overdrive_startup.ogg","pitch":1.0,"volume":1.0},
+		{"file":"sounds/ARC/overdrive_startup.ogg","pitch":1.0,"volume":1.0}
 	],
 	"arc_overdrive_loop":
 	[
-		{"file":"sounds/ARC/overdrive_loop.ogg","pitch":1.0,"volume":1.0},
+		{"file":"sounds/ARC/overdrive_loop.ogg","pitch":1.0,"volume":1.0}
 	],
 	"arc_overdrive_shutdown":
 	[
-		{"file":"sounds/ARC/overdrive_shutdown.ogg","pitch":1.0,"volume":1.0},
+		{"file":"sounds/ARC/overdrive_shutdown.ogg","pitch":1.0,"volume":1.0}
+	],
+	"arc_whitespace_in":
+	[
+		{"file":"sounds/ARC/whitespace_in.wav","pitch":1,"volume":1.5}
+	],
+	"arc_whitespace_loop":
+	[
+		{"file":"sounds/ARC/whitespace_loop.wav","pitch":0.6,"volume":1.0}
+	],
+	"arc_machinegun":
+	[
+		{"file":"sounds/ARC/machinegun.wav","pitch":1.5,"volume":0.1}
 	],
 	"arc_beam_chargeup":
 	[
-		{"file":"sounds/ARC/AL_deitygun_charge.ogg","pitch":0.7,"volume":1.5},
+		{"file":"sounds/ARC/AL_deitygun_charge.ogg","pitch":0.7,"volume":1.5}
 	],
 	"arc_beam_loop":
 	[
-		{"file":"sounds/ARC/AL_deitygun_loop.ogg","pitch":0.5,"volume":2.0},
+		{"file":"sounds/ARC/AL_deitygun_loop.ogg","pitch":0.5,"volume":2.0}
 	],
 	"arc_beam_fire":
 	[
-		{"file":"sounds/ARC/AL_deitygun_fire.ogg","pitch":0.5,"volume":2.0},
+		{"file":"sounds/ARC/AL_deitygun_fire.ogg","pitch":0.5,"volume":2.0}
+	],
+	"arc_hypershunt_explode":
+	[
+		{"file":"sounds/ARC/hypershunt_explode.ogg","pitch":1.2,"volume":1.0}
 	]
 }

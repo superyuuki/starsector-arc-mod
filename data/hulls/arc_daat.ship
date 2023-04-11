@@ -13,10 +13,10 @@
   "viewOffset": 0,
   "builtInMods": [
     "arc_coronal_hypershunt",
-    "diableavionics_avionics",
-    "diableavionics_universaldecks",
-	"phasefield",
-    "arc_temporal_fluxcore"
+    "arc_laminate_armor",
+    "arc_temporal_fluxcore",
+    "diableavionics_universaldecksExtra",
+	"phasefield"
   ],
   "builtInWeapons": {
     "WS0013": "diableavionics_microbuiltin",
@@ -93,7 +93,7 @@
     {
       "id": "WS0008",
       "size": "MEDIUM",
-      "type": "ENERGY",
+      "type": "HYBRID",
       "mount": "TURRET",
       "arc": 127,
       "angle": 48,
@@ -102,7 +102,7 @@
     {
       "id": "WS0009",
       "size": "MEDIUM",
-      "type": "ENERGY",
+      "type": "HYBRID",
       "mount": "TURRET",
       "arc": 127,
       "angle": -48,

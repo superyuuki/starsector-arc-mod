@@ -13,11 +13,11 @@
   "viewOffset": 0,
   "builtInMods": [
     "arc_coronal_hypershunt",
-    "diableavionics_avionics",
-    "diableavionics_universaldecks",
+    "arc_laminate_armor",
+    "arc_temporal_fluxcore",
+    "diableavionics_universaldecksExtra",
     "ground_support",
-    "phasefield",
-    "arc_temporal_fluxcore"
+    "phasefield"
   ],
   "builtInWeapons": {
     "WS0001": "arc_netzach_spinal",

@@ -26,6 +26,7 @@ public class ShipGlow implements EveryFrameWeaponEffectPlugin {
 
     @Override
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
+
         if (Global.getCombatEngine().isPaused()) {
             return;
         }
@@ -107,7 +108,7 @@ public class ShipGlow implements EveryFrameWeaponEffectPlugin {
 				ArcUtils.lerp(COLOR_NORMAL[0], COLOR_OVERDRIVE[0], systemBrightness),
                     ArcUtils.lerp(COLOR_NORMAL[1], COLOR_OVERDRIVE[1], systemBrightness),
                     ArcUtils.lerp(COLOR_NORMAL[2], COLOR_OVERDRIVE[2], systemBrightness),
-                    Math.min(ArcUtils.lerp(fluxBrightness, 1f, systemBrightness) * MAX_OPACITY, 1f)
+                    Math.min(1f,1f)//ArcUtils.lerp(fluxBrightness, 1f, systemBrightness) * MAX_OPACITY, 1f)
 				);
         }
 

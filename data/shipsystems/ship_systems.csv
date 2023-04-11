@@ -1,3 +1,6 @@
 name,id,flux/second,f/s (base rate),f/s (base cap),flux/use,f/u (base rate),f/u (base cap),cr/u,max uses,regen,charge up,active,down,cooldown,toggle,noDissipation,noHardDissipation,hardFlux,noFiring,noTurning,noStrafing,noAccel,noShield,isPhaseCloak,noVent,icon
-Phase Dive,arc_burstphase,,,,,,,,2,0.05,0.5,3,0.5,1,,,TRUE,TRUE,TRUE,,,,TRUE,TRUE,,graphics/icons/hullsys/phase_cloak.png
-Overdrive,arc_overdrive,,,,,,,,,,1,10,1,12,,,,,,,,,TRUE,,TRUE,graphics/icons/hullsys/ammo_feeder.png
+Micro Phase Burst,arc_burstphasemicro,,,,,,,,6,0.1,0.2,1.5,0.2,1,,,TRUE,TRUE,TRUE,,,,TRUE,TRUE,,graphics/icons/hullsys/phase_cloak.png
+Light Phase Burst,arc_burstphase,,,,,,,,5,0.07,0.4,2,0.4,1,,,TRUE,TRUE,TRUE,,,,TRUE,TRUE,,graphics/icons/hullsys/phase_cloak.png
+Heavy Phase Burst,arc_burstphaseheavy,,,,,,,,3,0.03,0.7,3,0.7,2,,,TRUE,TRUE,TRUE,,,,TRUE,TRUE,,graphics/icons/hullsys/phase_cloak.png
+Hypershunt Overdrive,arc_overdrive,,,,,,,,,,1,5,1,12,,,TRUE,,,,TRUE,,TRUE,,TRUE,graphics/icons/hullsys/ammo_feeder.png
+,,,,,,,,,,,,,,,,,,,

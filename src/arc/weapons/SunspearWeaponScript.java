@@ -12,6 +12,7 @@ import org.lwjgl.util.vector.Vector2f;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
+/*
 
 public class SunspearWeaponScript implements EveryFrameWeaponEffectPlugin {
 
@@ -95,3 +96,4 @@ public class SunspearWeaponScript implements EveryFrameWeaponEffectPlugin {
 
     }
 }
+*/

@@ -2,42 +2,36 @@
   "variantId": "arc_daat_prototype",
   "hullId": "arc_daat",
   "displayName": "Prototype",
-  "goalVariant": false,
-  "fluxCapacitors": 0,
-  "fluxVents": 18,
+  "goalVariant": true,
+  "fluxCapacitors": 18,
+  "fluxVents": 0,
   "quality": 1,
-  "permaMods": [
-    "solar_shielding"
-  ],
   "hullMods": [
-    "blast_doors",
-    "heavyarmor",
-    "hardenedshieldemitter",
-    "eccm",
-    "targetingunit"
+    "frontemitter",
   ],
   "weaponGroups": [
     {
       "autofire": true,
       "mode": "LINKED",
       "weapons": {
-        "WS0010": "diableavionics_hexafire2",
-        "WS0011": "diableavionics_thunderboltpod",
-        "WS0012": "diableavionics_thunderboltpod"
+        "WS0010": "gauss",
       }
     },
     {
       "autofire": false,
       "mode": "LINKED",
-      "weapons": {}
+      "weapons": {
+              "WS0011": "diableavionics_thunderboltpod",
+              "WS0012": "diableavionics_thunderboltpod"
+      }
     },
     {
       "autofire": true,
-      "mode": "LINKED",
+      "mode": "ALTERNATING",
       "weapons": {
-        "WS0007": "diableavionics_recson2",
-        "WS0008": "diableavionics_hexafire",
-        "WS0009": "diableavionics_hexafire"
+        "WS0007": "hveldriver",
+        "WS0008": "hveldriver",
+        "WS0009": "hveldriver"
       }
     },
     {
@@ -54,12 +48,12 @@
       "autofire": true,
       "mode": "LINKED",
       "weapons": {
-        "WS0001": "diableavionics_ibis",
-        "WS0002": "diableavionics_burchel",
-        "WS0003": "diableavionics_burchel",
-        "WS0004": "diableavionics_burchel",
-        "WS0005": "diableavionics_burchel",
-        "WS0006": "diableavionics_ibis"
+        "WS0001": "vulcan",
+        "WS0002": "pdburst",
+        "WS0003": "pdburst",
+        "WS0004": "pdburst",
+        "WS0005": "pdburst",
+        "WS0006": "vulcan"
       }
     }
   ],
