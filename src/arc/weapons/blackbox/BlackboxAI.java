@@ -309,11 +309,17 @@ public class BlackboxAI implements MissileAIPlugin, GuidedMissileAI {
         
         //turn the missile
         float aimAngle = MathUtils.getShortestRotation(missile.getFacing(), correctAngle);
-        if (aimAngle < 0) {
+
+        //TODO fix p
+        missile.setAngularVelocity(aimAngle - missile.getAngularVelocity() * 0.2f + aimAngle - missile.getAngularVelocity() / missile.getTurnAcceleration());
+
+        /*if (aimAngle < 0) {
+
+
             missile.giveCommand(ShipCommand.TURN_RIGHT);
         } else {
             missile.giveCommand(ShipCommand.TURN_LEFT);
-        }
+        }*/
         if (Math.abs(aimAngle)<45){
             missile.giveCommand(ShipCommand.ACCELERATE);
         }
