@@ -1,0 +1,8 @@
+trail,projectile,sprite,minLength,fadeIn,duration,fadeOut,sizeIn,sizeOut,colorIn,colorOut,opacity,textLength,textScroll,randomTextureOffset,distance,dispersion,drift,frameOffsetMult,fadeOnFadeOut,angleAdjustment,additive,velocityIn,velocityOut,randomVelocity,angle,rotationIn,rotationOut,randomRotation,renderBelowExplosions
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+arc_theristicus_shot_1,arc_theristicus_shot,base_trail_smooth,10,0,0.05,1.5,1,0.2,"[30,30,180]","[50,150,180]",0.55,256,-128,TRUE,0,0,1,0,TRUE,FALSE,TRUE,10,80,0,0,0,0,FALSE,TRUE
+arc_theristicus_shot_2,arc_theristicus_shot,base_trail_contrail,10,0,0.05,0.7,1,0.3,"[240,120,240]","[90,200,240]",0.7,256,-128,TRUE,0,13,1,0,TRUE,FALSE,TRUE,30,200,0.3,0,0,180,false,TRUE
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,

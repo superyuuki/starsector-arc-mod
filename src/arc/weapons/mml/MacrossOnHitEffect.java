@@ -1,8 +1,10 @@
-package arc.weapons;
+package arc.weapons.mml;
 
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.combat.listeners.ApplyDamageResultAPI;
+import com.fs.starfarer.api.loading.DamagingExplosionSpec;
+import data.scripts.util.MagicFakeBeam;
 import data.scripts.util.MagicLensFlare;
 import org.dark.shaders.distortion.DistortionShader;
 import org.dark.shaders.distortion.RippleDistortion;
@@ -29,28 +31,28 @@ public class MacrossOnHitEffect implements OnHitEffectPlugin {
             return;
         }
 
-        final RippleDistortion ripple = new RippleDistortion(point, new Vector2f());
-        ripple.setSize(80f);
-        ripple.setIntensity(30.0f);
-        ripple.setFrameRate(60.0f);
-        ripple.fadeInSize(0.3f);
-        ripple.fadeOutIntensity(0.3f);
-        ripple.flip(true);
-        DistortionShader.addDistortion(ripple);
-        final List<MissileAPI> missileAPIs = AIUtils.getNearbyEnemyMissiles((CombatEntityAPI)projectile, 300.0f);
-        for (final MissileAPI missileAPI : missileAPIs) {
-            missileAPI.flameOut();
+
+
+
+        int randInt =(int) ( RANDOM.nextFloat() * 5);
+
+        for (int i = 0; i < randInt; i++) {
+
+            Vector2f blastPoint = MathUtils.getRandomPointInCircle(point, 100f);
+
+            MagicFakeBeam.spawnFakeBeam(engine, blastPoint, RANDOM.nextFloat() * 400 + 100, VectorUtils.getAngle(point, blastPoint), 10, 0.3f, 0.2f, 10, Color.PINK, Color.RED, projectile.getDamage().getDamage() / 2.0f, DamageType.HIGH_EXPLOSIVE, 0, projectile.getSource());
+
+            MagicLensFlare.createSharpFlare(
+                    engine,
+                    projectile.getSource(),
+                    point,
+                    20,
+                    200,
+                    MathUtils.getRandomNumberInRange(0f, 180f),
+                    new Color(255,105,50, 20),
+                    new Color(255,200,160, 20)
+            );
         }
-        MagicLensFlare.createSmoothFlare(
-                Global.getCombatEngine(),
-                projectile.getSource(),
-                point,
-                20,
-                100,
-                0,
-                Color.YELLOW,
-                Color.RED
-        );
 
         engine.spawnExplosion(point, new Vector2f(), Color.RED, 1f, 1f);
 

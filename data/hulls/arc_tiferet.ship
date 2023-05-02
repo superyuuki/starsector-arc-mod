@@ -14,10 +14,11 @@
   "builtInMods": [
     "arc_laminate_armor",
     "arc_coronal_hypershunt",
-    "arc_temporal_fluxcore",
-	"phasefield"
+    "arc_whitespace_core"
   ],
   "builtInWeapons": {
+    "WS0006": "arc_blackbox",
+    "WS0007": "arc_blackbox",
     "WS0008": "arc_tiferet_cover",
     "WS0012": "arc_tiferet_lights",
     "WS0013": "arc_tiferet_flux"
@@ -26,7 +27,7 @@
     {
       "id": "WS0001",
       "size": "MEDIUM",
-      "type": "ENERGY",
+      "type": "MISSILE",
       "mount": "HARDPOINT",
       "arc": 10,
       "angle": 0,
@@ -34,8 +35,8 @@
     },
     {
       "id": "WS0002",
-      "size": "SMALL",
-      "type": "BALLISTIC",
+      "size": "MEDIUM",
+      "type": "ENERGY",
       "mount": "HARDPOINT",
       "arc": 10,
       "angle": 0,
@@ -43,8 +44,8 @@
     },
     {
       "id": "WS0003",
-      "size": "SMALL",
-      "type": "BALLISTIC",
+      "size": "MEDIUM",
+      "type": "ENERGY",
       "mount": "HARDPOINT",
       "arc": 10,
       "angle": 0,
@@ -53,7 +54,7 @@
     {
       "id": "WS0006",
       "size": "SMALL",
-      "type": "MISSILE",
+      "type": "BUILT_IN",
       "mount": "HARDPOINT",
       "arc": 0,
       "angle": 90,
@@ -62,7 +63,7 @@
     {
       "id": "WS0007",
       "size": "SMALL",
-      "type": "MISSILE",
+      "type": "BUILT_IN",
       "mount": "HARDPOINT",
       "arc": 0,
       "angle": -90,

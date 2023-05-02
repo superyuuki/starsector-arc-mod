@@ -3,7 +3,7 @@
   "hullId": "arc_daat",
   "displayName": "Prototype",
   "goalVariant": true,
-  "fluxCapacitors": 18,
+  "fluxCapacitors": 10,
   "fluxVents": 0,
   "quality": 1,
   "hullMods": [
@@ -14,7 +14,7 @@
       "autofire": true,
       "mode": "LINKED",
       "weapons": {
-        "WS0010": "gauss",
+        "WS0010": "plasma",
       }
     },
     {
@@ -29,19 +29,25 @@
       "autofire": true,
       "mode": "ALTERNATING",
       "weapons": {
-        "WS0007": "hveldriver",
-        "WS0008": "hveldriver",
-        "WS0009": "hveldriver"
+        "WS0007": "heavyneedler",
+        "WS0009": "heavyneedler"
       }
     },
     {
+          "autofire": true,
+          "mode": "ALTERNATING",
+          "weapons": {
+            "WS0008": "sabotpod"
+          }
+        },
+    {
       "autofire": true,
-      "mode": "LINKED",
+      "mode": "ALTERNATING",
       "weapons": {
-        "WS0013": "diableavionics_microbuiltin",
-        "WS0014": "diableavionics_microbuiltin",
-        "WS0015": "diableavionics_microbuiltin",
-        "WS0016": "diableavionics_microbuiltin"
+        "WS0013": "arc_blackbox",
+        "WS0014": "arc_blackbox",
+        "WS0015": "arc_blackbox",
+        "WS0016": "arc_blackbox"
       }
     },
     {
@@ -49,10 +55,10 @@
       "mode": "LINKED",
       "weapons": {
         "WS0001": "vulcan",
-        "WS0002": "pdburst",
-        "WS0003": "pdburst",
-        "WS0004": "pdburst",
-        "WS0005": "pdburst",
+        "WS0002": "pdlaser",
+        "WS0003": "pdlaser",
+        "WS0004": "pdlaser",
+        "WS0005": "pdlaser",
         "WS0006": "vulcan"
       }
     }

@@ -1,0 +1,40 @@
+{
+	"id":"arc_blackbox_stage2",
+	"specClass":"missile",	
+	"missileType":"MISSILE",
+	"sprite":"graphics/missiles/missile_sabot.png",
+	"size":[4,10],
+	"center":[2,4],
+	"collisionRadius":6,
+	"collisionClass":"PROJECTILE_NO_FF",
+	"explosionColor":[255,165,50,255],
+	"explosionRadius":50,
+	"maxFlightTime":3,
+	"engineSpec":{
+                "turnAcc":720,
+                "turnRate":490,
+                "acc":1200,
+                "dec":800},
+	"engineSlots":[
+                {"id":"ES1",
+                "loc":[-3, 0],
+                "style":"CUSTOM",
+                "styleSpec":{
+                        "mode":"QUAD_STRIP",
+                        "engineColor":[20,71,200,190],
+                        "contrailDuration":0.6,
+                        "contrailWidthMult":0.6,
+                        "contrailWidthAddedFractionAtEnd":2,
+                        "contrailMinSeg":1,
+                        "contrailMaxSpeedMult":0.75f,
+                        "contrailAngularVelocityMult":0.2f,
+                        "contrailColor":[20,36,180,100],
+                        "type":"SMOKE"
+                },
+                "width":4.0,
+                "length":20.0,
+                "angle":180.0
+                }],
+        "renderTargetIndicator":true,
+
+}

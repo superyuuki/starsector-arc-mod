@@ -17,7 +17,7 @@
 	],
 	"arc_whitespace_loop":
 	[
-		{"file":"sounds/ARC/whitespace_loop.wav","pitch":0.6,"volume":1.0}
+		{"file":"sounds/ARC/whitespace_loop.wav","pitch":1,"volume":1.5}
 	],
 	"arc_machinegun":
 	[
@@ -38,5 +38,9 @@
 	"arc_hypershunt_explode":
 	[
 		{"file":"sounds/ARC/hypershunt_explode.ogg","pitch":1.2,"volume":1.0}
+	],
+	"arc_theristicus":
+	[
+		{"file":"sounds/ARC/arc_theristicus.wav","pitch":1,"volume":0.3}
 	]
 }

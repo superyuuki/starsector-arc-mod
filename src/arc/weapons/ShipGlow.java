@@ -1,6 +1,6 @@
 package arc.weapons;
 
-import arc.ArcUtils;
+import arc.ARCUtils;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.graphics.SpriteAPI;
@@ -76,22 +76,24 @@ public class ShipGlow implements EveryFrameWeaponEffectPlugin {
         }
 		
 		// scrolling
+
+        
 		
 		SpriteAPI sprite=weapon.getSprite();
 		float scrollPercent = time / SCROLL_TIME;
 				
-		sprite.setTexY(ArcUtils.lerp(TEX_HEIGHT_MULT,0f, scrollPercent));
+		sprite.setTexY(ARCUtils.lerp(TEX_HEIGHT_MULT,0f, scrollPercent));
 		float height = GLOW_HEIGHT;
 		if(scrollPercent < GLOW_HEIGHT){
-			height = ArcUtils.lerp(0f,GLOW_HEIGHT,scrollPercent/GLOW_HEIGHT);
+			height = ARCUtils.lerp(0f,GLOW_HEIGHT,scrollPercent/GLOW_HEIGHT);
 		}
 		else if(scrollPercent >= 1f - GLOW_HEIGHT){
-			height = ArcUtils.lerp(0f,GLOW_HEIGHT,(1f-scrollPercent)/GLOW_HEIGHT);
+			height = ARCUtils.lerp(0f,GLOW_HEIGHT,(1f-scrollPercent)/GLOW_HEIGHT);
 		}
 		
 		sprite.setTexHeight(height * TEX_HEIGHT_MULT);
 		sprite.setHeight(height * HEIGHT);
-		float y = ArcUtils.lerp(0f, HEIGHT, scrollPercent);
+		float y = ARCUtils.lerp(0f, HEIGHT, scrollPercent);
 		sprite.setCenterY(y - HEIGHT/2);
 		
 		sprite.setAdditiveBlend();
@@ -105,9 +107,9 @@ public class ShipGlow implements EveryFrameWeaponEffectPlugin {
         // Mix in color for overdrive
         if (systemBrightness > 0f) {
             colorToUse = new Color(
-				ArcUtils.lerp(COLOR_NORMAL[0], COLOR_OVERDRIVE[0], systemBrightness),
-                    ArcUtils.lerp(COLOR_NORMAL[1], COLOR_OVERDRIVE[1], systemBrightness),
-                    ArcUtils.lerp(COLOR_NORMAL[2], COLOR_OVERDRIVE[2], systemBrightness),
+				ARCUtils.lerp(COLOR_NORMAL[0], COLOR_OVERDRIVE[0], systemBrightness),
+                    ARCUtils.lerp(COLOR_NORMAL[1], COLOR_OVERDRIVE[1], systemBrightness),
+                    ARCUtils.lerp(COLOR_NORMAL[2], COLOR_OVERDRIVE[2], systemBrightness),
                     Math.min(1f,1f)//ArcUtils.lerp(fluxBrightness, 1f, systemBrightness) * MAX_OPACITY, 1f)
 				);
         }

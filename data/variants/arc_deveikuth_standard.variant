@@ -1,12 +1,13 @@
 {
-  "displayName": "10th gen Wanzer Derivative",
+  "displayName": "12th gen Wanzer",
   "fluxCapacitors": 0,
   "fluxVents": 0,
   "hullId": "arc_deveikuth",
   "hullMods": [
     "arc_laminate_armor",
+    "arc_whitespace_core",
     "diableavionics_wanzer",
-    "autorepair"
+
   ],
   "quality": 0,
   "variantId": "arc_deveikuth_standard",

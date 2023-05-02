@@ -14,9 +14,8 @@
   "builtInMods": [
     "arc_coronal_hypershunt",
     "arc_laminate_armor",
-    "arc_temporal_fluxcore",
-    "diableavionics_universaldecksExtra",
-    "advanced_ground_support"
+    "arc_whitespace_core",
+    "diableavionics_universaldecksExtra"
   ],
   "builtInWeapons": {
     "WS0001": "arc_sephiroth_spinal",

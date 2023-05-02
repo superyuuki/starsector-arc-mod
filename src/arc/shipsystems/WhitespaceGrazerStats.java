@@ -8,13 +8,14 @@ import com.fs.starfarer.api.combat.ShipSystemAPI;
 import com.fs.starfarer.api.graphics.SpriteAPI;
 import com.fs.starfarer.api.impl.campaign.ids.Stats;
 import com.fs.starfarer.api.impl.combat.BaseShipSystemScript;
+import com.fs.starfarer.api.util.IntervalUtil;
 import data.scripts.util.MagicRender;
 import org.lazywizard.lazylib.FastTrig;
 import org.lwjgl.util.vector.Vector2f;
 
 import java.awt.*;
 
-public class PhaseDiveStats extends BaseShipSystemScript {
+public class WhitespaceGrazerStats extends BaseShipSystemScript {
     //The opacity of the ship when in phase
     public static final float SHIP_ALPHA_MULT = 0.25f;
 
@@ -30,12 +31,13 @@ public class PhaseDiveStats extends BaseShipSystemScript {
     //These are for the speed and mobility bonuses: experiment as you see fit
     public static final float MAX_SPEED_MULT = 3f;
     public static final float ACCELERATION_MULT = 6f;
-    public static final float MAX_TURN_SPEED_MULT = 2.5f;
-    public static final float TURN_ACCELERATION_MULT = 5f;
+    public static final float MAX_TURN_SPEED_MULT = 3f;
+    public static final float TURN_ACCELERATION_MULT = 6f;
 
     //These are just used to display our status messages, ignore them
     private Object STATUSKEY1 = new Object();
     private Object STATUSKEY2 = new Object();
+
 
 
     //Returns the maximum time mult we can achieve, including officer/player skills
@@ -65,6 +67,8 @@ public class PhaseDiveStats extends BaseShipSystemScript {
 
 
     public void apply(MutableShipStatsAPI stats, String id, State state, float effectLevel) {
+
+
 
 
         //Basic checks to avoid nullpointers and to know if we're the player
@@ -111,13 +115,13 @@ public class PhaseDiveStats extends BaseShipSystemScript {
 
 
 
-        // Sprite offset fuckery - Don't you love trigonometry?
         SpriteAPI sprite = ship.getSpriteAPI();
         float offsetX = sprite.getWidth()/2 - sprite.getCenterX();
         float offsetY = sprite.getHeight()/2 - sprite.getCenterY();
 
         float trueOffsetX = (float) FastTrig.cos(Math.toRadians(ship.getFacing()-90f))*offsetX - (float)FastTrig.sin(Math.toRadians(ship.getFacing()-90f))*offsetY;
         float trueOffsetY = (float)FastTrig.sin(Math.toRadians(ship.getFacing()-90f))*offsetX + (float)FastTrig.cos(Math.toRadians(ship.getFacing()-90f))*offsetY;
+
 
         MagicRender.battlespace(
                 Global.getSettings().getSprite(ship.getHullSpec().getSpriteName()),
@@ -135,6 +139,7 @@ public class PhaseDiveStats extends BaseShipSystemScript {
                 CombatEngineLayers.BELOW_SHIPS_LAYER
         )
         ;
+
 
         //Sets our ship's alpha
         ship.setExtraAlphaMult(1f - (1f - SHIP_ALPHA_MULT) * levelForAlpha);

@@ -14,15 +14,14 @@
   "builtInMods": [
     "arc_coronal_hypershunt",
     "arc_laminate_armor",
-    "arc_temporal_fluxcore",
-    "diableavionics_universaldecksExtra",
-	"phasefield"
+    "arc_whitespace_core",
+    "diableavionics_universaldecksExtra"
   ],
   "builtInWeapons": {
-    "WS0013": "diableavionics_microbuiltin",
-    "WS0014": "diableavionics_microbuiltin",
-    "WS0015": "diableavionics_microbuiltin",
-    "WS0016": "diableavionics_microbuiltin",
+    "WS0013": "arc_blackbox",
+    "WS0014": "arc_blackbox",
+    "WS0015": "arc_blackbox",
+    "WS0016": "arc_blackbox",
     "WS0017": "arc_daat_lights",
     "WS0018": "arc_daat_flux"
   },
@@ -84,9 +83,9 @@
     {
       "id": "WS0007",
       "size": "MEDIUM",
-      "type": "HYBRID",
+      "type": "MISSILE",
       "mount": "TURRET",
-      "arc": 131,
+      "arc": 0,
       "angle": 0,
       "locations": [-34, -0]
     },

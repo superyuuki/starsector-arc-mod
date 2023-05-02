@@ -3,41 +3,33 @@ package arc.hullmod;
 import java.awt.Color;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
-import arc.ArcUtils;
+import arc.ARCUtils;
+import arc.hullmod.whitespace.Venting;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.combat.ShipAPI.HullSize;
-import com.fs.starfarer.api.graphics.SpriteAPI;
-import com.fs.starfarer.api.combat.MutableStat;
 import com.fs.starfarer.api.ui.Alignment;
-import com.fs.starfarer.api.ui.LabelAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.util.MagicIncompatibleHullmods;
-import data.scripts.util.MagicRender;
-import org.lazywizard.lazylib.FastTrig;
-import org.lwjgl.Sys;
-import org.lwjgl.util.vector.Vector2f;
 
-public class TemporalFluxCore extends BaseHullMod {
+//utility core
+public class WhitespaceCore extends BaseHullMod {
 
-	static final String TEMPORAL_FLUX = "arc_temporal_flux";
+	static final String TEMPORAL_FLUX = "arc_whitespace_core";
 	static final float BASE_TIME_MULT = 1.05f;
 	static final float MAX_TIME_MULT = 1.5f;
-	static final float FLUX_LIMIT = 1.0f;
-	static final float BASE_VENT_BONUS = 200f;
-	static final float MAX_VENT_BONUS = -50f;
+	public static final float FLUX_LIMIT = 1.0f;
+	static final float BASE_VENT_BONUS = 400f;
+	static final float MAX_VENT_BONUS = -20f;
 	
 	static final float AFTERIMAGE_THRESHOLD = 0.4f;
 
 
 	static final Set<String> BLOCKED_HULLMODS = new HashSet<>();
 	{
-		// These hullmods will automatically be removed
-		// This prevents unexplained hullmod blocking
 		BLOCKED_HULLMODS.add("converted_hangar");
 		BLOCKED_HULLMODS.add("cargo_expansion");
 		BLOCKED_HULLMODS.add("additional_crew_quarters");
@@ -49,6 +41,9 @@ public class TemporalFluxCore extends BaseHullMod {
 		BLOCKED_HULLMODS.add("fluxdistributor");
 		BLOCKED_HULLMODS.add("fluxcapacitor");
 	}
+
+
+	final Venting venting = new Venting();
 
 	@Override
 	public void applyEffectsAfterShipCreation(ShipAPI ship, String id) {
@@ -75,17 +70,34 @@ public class TemporalFluxCore extends BaseHullMod {
 
 		tooltip.addPara("", pad, h, "");
 		tooltip.addSectionHeading("Description", Alignment.MID, 0f);
+		tooltip.addPara("", pad, h, "");
 
+		tooltip.addPara("Base time flow increased to x%s.", pad, h, "" + (int)BASE_TIME_MULT);
+		tooltip.addPara("Time flow at max flux increased to x%s.", pad, h, "" + (int)MAX_TIME_MULT);
+		tooltip.addPara("", pad, h, "");
+
+		String incompatible = "any hullmod that requires significant hull changes or modifies the flux conduits";
+		tooltip.addPara("Due to how the whitespace core is integrated throughout the ship, it is incompatible with %s.", pad, bad, incompatible);
 
 		tooltip.addPara("", pad, h, "");
-		tooltip.addPara("Base time multiplier increased to x%s.", pad, h, "" + (int)BASE_TIME_MULT);
-		tooltip.addPara("Time multiplier at max flux increased to x%s.", pad, h, "" + (int)MAX_TIME_MULT);
+
+		tooltip.addSectionHeading("Passive Ability - Adaptive Subsystems", Misc.getPositiveHighlightColor(), Misc.getStoryDarkColor(), Alignment.MID, 0f);
+
+		tooltip.addPara("", pad, h, "");
+		tooltip.addPara("Every %s damage dealt to the shields is converted into %s charge regeneration", pad, h, Misc.getPositiveHighlightColor(), "1000", "0.01");
+		tooltip.addPara("", pad, h, "");
+
+		//every second that goes by should add more charges
+
+		//reduce base performance of subsystem by 1 charges, reduce cooldown more
+
+		tooltip.addSectionHeading("Passive Ability - Hyper Vent", Misc.getPositiveHighlightColor(), Misc.getStoryDarkColor(), Alignment.MID, 0f);
 		tooltip.addPara("", pad, h, "");
 		tooltip.addPara("Base venting speed increased to %s.", pad, h, "" + (int) BASE_VENT_BONUS + "%");
 		tooltip.addPara("Venting speed while at max flux decreased to %s.", pad, h, "" + (int)MAX_VENT_BONUS + "%");
 		tooltip.addPara("", pad, h, "");
-		String incompatible = "any hullmod that requires significant hull changes or modifies the flux conduits";
-		tooltip.addPara("Due to how the flux core is integrated throughout the ship, it is incompatible with %s.", pad, bad, incompatible);
+		tooltip.addPara("In practice this lends itself to very aggressive vents, coupled with the Laminate Armor all ARC ships have.", pad, h);
+		tooltip.addPara("", pad, h, "");
 	}
 
 	@Override
@@ -96,13 +108,15 @@ public class TemporalFluxCore extends BaseHullMod {
 		if (combatEngineAPI.isPaused()) return;
         if (!ship.isAlive()) return;
 		if(ship.getFluxTracker().isOverloaded()) return;
+
+		venting.advanceSafely(combatEngineAPI, ship, amount, null);
 		boolean player = ship == Global.getCombatEngine().getPlayerShip();
 		
 		float fluxLevel = ship.getFluxTracker().getFluxLevel();
-		float timeMult = ArcUtils.clamp(
+		float timeMult = ARCUtils.clamp(
 				BASE_TIME_MULT,
 				MAX_TIME_MULT,
-				ArcUtils.remap(
+				ARCUtils.remap(
 						0f,
 						FLUX_LIMIT,
 						BASE_TIME_MULT,
@@ -111,10 +125,10 @@ public class TemporalFluxCore extends BaseHullMod {
 				)
 		);
 
-		float ventMult = ArcUtils.clamp(
+		float ventMult = ARCUtils.clamp(
 				MAX_VENT_BONUS,
 				BASE_VENT_BONUS,
-				ArcUtils.remap(
+				ARCUtils.remap(
 						0f,
 						FLUX_LIMIT,
 						BASE_VENT_BONUS,
@@ -125,7 +139,10 @@ public class TemporalFluxCore extends BaseHullMod {
 
 
 		ship.getMutableStats().getTimeMult().modifyMult(TEMPORAL_FLUX, timeMult); //this is dumb
-		ship.getMutableStats().getVentRateMult().modifyPercent(TEMPORAL_FLUX, ventMult);
+		if (!ship.getFluxTracker().isVenting()) {
+			ship.getMutableStats().getVentRateMult().modifyPercent(TEMPORAL_FLUX, ventMult);
+		}
+
 
         if (player) {
             if (ship.isAlive()) {
@@ -152,12 +169,6 @@ public class TemporalFluxCore extends BaseHullMod {
             
         }
 
-		if (fluxLevel > AFTERIMAGE_THRESHOLD) {
 
-
-
-
-
-		}			
 	}
 }

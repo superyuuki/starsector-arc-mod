@@ -1,0 +1,37 @@
+{
+	"id":"arc_theristicus_shot",
+	"onFireEffect":"arc.weapons.theristicus.TheristicusSpread",
+	"specClass":"projectile",
+	"spawnType":"BALLISTIC",
+	"collisionClass":"PROJECTILE_FF",
+	"collisionClassByFighter":"PROJECTILE_FIGHTER",
+	"hitGlowRadius":15,
+	"length":60.0,
+	"width":10.0,
+	"fadeTime":0.2,
+	"fringeColor":[90,20,130,170],
+	"coreColor":[45,45,180,80],
+	"textureScrollSpeed":64.0,
+	"pixelsPerTexel":5.0,
+	"onHitEffect": "arc.weapons.theristicus.TheristicusOnHit",
+	"bulletSprite":"graphics/missiles/flechette_sml.png",
+	"behaviorSpec":{
+		"behavior":"PROXIMITY_FUSE",
+		"shotRangeVariance": 0.4,
+		"range":18,
+		"onHitEffect": "arc.weapons.theristicus.TheristicusOnHit",
+		"explosionSpec":{
+			"duration":0.27f,
+			"radius":20,
+			"coreRadius":20,
+			"onHitEffect": "arc.weapons.theristicus.TheristicusOnHit",
+			"collisionClass":PROJECTILE_FF,
+			"collisionClassByFighter":PROJECTILE_FIGHTER,
+			"particleSizeMin":20.0,
+			"particleSizeRange":7.0,
+			"particleDuration":0.4,
+			"particleCount":1,
+			"particleColor":[45, 45, 180, 90]
+		},
+	}
+}

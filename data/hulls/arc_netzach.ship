@@ -14,10 +14,8 @@
   "builtInMods": [
     "arc_coronal_hypershunt",
     "arc_laminate_armor",
-    "arc_temporal_fluxcore",
-    "diableavionics_universaldecksExtra",
-    "ground_support",
-    "phasefield"
+    "arc_whitespace_core",
+    "diableavionics_universaldecksExtra"
   ],
   "builtInWeapons": {
     "WS0001": "arc_netzach_spinal",

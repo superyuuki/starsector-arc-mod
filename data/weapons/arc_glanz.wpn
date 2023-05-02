@@ -1,0 +1,49 @@
+{
+  "specClass":"beam",
+  "id":"arc_glanz",
+  "type":"ENERGY",
+  "size":"SMALL",
+  "collisionClass":"RAY",
+  "collisionClassByFighter":"RAY_FIGHTER",
+  "everyFrameEffect":"arc.weapons.glanz.GlanzEveryFrameEffect",
+  "turretSprite":"graphics/arc/weapons/arc_glanz.png",
+  "hardpointSprite":"graphics/arc/weapons/arc_glanz.png",
+  "turretUnderSprite":"graphics/arc/weapons/arc_glanz.png",
+  "hardpointUnderSprite":"graphics/arc/weapons/arc_glanz.png",
+
+  "turretOffsets":[
+    5, 1,
+    3, -2,
+    3, 2,
+    5, -1,
+  ],
+  "turretAngleOffsets":[
+    0,
+    0,
+    0,
+    0,
+  ],
+
+  "hardpointOffsets":[
+    5, 1,
+    3, -2,
+    3, 2,
+    5, -1
+  ],
+  "hardpointAngleOffsets":[
+    0,
+    0,
+    0,
+    0,
+  ],
+
+  "fringeColor":[0,0,240,200],
+  "coreColor":[30,90,200,150],
+  "glowColor":[20,70,70,190],
+  "width":6.0,
+  "textureType":LASER,
+  "textureScrollSpeed":128.0,
+  "pixelsPerTexel":5.0,
+  "pierceSet":[PROJECTILE_FF,PROJECTILE_NO_FF,PROJECTILE_FIGHTER],
+  "fireSoundOne":"burst_pd_fire"
+}

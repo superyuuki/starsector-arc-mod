@@ -1,11 +1,10 @@
 {
-	"id":"arc_burstphaseheavy",
+	"id":"arc_whitespace_grazer",
 	"type":"PHASE_CLOAK",
-	"aiType":"CUSTOM",
-	"aiScript":"arc.shipsystems.ai.PhaseDiveAI",
-	"statsScript":"arc.shipsystems.PhaseDiveStats",
-	"runScriptWhilePaused":true,
-	"runScriptWhileIdle":true,
+	"aiType":"PHASE_CLOAK",
+	"statsScript":"arc.shipsystems.WhitespaceGrazerStats",
+	"runScriptWhilePaused":true, # only for the player's ship
+	"runScriptWhileIdle":true,  # this means unapply() never gets called
 	"blockActionsWhileChargingDown":false,
 	
 	"phaseHighlight":"_glow1",
@@ -13,16 +12,16 @@
 	
 	
 	"effectColor1":[255,175,255,255],
-	"effectColor2":[255,0,255,25],
+	"effectColor2":[255,0,255,150],
 	
 	"clampTurnRateAfter":true,
 	"clampMaxSpeedAfter":true,
 	
 	"engineGlowColor":[150,20,0,255],
-    "engineGlowContrailColor":[150,20,0,0],
-	"engineGlowLengthMult": 0.1,
-	"engineGlowWidthMult":0.5,
-	"engineGlowGlowMult": 2,
+    "engineGlowContrailColor":[150,20,0,30],
+    "engineGlowLengthMult": 0.1,
+    "engineGlowWidthMult":0.5,
+    "engineGlowGlowMult": 3,
 	
 	"soundFilterType":"LOWPASS",
 	"soundFilterGain":0.8,
@@ -37,6 +36,7 @@
 	"outOfUsesSound":"phase_cloak_collision",
 
 	"aiHints":{
-    		"burstMovementPotential":200,
+	        "activeSpeedIncrease":300,
+	        "averageSpeedMult":3,
     }
 }
