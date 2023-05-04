@@ -39,11 +39,12 @@
 
   "fringeColor":[0,0,240,200],
   "coreColor":[30,90,200,150],
-  "glowColor":[20,70,70,190],
   "width":6.0,
-  "textureType":LASER,
-  "textureScrollSpeed":128.0,
+  "textureType":WEAVE,
+  "textureScrollSpeed":16.0,
   "pixelsPerTexel":5.0,
   "pierceSet":[PROJECTILE_FF,PROJECTILE_NO_FF,PROJECTILE_FIGHTER],
+  "glowColor":[232,128,35,255],
+  "animationType":"GLOW",
   "fireSoundOne":"burst_pd_fire"
 }

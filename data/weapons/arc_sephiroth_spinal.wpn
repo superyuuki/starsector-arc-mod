@@ -40,7 +40,7 @@
     255
   ],
   "width": 60,
-  "textureType":["graphics/ARC/fx/AL_deitygun_fringe.png","graphics/ARC/fx/AL_deitygun_core.png"],
+  "textureType":["graphics/ARC/fx/beam_fringe.png","graphics/ARC/fx/beam_core.png"],
   "textureScrollSpeed": 256,
   "pixelsPerTexel": 7,
   "pierceSet": [

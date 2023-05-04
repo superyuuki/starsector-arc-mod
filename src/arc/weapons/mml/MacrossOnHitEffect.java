@@ -6,6 +6,7 @@ import com.fs.starfarer.api.combat.listeners.ApplyDamageResultAPI;
 import com.fs.starfarer.api.loading.DamagingExplosionSpec;
 import data.scripts.util.MagicFakeBeam;
 import data.scripts.util.MagicLensFlare;
+import data.scripts.util.MagicRender;
 import org.dark.shaders.distortion.DistortionShader;
 import org.dark.shaders.distortion.RippleDistortion;
 import org.lazywizard.lazylib.MathUtils;
@@ -20,49 +21,156 @@ import java.util.Random;
 
 public class MacrossOnHitEffect implements OnHitEffectPlugin {
 
-    private static final Color CORE_COLOR;
-    private static final Color FLARE_COLOR;
-    private static final Color GLOW_COLOR;
+    @Override
+    public void onHit(DamagingProjectileAPI projectile, CombatEntityAPI target, Vector2f point, boolean shieldHit, ApplyDamageResultAPI damageResult, CombatEngineAPI engine) {
+        if (MathUtils.getRandomNumberInRange(0, 100) > 4) return;
 
-    static final Random RANDOM = new Random();
-
-    public void onHit(final DamagingProjectileAPI projectile, final CombatEntityAPI target, final Vector2f point, final boolean shieldHit, final ApplyDamageResultAPI damageResult, final CombatEngineAPI engine) {
-        if (point == null) {
-            return;
-        }
-
-
-
-
-        int randInt =(int) ( RANDOM.nextFloat() * 5);
-
-        for (int i = 0; i < randInt; i++) {
-
-            Vector2f blastPoint = MathUtils.getRandomPointInCircle(point, 100f);
-
-            MagicFakeBeam.spawnFakeBeam(engine, blastPoint, RANDOM.nextFloat() * 400 + 100, VectorUtils.getAngle(point, blastPoint), 10, 0.3f, 0.2f, 10, Color.PINK, Color.RED, projectile.getDamage().getDamage() / 2.0f, DamageType.HIGH_EXPLOSIVE, 0, projectile.getSource());
-
-            MagicLensFlare.createSharpFlare(
-                    engine,
-                    projectile.getSource(),
-                    point,
-                    20,
-                    200,
-                    MathUtils.getRandomNumberInRange(0f, 180f),
-                    new Color(255,105,50, 20),
-                    new Color(255,200,160, 20)
+        if(MagicRender.screenCheck(0.25f, projectile.getLocation())) {
+            MagicRender.battlespace(
+                    Global.getSettings().getSprite("fx", "blast_flash"),
+                    new Vector2f(point),
+                    new Vector2f(),
+                    new Vector2f(120, 120),
+                    new Vector2f(-384, -384),
+                    MathUtils.getRandomNumberInRange(0, 360),
+                    MathUtils.getRandomNumberInRange(-1, 1),
+                    Color.PINK,
+                    false,
+                    0, 0, 0, 0, 0,
+                    0,
+                    0.1f,
+                    0.4f,
+                    CombatEngineLayers.JUST_BELOW_WIDGETS
             );
+            MagicRender.battlespace(
+                    Global.getSettings().getSprite("fx", "blast_core"),
+                    new Vector2f(point),
+                    new Vector2f(),
+                    new Vector2f(190, 190),
+                    new Vector2f(-196, -196),
+                    MathUtils.getRandomNumberInRange(0, 360),
+                    MathUtils.getRandomNumberInRange(-1, 1),
+                    Color.BLUE,
+                    false,
+                    5, 3, 2, 1, 2,
+                    0f,
+                    0.15f,
+                    0.65f,
+                    CombatEngineLayers.JUST_BELOW_WIDGETS
+            );
+            MagicRender.battlespace(
+                    Global.getSettings().getSprite("fx", "blast_diffuse"),
+                    new Vector2f(point),
+                    new Vector2f(),
+                    new Vector2f(150, 150),
+                    new Vector2f(-128, -128),
+                    MathUtils.getRandomNumberInRange(0, 360),
+                    MathUtils.getRandomNumberInRange(-1, 1),
+                    Color.BLUE,
+                    false,
+                    4, 1, 2, 2, 1,
+                    0.2f,
+                    0.05f,
+                    0.75f,
+                    CombatEngineLayers.JUST_BELOW_WIDGETS
+            );
+
+
+            for(int i=0; i<MathUtils.getRandomNumberInRange(4, 10); i++){
+
+                int size = MathUtils.getRandomNumberInRange(25, 140);
+                float fade = MathUtils.getRandomNumberInRange(0.15f, 0.5f);
+                CombatEngineLayers layer = CombatEngineLayers.JUST_BELOW_WIDGETS;
+                if(Math.random()<fade){
+                    layer = CombatEngineLayers.BELOW_INDICATORS_LAYER;
+                }
+
+                MagicRender.battlespace(
+                        Global.getSettings().getSprite("fx","blast_flash"),
+                        MathUtils.getRandomPointOnCircumference(
+                                point,
+                                MathUtils.getRandomNumberInRange(32, 128-size)
+                        ),
+                        new Vector2f(),
+                        new Vector2f(size,size),
+                        new Vector2f(-size/fade,-size/fade),
+                        MathUtils.getRandomNumberInRange(0, 360),
+                        MathUtils.getRandomNumberInRange(-1, 1),
+                        new Color(128,24,200,140),
+                        false,
+                        4,5,0,0,0,
+                        0,
+                        3*fade/4,
+                        fade/4,
+                        layer
+                );
+
+
+                Color boop = new Color(MathUtils.getRandomNumberInRange(150, 200), MathUtils.getRandomNumberInRange(0, 20), MathUtils.getRandomNumberInRange(150,200), MathUtils.getRandomNumberInRange(150,255));
+
+                engine.spawnEmpArc(
+                        projectile.getSource(),
+                        MathUtils.getRandomPointInCircle(
+                                target.getLocation(),
+                                MathUtils.getRandomNumberInRange(100,500)
+                        ),
+                        target,
+                        target,
+                        DamageType.ENERGY, 0f, 500f, 500f, "", 60f,boop, Color.BLACK);
+
+                MagicLensFlare.createSharpFlare(
+                        engine,
+                        projectile.getSource(),
+                        MathUtils.getRandomPointInCircle(target.getLocation(), MathUtils.getRandomNumberInRange(200f, 700f)),
+                        MathUtils.getRandomNumberInRange(2f, 50f),
+                        MathUtils.getRandomNumberInRange(50f, 400f),
+                        MathUtils.getRandomNumberInRange(0f, 180f),
+                        boop,
+                        boop
+                );
+
+
+
+            }
         }
 
-        engine.spawnExplosion(point, new Vector2f(), Color.RED, 1f, 1f);
 
+        Color boop = new Color(MathUtils.getRandomNumberInRange(150, 200), MathUtils.getRandomNumberInRange(0, 20), MathUtils.getRandomNumberInRange(150,200), MathUtils.getRandomNumberInRange(150,255));
 
+        DamagingExplosionSpec blast = new DamagingExplosionSpec(0.2f,
+                200f,
+                100f,
+                projectile.getDamageAmount() * 30f,
+                projectile.getDamageAmount(),
+                CollisionClass.PROJECTILE_FF,
+                CollisionClass.PROJECTILE_FIGHTER,
+                4f,
+                4f,
+                0.6f,
+                40,
+                boop,
+                boop
+        );
+        blast.setDamageType(DamageType.ENERGY);
+        blast.setShowGraphic(false);
 
-    }
+        engine.spawnDamagingExplosion(blast, projectile.getSource(), MathUtils.getRandomPointOnCircumference(
+                point,
+                MathUtils.getRandomNumberInRange(32, 100)
+        ));
 
-    static {
-        CORE_COLOR = new Color(255, 255, 255, 200);
-        FLARE_COLOR = new Color(110, 80, 255, 200);
-        GLOW_COLOR = new Color(173, 150, 255);
+        if (!shieldHit && target instanceof ShipAPI ) {
+            ((ShipAPI) target).getEngineController().forceFlameout(); //Guarunteed flameout
+        }
+
+        //TODO giant boom
+
+        Global.getSoundPlayer().playSound(
+                "arc_degeneracy",
+                0.6f,
+                1.0f,
+                point,
+                target.getLocation()
+        );
     }
 }

@@ -38,7 +38,7 @@ public class CoronalHypershunt extends BaseHullMod {
 	static final String CORONAL_HYPERSHUNT = "arc_hypershuntpinhole";
 	static final Map<HullSize,Float> FLUX_REDUCTION;
 	static final float OVERLOAD_TIME = 90f;
-	static final float UNFOLD_RATE = 2f;
+	static final float UNFOLD_RATE = 3f;
 	static final float ARC_MALUS = -25f;
 
 
@@ -55,7 +55,7 @@ public class CoronalHypershunt extends BaseHullMod {
 	public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id) {
 		stats.getEnergyWeaponFluxCostMod().modifyPercent(id, FLUX_REDUCTION.get(hullSize));
 		stats.getBallisticWeaponFluxCostMod().modifyPercent(id, FLUX_REDUCTION.get(hullSize));
-		stats.getShieldUnfoldRateMult().modifyMult(id, UNFOLD_RATE);
+		stats.getShieldUnfoldRateMult().modifyFlat(id, UNFOLD_RATE);
 		stats.getShieldArcBonus().modifyPercent(id, ARC_MALUS);
 		stats.getOverloadTimeMod().modifyPercent(id, OVERLOAD_TIME);
 
@@ -86,7 +86,7 @@ public class CoronalHypershunt extends BaseHullMod {
 
 
 		tooltip.addPara("", pad, h, "");
-		tooltip.addPara("The abundance of entropic energy provided by the hypershunt gives %s weapons %s reduced flux costs, depending on hullsize", pad, good, "Ballistic and Energy", fluxReduction());
+		tooltip.addPara("The abundance of entropic energy provided by the microshunt gives %s weapons %s reduced flux costs, depending on hullsize", pad, good, "Ballistic and Energy", fluxReduction());
 		tooltip.addPara("", pad, h, "");
 
 		tooltip.addSectionHeading("Passive Ability - Burst Surger", Misc.getPositiveHighlightColor(), Misc.getStoryDarkColor(), Alignment.MID, 0f);
@@ -102,7 +102,7 @@ public class CoronalHypershunt extends BaseHullMod {
 		tooltip.addSectionHeading("Passive Ability - Hypershunt Ejection", Misc.getPositiveHighlightColor(), Misc.getStoryDarkColor(), Alignment.MID, 0f);
 
 		tooltip.addPara("", pad, h, "");
-		tooltip.addPara("On low hull, the coronal hypershunt will destabilize and overload all ships in a small radius.", pad, h);
+		tooltip.addPara("On low hull, the coronal microshunt will destabilize and overload all ships in a small radius.", pad, h);
 		tooltip.addPara("Ships will enter an %s and gain increased mobility at the cost of weapons power, leading them to occasionally disable.", pad, good, "Evacuation Mode");
 		tooltip.addPara("Ships above %s size will also temporarily generate a hypershunt field for the duration of the destabilization, annihilating nearby craft.", pad, h, "Destroyer");
 		tooltip.addPara("", pad, h, "");

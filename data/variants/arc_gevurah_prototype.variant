@@ -3,11 +3,10 @@
   "hullId": "arc_gevurah",
   "displayName": "Prototype",
   "goalVariant": true,
-  "fluxCapacitors": 17,
-  "fluxVents": 30,
+  "fluxCapacitors": 5,
+  "fluxVents": 0,
   "quality": 1,
   "hullMods": [
-    "hardenedshieldemitter",
     "frontemitter",
     "targetingunit"
   ],
@@ -17,11 +16,7 @@
       "mode": "LINKED",
       "weapons": {
         "WS0001": "arc_gevurah_spinal",
-        "WS0002": "diableavionics_gravemg",
-        "WS0010": "diableavionics_recson",
-        "WS0011": "diableavionics_recson",
-        "WS0014": "diableavionics_recson",
-        "WS0015": "diableavionics_recson"
+        "WS0002": "diableavionics_gravemg"
       }
     },
     {
@@ -45,12 +40,16 @@
       "mode": "LINKED",
       "weapons": {
         "WS0009": "diableavionics_raptor",
-        "WS0012": "diableavionics_burchel",
-        "WS0013": "diableavionics_burchel",
-        "WS0016": "diableavionics_burchel",
-        "WS0017": "diableavionics_burchel",
-        "WS0018": "diableavionics_ibis",
-        "WS0019": "diableavionics_ibis"
+        "WS0012": "arc_glanz",
+        "WS0013": "arc_glanz",
+        "WS0016": "arc_glanz",
+        "WS0017": "arc_glanz",
+        "WS0018": "arc_theristicus",
+        "WS0019": "arc_theristicus",
+        "WS0010": "arc_theristicus",
+        "WS0011": "arc_theristicus",
+        "WS0014": "arc_theristicus",
+        "WS0015": "arc_theristicus"
       }
     },
     {
@@ -74,7 +73,7 @@
   ],
   "modules": [],
   "wings": [
-    "diableavionics_valiant_wing",
+    "diableavionics_avalanche_wing",
     "diableavionics_avalanche_wing"
   ]
 }

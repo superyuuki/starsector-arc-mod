@@ -2,7 +2,6 @@
   "animationType": "SMOKE",
   "autocharge": true,
   "barrelMode": "ALTERNATING",
-  "fireSoundTwo": "diableavionics_micromissile_firing",
   "hardpointAngleOffsets": [
     0
   ],
@@ -11,9 +10,11 @@
     0
   ],
   "hardpointSprite": "",
-  "id": "arc_mml",
-  "projectileSpecId": "arc_mml_missile",
-  "size": "LARGE",
+  "id": "arc_blackbox_salvo",
+  "projectileSpecId": "arc_blackbox_stage1",
+  "fireSoundTwo":"diableavionics_magic_firing",
+  "everyFrameEffect":"arc.weapons.blackbox.BlackboxEveryFrameEffect",
+  "size": "MEDIUM",
   "smokeSpec": {
     "blowbackDuration": 0.45,
     "blowbackLength": 20,
@@ -71,8 +72,7 @@
     1.5,
     -9,
     -1.5,
-    -11,
-
+    -11
   ],
   "turretSprite": "graphics/ARC/weapons/arc_mml.png",
   "type": "MISSILE"

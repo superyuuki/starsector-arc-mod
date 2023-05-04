@@ -1,17 +1,11 @@
 package arc;
 
 import arc.hullmod.whitespace.Venting;
-import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
-import org.apache.log4j.Priority;
 import org.lazywizard.lazylib.CollisionUtils;
-import org.lazywizard.lazylib.VectorUtils;
 import org.lazywizard.lazylib.combat.CombatUtils;
-import org.lwjgl.Sys;
 import org.lwjgl.util.vector.Vector2f;
 
-import java.awt.*;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ARCUtils {
@@ -121,16 +115,20 @@ public class ARCUtils {
     }
 
     //TODO optimize this shits
-    public static boolean tooMuchArmorDamageIncoming(ShipAPI ship, float threshhold, float radiusToCheck, float durationToCheck, float multiplyAllDamageBy) {
+    public static boolean tooMuchArmorDamagePossible(ShipAPI ship, float threshhold, float radiusToCheck, float durationToCheck, float multiplyAllDamageBy) {
 
         float armorRatingForCalculation = ship.getArmorGrid().getArmorRating();
         float totalDamage = 0f;
         //count potential beam strikes
-        for (ShipAPI enemy : CombatUtils.getShipsWithinRange(ship.getLocation(), radiusToCheck)) {
+        for (ShipAPI enemy : CombatUtils.getShipsWithinRange(ship.getLocation(), radiusToCheck * 2)) {
             for (WeaponAPI weaponAPI : enemy.getAllWeapons()) {
 
                 if (weaponAPI.isBeam() && !weaponAPI.hasAIHint(WeaponAPI.AIHints.PD) && calculateDistance(ship.getLocation(), enemy.getLocation()) <= weaponAPI.getRange() * 0.9) {
                     totalDamage = totalDamage +calculateDamageToArmor(weaponAPI.getDamage(), armorRatingForCalculation);
+                }
+
+                if (weaponAPI.getProjectileSpeed() > radiusToCheck / durationToCheck ) {
+                    totalDamage = totalDamage + calculateDamageToArmor(weaponAPI.getDamage(), armorRatingForCalculation);
                 }
 
             }

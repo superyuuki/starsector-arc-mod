@@ -1,5 +1,5 @@
 {
-  "id":"arc_blackbox",
+  "id":"arc_blackbox_stage1",
   "specClass":"projectile",
   "type":"MISSILE",
   "size":"SMALL",
@@ -38,7 +38,6 @@
     "blowbackSpread":33.0,
     "particleColor":[190,180,160,95]},
   "autocharge":true,
-  "projectileSpecId":"arc_blackbox_fake",
-  "fireSoundTwo":"diableavionics_magic_firing",
-  "everyFrameEffect":"arc.weapons.blackbox.BlackboxEveryFrameEffect"
+  "projectileSpecId":"arc_blackbox_stage1",
+  "fireSoundTwo":"diableavionics_magic_firing"
 }

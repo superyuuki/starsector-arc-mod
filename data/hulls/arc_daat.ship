@@ -20,8 +20,6 @@
   "builtInWeapons": {
     "WS0013": "arc_blackbox",
     "WS0014": "arc_blackbox",
-    "WS0015": "arc_blackbox",
-    "WS0016": "arc_blackbox",
     "WS0017": "arc_daat_lights",
     "WS0018": "arc_daat_flux"
   },
@@ -151,24 +149,6 @@
       "arc": 0,
       "angle": -90,
       "locations": [67.5, -32]
-    },
-    {
-      "id": "WS0015",
-      "size": "SMALL",
-      "type": "BUILT_IN",
-      "mount": "TURRET",
-      "arc": 0,
-      "angle": 90,
-      "locations": [78.5, 32]
-    },
-    {
-      "id": "WS0016",
-      "size": "SMALL",
-      "type": "BUILT_IN",
-      "mount": "TURRET",
-      "arc": 0,
-      "angle": -90,
-      "locations": [78.5, -32]
     },
     {
       "id": "LB 1",

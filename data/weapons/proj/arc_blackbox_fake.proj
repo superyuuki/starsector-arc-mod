@@ -1,0 +1,19 @@
+{
+  "id":"arc_blackbox_fake",
+  "specClass":"missile",
+  "missileType":"MISSILE",
+  "sprite":"graphics/missiles/missile_sabot.png",
+  "size":[90,90],
+  "center":[0,0],
+  "collisionRadius":0,
+  "collisionClass":"PROJECTILE_NO_FF",
+  "explosionColor":[0,0,0,0],
+  "explosionRadius":0,
+  "maxFlightTime":0,
+  "onFireEffect": "arc.weapons.blackbox.BlackboxDeleteShotsPlugin",
+  "engineSpec":{
+    "turnAcc":720,
+    "turnRate":490,
+    "acc":1200,
+    "dec":800}
+}

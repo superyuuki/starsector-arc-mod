@@ -24,16 +24,16 @@
     "acc":2500,
     "dec":2500},
   "engineSlots":[{"id":"ES1",
-    "loc":[-13, 0],
+    "loc":[0, 0],
     #"style":"MISSILE_HIGH_TECH",
     "style":"CUSTOM",
     "styleSpec":{
       "mode":"QUAD_STRIP", # PARTICLES or QUAD_STRIP, determines which params are used
-      "engineColor":[0,185,187,255],
+      "engineColor":[20,30,90,255],
       "contrailDuration":1,
       "contrailWidthMult":1,
       "contrailWidthAddedFractionAtEnd":1.5,  # can be negative. makes trail spread out/narrow at the end
-      "contrailMinSeg":3, # min segment length, in pixels
+      "contrailMinSeg":60, # min segment length, in pixels
       "contrailMaxSpeedMult":0.5f,
       "contrailAngularVelocityMult":0.5f,
       "contrailColor":[1,160,139,150],
@@ -43,7 +43,7 @@
     "length":20.0,
     "angle":180.0},
     {"id":"ES2",
-      "loc":[-13, 0],
+      "loc":[0, 0],
       #"style":"MISSILE_HIGH_TECH",
       "style":"CUSTOM",
       "styleSpec":{
@@ -52,7 +52,7 @@
         "contrailDuration":1,
         "contrailWidthMult":1,
         "contrailWidthAddedFractionAtEnd":1.5,  # can be negative. makes trail spread out/narrow at the end
-        "contrailMinSeg":3, # min segment length, in pixels
+        "contrailMinSeg":60, # min segment length, in pixels
         "contrailMaxSpeedMult":0.5f,
         "contrailAngularVelocityMult":0.5f,
         "contrailColor":[1,160,139,150],
@@ -62,7 +62,7 @@
       "length":20.0,
       "angle":0.0},
     {"id":"ES3",
-      "loc":[-13, 0],
+      "loc":[0, 0],
       #"style":"MISSILE_HIGH_TECH",
       "style":"CUSTOM",
       "styleSpec":{
@@ -71,7 +71,7 @@
         "contrailDuration":1,
         "contrailWidthMult":1,
         "contrailWidthAddedFractionAtEnd":1.5,  # can be negative. makes trail spread out/narrow at the end
-        "contrailMinSeg":3, # min segment length, in pixels
+        "contrailMinSeg":60, # min segment length, in pixels
         "contrailMaxSpeedMult":0.5f,
         "contrailAngularVelocityMult":0.5f,
         "contrailColor":[1,160,139,150],
@@ -81,7 +81,7 @@
       "length":20.0,
       "angle":90.0},
     {"id":"ES4",
-      "loc":[-13, 0],
+      "loc":[0, 0],
       #"style":"MISSILE_HIGH_TECH",
       "style":"CUSTOM",
       "styleSpec":{
@@ -90,7 +90,7 @@
         "contrailDuration":1,
         "contrailWidthMult":1,
         "contrailWidthAddedFractionAtEnd":1.5,  # can be negative. makes trail spread out/narrow at the end
-        "contrailMinSeg":3, # min segment length, in pixels
+        "contrailMinSeg":60, # min segment length, in pixels
         "contrailMaxSpeedMult":0.5f,
         "contrailAngularVelocityMult":0.5f,
         "contrailColor":[1,160,139,150],

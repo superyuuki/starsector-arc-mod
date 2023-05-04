@@ -1,5 +1,14 @@
 {
 	"designTypeColors":{
         "ARC":[10,120,10,144]
+	},
+
+	"graphics": {
+		"fx": {
+			"targeting":"graphics/arc/fx/targeting.png",
+			"blast_flash":"graphics/arc/fx/blast_flash.png",
+			"blast_core":"graphics/arc/fx/blast_core.png",
+			"blast_diffuse":"graphics/arc/fx/blast_diffuse.png"
+		}
 	}
 }

@@ -9,12 +9,10 @@ import com.fs.starfarer.api.characters.PersonalityAPI;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.mission.FleetSide;
 import com.fs.starfarer.api.util.IntervalUtil;
-import org.apache.log4j.Logger;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.combat.AIUtils;
 
 
-import java.awt.*;
 import java.util.List;
 
 import static arc.hullmod.WhitespaceCore.FLUX_LIMIT;
@@ -60,21 +58,30 @@ public class Venting implements HullmodPart<Void> {
 
         for (WeaponAPI weaponAPI : ship.getUsableWeapons()) {
             if (weaponAPI.getSpec().hasTag("hyper") && weaponAPI.isFiring()) return;
-            //don't vent during sunspear
+            if (weaponAPI.getSpec().hasTag("STRIKE") && weaponAPI.isFiring()) return;
+
+            //don't vent during strike
         }
+
+        boolean tooMuchArmorDamage = ARCUtils.tooMuchArmorDamagePossible(ship, 0.3f, 2500f, 1f, damageMult);
+
+        if (tooMuchArmorDamage) return; //Don't get sniped by armor hits!
 
         //TODO dont vent if firing in a burst
-        if (fluxLevel > 0.07f && fluxLevel < 0.45f && ARCUtils.tooMuchShieldDamageIncoming(ship, 0.15f, 1000f, 1f) && !ARCUtils.tooMuchArmorDamageIncoming(ship, 0.3f, 1000f, 1f, damageMult)) {
+        if (fluxLevel > 0.07f && fluxLevel < 0.4f && ARCUtils.tooMuchShieldDamageIncoming(ship, 0.15f, 1000f, 1f)) {
+            //Opportunistic shield vent!
             vent(ship);
             return;
         }
 
 
-        if (flags.hasFlag(ShipwideAIFlags.AIFlags.DO_NOT_USE_SHIELDS) && !ARCUtils.tooMuchArmorDamageIncoming(ship, 0.3f, 1000f, 1f, damageMult) && fluxLevel < 0.45f && fluxLevel > 0.07f) { //super efficient damper) {
+        if (flags.hasFlag(ShipwideAIFlags.AIFlags.DO_NOT_USE_SHIELDS) && !ARCUtils.tooMuchArmorDamagePossible(ship, 0.3f, 1000f, 1f, damageMult) && fluxLevel < 0.45f && fluxLevel > 0.07f) { //super efficient damper) {
             vent(ship);
             return;
 
         }
+
+        //TODO don't vent if theres big shit incoming
 
 
 

@@ -20,7 +20,7 @@ public class WhitespaceCore extends BaseHullMod {
 
 	static final String TEMPORAL_FLUX = "arc_whitespace_core";
 	static final float BASE_TIME_MULT = 1.05f;
-	static final float MAX_TIME_MULT = 1.5f;
+	static final float MAX_TIME_MULT = 1.3f;
 	public static final float FLUX_LIMIT = 1.0f;
 	static final float BASE_VENT_BONUS = 400f;
 	static final float MAX_VENT_BONUS = -20f;
@@ -81,15 +81,7 @@ public class WhitespaceCore extends BaseHullMod {
 
 		tooltip.addPara("", pad, h, "");
 
-		tooltip.addSectionHeading("Passive Ability - Adaptive Subsystems", Misc.getPositiveHighlightColor(), Misc.getStoryDarkColor(), Alignment.MID, 0f);
 
-		tooltip.addPara("", pad, h, "");
-		tooltip.addPara("Every %s damage dealt to the shields is converted into %s charge regeneration", pad, h, Misc.getPositiveHighlightColor(), "1000", "0.01");
-		tooltip.addPara("", pad, h, "");
-
-		//every second that goes by should add more charges
-
-		//reduce base performance of subsystem by 1 charges, reduce cooldown more
 
 		tooltip.addSectionHeading("Passive Ability - Hyper Vent", Misc.getPositiveHighlightColor(), Misc.getStoryDarkColor(), Alignment.MID, 0f);
 		tooltip.addPara("", pad, h, "");
@@ -153,14 +145,14 @@ public class WhitespaceCore extends BaseHullMod {
 						.maintainStatusForPlayerShip(
 								TEMPORAL_FLUX,
 								"graphics/icons/hullsys/temporal_shell.png",
-								"Temporal Flux Core",
+								"Whitespace Core",
 								"Timeflow at " + timeMult + "%", false
 						);
 				combatEngineAPI
 						.maintainStatusForPlayerShip(
 								TEMPORAL_FLUX + "cum",
 								"graphics/icons/hullsys/temporal_shell.png",
-								"Temporal Flux Core",
+								"Whitespace Core",
 								"Vent rate at " + ship.getMutableStats().getVentRateMult().getModifiedValue() + "%", false
 						);
 			} else {

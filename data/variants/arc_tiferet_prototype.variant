@@ -45,7 +45,7 @@
       "autofire": true,
       "mode": "LINKED",
       "weapons": {
-        "WS0009": "vulcan"
+        "WS0009": "arc_theristicus"
       }
     },
     {

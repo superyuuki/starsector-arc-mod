@@ -2,6 +2,7 @@ package arc;
 
 import arc.weapons.blackbox.BlackboxAI;
 import arc.weapons.blackbox.BlackboxStageOneAI;
+import arc.weapons.mml.MacrossAI;
 import com.fs.starfarer.api.BaseModPlugin;
 import com.fs.starfarer.api.PluginPick;
 import com.fs.starfarer.api.campaign.CampaignPlugin;
@@ -29,10 +30,12 @@ public class ARCPlugin extends BaseModPlugin {
     @Override
     public PluginPick<MissileAIPlugin> pickMissileAI(MissileAPI missile, ShipAPI launchingShip) {
         switch (missile.getProjectileSpecId()) {
-            case Index.BLACKBOX_STAGE_ONE:
-                return new PluginPick<>(new BlackboxStageOneAI(missile), CampaignPlugin.PickPriority.MOD_SPECIFIC);
+            /*case Index.BLACKBOX_STAGE_ONE:
+                return new PluginPick<>(new BlackboxStageOneAI(missile, missile.getDamageTarget()), CampaignPlugin.PickPriority.MOD_SPECIFIC);
             case Index.BLACKBOX_STAGE_TWO:
-                return new PluginPick<>(new BlackboxAI(missile), CampaignPlugin.PickPriority.MOD_SPECIFIC);
+                return new PluginPick<>(new BlackboxAI(missile), CampaignPlugin.PickPriority.MOD_SPECIFIC);*/
+            case Index.MACROSS:
+                return new PluginPick<>(new MacrossAI(missile, launchingShip), CampaignPlugin.PickPriority.MOD_SPECIFIC);
             default:
 
         }

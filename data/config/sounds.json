@@ -21,7 +21,7 @@
 	],
 	"arc_machinegun":
 	[
-		{"file":"sounds/ARC/machinegun.wav","pitch":1.5,"volume":0.1}
+		{"file":"sounds/ARC/machinegun.wav","pitch":1.5,"volume":0.2}
 	],
 	"arc_beam_chargeup":
 	[
@@ -41,6 +41,10 @@
 	],
 	"arc_theristicus":
 	[
-		{"file":"sounds/ARC/arc_theristicus.wav","pitch":1,"volume":0.3}
+		{"file":"sounds/ARC/arc_theristicus.wav","pitch":1,"volume":0.2}
+	],
+	"arc_degeneracy":
+	[
+		{"file":"sounds/ARC/degeneracy.wav","pitch":0.95,"volume":0.7}
 	]
 }

@@ -7,6 +7,7 @@ import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.loading.DamagingExplosionSpec;
 //import com.fs.starfarer.api.combat.WeaponAPI;
+import com.fs.starfarer.api.util.IntervalUtil;
 import com.fs.starfarer.api.util.WeightedRandomPicker;
 import data.scripts.util.MagicLensFlare;
 import data.scripts.util.MagicRender;
@@ -17,11 +18,11 @@ import java.util.List;
 //import java.util.HashMap;
 //import java.util.List;
 //import java.util.Map;
-import org.jetbrains.annotations.Nullable;
 import org.lazywizard.lazylib.FastTrig;
 import org.lwjgl.util.vector.Vector2f;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
+import org.lazywizard.lazylib.combat.AIUtils;
 import org.lazywizard.lazylib.combat.CombatUtils;
 
 public class BlackboxAI implements MissileAIPlugin, GuidedMissileAI {
@@ -85,9 +86,10 @@ public class BlackboxAI implements MissileAIPlugin, GuidedMissileAI {
 
     CombatEntityAPI currentTarget;
 
-    public BlackboxAI(MissileAPI missile) {
+    public BlackboxAI(MissileAPI missile, CombatEntityAPI currentTarget) {
         this.missile = missile;
         MAX_SPEED = missile.getMaxSpeed()*1.25f; //slight over lead
+        this.currentTarget = currentTarget;
     }
 
 
@@ -106,70 +108,8 @@ public class BlackboxAI implements MissileAIPlugin, GuidedMissileAI {
         }
     }
 
-    void retargetInitial() {
-
-        MissileAPI potentialLock = pick(
-                missile,
-                missile.getLocation(),
-                missile.getFacing(),
-                360,
-                (int)(missile.getWeapon().getRange()*1.5f*(missile.getMaxFlightTime()-missile.getFlightTime())/missile.getMaxFlightTime())
-        );
 
 
-        if (potentialLock != null) {
-            //we found a missile!
-            potentialLock.setCustomData(HAS_LOCK, missile.getOwner());
-            setTarget(potentialLock);
-            return;
-        }
-
-        //well... all missiles are already locked. Let's find a fighter
-
-
-        CombatEntityAPI entityAPI = MagicTargeting.pickShipTarget(
-                missile.getSource(),
-                MagicTargeting.targetSeeking.LOCAL_RANDOM,
-                3000,
-                360,
-                20,
-                0,
-                0,
-                0,
-                0
-        );
-
-        if (entityAPI != null) {
-            setTarget(entityAPI);
-            return;
-        }
-
-        //well.. nothing was found :(
-
-    }
-
-    void retargetWithTarget() {
-        if (currentTarget != null && currentTarget instanceof ShipAPI) {
-            //let's check if any new missiles have spawned
-
-            MissileAPI potentialLock = pick(
-                    missile,
-                    missile.getLocation(),
-                    missile.getFacing(),
-                    360,
-                    (int)(missile.getWeapon().getRange()*1.5f*(missile.getMaxFlightTime()-missile.getFlightTime())/missile.getMaxFlightTime())
-            );
-
-
-            if (potentialLock != null) {
-                //we found a missile!
-
-                currentTarget.setCustomData(HAS_LOCK, null);
-                potentialLock.setCustomData(HAS_LOCK, missile.getOwner());
-                setTarget(potentialLock);
-            }
-        }
-    }
 
     void untargetCurrentTarget() {
         if (currentTarget != null) {
@@ -214,14 +154,6 @@ public class BlackboxAI implements MissileAIPlugin, GuidedMissileAI {
         }
 
         if (currentTarget == null) {
-            retargetInitial();
-        }
-
-        if (currentTarget != null) {
-            retargetWithTarget();
-        }
-
-        if (currentTarget == null) {
             if (missile.getVelocity().length() > missile.getMaxSpeed() / 8.0f) {
                 missile.giveCommand(ShipCommand.DECELERATE); //this is a loitering munition, don't send it flying off if we dont have to
             }
@@ -238,63 +170,17 @@ public class BlackboxAI implements MissileAIPlugin, GuidedMissileAI {
 
             return;
         }
-
-
-        //TODO new interception
-        Vector2f lead = null;
-        Vector2f point = missile.getLocation();
-        Vector2f targetLoc = currentTarget.getLocation();
-        Vector2f targetVel = currentTarget.getVelocity();
-        Vector2f difference = new Vector2f(targetLoc.x - point.x, targetLoc.y - point.y);
-
-        final float b = 2f * ((targetVel.x * difference.x) + (targetVel.y * difference.y)),
-                c = (difference.x * difference.x) + (difference.y * difference.y);
-
-        float a1 = (targetVel.x * targetVel.x) + (targetVel.y * targetVel.y) - (MAX_SPEED * MAX_SPEED);
-        Vector2f solution = null;
-
-        if (Float.compare(Math.abs(a1), 0) == 0)
-        {
-            if (Float.compare(Math.abs(b), 0) == 0)
-            {
-                solution = (Float.compare(Math.abs(c), 0) == 0)
-                        ? new Vector2f(0, 0) : null;
-            }
-            else
-            {
-                solution = new Vector2f(-c / b, -c / b);
-            }
-        }
-        else
-        {
-            float d = (b * b) - (4 * a1 * c);
-            if (d >= 0)
-            {
-                d = (float) Math.sqrt(d);
-                a1 = 2 * a1;
-                solution = new Vector2f((-b - d) / a1, (-b + d) / a1);
-            }
-        }
-
-        Vector2f solutionSet = solution;
-        if (solutionSet != null)
-        {
-            float bestFit = Math.min(solutionSet.x, solutionSet.y);
-            if (bestFit < 0f)
-            {
-                bestFit = Math.max(solutionSet.x, solutionSet.y);
-            }
-            if (bestFit > 0f)
-            {
-                lead = new Vector2f(targetLoc.x + targetVel.x * bestFit,
-                        targetLoc.y + targetVel.y * bestFit);
-            }
-        }
-
+        Vector2f lead = AIUtils.getBestInterceptPoint(
+                missile.getLocation(),
+                MAX_SPEED,
+                currentTarget.getLocation(),
+                currentTarget.getVelocity()
+        );
         if (lead == null ) {
             lead = currentTarget.getLocation();
         }
-
+                
+        //best velocity vector angle for interception
         float correctAngle = VectorUtils.getAngle(
                         missile.getLocation(), lead
         );
@@ -309,17 +195,11 @@ public class BlackboxAI implements MissileAIPlugin, GuidedMissileAI {
         
         //turn the missile
         float aimAngle = MathUtils.getShortestRotation(missile.getFacing(), correctAngle);
-
-        //TODO fix p
-        missile.setAngularVelocity(aimAngle - missile.getAngularVelocity() * 0.2f + aimAngle - missile.getAngularVelocity() / missile.getTurnAcceleration());
-
-        /*if (aimAngle < 0) {
-
-
+        if (aimAngle < 0) {
             missile.giveCommand(ShipCommand.TURN_RIGHT);
         } else {
             missile.giveCommand(ShipCommand.TURN_LEFT);
-        }*/
+        }
         if (Math.abs(aimAngle)<45){
             missile.giveCommand(ShipCommand.ACCELERATE);
         }
@@ -352,18 +232,18 @@ public class BlackboxAI implements MissileAIPlugin, GuidedMissileAI {
 
         if (currentTarget == null || currentTarget instanceof MissileAPI) {
 
-            radius = 150;
-            coreRadius = 20;
+            radius = 200;
+            coreRadius = 120;
         }
         if (currentTarget instanceof ShipAPI) {
-            radius = 60;
-            coreRadius = 40;
+            radius = 50;
+            coreRadius = 30;
         }
 
         double damage = missile.getDamageAmount();
 
         if (currentTarget instanceof ShipAPI) {
-            damage = damage * 1.2;
+            damage = damage / 2;
         } else {
             damage = damage * 2.54;
         }
