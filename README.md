@@ -20,3 +20,7 @@ Lastly, extract the contents of the zip file into your mods folder.
 
 
 
+# CREDITS
+- Tartiflette, for literally everything (some scripts, every single sprite)
+- raycrasher, for the original mod
+- ApproLight (TODO remove sound assets on release)

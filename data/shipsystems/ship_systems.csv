@@ -1,6 +1,6 @@
 name,id,flux/second,f/s (base rate),f/s (base cap),flux/use,f/u (base rate),f/u (base cap),cr/u,max uses,regen,charge up,active,down,cooldown,toggle,noDissipation,noHardDissipation,hardFlux,noFiring,noTurning,noStrafing,noAccel,noShield,isPhaseCloak,noVent,icon
 Micro Whitespace Grazer,arc_whitespace_grazer_micro,,,,,,,,6,0.1,0.2,1.5,0.2,1,,,TRUE,TRUE,TRUE,,,,TRUE,TRUE,,graphics/icons/hullsys/phase_cloak.png
-Whitespace Grazer,arc_whitespace_grazer,,,,,,,,3,0.07,0.4,2,0.4,1.5,,,TRUE,TRUE,TRUE,,,,TRUE,TRUE,,graphics/icons/hullsys/phase_cloak.png
+Whitespace Grazer,arc_whitespace_grazer,,,,,,,,3,0.055,0.4,1.8,0.4,1.8,,,TRUE,TRUE,TRUE,,,,TRUE,TRUE,,graphics/icons/hullsys/phase_cloak.png
 Heavy Whitespace Grazer,arc_whitespace_grazer_heavy,,,,,,,,3,0.03,0.7,3,0.7,2,,,TRUE,TRUE,TRUE,,,,TRUE,TRUE,,graphics/icons/hullsys/phase_cloak.png
 Hypershunt Overdrive,arc_overdrive,,,,,,,,,,1,5,1,12,,,TRUE,,,,TRUE,,TRUE,,TRUE,graphics/icons/hullsys/ammo_feeder.png
-,,,,,,,,,,,,,,,,,,,
+Chesed Repair Drones,arc_chesed_bay,,,,,,,,,,1,,1,,TRUE,,,,,,,,,,,graphics/icons/hullsys/drone_pd_high.png

@@ -26,7 +26,7 @@
                             "particleColor":[225,110,90,255]},		
 	"autocharge":true,
 	"projectileSpecId":"amblaster_shot",
-        "everyFrameEffect":"arc.weapons.DeveikuthAnimation",
+        "everyFrameEffect":"arc.deco.DeveikuthAnimation",
         
         "specialWeaponGlowWidth":10,
         "specialWeaponGlowHeight":15,

@@ -1,22 +1,18 @@
 package arc.weapons.blackbox;
 
 import arc.Index;
-import arc.util.CachedCalculation;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
-import com.fs.starfarer.api.graphics.SpriteAPI;
 import com.fs.starfarer.api.util.IntervalUtil;
 import data.scripts.util.MagicRender;
 import org.lazywizard.lazylib.CollisionUtils;
 import org.lazywizard.lazylib.MathUtils;
-import org.lazywizard.lazylib.combat.AIUtils;
 import org.lazywizard.lazylib.combat.CombatUtils;
 import org.lwjgl.util.vector.Vector2f;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Supplier;
 
 public class BlackboxEveryFrameEffect implements EveryFrameWeaponEffectPlugin {
 
@@ -27,7 +23,7 @@ public class BlackboxEveryFrameEffect implements EveryFrameWeaponEffectPlugin {
     List<CombatEntityAPI> handledTargetStorage;
     Color colorForThisBurst;
 
-    int maximumBurst = 8;
+    int maximumBurst = 3;
     int range = 0;
     float beep = 0;
 
@@ -39,16 +35,16 @@ public class BlackboxEveryFrameEffect implements EveryFrameWeaponEffectPlugin {
 
     //TODO optimize
     public void fire(float amount) {
-
-        if (maximumBurst <= 0) {
-            return;
-        }
         beep-=amount;
 
         for (CombatEntityAPI possibleTarget : getThreatTargets()) {
             if (handledTargetStorage.contains(possibleTarget)) continue;
             handledTargetStorage.add(possibleTarget); //TODO if this breaks it neds to go at the start
+            maximumBurst--;
 
+            if (maximumBurst <= 0) {
+                return;
+            }
 
 
             //sound
@@ -64,7 +60,7 @@ public class BlackboxEveryFrameEffect implements EveryFrameWeaponEffectPlugin {
 
             //send a missile (or a few) after it
 
-            maximumBurst--;
+
 
             Vector2f firepoint = weapon.getFirePoint(MathUtils.getRandomNumberInRange(0,5));
             float facing = weapon.getArcFacing();
@@ -103,7 +99,7 @@ public class BlackboxEveryFrameEffect implements EveryFrameWeaponEffectPlugin {
 
 
             MissileAPI childAsMissile = (MissileAPI) child;
-            childAsMissile.setMissileAI(new BlackboxStageOneAI(childAsMissile, possibleTarget));
+            childAsMissile.setMissileAI(new BlackboxStageOneAI(Index.BLACKBOX_STAGE_TWO, childAsMissile, possibleTarget));
 
 
             //HUD only part
@@ -191,7 +187,7 @@ public class BlackboxEveryFrameEffect implements EveryFrameWeaponEffectPlugin {
 
         if (!weaponAPI.isFiring() && weaponAPI.getChargeLevel() <= 0.1f) {
             handledTargetStorage.clear();
-            maximumBurst = 8; //reload virtual ammo counter to max
+            maximumBurst = 3; //reload virtual ammo counter to max
             range = 0;
         }
 
@@ -219,6 +215,7 @@ public class BlackboxEveryFrameEffect implements EveryFrameWeaponEffectPlugin {
 
         for (ShipAPI shipAPI : CombatUtils.getShipsWithinRange(ship.getLocation(), range)) {
             if (!shipAPI.isFighter() || !shipAPI.isAlive() || shipAPI.isPiece() || shipAPI.isPhased() || shipAPI.isAlly()) continue;
+            if (ship.getOwner() == shipAPI.getOwner()) continue;
 
 
             out.add(shipAPI); //this fighter is a threat

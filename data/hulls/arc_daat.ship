@@ -1,5 +1,5 @@
 {
-  "hullName": "Daat",
+  "hullName": "Hokhma",
   "hullId": "arc_daat",
   "hullSize": "DESTROYER",
   "spriteName": "graphics/ARC/ships/daat.png",
@@ -14,12 +14,13 @@
   "builtInMods": [
     "arc_coronal_hypershunt",
     "arc_laminate_armor",
-    "arc_whitespace_core",
+    "arc_variable_sheath",
     "diableavionics_universaldecksExtra"
+
   ],
   "builtInWeapons": {
-    "WS0013": "arc_blackbox",
-    "WS0014": "arc_blackbox",
+    "WS0002": "arc_blackbox",
+    "WS0003": "arc_blackbox",
     "WS0017": "arc_daat_lights",
     "WS0018": "arc_daat_flux"
   },
@@ -36,18 +37,18 @@
     {
       "id": "WS0002",
       "size": "SMALL",
-      "type": "ENERGY",
-      "mount": "TURRET",
-      "arc": 186,
+      "type": "BUILT_IN",
+      "mount": "HARDPOINT",
+      "arc": 0,
       "angle": 90,
       "locations": [51, 29]
     },
     {
       "id": "WS0003",
       "size": "SMALL",
-      "type": "ENERGY",
-      "mount": "TURRET",
-      "arc": 186,
+      "type": "BUILT_IN",
+      "mount": "HARDPOINT",
+      "arc": 0,
       "angle": -90,
       "locations": [51, -29]
     },
@@ -116,7 +117,7 @@
     },
     {
       "id": "WS0011",
-      "size": "MEDIUM",
+      "size": "SMALL",
       "type": "MISSILE",
       "mount": "TURRET",
       "arc": 0,
@@ -125,30 +126,12 @@
     },
     {
       "id": "WS0012",
-      "size": "MEDIUM",
+      "size": "SMALL",
       "type": "MISSILE",
       "mount": "TURRET",
       "arc": 0,
       "angle": -0,
       "locations": [7, -57.5]
-    },
-    {
-      "id": "WS0013",
-      "size": "SMALL",
-      "type": "BUILT_IN",
-      "mount": "TURRET",
-      "arc": 0,
-      "angle": 90,
-      "locations": [67.5, 32]
-    },
-    {
-      "id": "WS0014",
-      "size": "SMALL",
-      "type": "BUILT_IN",
-      "mount": "TURRET",
-      "arc": 0,
-      "angle": -90,
-      "locations": [67.5, -32]
     },
     {
       "id": "LB 1",

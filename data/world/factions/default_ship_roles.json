@@ -10,5 +10,8 @@
   "combatCapital":{
     "arc_netzach_prototype":1,
     "arc_sephiroth_prototype":1
+  },
+  "carrierMedium": {
+    "arc_chokmah_prototype": 2
   }
 }

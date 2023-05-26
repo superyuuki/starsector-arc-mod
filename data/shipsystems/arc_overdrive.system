@@ -3,7 +3,7 @@
 	"type":"ENGINE_MOD",
 	"aiType":"BURN_DRIVE",
 	
-	"statsScript":"arc.shipsystems.Overdrive",
+	"statsScript":"arc.shipsystems.overdrive.Overdrive",
 	"useSound":"arc_overdrive_startup",
 	"loopSound":"arc_overdrive_loop",
 	"deactivateSound":"arc_overdrive_shutdown",

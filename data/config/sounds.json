@@ -25,15 +25,15 @@
 	],
 	"arc_beam_chargeup":
 	[
-		{"file":"sounds/ARC/AL_deitygun_charge.ogg","pitch":0.7,"volume":1.5}
+		{"file":"sounds/ARC/arc_sunspear_charge.ogg","pitch":0.7,"volume":1.5}
 	],
 	"arc_beam_loop":
 	[
-		{"file":"sounds/ARC/AL_deitygun_loop.ogg","pitch":0.5,"volume":2.0}
+		{"file":"sounds/ARC/arc_sunspear_loop.ogg","pitch":0.5,"volume":2.0}
 	],
 	"arc_beam_fire":
 	[
-		{"file":"sounds/ARC/AL_deitygun_fire.ogg","pitch":0.5,"volume":2.0}
+		{"file":"sounds/ARC/arc_sunspear_fire.ogg","pitch":0.5,"volume":2.0}
 	],
 	"arc_hypershunt_explode":
 	[
@@ -41,10 +41,18 @@
 	],
 	"arc_theristicus":
 	[
-		{"file":"sounds/ARC/arc_theristicus.wav","pitch":1,"volume":0.2}
+		{"file":"sounds/ARC/arc_theristicus.wav","pitch":0.9,"volume":0.2}
 	],
 	"arc_degeneracy":
 	[
 		{"file":"sounds/ARC/degeneracy.wav","pitch":0.95,"volume":0.7}
+	],
+	"arc_stygan":
+	[
+		{"file":"sounds/ARC/arc_stygan.ogg","pitch":1.1,"volume":1.3}
+	],
+	"arc_stygan_mini":
+	[
+		{"file":"sounds/ARC/arc_stygan_mini.wav","pitch":1,"volume":0.4}
 	]
 }

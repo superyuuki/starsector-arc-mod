@@ -4,7 +4,6 @@ import arc.Index;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.util.IntervalUtil;
-import data.scripts.util.MagicTargeting;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
 import org.lwjgl.util.vector.Vector2f;
@@ -13,12 +12,14 @@ import java.awt.*;
 
 public class BlackboxStageOneAI implements MissileAIPlugin, GuidedMissileAI {
 
+     final String specToSpawn;
      final MissileAPI missile;
      final CombatEntityAPI target;
      final IntervalUtil intervalUtil = new IntervalUtil(0.3f, 0.7f);
 
 
-    public BlackboxStageOneAI(MissileAPI missile, CombatEntityAPI target) {
+    public BlackboxStageOneAI(String specToSpawn, MissileAPI missile, CombatEntityAPI target) {
+        this.specToSpawn = specToSpawn;
         this.missile = missile;
         this.target = target;
     }
@@ -47,7 +48,7 @@ public class BlackboxStageOneAI implements MissileAIPlugin, GuidedMissileAI {
             CombatEntityAPI child = Global.getCombatEngine().spawnProjectile(
                     missile.getSource(),
                     missile.getWeapon(),
-                    Index.BLACKBOX_STAGE_TWO,
+                    specToSpawn,
                     missile.getLocation(),
                     facing + MathUtils.getRandomNumberInRange(-90f, 90f),
                     null

@@ -5,7 +5,7 @@
   "size": "LARGE",
   "collisionClass": "RAY",
   "collisionClassByFighter": "RAY_FIGHTER",
-  "beamEffect": "arc.weapons.SunspearBeamEffect",
+  "beamEffect": "arc.weapons.sunspear.SunspearBeamEffect",
   "turretSprite": "graphics/ARC/weapons/sephiroth_spinal.png",
   "turretGlowSprite": "graphics/ARC/weapons/sephiroth_spinal_glow.png",
   "hardpointSprite": "graphics/ARC/weapons/sephiroth_spinal.png",

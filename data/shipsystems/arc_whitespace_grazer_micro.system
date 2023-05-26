@@ -3,7 +3,7 @@
 	"type":"PHASE_CLOAK",
 	"aiType":"PHASE_CLOAK",
 
-	"statsScript":"arc.shipsystems.WhitespaceGrazerStats",
+	"statsScript":"arc.shipsystems.whitespace.WhitespaceGrazerStats",
 	"runScriptWhilePaused":true, # only for the player's ship
 	"runScriptWhileIdle":true,  # this means unapply() never gets called
 	"blockActionsWhileChargingDown":false,
@@ -36,7 +36,6 @@
 
 
 	"aiHints":{
-    		"activeSpeedIncrease":400,
             "averageSpeedMult":3,
     }
 }

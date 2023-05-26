@@ -1,19 +1,23 @@
 name,id,tier,rarity,base value,range,damage/second,damage/shot,emp,impact,turn rate,OPs,ammo,ammo/sec,reload size,type,energy/shot,energy/second,chargeup,chargedown,burst size,burst delay,min spread,max spread,spread/shot,spread decay/sec,beam speed,proj speed,launch speed,flight time,proj hitpoints,autofireaccBonus,hints,tags,groupTag,tech/manufacturer,for weapon tooltip>>,primaryRoleStr,speedStr,trackingStr,turnRateStr,accuracyStr,customPrimary,customPrimaryHL,customAncillary,customAncillaryHL,noDPSInTooltip,number
-Macross MRM Array,arc_mml,3,,17500,2000,,100,,5,0,,400,0.3,300,HIGH_EXPLOSIVE,8,,0.2,8,40,0.03,90,90,5,6,,800,50,4,50,,"SYSTEM, DO_NOT_AIM, STRIKE",,,,,Suppression,,,,,"Has a %s chance to cause a degeneracy explosion, dealing %s as much %s damage",3%|20x|energy,,,,
-AM Blaster Array,arc_gevurah_spinal,3,,10000,1000,,250,,5,0,,100,20,100,ENERGY,220,,0.4,0.4,3,0.1,1,3,5,1,,1000,,,,,"SYSTEM, DO_NOT_CONSERVE",,,,,General,,,,,,,,,,
-Macross MRM,arc_gevurah_mm_l,3,,7500,2000,,100,,5,0,,200,0.3,150,HIGH_EXPLOSIVE,8,,0.2,8,20,0.03,90,90,5,6,,800,50,4,50,,"SYSTEM, DO_NOT_AIM, STRIKE",,,,,Suppression,,,,,"Has a %s chance to cause a degeneracy %s explosion, dealing %s as much damage",3%|20x|energy,,,,
-Macross MRM,arc_gevurah_mm_r,3,,7500,2000,,100,0,5,0,,200,0.3,150,HIGH_EXPLOSIVE,8,,0.2,8,20,0.03,90,90,5,6,,800,50,4,50,,"SYSTEM, DO_NOT_AIM, STRIKE",,,,,Suppression,,,,,"Has a %s chance to cause a degeneracy explosion, dealing %s as much%s  damage",3%|20x|energy,,,,
-Sunspear,arc_netzach_spinal,3,,18000,1000,5000,,1000,1000,,,,,2,ENERGY,,4000,1,3,2.0,30,,,,,10000,,,,,,"SYSTEM, STRIKE",hyper,,,,Strike,,,,,"%s around the Sunspear's graviton burst, causing flight systems to destabilize.",Warps space,,,,
-Heavy Sunspear,arc_sephiroth_spinal,3,,18000,1000,7000,,2000,1000,,,,,2,ENERGY,,4000,1,3,2.0,35,,,,,10000,,,,,,"SYSTEM, STRIKE",hyper,,,,Strike,,,,,"%s around the Sunspear's graviton burst, causing flight systems to destabilize.",Warps space,,,,
+Macross MRM Array,arc_mml,3,,17500,1500,,150,,5,0,,400,0.3,300,HIGH_EXPLOSIVE,30,,0.2,8,40,0.03,90,90,5,6,,850,200,7,15,,"SYSTEM, DO_NOT_AIM, STRIKE",,,Archotech Research,,Suppression,,Dogshit,,,"Has a %s chance to cause a degeneracy explosion, dealing %s as much %s damage",3%|10x|energy,,,,
+AM Blaster Array,arc_gevurah_spinal,3,,10000,700,,600,,5,0,,100,1,100,ENERGY,500,,0.6,0.6,3,0.12,1,3,5,1,,1000,,,,,"SYSTEM, DO_NOT_CONSERVE",,,Archotech Research,,General,,,,,,,,,,
+Macross MRM,arc_gevurah_mm_l,3,,7500,1500,,150,,5,0,,200,0.3,150,HIGH_EXPLOSIVE,30,,0.2,8,20,0.03,90,90,5,6,,850,200,7,15,,"SYSTEM, DO_NOT_AIM, STRIKE",,,Archotech Research,,Suppression,,Dogshit,,,"Has a %s chance to cause a degeneracy %s explosion, dealing %s as much damage",3%|10x|energy,,,,
+Macross MRM,arc_gevurah_mm_r,3,,7500,1500,,150,0,5,0,,200,0.3,150,HIGH_EXPLOSIVE,30,,0.2,8,20,0.03,90,90,5,6,,850,200,7,15,,"SYSTEM, DO_NOT_AIM, STRIKE",,,Archotech Research,,Suppression,,Dogshit,,,"Has a %s chance to cause a degeneracy explosion, dealing %s as much%s  damage",3%|10x|energy,,,,
+Sunspear,arc_netzach_spinal,3,,18000,1000,4000,,1000,1000,,,,,2,ENERGY,,6000,1,3,2.0,30,,,,,10000,,,,,,"SYSTEM, STRIKE",hyper,,Archotech Research,,Strike,,,,,"%s around the Sunspear's graviton burst, causing flight systems to destabilize.",Warps space,,,,
+Heavy Sunspear,arc_sephiroth_spinal,3,,18000,1000,5000,,2000,1000,,,,,2,ENERGY,,6000,1,3,2.0,35,,,,,10000,,,,,,"SYSTEM, STRIKE",hyper,,Archotech Research,,Strike,,,,,"%s around the Sunspear's graviton burst, causing flight systems to destabilize.",Warps space,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,arc_blackbox_stage2,,,,900,,250,,,,,,,,ENERGY,0,,0,0,0,0,,,,,,1200,0,12,90,,,,,,,,,,
-,arc_blackbox_stage1,,,,900,,250,,,,,,,,ENERGY,100,,1,5,1,0,,,,,,0,0,4,90,,
-Blackbox APS,arc_blackbox,,,,3000,,250,,,,,,,,ENERGY,100,,1,5,1,0,,,,,,0,0,4,,,"SYSTEM, DO_NOT_AIM, PD_ONLY, PD, ANTI_FTR","pd11, missile0",,,,Point Defense (Area),,Perfect,,,"Variable charge warheads do %s damage in a small radius when hitting fighters, otherwise does %s damage in a large radius.",Energy|Fragmentation,,,,,,
-Blackbox APS Salvo,arc_blackbox_salvo,,,,3000,,250,,,,,,,,ENERGY,100,,1,5,2,0,,,,,,0,0,4,,,"SYSTEM, DO_NOT_AIM, PD_ONLY, PD, ANTI_FTR","pd11, missile0",,,,Point Defense (Area),,Perfect,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-Theristicus CIWS,arc_theristicus,3,,20000,550,,35,,,180,6,40,5,40,FRAGMENTATION,5,,0.04,0.04,1,0,2,10,0.1,4,,2200,2200,10,,50,"ANTI_FTR, PD, IGNORES_FLARES, PD_ONLY",pd6,,,,Point Defense,,,,,Deals %s to fighters. Ignores flares.,damage directly to armor
-Glanz CIWS,arc_glanz,3,,45000,700,150,,,,120,8,,,,FRAGMENTATION,,80,0,0,,,,,,,10000,,,,,,PD,pd9,,,,Point Defense (Multiple),,,,Perfect,Fires %s. Ignores flares.,multiple halo beams.
-,,,,,,,,,,,
+,arc_blackbox_stage2,,,,900,,250,,,,,,,,ENERGY,0,,0,0,0,0,,,,,,800,0,12,90,,,,,,,,,,
+,arc_blackbox_stage1,,,,900,,250,,,,,,,,ENERGY,100,,1,5,1,0,,,,,,0,0,4,90,,,,,,,,,
+Blackbox AAM,arc_blackbox,,,,1200,,250,,,,,,,,ENERGY,100,,1,5,1,0,,,,,,0,0,4,,,"SYSTEM, DO_NOT_AIM, PD_ONLY, PD, ANTI_FTR","pd11, missile0",,Archotech Research,,Point Defense (Area),,Perfect,,,"Variable charge warheads do %s damage in a small radius when hitting fighters, otherwise does %s damage in a large radius.",Energy|Fragmentation,,,,,,
+Blackbox AAM Salvo,arc_blackbox_salvo,,,,1200,,250,,,,,,,,ENERGY,100,,1,5,2,0,,,,,,0,0,4,,,"SYSTEM, DO_NOT_AIM, PD_ONLY, PD, ANTI_FTR","pd11, missile0",,Archotech Research,,Point Defense (Area),,Perfect,,
+,arc_icebox_stage2,,,,1000,,60,,500,,,,,,KINETIC,,,,,,,,,,,,800,800,4,,,SYSTEM,,,
+Icebox SRM,arc_icebox,3,,20000,1000,,20,,,,6,20,,,KINETIC,,,1,1,6,0.09,30,30,0,0,,0,10,4,,,,,,Archotech Research,,Anti Shield,,,,,,,Only functions on ships with Whitespace Core
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM
+Theristicus CIWS,arc_theristicus,3,,12000,500,,30,,,180,5,30,5,30,FRAGMENTATION,5,,0.04,0.04,1,0,2,10,0.1,4,,2200,2200,10,,50,"ANTI_FTR, PD, IGNORES_FLARES, PD_ONLY","pd6, arc_bp",,Archotech Research,,Point Defense,,,,,Deals %s to fighters. Ignores flares.,damage directly to armor,Only functions on ships with Whitespace Core
+Glanz CIWS,arc_glanz,3,,30000,600,200,,,,120,7,,,,FRAGMENTATION,,80,0,0,,,,,,,10000,,,,,,PD,"pd9, arc_bp",,Archotech Research,,Point Defense (Multiple),,,,Perfect,Fires %s. Ignores flares.,multiple halo beams.,Only functions on ships with Whitespace Core
+,,,,,,,,,,,,,,,,,,,
+Gloucester Lance,arc_stygan,3,,45000,700,1900,,,400,15,11,,,,FRAGMENTATION,,2400,0.3,0.9,0.3,4,,,,,10000,,,,,,,"energy14, beam9, arc_bp",,Archotech Research,,Strike,,,,,Causes %s explosions that deal %s damage,Fragmentation|40% base,Only functions on ships with Whitespace Core
+,,,,,,,,,,,,,,,,,,
 ,arc_tiferet_cover,,,,1,1,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
 ,arc_sephiroth_lights,,,,1,1,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
 ,arc_sephiroth_flux,,,,1,1,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
@@ -25,6 +29,17 @@ Glanz CIWS,arc_glanz,3,,45000,700,150,,,,120,8,,,,FRAGMENTATION,,80,0,0,,,,,,,10
 ,arc_daat_flux,,,,1,1,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
 ,arc_tiferet_lights,,,,1,1,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
 ,arc_tiferet_flux,,,,1,1,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
-Hepha Defense Array,arc_deveikuth_head,,,,400,200,,,,36,9,6,0.75,2,ENERGY,,,0,0,0.48,0.02,,,,,1000000,,,,,,SYSTEM,,"PD,PD_ONLY,SYSTEM",,,,,,,,,,,,,,,
-Ma Beam Magnum,arc_deveikuth_right,1,,2250,500,,200,,50,25,11,8,,,ENERGY,,,0,2.5,,,3,10,3,1,,600,,,250,,SYSTEM,,,,,,,,,,,,,,,,,
-Uta Assault Blaster,arc_deveikuth_left,1,,1750,550,,20,20,10,20,11,400,1,400,KINETIC,,,0,0.05,1,,1,20,0.4,3,,1400,,,100,,SYSTEM,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Micro Glanz,arc_deveikuth_head,,,,400,200,,,,36,,,,,FRAGMENTATION,,,0,0,,,,,,,1000000,,,,,,"SYSTEM, ANTI_FTR, PD, IGNORES_FLARES",,,,,,,,,,,,,,,,,
+Ma Beam Magnum,arc_deveikuth_right,1,,2250,500,,200,,50,25,11,8,,,ENERGY,,,0,2.5,,,3,10,3,1,,1000,,,250,,SYSTEM,,,,,,,,,,,,,,,,,
+Uta Assault Blaster,arc_deveikuth_left,1,,1750,400,,30,20,10,20,11,200,50,200,KINETIC,,,0,0.05,1,,1,20,0.4,3,,1400,,,100,,SYSTEM,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,
+,arc_teshuvah_head,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,,
+,arc_chesed_leftarm,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM
+,arc_chesed_rightarm,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM
+Micro Gloucester,arc_teshuvah_leftarm,,,,500,1500,,,100,45,,,,,FRAGMENTATION,,,0.15,0.1,0.4,3,1,2,0.5,2,10000,,,,,,"SYSTEM, ANTI_FTR, IGNORES_FLARES","energy14, beam9, arc_bp",,Archotech Research,,,,,,,,,,,,,
+Micro Gloucester,arc_teshuvah_rightarm,,,,500,1500,,,100,45,,,,,FRAGMENTATION,,,0.15,0.1,0.4,3,1,2,0.5,2,10000,,,,,,"SYSTEM, ANTI_FTR, IGNORES_FLARES","energy14, beam9, arc_bp",,Archotech Research,,,,,,,,,,,,,04
+,
+,arc_teshuvah_pauldronL,,,,1,1,,,,,,,,,,,,,10,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,,
+,arc_teshuvah_pauldronR,,,,1,1,,,,,,,,,,,,,10,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,,

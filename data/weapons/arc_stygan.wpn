@@ -1,0 +1,42 @@
+{
+	"specClass":"beam",
+	"id":"arc_stygan",
+	"type":"ENERGY",
+	"size":"MEDIUM",
+        "beamFireOnlyOnFullCharge":true,
+	"displayArcRadius":550,
+	"turretSprite":"graphics/arc/weapons/arc_stygan.png",
+	"turretGlowSprite":"graphics/arc/weapons/arc_stygan_glow.png",
+	"hardpointSprite":"graphics/arc/weapons/arc_stygan.png",
+	"hardpointGlowSprite":"graphics/arc/weapons/arc_stygan_glow.png",
+	"turretOffsets":[
+	5, -3,
+	5, -2,
+	5, 0,
+	5, 2,
+        5, 3
+	],
+	"turretAngleOffsets":[-2, -0.75, 0, 0.75, 2],
+	"hardpointOffsets":[
+	5, -3,
+        5, -1,
+	5, 0,
+        5, 1,
+        5, 3
+	],
+	"hardpointAngleOffsets":[-2,  -0.75, 0, 0.75, 2],
+	"barrelMode":"LINKED",
+	"darkCore":true,
+	"fringeColor":[255,100,0,255],
+	"coreColor":[15,0,0,255],
+	"glowColor":[232,128,35,255],
+	"width":20.0,
+        "textureType":ROUGH,
+	"textureScrollSpeed":0,
+	"pixelsPerTexel":5.0,
+	"pierceSet":[PROJECTILE_FF,PROJECTILE_NO_FF,PROJECTILE_FIGHTER,MISSILE_FF,MISSILE_NO_FF],
+	"animationType":"GLOW",  # NONE, GLOW, MUZZLE_FLASH, SMOKE
+	"everyFrameEffect":"arc.weapons.stygan.StyganEveryFrameEffect",
+	"beamEffect": "arc.weapons.stygan.StyganBeamEffect",
+	"autocharge":true,
+}

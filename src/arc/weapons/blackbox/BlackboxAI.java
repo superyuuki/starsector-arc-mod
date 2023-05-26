@@ -78,6 +78,7 @@ public class BlackboxAI implements MissileAIPlugin, GuidedMissileAI {
                 missilePicker.add(m, m.getDamageAmount());
             }
         }
+
     }
 
     final MissileAPI missile;

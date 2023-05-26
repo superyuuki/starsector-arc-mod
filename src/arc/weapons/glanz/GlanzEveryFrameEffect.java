@@ -1,10 +1,12 @@
 package arc.weapons.glanz;
 
+import arc.weapons.ArcBaseEveryFrameWeaponEffect;
 import com.fs.starfarer.api.combat.CombatEngineAPI;
 import com.fs.starfarer.api.combat.EveryFrameWeaponEffectPlugin;
 import com.fs.starfarer.api.combat.MissileAPI;
 import com.fs.starfarer.api.combat.WeaponAPI;
 import com.fs.starfarer.api.impl.campaign.ids.Stats;
+import com.fs.starfarer.api.util.IntervalUtil;
 import data.scripts.util.MagicTargeting;
 import org.lazywizard.lazylib.FastTrig;
 import org.lazywizard.lazylib.MathUtils;
@@ -13,15 +15,18 @@ import org.lwjgl.util.vector.Vector2f;
 
 import java.util.HashMap;
 import java.util.Map;
+//Thanks tart
+public class GlanzEveryFrameEffect extends ArcBaseEveryFrameWeaponEffect {
 
-public class GlanzEveryFrameEffect implements EveryFrameWeaponEffectPlugin {
+    boolean runOnce=false;
+    final Map <Integer,MissileAPI> BEAMS = new HashMap<>();
+    float time = 0;
 
-    private boolean runOnce=false, IPDAI=false;
-    private Map <Integer,MissileAPI> BEAMS = new HashMap<>();
-    private float time=0;
 
     @Override
-    public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
+    public void advanceSub(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
+
+
 
         if (!runOnce){
             runOnce=true;
@@ -30,17 +35,15 @@ public class GlanzEveryFrameEffect implements EveryFrameWeaponEffectPlugin {
             for(int i=1; i<weapon.getSpec().getHardpointAngleOffsets().size(); i++){
                 BEAMS.put(i, null);
             }
-
-            if(weapon.getShip().getMutableStats().getDynamic().getMod(Stats.PD_IGNORES_FLARES).getFlatBonus()>0){
-                IPDAI=true;
-            }
         }
 
         if (engine.isPaused() || weapon.isDisabled()) {
             return;
         }
 
-        time += 2;
+        time += Math.PI / 48;
+
+
 
         if(weapon.isFiring()){
             //get all rearby missiles
@@ -54,9 +57,9 @@ public class GlanzEveryFrameEffect implements EveryFrameWeaponEffectPlugin {
                             MagicTargeting.missilePriority.DAMAGE_PRIORITY,
                             weapon.getLocation(),
                             weapon.getCurrAngle(),
-                            180,
+                            90,
                             (int)weapon.getRange(),
-                            IPDAI
+                            true
                     );
 
                     if(target!=null){
@@ -66,17 +69,19 @@ public class GlanzEveryFrameEffect implements EveryFrameWeaponEffectPlugin {
                         float angle=VectorUtils.getAngle(weapon.getLocation(), BEAMS.get(i).getLocation());
                         angle = MathUtils.getShortestRotation(weapon.getCurrAngle(), angle);
 
+
                         weapon.getSpec().getHardpointAngleOffsets().set(i,angle);
                         weapon.getSpec().getTurretAngleOffsets().set(i,angle);
 
                         weapon.getSpec().getHardpointFireOffsets().set(i, MathUtils.getPoint(new Vector2f(), 5, angle));
                         weapon.getSpec().getTurretFireOffsets().set(i, MathUtils.getPoint(new Vector2f(), 5, angle));
                     } else {
-                        //no target, reset to forward firing
-                        //TODO work sharing, enemy surpressing
+
+                        float mod = 0 + ((float)(FastTrig.sin((time + i))));
+
                         BEAMS.put(i, null);
-                        weapon.getSpec().getHardpointAngleOffsets().set(i,0f);
-                        weapon.getSpec().getTurretAngleOffsets().set(i,0f);
+                        weapon.getSpec().getHardpointAngleOffsets().set(i,mod);
+                        weapon.getSpec().getTurretAngleOffsets().set(i,mod);
                         weapon.getSpec().getHardpointFireOffsets().set(i, new Vector2f(5,0));
                         weapon.getSpec().getTurretFireOffsets().set(i, new Vector2f(5,0));
                     }
@@ -85,12 +90,11 @@ public class GlanzEveryFrameEffect implements EveryFrameWeaponEffectPlugin {
                                 || Math.abs(MathUtils.getShortestRotation(VectorUtils.getAngle(weapon.getLocation(), BEAMS.get(i).getLocation()),weapon.getCurrAngle()))>90
                 ){
 
-                    //float mod = (float)(FastTrig.sin((time)*1.1f)/2+FastTrig.sin((time)*2.9)/3);
 
-                    //target left engagement arc
+                    float mod = ((float)(FastTrig.sin(time + i)));
                     BEAMS.put(i, null);
-                    weapon.getSpec().getHardpointAngleOffsets().set(i,0f);
-                    weapon.getSpec().getTurretAngleOffsets().set(i,0f);
+                    weapon.getSpec().getHardpointAngleOffsets().set(i,mod);
+                    weapon.getSpec().getTurretAngleOffsets().set(i,mod);
                     weapon.getSpec().getHardpointFireOffsets().set(i, new Vector2f(5,0));
                     weapon.getSpec().getTurretFireOffsets().set(i, new Vector2f(5,0));
 
@@ -102,7 +106,6 @@ public class GlanzEveryFrameEffect implements EveryFrameWeaponEffectPlugin {
                     //keep hitting that target
                     float angle=VectorUtils.getAngle(weapon.getLocation(), BEAMS.get(i).getLocation());
                     angle = MathUtils.getShortestRotation(weapon.getCurrAngle(), angle);
-                    //float mod = (float)(FastTrig.sin((time + angle)*1.1f)/2+FastTrig.sin((time+angle)*2.9)/3);
 
                     weapon.getSpec().getHardpointAngleOffsets().set(i,angle);
                     weapon.getSpec().getTurretAngleOffsets().set(i,angle);

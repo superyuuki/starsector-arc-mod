@@ -37,9 +37,9 @@
     0,
   ],
 
-  "fringeColor":[0,0,240,200],
-  "coreColor":[30,90,200,150],
-  "width":6.0,
+  "fringeColor":[0,0,120,90],
+  "coreColor":[30,90,120,150],
+  "width":12.0,
   "textureType":WEAVE,
   "textureScrollSpeed":16.0,
   "pixelsPerTexel":5.0,

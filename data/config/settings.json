@@ -1,14 +1,33 @@
 {
+
+	"plugins":{
+		"VariableBuffPlugin":"arc.hullmod.coordinator.VariableBuffPlugin"
+	},
+
 	"designTypeColors":{
-        "ARC":[10,120,10,144]
+        "Archotech Research":[50,50,50,150],
+		"Archotech Research (Auxiliary)":[50,50,70,200]
+
 	},
 
 	"graphics": {
 		"fx": {
-			"targeting":"graphics/arc/fx/targeting.png",
-			"blast_flash":"graphics/arc/fx/blast_flash.png",
-			"blast_core":"graphics/arc/fx/blast_core.png",
-			"blast_diffuse":"graphics/arc/fx/blast_diffuse.png"
+			"targeting":"graphics/ARC/fx/targeting.png",
+			"blast_flash":"graphics/ARC/fx/blast_flash.png",
+			"blast_core":"graphics/ARC/fx/blast_core.png",
+			"blast_diffuse":"graphics/ARC/fx/blast_diffuse.png",
+			"blast_outer":"graphics/ARC/fx/blast_outer.png",
+
+			"tac_warning": "graphics/ARC/fx/tac_warning.png"
+		},
+		"ui":{
+			"arc_incompatible":"graphics/ARC/icons/arc_incompatible.png"
+		},
+		"characters": {
+			"arc_aurelia": "graphics/ARC/portraits/arc_core_3a.png"
+		},
+		"portraits": {
+			"arc_core_1": "graphics/ARC/portraits/arc_core_1.png"
 		}
 	}
 }

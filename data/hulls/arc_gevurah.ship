@@ -14,7 +14,6 @@
   "builtInMods": [
     "arc_coronal_hypershunt",
     "arc_laminate_armor",
-    "arc_whitespace_core",
     "diableavionics_universaldecksExtra"
   ],
   "builtInWeapons": {
@@ -24,11 +23,7 @@
     "WS0020": "arc_gevurah_lights",
     "WS0021": "arc_gevurah_flux",
     "WS0030": "arc_blackbox",
-    "WS0031": "arc_blackbox",
-    "WS0032": "arc_blackbox",
-    "WS0033": "arc_blackbox",
-    "WS0034": "arc_blackbox",
-    "WS0035": "arc_blackbox"
+    "WS0031": "arc_blackbox"
   },
   "weaponSlots": [
     {
@@ -219,42 +214,6 @@
       "arc": 0,
       "angle": 90,
       "locations": [100, 30]
-    },
-    {
-      "id": "WS0032",
-      "size": "SMALL",
-      "type": "BUILT_IN",
-      "mount": "HIDDEN",
-      "arc": 0,
-      "angle": -90,
-      "locations": [90, -30]
-    },
-    {
-      "id": "WS0033",
-      "size": "SMALL",
-      "type": "BUILT_IN",
-      "mount": "HIDDEN",
-      "arc": 0,
-      "angle": 90,
-      "locations": [90, 30]
-    },
-    {
-      "id": "WS0034",
-      "size": "SMALL",
-      "type": "BUILT_IN",
-      "mount": "HIDDEN",
-      "arc": 0,
-      "angle": -90,
-      "locations": [80, -30]
-    },
-    {
-      "id": "WS0035",
-      "size": "SMALL",
-      "type": "BUILT_IN",
-      "mount": "HIDDEN",
-      "arc": 0,
-      "angle": 90,
-      "locations": [80, 30]
     },
     {
       "id": "LB 1",

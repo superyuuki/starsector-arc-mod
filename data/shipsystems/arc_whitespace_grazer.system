@@ -2,7 +2,7 @@
 	"id":"arc_whitespace_grazer",
 	"type":"PHASE_CLOAK",
 	"aiType":"PHASE_CLOAK",
-	"statsScript":"arc.shipsystems.WhitespaceGrazerStats",
+	"statsScript":"arc.shipsystems.whitespace.WhitespaceGrazerStats",
 	"runScriptWhilePaused":true, # only for the player's ship
 	"runScriptWhileIdle":true,  # this means unapply() never gets called
 	"blockActionsWhileChargingDown":false,
@@ -36,7 +36,6 @@
 	"outOfUsesSound":"phase_cloak_collision",
 
 	"aiHints":{
-	        "activeSpeedIncrease":300,
-	        "averageSpeedMult":3,
+	        "averageSpeedMult":2.2,
     }
 }

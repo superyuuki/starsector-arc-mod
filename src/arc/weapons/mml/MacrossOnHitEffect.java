@@ -1,29 +1,62 @@
 package arc.weapons.mml;
 
+import arc.util.ARCUtils;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.combat.listeners.ApplyDamageResultAPI;
 import com.fs.starfarer.api.loading.DamagingExplosionSpec;
-import data.scripts.util.MagicFakeBeam;
 import data.scripts.util.MagicLensFlare;
 import data.scripts.util.MagicRender;
-import org.dark.shaders.distortion.DistortionShader;
-import org.dark.shaders.distortion.RippleDistortion;
 import org.lazywizard.lazylib.MathUtils;
-import org.lazywizard.lazylib.VectorUtils;
-import org.lazywizard.lazylib.combat.AIUtils;
-import org.lazywizard.lazylib.combat.CombatUtils;
 import org.lwjgl.util.vector.Vector2f;
 
 import java.awt.Color;
-import java.util.List;
-import java.util.Random;
 
 public class MacrossOnHitEffect implements OnHitEffectPlugin {
+    static Color color = new Color(100, 50, 210, 255);
 
     @Override
     public void onHit(DamagingProjectileAPI projectile, CombatEntityAPI target, Vector2f point, boolean shieldHit, ApplyDamageResultAPI damageResult, CombatEngineAPI engine) {
-        if (MathUtils.getRandomNumberInRange(0, 100) > 4) return;
+
+        float chance = 0;
+        float damage = 0;
+        float baseMult = 0;
+
+        if (target instanceof ShipAPI) {
+            baseMult = ARCUtils.decideBasedOnHullSize(
+                    (ShipAPI) target,
+                    0.1f,
+                    0.2f,
+                    0.4f,
+                    1f
+            );
+
+            chance = ARCUtils.decideBasedOnHullSize(
+                    (ShipAPI)target,
+                    1f,
+                    2f,
+                    3f,
+                    4f
+            );
+
+            damage = ARCUtils.decideBasedOnHullSize(
+                    (ShipAPI) target,
+                    3,
+                    5,
+                    10,
+                    15
+            );
+
+
+        } else {
+            baseMult = 0.2f;
+            chance = 3f;
+            damage = 4f;
+        }
+
+        projectile.setDamageAmount(projectile.getDamageAmount() * baseMult);
+
+        if (MathUtils.getRandomNumberInRange(0, 100) > chance) return;
 
         if(MagicRender.screenCheck(0.25f, projectile.getLocation())) {
             MagicRender.battlespace(
@@ -34,12 +67,12 @@ public class MacrossOnHitEffect implements OnHitEffectPlugin {
                     new Vector2f(-384, -384),
                     MathUtils.getRandomNumberInRange(0, 360),
                     MathUtils.getRandomNumberInRange(-1, 1),
-                    Color.PINK,
+                    Color.WHITE,
                     false,
                     0, 0, 0, 0, 0,
                     0,
                     0.1f,
-                    0.4f,
+                    0.6f,
                     CombatEngineLayers.JUST_BELOW_WIDGETS
             );
             MagicRender.battlespace(
@@ -50,12 +83,12 @@ public class MacrossOnHitEffect implements OnHitEffectPlugin {
                     new Vector2f(-196, -196),
                     MathUtils.getRandomNumberInRange(0, 360),
                     MathUtils.getRandomNumberInRange(-1, 1),
-                    Color.BLUE,
+                    color,
                     false,
                     5, 3, 2, 1, 2,
                     0f,
                     0.15f,
-                    0.65f,
+                    1.45f,
                     CombatEngineLayers.JUST_BELOW_WIDGETS
             );
             MagicRender.battlespace(
@@ -63,47 +96,37 @@ public class MacrossOnHitEffect implements OnHitEffectPlugin {
                     new Vector2f(point),
                     new Vector2f(),
                     new Vector2f(150, 150),
-                    new Vector2f(-128, -128),
+                    new Vector2f(350, 350),
                     MathUtils.getRandomNumberInRange(0, 360),
                     MathUtils.getRandomNumberInRange(-1, 1),
-                    Color.BLUE,
+                    color,
                     false,
                     4, 1, 2, 2, 1,
                     0.2f,
                     0.05f,
-                    0.75f,
+                    0.9f,
+                    CombatEngineLayers.JUST_BELOW_WIDGETS
+            );
+
+            MagicRender.battlespace(
+                    Global.getSettings().getSprite("fx", "blast_outer"),
+                    new Vector2f(point),
+                    new Vector2f(),
+                    new Vector2f(200, 200),
+                    new Vector2f(600, 600),
+                    MathUtils.getRandomNumberInRange(0, 360),
+                    MathUtils.getRandomNumberInRange(-1, 1),
+                    color,
+                    false,
+                    4, 1, 2, 2, 1,
+                    0.1f,
+                    0.4f,
+                    1.9f,
                     CombatEngineLayers.JUST_BELOW_WIDGETS
             );
 
 
-            for(int i=0; i<MathUtils.getRandomNumberInRange(4, 10); i++){
-
-                int size = MathUtils.getRandomNumberInRange(25, 140);
-                float fade = MathUtils.getRandomNumberInRange(0.15f, 0.5f);
-                CombatEngineLayers layer = CombatEngineLayers.JUST_BELOW_WIDGETS;
-                if(Math.random()<fade){
-                    layer = CombatEngineLayers.BELOW_INDICATORS_LAYER;
-                }
-
-                MagicRender.battlespace(
-                        Global.getSettings().getSprite("fx","blast_flash"),
-                        MathUtils.getRandomPointOnCircumference(
-                                point,
-                                MathUtils.getRandomNumberInRange(32, 128-size)
-                        ),
-                        new Vector2f(),
-                        new Vector2f(size,size),
-                        new Vector2f(-size/fade,-size/fade),
-                        MathUtils.getRandomNumberInRange(0, 360),
-                        MathUtils.getRandomNumberInRange(-1, 1),
-                        new Color(128,24,200,140),
-                        false,
-                        4,5,0,0,0,
-                        0,
-                        3*fade/4,
-                        fade/4,
-                        layer
-                );
+            for(int i=0; i<MathUtils.getRandomNumberInRange(4, 2 + chance); i++){
 
 
                 Color boop = new Color(MathUtils.getRandomNumberInRange(150, 200), MathUtils.getRandomNumberInRange(0, 20), MathUtils.getRandomNumberInRange(150,200), MathUtils.getRandomNumberInRange(150,255));
@@ -116,7 +139,7 @@ public class MacrossOnHitEffect implements OnHitEffectPlugin {
                         ),
                         target,
                         target,
-                        DamageType.ENERGY, 0f, 500f, 500f, "", 60f,boop, Color.BLACK);
+                        DamageType.ENERGY, 0f, projectile.getDamageAmount() * damage / 4, 500f, "", 60f,boop, Color.BLACK);
 
                 MagicLensFlare.createSharpFlare(
                         engine,
@@ -140,7 +163,7 @@ public class MacrossOnHitEffect implements OnHitEffectPlugin {
         DamagingExplosionSpec blast = new DamagingExplosionSpec(0.2f,
                 200f,
                 100f,
-                projectile.getDamageAmount() * 30f,
+                projectile.getDamageAmount() * damage,
                 projectile.getDamageAmount(),
                 CollisionClass.PROJECTILE_FF,
                 CollisionClass.PROJECTILE_FIGHTER,

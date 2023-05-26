@@ -1,30 +1,53 @@
 {
-	"specClass":"beam",
 	"id":"arc_deveikuth_head",
-	"type":"ENERGY",
 	"size":"SMALL",
 	"collisionClass":"RAY",
 	"collisionClassByFighter":"RAY_FIGHTER",
-	"turretSprite":"graphics/ARC/ships/deveikuth/head.png",
-	"turretGlowSprite":"graphics/ARC/ships/deveikuth/glow.png",
+	"turretSprite":"graphics/arc/ships/deveikuth/head.png",
+	"turretGlowSprite":"graphics/arc/ships/deveikuth/glow.png",
 	"hardpointSprite":"",
-	"hardpointGlowSprite":"",	
-	"turretOffsets":[2, 0],
-	"turretAngleOffsets":[0],
-	"hardpointOffsets":[4, 0],
-	"hardpointAngleOffsets":[0],
+	"hardpointGlowSprite":"",
 
-	"darkCore":true,
-	
-	"fringeColor":[155,50,50,255],
-	"coreColor":[15,15,15,255],
-	"glowColor":[232,128,35,255],
+	"darkCore":false,
+	"specClass":"beam",
+	"type":"ENERGY",
+	"everyFrameEffect":"arc.weapons.glanz.GlanzEveryFrameEffect",
 
-	"width":16.0,
+	"turretOffsets":[
+		5, 1,
+		3, -2,
+		3, 2,
+		5, -1,
+	],
+	"turretAngleOffsets":[
+		0,
+		0,
+		0,
+		0,
+	],
 
-	"textureType":ROUGH,
-	"textureScrollSpeed":128.0,
+	"hardpointOffsets":[
+		5, 1,
+		3, -2,
+		3, 2,
+		5, -1
+	],
+	"hardpointAngleOffsets":[
+		0,
+		0,
+		0,
+		0,
+	],
+
+	"fringeColor":[0,0,120,90],
+	"coreColor":[30,90,120,150],
+	"width":12.0,
+	"textureType":WEAVE,
+	"textureScrollSpeed":16.0,
 	"pixelsPerTexel":5.0,
-	"pierceSet":[PROJECTILE_FF,PROJECTILE_NO_FF,PROJECTILE_FIGHTER]
+	"pierceSet":[PROJECTILE_FF,PROJECTILE_NO_FF,PROJECTILE_FIGHTER],
+	"glowColor":[232,128,35,255],
+	"animationType":"GLOW",
+	"fireSoundOne":"burst_pd_fire"
 
 }

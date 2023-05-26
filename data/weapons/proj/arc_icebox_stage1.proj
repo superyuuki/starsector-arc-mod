@@ -1,0 +1,103 @@
+{
+  "id":"arc_icebox_stage1",
+  "specClass":"missile",
+  "missileType":"MISSILE",
+  "sprite":"graphics/ARC/missiles/arc_nyoom.png",
+  "size":[5,5],
+  "center":[3,3],
+  "collisionRadius":16,
+  "collisionClass":"MISSILE_NO_FF",
+  "explosionColor":[100,100,255,0],  # purely visual, will get a white additively blended core on top of this color
+  "explosionRadius":0, # purely visual
+  "explosionSpec":{"duration":1.1f, # not visual
+    "radius":150,
+    "coreRadius":100, # full damage within core radius
+    "collisionClass":PROJECTILE_FIGHTER,
+    "collisionClassByFighter":PROJECTILE_FIGHTER,
+    "particleSizeMin":2.0,
+    "particleSizeRange":1.0,
+    "particleDuration":1,
+    "particleCount":20,
+    "particleColor":[0,185,187,255]},
+  "engineSpec":{"turnAcc":3000,
+    "turnRate":270,
+    "acc":2500,
+    "dec":2500},
+  "engineSlots":[{"id":"ES1",
+    "loc":[0, 0],
+    #"style":"MISSILE_HIGH_TECH",
+    "style":"CUSTOM",
+    "styleSpec":{
+      "mode":"QUAD_STRIP", # PARTICLES or QUAD_STRIP, determines which params are used
+      "engineColor":[0,210,230,120],
+      "contrailDuration":1,
+      "contrailWidthMult":1,
+      "contrailWidthAddedFractionAtEnd":1.5,  # can be negative. makes trail spread out/narrow at the end
+      "contrailMinSeg":60, # min segment length, in pixels
+      "contrailMaxSpeedMult":0.5f,
+      "contrailAngularVelocityMult":0.5f,
+      "contrailColor":[1,160,139,150],
+      "type":"SMOKE" # GLOW or SMOKE; additive or regular blend mode
+    },
+    "width":2.0,
+    "length":20.0,
+    "angle":180.0},
+    {"id":"ES2",
+      "loc":[0, 0],
+      #"style":"MISSILE_HIGH_TECH",
+      "style":"CUSTOM",
+      "styleSpec":{
+        "mode":"QUAD_STRIP", # PARTICLES or QUAD_STRIP, determines which params are used
+        "engineColor":[0,210,230,120],
+        "contrailDuration":1,
+        "contrailWidthMult":1,
+        "contrailWidthAddedFractionAtEnd":1.5,  # can be negative. makes trail spread out/narrow at the end
+        "contrailMinSeg":60, # min segment length, in pixels
+        "contrailMaxSpeedMult":0.5f,
+        "contrailAngularVelocityMult":0.5f,
+        "contrailColor":[1,160,139,150],
+        "type":"SMOKE" # GLOW or SMOKE; additive or regular blend mode
+      },
+      "width":2.0,
+      "length":20.0,
+      "angle":0.0},
+    {"id":"ES3",
+      "loc":[0, 0],
+      #"style":"MISSILE_HIGH_TECH",
+      "style":"CUSTOM",
+      "styleSpec":{
+        "mode":"QUAD_STRIP", # PARTICLES or QUAD_STRIP, determines which params are used
+        "engineColor":[0,210,230,120],
+        "contrailDuration":1,
+        "contrailWidthMult":1,
+        "contrailWidthAddedFractionAtEnd":1.5,  # can be negative. makes trail spread out/narrow at the end
+        "contrailMinSeg":60, # min segment length, in pixels
+        "contrailMaxSpeedMult":0.5f,
+        "contrailAngularVelocityMult":0.5f,
+        "contrailColor":[1,160,139,150],
+        "type":"SMOKE" # GLOW or SMOKE; additive or regular blend mode
+      },
+      "width":2.0,
+      "length":20.0,
+      "angle":90.0},
+    {"id":"ES4",
+      "loc":[0, 0],
+      #"style":"MISSILE_HIGH_TECH",
+      "style":"CUSTOM",
+      "styleSpec":{
+        "mode":"QUAD_STRIP", # PARTICLES or QUAD_STRIP, determines which params are used
+        "engineColor":[0,210,230,120],
+        "contrailDuration":1,
+        "contrailWidthMult":1,
+        "contrailWidthAddedFractionAtEnd":1.5,  # can be negative. makes trail spread out/narrow at the end
+        "contrailMinSeg":60, # min segment length, in pixels
+        "contrailMaxSpeedMult":0.5f,
+        "contrailAngularVelocityMult":0.5f,
+        "contrailColor":[1,160,139,150],
+        "type":"SMOKE" # GLOW or SMOKE; additive or regular blend mode
+      },
+      "width":2.0,
+      "length":20.0,
+      "angle":270.0},
+  ]
+}

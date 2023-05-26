@@ -14,7 +14,6 @@
   "builtInMods": [
     "arc_coronal_hypershunt",
     "arc_laminate_armor",
-    "arc_whitespace_core",
     "diableavionics_universaldecksExtra"
   ],
   "builtInWeapons": {

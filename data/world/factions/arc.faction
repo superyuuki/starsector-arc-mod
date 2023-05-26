@@ -1,0 +1,185 @@
+{
+  "id":"arc",
+  "color":[10,20,40,144],
+  "secondaryUIColor":[10,20,40,144],
+  "secondarySegments":5,
+
+  "displayName":"ARC",
+  "displayNameWithArticle":"the ARC",
+  "logo":"graphics/ARC/faction/icon.png",
+  "crest":"graphics/ARC/faction/icon.png",
+
+  "shipNamePrefix":"ARC",
+  "showInIntelTab":false,
+
+  "shipNameSources":{
+    "PERSIAN":1,
+    "GENERAL":1
+  },
+  "names":{
+    "fringe":1,
+    "hindu":1
+  },
+
+  "variantOverrides":{
+  },
+
+  "hullFrequency":{
+    "hulls":{
+      "buffalo2":0
+    }
+  },
+  "shipsWhenImporting":{
+    "tags":["base_bp", "arc_bp", "hightech_bp", "diable_ship_bp"],
+    "hulls":[
+    ]
+  },
+  "knownShips":{
+    "tags":["base_bp", "arc_bp", "diable_ship_bp"],
+    "hulls":[
+    ]
+  },
+  "priorityShips":{
+    "tags":["arc_bp"],
+    "hulls":[
+    ]
+  },
+  "knownFighters":{
+    "tags":["arc_bp", "diable_wanzer_bp"],
+    "fighters":[
+    ]
+  },
+  "priorityFighters":{
+    "tags":[],
+    "fighters":[
+    ]
+  },
+  "knownWeapons":{
+    "tags":["lowtech_bp", "midline_bp", "hightech_bp", "missile_bp", "remnant", "merc"],
+    "weapons":[
+      "lightneedler",
+      "railgun",
+      "heavymauler",
+      "hveldriver",
+      "heavyneedler",
+      "gauss",
+      "mjolnir",
+      "sabotpod",
+      "cyclone",
+      "squall",
+      "locust",
+      "amblaster",
+      "phasebeam",
+      "heavyblaster",
+      "plasma",
+      "tachyonlance"
+    ]
+  },
+  "priorityWeapons":{
+    "tags":["arc_bp"],
+    "weapons":[
+    ]
+  },
+  "knownHullMods":{
+    "tags":["base_bp", "arc_bp"],
+    "hullMods":[
+      "advancedshieldemitter",
+      "advancedoptics",
+      "augmentedengines",
+      "auxiliarythrusters",
+      "dedicated_targeting_core",
+      "eccm",
+      "missleracks",
+      "extendedshieldemitter",
+      "fluxcoil",
+      "fluxdistributor",
+      "frontemitter",
+      "frontshield",
+      "hardenedshieldemitter",
+      "hardened_subsystems",
+      "insulatedengine",
+      "targetingunit",
+      "adaptiveshields",
+      "fluxbreakers",
+      "stabilizedshieldemitter",
+      "expanded_deck_crew",
+      "recovery_shuttles",
+      "operations_center",
+      "nav_relay",
+      "ecm"
+    ]
+  },
+  "factionDoctrine":{
+    "warships":4,
+    "carriers":2,
+    "phaseShips":0,
+
+    "officerQuality":5,
+    "shipQuality":5,
+    "numShips":1,
+
+    "shipSize":4,
+    "aggression":5,
+
+    "combatFreighterProbability":0.25,   #diable decision
+    "combatFreighterCombatUseFraction":0.25,
+    "combatFreighterCombatUseFractionWhenPriority":0.5,
+    "autofitRandomizeProbability":0.33,
+
+    "commanderSkillsShuffleProbability":0.5,
+    "commanderSkills":[
+      "weapon_drills",
+      "wolfpack_tactics",
+      "carrier_group",
+      "officer_training",
+      "electronic_warfare"
+    ]
+  },
+  "illegalCommodities":[],
+
+  "custom":{
+    "engageWhenEvenStrength":true,
+    "allowsTransponderOffTrade":true,
+    "postsNoBounties":true,
+    "fightToTheLast":true,
+    "caresAboutAtrocities":false,
+    "buysAICores":false,
+    "AICoreValueMult":1.5,
+    "AICoreRepMult":2,
+    "buysSurveyData":false
+  },
+
+
+  "internalComms":"arc_internal",
+
+  "ranks":{
+    "ranks":{
+      "spaceSailor":{"name":"Pensive One"},
+      "spaceLieutenant":{"name":"Affine One"},
+      "spaceCaptain":{"name":"Variate One"},
+      "spaceCommander":{"name":"Polymorphic One"},
+      "spaceAdmiral":{"name":"Fractal One"},
+      "factionLeader":{"name":"Arbitrate One"}
+    },
+    "posts":{
+      "agent":{"name":"Seldom One"},
+      "specialAgent":{"name":"Shadow One"},
+      "officer":{"name":"Affine One"},
+      "officer_for_hire":{"name":"Affine One"},
+      "fleetCommander":{"name":"Polymorphic One"},
+      "supplyManager":{"name":"Custodial One"},
+      "stationCommander":{"name":"Administrative One"},
+      "patrolCommander":{"name":"Shardnet Crux"},
+      "administrator":{"name":"Administrative One"},
+      "factionLeader":{"name":"Arbitrate One"}
+    }
+  },
+  "portraits":{
+    "standard_male":[
+      "graphics/ARC/portraits/arc_core_1.png"
+    ],
+    "standard_female":[
+      "graphics/ARC/portraits/arc_core_1.png"
+    ]
+  }
+}

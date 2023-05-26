@@ -1,0 +1,38 @@
+{
+	"specClass":"beam",
+	"id":"arc_teshuvah_rightarm",
+	"type":"ENERGY",
+	"size":"SMALL",
+	"displayArcRadius":250,
+	"turretSprite":"graphics/arc/ships/teshuvah/rightarm.png",
+	"turretGunSprite":"graphics/arc/ships/teshuvah/rightbarrel.png",
+	"hardpointSprite":"graphics/arc/ships/teshuvah/rightarm.png",
+	"hardpointGunSprite":"graphics/arc/ships/teshuvah/rightbarrel.png",
+	"beamFireOnlyOnFullCharge":true,
+	"turretOffsets":[
+		4, 2,
+		4, 0,
+		4, 2,
+	],
+	"turretAngleOffsets":[-2, 0, 2],
+	"hardpointOffsets":[
+		4, -3,
+		4, 0,
+		4, 3,
+	],
+	"hardpointAngleOffsets":[-2,  0, 2],
+	"barrelMode":"LINKED",
+	"darkCore":true,
+	"coreColor":[15,0,0,255],
+	"fringeColor":[95,165,200,255],
+	"glowColor":[232,128,35,255],
+	"width":7.0,
+	"textureType":ROUGH,
+	"textureScrollSpeed":0,
+	"pixelsPerTexel":5.0,
+	"pierceSet":[PROJECTILE_FF,PROJECTILE_NO_FF,PROJECTILE_FIGHTER,MISSILE_FF,MISSILE_NO_FF],
+	"animationType":"GLOW",  # NONE, GLOW, MUZZLE_FLASH, SMOKE
+	"everyFrameEffect":"arc.weapons.stygan.StyganMiniEveryFrameEffect",
+	"beamEffect": "arc.weapons.stygan.StyganMiniEffect",
+	"autocharge":true
+}

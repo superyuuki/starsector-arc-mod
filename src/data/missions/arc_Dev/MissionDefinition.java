@@ -25,6 +25,7 @@ public class MissionDefinition implements MissionDefinitionPlugin {
         api.addToFleet(FleetSide.PLAYER, "arc_gevurah_prototype", FleetMemberType.SHIP, "ARC smelly balls", true);
         api.addToFleet(FleetSide.PLAYER, "arc_tiferet_prototype", FleetMemberType.SHIP, "ARC bean", true);
         api.addToFleet(FleetSide.PLAYER, "arc_tiferet_prototype", FleetMemberType.SHIP, "ARC nuggy", true);
+        api.addToFleet(FleetSide.PLAYER, "arc_chokmah_prototype", FleetMemberType.SHIP, "ARC what", true);
 
 
 

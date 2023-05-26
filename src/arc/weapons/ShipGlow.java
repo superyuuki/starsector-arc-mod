@@ -1,6 +1,6 @@
 package arc.weapons;
 
-import arc.ARCUtils;
+import arc.util.ARCUtils;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.graphics.SpriteAPI;
@@ -8,6 +8,9 @@ import com.fs.starfarer.api.graphics.SpriteAPI;
 import java.awt.*;
 
 public class ShipGlow implements EveryFrameWeaponEffectPlugin {
+
+    //TODO use variable focus for colors
+
     //private static final float[] COLOR_NORMAL = {255f/255f, 140f/255f, 80f/255f};
     private static final float[] COLOR_NORMAL = {255f/255f, 255f/255f, 255f/255f};
     private static final float[] COLOR_OVERDRIVE = {255f/255f, 160f/255f, 20f/255f};
@@ -20,8 +23,7 @@ public class ShipGlow implements EveryFrameWeaponEffectPlugin {
 
     private boolean runOnce = false;
     private float HEIGHT;
-    private float WIDTH;
-	private float TEX_HEIGHT_MULT;
+    private float TEX_HEIGHT_MULT;
 	private float time;
 
     @Override
@@ -30,20 +32,17 @@ public class ShipGlow implements EveryFrameWeaponEffectPlugin {
         if (Global.getCombatEngine().isPaused()) {
             return;
         }
-
         ShipAPI ship = weapon.getShip();
         if (ship == null) {
             return;
         }
 
-        if (ship.getFluxTracker().isOverloaded()) {
-            return;
-        }
+        //get mode
 		
         if (!runOnce) {
             weapon.getAnimation().setFrame(1);
             HEIGHT = weapon.getSprite().getHeight();
-            WIDTH = weapon.getSprite().getWidth();
+            float WIDTH = weapon.getSprite().getWidth();
 			TEX_HEIGHT_MULT = weapon.getSprite().getTextureHeight();
             weapon.getAnimation().setFrame(0);
             runOnce = true;
@@ -98,10 +97,7 @@ public class ShipGlow implements EveryFrameWeaponEffectPlugin {
 		
 		sprite.setAdditiveBlend();
 
-        //Brightness clamp, cause there's some weird cases with flux level > 1f, I guess
         fluxBrightness = Math.max(MIN_OPACITY,Math.min(fluxBrightness,1f));
-
-        // Set color for flux
         Color colorToUse = new Color(COLOR_NORMAL[0], COLOR_NORMAL[1], COLOR_NORMAL[2], fluxBrightness*MAX_OPACITY);
 
         // Mix in color for overdrive

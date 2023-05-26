@@ -1,0 +1,33 @@
+{
+  "variantId": "arc_teshuvah_standard",
+  "hullId": "arc_teshuvah",
+  "displayName": "Prototype Wanzer",
+  "goalVariant": false,
+  "fluxCapacitors": 0,
+  "fluxVents": 0,
+  "quality": 1,
+  "permaMods": [],
+  "hullMods": [
+    "arc_coronal_hypershunt",
+    "arc_laminate_armor",
+    "terminator_core"
+  ],
+  "weaponGroups": [
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "ARM_L": "arc_teshuvah_leftarm"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "ARM_R": "arc_teshuvah_rightarm"
+      }
+    }
+  ],
+  "modules": [],
+  "wings": []
+}

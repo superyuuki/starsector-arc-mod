@@ -57,13 +57,15 @@ All ARC ships are designed to be operated by quality crews, and crew protection 
 NOTABLE HULLS:
 S-00 ""Eternal""
     The only Sephiroth-class in existence known so far. Was pivotal during the Battle of Beta Lyrae. Known to have been in the possession of ARC remnant leadership.",,,
+arc_chokmah,SHIP,"""Wisdom"" - A heavy carrier with a terrifying system"
 
 arc_deveikuth,SHIP,"""The Devout"" - The Deveikuth-Pattern Assault Trooper is a Wanzer derivative of the Raven, but upgraded using Archotech Research technologies. The Grave HMG has been replaced with a Kana-Pattern assault blaster, and the Glowtusk Accelerator with a heavy railgun.",
-arc_netzach_spinal,WEAPON,"""Those madmen weaponized a hypershunt.. into a portable coronal mass ejection?""",- Unnamed Captain staring down the barrel of a Netzach,
-arc_sephiroth_spinal,WEAPON,"""May Ludd have mercy""",- Unnamed Captain staring down the barrel of a Sephirot
+arc_netzach_spinal,WEAPON,"""Those madmen weaponized a hypershunt.. into a portable coronal mass ejection?""",- Unnamed Captain,
+arc_sephiroth_spinal,WEAPON,"""May Ludd have mercy""",- Unnamed Captain
 arc_mml,WEAPON,"""Reporting hits all across the broadside, Captain. Decks 12 through 23 just got perforated. The PD grids can't keep up!""",- Unnamed Gunnery Officer
-arc_blackbox,WEAPON,"""Fast, reliable, multi-lock. These bad boys turn anything smaller than a Hound into so much scrap.""","- Ayin-Samekh 413, Weapons Officer"
+arc_blackbox,WEAPON,"""Fast, reliable, multi-lock. These bad boys turn anything smaller than a Hound into so much scrap.""",- Overheard during training
+arc_stygan,WEAPON,"""Ever wanna see a frigate evaporate?""",- Overheard during training
 arc_theristicus,WEAPON,"""Please don't stand there.""","- Ayin-Samekh 413, Weapons Officer",,
 ,,,
-arc_whitespace_grazer,SHIP_SYSTEM,"Temporarily shunts the ship into whitespace, with all the effects that entails. A light phase core stores 5 charges.",
+arc_whitespace_grazer,SHIP_SYSTEM,"Temporarily shunts the ship into whitespace, with all the effects that entails. A light whitespace core stores 3 charges.",
 arc_overdrive,SHIP_SYSTEM,"Widens the hypershunt pinhole aboard an ARC ship, causing flux performance above dangerous levels",

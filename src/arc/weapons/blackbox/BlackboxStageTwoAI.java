@@ -31,10 +31,50 @@ public class BlackboxStageTwoAI implements MissileAIPlugin, GuidedMissileAI {
     @Override
     public void advance(float v) {
 
-        missile.setJitter(missile, Color.BLUE, 10f, 1, 5f,7f);
+        if (currentTarget.isExpired() || !Global.getCombatEngine().isInPlay(currentTarget) || currentTarget == null || (currentTarget instanceof ShipAPI && !((ShipAPI) currentTarget).isAlive())) {
+            if(MagicRender.screenCheck(0.1f, missile.getLocation())){
+                Global.getCombatEngine().addHitParticle(
+                        missile.getLocation(),
+                        new Vector2f(),
+                        100,
+                        1,
+                        0.25f,
+                        Color.darkGray
+                );
+                for (int i=0; i<NUM_PARTICLES; i++){
+                    float axis = (float)Math.random()*360;
+                    float range = (float)Math.random()*100;
+                    Global.getCombatEngine().addHitParticle(
+                            MathUtils.getPointOnCircumference(missile.getLocation(), range/5, axis),
+                            MathUtils.getPointOnCircumference(new Vector2f(), range, axis),
+                            2+(float)Math.random()*2,
+                            1,
+                            1+(float)Math.random(),
+                            Color.darkGray
+                    );
+                }
+                Global.getCombatEngine().applyDamage(
+                        missile,
+                        missile.getLocation(),
+                        missile.getHitpoints() * 2f,
+                        DamageType.FRAGMENTATION,
+                        0f,
+                        false,
+                        false,
+                        missile
+                );
+            } else {
+                Global.getCombatEngine().removeEntity(missile);
+            }
+            return;
+        }
+
+        if (missile.isFizzling() || missile.isFading() || missile.isExpired() ) {
+            return;
+        }
 
         float dist = MathUtils.getDistanceSquared(missile.getLocation(), currentTarget.getLocation());
-        if (dist<2500){
+        if (dist<4000){
 
             proximityFuse();
 
@@ -113,9 +153,9 @@ public class BlackboxStageTwoAI implements MissileAIPlugin, GuidedMissileAI {
         double damage = missile.getDamageAmount();
 
         if (currentTarget instanceof ShipAPI) {
-            damage = damage / 2;
+            damage = damage * 2;
         } else {
-            damage = damage * 2.54;
+            damage = damage / 2;
         }
 
         DamagingExplosionSpec boom = new DamagingExplosionSpec(
@@ -144,6 +184,7 @@ public class BlackboxStageTwoAI implements MissileAIPlugin, GuidedMissileAI {
         }
 
         boom.setSoundSetId("explosion_flak");
+        boom.setUseDetailedExplosion(false);
 
         if (currentTarget instanceof ShipAPI) {
             MagicLensFlare.createSharpFlare(
@@ -156,47 +197,12 @@ public class BlackboxStageTwoAI implements MissileAIPlugin, GuidedMissileAI {
                     color1,
                     color2
             );
-        } else {
-            boom.setShowGraphic(true);
         }
 
 
         engine.spawnDamagingExplosion(boom, missile.getSource(), missile.getLocation());
 
-        if(MagicRender.screenCheck(0.1f, missile.getLocation())){
-            engine.addHitParticle(
-                    missile.getLocation(),
-                    new Vector2f(),
-                    100,
-                    1,
-                    0.25f,
-                    color2
-            );
-            for (int i=0; i<NUM_PARTICLES; i++){
-                float axis = (float)Math.random()*360;
-                float range = (float)Math.random()*100;
-                engine.addHitParticle(
-                        MathUtils.getPointOnCircumference(missile.getLocation(), range/5, axis),
-                        MathUtils.getPointOnCircumference(new Vector2f(), range, axis),
-                        2+(float)Math.random()*2,
-                        1,
-                        1+(float)Math.random(),
-                        color1
-                );
-            }
-            engine.applyDamage(
-                    missile,
-                    missile.getLocation(),
-                    missile.getHitpoints() * 2f,
-                    DamageType.FRAGMENTATION,
-                    0f,
-                    false,
-                    false,
-                    missile
-            );
-        } else {
-            engine.removeEntity(missile);
-        }
+        engine.removeEntity(missile);
     }
 
     @Override

@@ -1,11 +1,11 @@
 {
-  "displayName": "12th gen Wanzer",
+  "displayName": "Prototype Wanzer",
   "fluxCapacitors": 0,
   "fluxVents": 0,
   "hullId": "arc_deveikuth",
   "hullMods": [
+    "arc_coronal_hypershunt",
     "arc_laminate_armor",
-    "arc_whitespace_core",
     "diableavionics_wanzer",
 
   ],

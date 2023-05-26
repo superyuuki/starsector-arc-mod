@@ -1,2 +1,4 @@
 id,variant,tags,tier,rarity,fleet pts,op cost,formation,range,attackRunRange,attackPositionOffset,num,role,role desc,refit,base value,,,,,,,,,,,,,number
-arc_deveikuth,arc_deveikuth_standard,"wanzer, fighter4, fighter, high, rare_bp, rd_no_extra_craft",3,0.05,20,40,BOX,4000,600,,1,FIGHTER,Assault Trooper,55,20000,,,,,,,,,,,,,1
+arc_deveikuth_wing,arc_deveikuth_standard,"wanzer, fighter4, fighter, high, rd_no_extra_craft, arc_bp",3,0.05,35,35,BOX,4000,600,,1,FIGHTER,Assault Trooper,55,45000,,,,,,,,,,,,,1
+arc_teshuvah_wing,arc_teshuvah_standard,"wanzer, interceptor3, interceptor, high, rd_no_extra_craft, arc_bp",1,,15,20,BOX,2000,200,,1,INTERCEPTOR,Air Superiority Trooper,20,45000,,,,,,,,,,,,,4
+,,,,,,,

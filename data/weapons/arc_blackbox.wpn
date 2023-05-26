@@ -5,8 +5,6 @@
   "size":"SMALL",
   "hardpointSprite":"graphics/ARC/weapons/arc_blackbox.png",
   "turretSprite":"graphics/ARC/weapons/arc_blackbox.png",
-  "turretGlowSprite":"graphics/ARC/weapons/arc_blackbox_glow.png",
-  "hardpointGlowSprite":"graphics/ARC/weapons/arc_blackbox_glow.png",
   "hardpointOffsets":[
     4, -3,
     4, 0,

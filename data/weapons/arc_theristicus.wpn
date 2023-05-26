@@ -6,6 +6,7 @@
 	"displayArcRadius":250,
 	"turretSprite":"graphics/ARC/weapons/arc_theristicus.png",
 	"hardpointSprite":"graphics/ARC/weapons/arc_theristicus.png",
+	"everyFrameEffect":"arc.weapons.ArcEveryFrameWeaponEffect",
 
 	"turretOffsets":[
 6, -4, 6, 4

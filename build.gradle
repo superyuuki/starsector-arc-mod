@@ -49,12 +49,27 @@ build {
     }
 }
 
+jar {
+    from {
+        configurations
+                .runtimeClasspath
+                .collect {
+                    if(it.name.equalsIgnoreCase("flanagan.jar")) {
+                        zipTree(it)
+                    }
+                }
+    }
+}
+
+
 // compile time dependencies
 dependencies {
     implementation "jaghaimo:starsector-api:0.95.1a-RC6@starfarer.api.jar"
     implementation files('libs/MagicLib.jar')
     implementation files('libs/LazyLib.jar')
     implementation files('libs/Graphics.jar')
+    implementation files('libs/CMUtils.jar')
+
 
 
     // game dependencies
