@@ -13,7 +13,7 @@
   "viewOffset": 0,
   "builtInMods": [
     "automated",
-    "arc_coronal_hypershunt",
+    "arc_microshunt",
     "arc_laminate_armor"
   ],
   "builtInWeapons": {

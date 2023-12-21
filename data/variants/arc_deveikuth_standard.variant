@@ -4,7 +4,7 @@
   "fluxVents": 0,
   "hullId": "arc_deveikuth",
   "hullMods": [
-    "arc_coronal_hypershunt",
+    "arc_microshunt",
     "arc_laminate_armor",
     "diableavionics_wanzer",
 

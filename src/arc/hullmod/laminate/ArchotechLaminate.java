@@ -3,7 +3,7 @@ package arc.hullmod.laminate;
 import arc.hullmod.ARCBaseHullmod;
 import arc.hullmod.IHullmodPart;
 import arc.hullmod.VentAcceleratorPart;
-import arc.hullmod.hypershunt.ai.VentAIPart;
+import arc.hullmod.microshunt.ai.VentAIPart;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.ui.Alignment;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;

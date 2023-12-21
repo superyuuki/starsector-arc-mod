@@ -1,8 +1,7 @@
-package arc.hullmod.hypershunt;
+package arc.hullmod.microshunt;
 
-import arc.Index;
 import arc.VentType;
-import arc.hullmod.hypershunt.ai.TurnIntoIEDAIPart;
+import arc.hullmod.microshunt.ai.TurnIntoIEDAIPart;
 import arc.util.ARCUtils;
 import arc.hullmod.ARCBaseHullmod;
 import arc.hullmod.IHullmodPart;
@@ -20,7 +19,7 @@ import static arc.hullmod.VentAcceleratorPart.BASE_VENT_BONUS;
 import static arc.hullmod.VentAcceleratorPart.MAX_VENT_BONUS;
 
 //offensive core
-public class CoronalHypershunt extends ARCBaseHullmod {
+public class Microshunt extends ARCBaseHullmod {
 
 
 
@@ -55,7 +54,7 @@ public class CoronalHypershunt extends ARCBaseHullmod {
 	static final float OVERLOAD_TIME = 40f;
 	static final float UNFOLD_RATE = 2.2f;
 
-	static final float SUPPLY = 200f;
+	static final float SUPPLY = 150f;
 	static final float REPAIR_TIME = -15f;
 	static final float SHIELD_EFF = 10f;
 	static final float HULL_MULTI = 3.5f; //reduce by this
@@ -63,7 +62,7 @@ public class CoronalHypershunt extends ARCBaseHullmod {
 	static final String BAD_HULLMOD_NOTIFICATION_SOUND = "cr_allied_critical";
 
 	@SuppressWarnings("unchecked")
-	public CoronalHypershunt() {
+	public Microshunt() {
 		super(new IHullmodPart[]{
 				new TurnIntoIEDAIPart(),
 				new IEDPart()

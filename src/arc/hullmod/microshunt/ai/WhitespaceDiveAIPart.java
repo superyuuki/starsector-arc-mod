@@ -1,24 +1,5 @@
-package arc.hullmod.hypershunt.ai;
+package arc.hullmod.microshunt.ai;
 
-import arc.hullmod.ARCData;
-import arc.hullmod.IHullmodPart;
-import org.lwjgl.util.vector.Vector2f;
-import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.combat.*;
-import com.fs.starfarer.api.impl.campaign.ids.Personalities;
-import com.fs.starfarer.api.util.IntervalUtil;
-import com.fs.starfarer.api.util.Misc;
-import org.lazywizard.lazylib.CollisionUtils;
-import org.lazywizard.lazylib.MathUtils;
-import org.lazywizard.lazylib.VectorUtils;
-import org.lazywizard.lazylib.combat.AIUtils;
-import org.lwjgl.util.vector.Vector2f;
-
-import java.awt.*;
-import java.util.*;
-import java.util.List;
-
-import static arc.util.AIUtil.getFuturePointDamageEstimate;
 /*
 
 

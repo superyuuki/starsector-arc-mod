@@ -26,7 +26,7 @@
 		"particleColor":[155,255,100,255]},
 	"fireSoundTwo":"arc_dusk",
 	"autocharge":true,
-	"projectileSpecId":"arc_dusk_mini_shot",
+	"projectileSpecId":"arc_dusk_shot",
         "everyFrameEffect":"arc.deco.DeveikuthAnimation",
         
         "specialWeaponGlowWidth":10,

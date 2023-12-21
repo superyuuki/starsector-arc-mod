@@ -12,9 +12,10 @@ public abstract class ArcBaseEveryFrameWeaponEffect implements EveryFrameWeaponE
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
 
         boolean hasBase = weapon.getShip().getVariant().hasHullMod(Index.BASE_HULLMOD);
+        boolean hasRdg = weapon.getShip().getVariant().hasHullMod(Index.RDG_HULLMOD);
         boolean hasAux = weapon.getShip().getVariant().hasHullMod(Index.AUX_HULLMOD);
 
-        if (!hasAux && !hasBase) {
+        if (!hasAux && !hasBase && !hasRdg) {
             if (!weapon.isDisabled()) {
                 weapon.disable(true);
                 engine.addFloatingText(

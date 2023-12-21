@@ -1,4 +1,4 @@
-package arc.hullmod.hypershunt.ai;
+package arc.hullmod.microshunt.ai;
 
 import arc.Index;
 import arc.hullmod.ARCData;
@@ -6,7 +6,6 @@ import arc.util.ARCUtils;
 import arc.hullmod.laminate.ArchotechLaminate;
 import arc.hullmod.IHullmodPart;
 import arc.hullmod.laminate.VentingGivesArmorPart;
-import cmu.CMUtils;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.util.IntervalUtil;
@@ -14,7 +13,6 @@ import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.combat.AIUtils;
 
 
-import java.awt.*;
 import java.util.List;
 
 
@@ -95,14 +93,14 @@ public class VentAIPart implements IHullmodPart<ARCData> {
         boolean tooMuchShieldDamage = ARCUtils.tooMuchShieldDamageIncoming(ship, 0.07f, 1300f, durationToCheck);
 
 
-        if (tooMuchArmorDamage) {
+   /*     if (tooMuchArmorDamage) {
             ship.setJitterUnder(ship, Color.RED, 4f, 4, 2f);
         }
 
         if (tooMuchShieldDamage) {
             ship.setJitterUnder(ship, Color.BLUE, 4f, 4, 2f);
         }
-
+*/
 
 
         VentingGivesArmorPart.Data data  = (VentingGivesArmorPart.Data) ship.getCustomData().get(VentingGivesArmorPart.VENTING_ARMOR);

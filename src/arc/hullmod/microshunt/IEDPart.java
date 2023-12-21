@@ -1,11 +1,11 @@
-package arc.hullmod.hypershunt;
+package arc.hullmod.microshunt;
 
 import arc.Index;
 import arc.hullmod.ARCData;
 import arc.hullmod.IHullmodPart;
 import arc.util.ARCUtils;
 import arc.weapons.buster.BusterOnHit;
-import cmu.CMUtils;
+
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.util.IntervalUtil;
@@ -65,7 +65,6 @@ public class IEDPart implements IHullmodPart<ARCData> {
         }
 
 
-        CMUtils.getGuiDebug().putText(IEDPart.class, shipAPI.hashCode() + "", customData.timerTicksBeforeJihad + "");
         //move
 
 

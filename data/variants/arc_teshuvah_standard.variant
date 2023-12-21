@@ -8,7 +8,7 @@
   "quality": 1,
   "permaMods": [],
   "hullMods": [
-    "arc_coronal_hypershunt",
+    "arc_microshunt",
     "arc_laminate_armor",
     "terminator_core"
   ],

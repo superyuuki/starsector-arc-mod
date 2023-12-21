@@ -1,4 +1,4 @@
-package arc.hullmod.hypershunt;
+package arc.hullmod.microshunt;
 
 import arc.hullmod.IHullmodPart;
 import com.fs.starfarer.api.combat.CombatEngineAPI;
@@ -11,7 +11,6 @@ import java.util.Map;
 
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
-import com.fs.starfarer.api.impl.campaign.ids.Personalities;
 import com.fs.starfarer.api.util.IntervalUtil;
 import com.fs.starfarer.api.util.Misc;
 import org.lazywizard.lazylib.CollisionUtils;

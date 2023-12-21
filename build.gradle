@@ -68,7 +68,6 @@ dependencies {
     implementation files('libs/MagicLib.jar')
     implementation files('libs/LazyLib.jar')
     implementation files('libs/Graphics.jar')
-    implementation files('libs/CMUtils.jar')
 
     implementation 'ch.ethz.globis.phtree:phtree:2.8.0'
 

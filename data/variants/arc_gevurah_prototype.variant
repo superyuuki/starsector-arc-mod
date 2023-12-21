@@ -3,7 +3,7 @@
   "hullId": "arc_gevurah",
   "displayName": "Prototype",
   "goalVariant": true,
-  "fluxCapacitors": 20,
+  "fluxCapacitors": 16,
   "fluxVents": 0,
   "quality": 1,
   "hullMods": [

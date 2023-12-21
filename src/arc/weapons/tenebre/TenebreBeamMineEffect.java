@@ -71,7 +71,7 @@ public class TenebreBeamMineEffect extends ArcChargeupWeaponEffect {
             float progress = (beamAPI.getWeapon().getBurstFireTimeRemaining() - beamAPI.getWeapon().getSpec().getBeamChargeupTime()) / beamAPI.getWeapon().getSpec().getBurstDuration();
 
 
-            Global.getCombatEngine().addFloatingText(weaponAPI.getLocation(), progress + ": p", 10f, Color.RED, weaponAPI.getShip(), 1f, 10f);
+            //Global.getCombatEngine().addFloatingText(weaponAPI.getLocation(), progress + ": p", 10f, Color.RED, weaponAPI.getShip(), 1f, 10f);
 
 
             progress = Math.abs(progress);

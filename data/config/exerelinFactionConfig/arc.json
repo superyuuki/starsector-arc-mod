@@ -1,0 +1,36 @@
+{
+    "playableFaction":false,
+	"startingFaction":true,
+    "corvusCompatible":true,
+    "freeStart":true,
+	"spawnAsFactionId":"player",
+    "noRandomizeRelations":true,
+    "ngcTooltip":"Start with some ARC ships",
+	
+	"startRelationships":{
+		"independent": -0.5,
+		"hegemony": -0.5,
+		"luddic_church": -0.5,
+		"tritachyon": -0.5,
+		"sindrian_diktat":-0.5,
+		"persean":-0.5,
+		"pirates": -0.51,
+		"ORA": -0.5
+	},
+
+	"startShipsCarrierSmall":
+	[
+		["arc_daat_prototype", "arc_malkuth_precursor", "arc_aux_laminar_standard","arc_aux_laminar_standard","arc_aux_laminar_standard",  "kite_Standard"],
+		["arc_daat_rdg_slaughter", "arc_daat_prototype", "kite_Standard"]
+
+	],
+
+    "startShipsCarrierLarge":[["arc_chokmah_prototype", "arc_daat_prototype", "arc_daat_prototype","arc_malkuth_prototype","arc_malkuth_precursor", "arc_aux_laminar_standard","arc_aux_laminar_standard","arc_aux_laminar_standard",  "kite_Standard"]],
+	
+	"startShipsCombatLarge":
+	[
+		["arc_gevurah_prototype", "arc_daat_prototype", "arc_daat_prototype", "arc_malkuth_precursor","arc_aux_laminar_standard","arc_aux_laminar_standard",  "kite_Standard"]
+	]
+
+
+}

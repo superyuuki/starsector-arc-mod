@@ -4,7 +4,7 @@
   "displayName": "Prototype",
   "goalVariant": true,
   "fluxCapacitors": 16,
-  "fluxVents": 8,
+  "fluxVents": 4,
   "quality": 1,
   "hullMods": [
   ],

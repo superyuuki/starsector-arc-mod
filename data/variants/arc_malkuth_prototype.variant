@@ -3,7 +3,7 @@
   "hullId": "arc_malkuth",
   "displayName": "Prototype",
   "goalVariant": true,
-  "fluxCapacitors": 10,
+  "fluxCapacitors": 7,
   "fluxVents": 8,
   "quality": 1,
   "hullMods": [

@@ -7,7 +7,8 @@ public interface Index {
     boolean DEBUG = true;
 
 
-    String BASE_HULLMOD = "arc_coronal_hypershunt";
+    String BASE_HULLMOD = "arc_microshunt";
+    String RDG_HULLMOD = "arc_microshunt_rdg";
     String AUX_HULLMOD = "arc_aux";
     String HULLMOD_LAMINATE = "arc_laminate_armor";
     String ARC_FACTION = "arc";
