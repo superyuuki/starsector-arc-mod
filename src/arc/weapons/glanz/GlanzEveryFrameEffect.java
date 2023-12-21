@@ -1,10 +1,8 @@
 package arc.weapons.glanz;
 
 import arc.weapons.ArcBaseEveryFrameWeaponEffect;
-import com.fs.starfarer.api.combat.CombatEngineAPI;
-import com.fs.starfarer.api.combat.EveryFrameWeaponEffectPlugin;
-import com.fs.starfarer.api.combat.MissileAPI;
-import com.fs.starfarer.api.combat.WeaponAPI;
+import com.fs.starfarer.api.Global;
+import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.impl.campaign.ids.Stats;
 import com.fs.starfarer.api.util.IntervalUtil;
 import data.scripts.util.MagicTargeting;
@@ -19,14 +17,15 @@ import java.util.Map;
 public class GlanzEveryFrameEffect extends ArcBaseEveryFrameWeaponEffect {
 
     boolean runOnce=false;
-    final Map <Integer,MissileAPI> BEAMS = new HashMap<>();
+    final Map <Integer,CombatEntityAPI> BEAMS = new HashMap<>();
     float time = 0;
+    boolean lastIsFiring = false;
+
 
 
     @Override
-    public void advanceSub(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
-
-
+    public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
+        super.advance(amount, engine, weapon);
 
         if (!runOnce){
             runOnce=true;
@@ -43,6 +42,13 @@ public class GlanzEveryFrameEffect extends ArcBaseEveryFrameWeaponEffect {
 
         time += Math.PI / 48;
 
+        if (lastIsFiring && !weapon.isFiring()) {
+            //stopped shooting
+            weapon.setRemainingCooldownTo(MathUtils.getRandomNumberInRange(0.3f, 0.7f));
+
+        }
+
+        lastIsFiring= weapon.isFiring();
 
 
         if(weapon.isFiring()){
@@ -52,7 +58,7 @@ public class GlanzEveryFrameEffect extends ArcBaseEveryFrameWeaponEffect {
                 //does the beam has a target
                 if(BEAMS.get(i)==null || !engine.isEntityInPlay(BEAMS.get(i))){
                     //find target
-                    MissileAPI target = MagicTargeting.randomMissile(
+                    CombatEntityAPI target = MagicTargeting.randomMissile(
                             weapon.getShip(),
                             MagicTargeting.missilePriority.DAMAGE_PRIORITY,
                             weapon.getLocation(),
@@ -61,6 +67,15 @@ public class GlanzEveryFrameEffect extends ArcBaseEveryFrameWeaponEffect {
                             (int)weapon.getRange(),
                             true
                     );
+
+                    if (target == null) {
+                        target = MagicTargeting.pickShipTarget(weapon.getShip(), MagicTargeting.targetSeeking.LOCAL_RANDOM, 1000, (int) weapon.getArc(), 20, 0, 0,0,0);
+
+                        if (target != null) {
+                            if (target.isExpired() || !((ShipAPI) target).isAlive() || !Global.getCombatEngine().isInPlay(target) || ((ShipAPI) target).isHulk()) target = null;
+                        }
+                    }
+
 
                     if(target!=null){
                         //found a suitable target

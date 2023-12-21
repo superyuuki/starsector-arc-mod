@@ -1,27 +1,19 @@
 package arc;
 
-import arc.ai.RepairDroneAI;
-import arc.weapons.blackbox.BlackboxAI;
-import arc.weapons.blackbox.BlackboxStageOneAI;
-import arc.weapons.mml.MacrossAI;
+import arc.plugin.ai.RepairDroneAI;
+import arc.weapons.buster.BusterAI;
 import com.fs.starfarer.api.BaseModPlugin;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.PluginPick;
 import com.fs.starfarer.api.campaign.CampaignPlugin;
 import com.fs.starfarer.api.campaign.FactionAPI;
-import com.fs.starfarer.api.campaign.RepLevel;
 import com.fs.starfarer.api.campaign.SectorAPI;
 import com.fs.starfarer.api.campaign.rules.MemoryAPI;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.fleet.FleetMemberAPI;
-import com.fs.starfarer.api.impl.campaign.ghosts.SensorGhost;
-import com.fs.starfarer.api.impl.campaign.ghosts.SensorGhostCreator;
-import com.fs.starfarer.api.impl.campaign.ghosts.SensorGhostManager;
-import com.fs.starfarer.api.impl.campaign.intel.bar.events.BarEventManager;
-import com.fs.starfarer.api.util.Misc;
+import com.fs.starfarer.api.impl.campaign.procgen.Constellation;
+import com.fs.starfarer.api.impl.campaign.procgen.themes.SectorThemeGenerator;
 import org.dark.shaders.util.ShaderLib;
-import org.lwjgl.Sys;
-import org.lwjgl.util.glu.Sphere;
 
 import java.util.List;
 
@@ -48,7 +40,7 @@ public class ARCPlugin extends BaseModPlugin {
         String id = drone.getHullSpec().getHullId();
 
         if (id.contentEquals("arc_chesed")) {
-            return new PluginPick<>(new RepairDroneAI(drone, mothership, system), CampaignPlugin.PickPriority.MOD_SET);
+            return new PluginPick<ShipAIPlugin>(new RepairDroneAI(drone, mothership, system), CampaignPlugin.PickPriority.MOD_SET);
         }
 
 
@@ -58,11 +50,15 @@ public class ARCPlugin extends BaseModPlugin {
 
     @Override
     public PluginPick<MissileAIPlugin> pickMissileAI(MissileAPI missile, ShipAPI launchingShip) {
-        if (Index.ICEBOX_STAGE_ONE.equals(missile.getProjectileSpecId())) {
-            return new PluginPick<>(new BlackboxStageOneAI(Index.ICEBOX_STAGE_TWO, missile, launchingShip.getShipTarget()), CampaignPlugin.PickPriority.MOD_SPECIFIC);
+
+        switch (missile.getProjectileSpecId()) {
+            case Index.BUSTER_MIRV:
+                return new PluginPick<>(new BusterAI(missile, launchingShip), CampaignPlugin.PickPriority.MOD_SPECIFIC);
+            default:
+                return super.pickMissileAI(missile, launchingShip);
         }
 
-        return super.pickMissileAI(missile, launchingShip);
+
 
     }
 
@@ -75,11 +71,21 @@ public class ARCPlugin extends BaseModPlugin {
 
             ShipAIConfig config = new ShipAIConfig();
             config.alwaysStrafeOffensively = true;
-            config.personalityOverride = "reckless";
+            config.personalityOverride = "aggressive";
+
+            if (ship.getHullSpec().getHullId().contentEquals("arc_yesod")) {
+                config.alwaysStrafeOffensively = false;
+                config.personalityOverride = "steady";
+            }
+
 
             if (ship.getHullSpec().getHullId().contentEquals("arc_chokmah")) {
                 config.alwaysStrafeOffensively = false;
                 config.personalityOverride = "cautious";
+            }
+
+            if (ship.getHullSpec().getHullId().contentEquals("arc_mura")) {
+                config.personalityOverride = "steady";
             }
 
 
@@ -101,10 +107,15 @@ public class ARCPlugin extends BaseModPlugin {
 
         for (FactionAPI faction : factionList) {
             if (faction.equals(us)) continue;
-
-
-            us.adjustRelationship(faction.getId(), -60); //arc is ANGRY
+            us.setRelationship(faction.getId(), -60); //arc is ANGRY
         }
+
+        us.setRelationship("diableavionics", -20);
+        //new Constellation()
+
+        //do procgen stuff
+        //SectorThemeGenerator.generators.add(1, new BladeBreakerThemeGenerator());
+
 
 
     }

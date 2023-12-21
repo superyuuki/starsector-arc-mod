@@ -5,6 +5,7 @@ import com.fs.starfarer.api.combat.BaseHullMod;
 import com.fs.starfarer.api.combat.CombatEngineAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
 
+import java.awt.*;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Supplier;
@@ -16,6 +17,8 @@ public class ARCBaseHullmod extends BaseHullMod {
     protected ARCBaseHullmod(IHullmodPart<Object>[] hullmodParts) {
         this.hullmodParts = hullmodParts;
     }
+
+
 
     @Override
     public void advanceInCombat(ShipAPI ship, float amount) {
@@ -39,5 +42,15 @@ public class ARCBaseHullmod extends BaseHullMod {
 
             ship.setCustomData(key, possibleData);
         }
+    }
+
+    @Override
+    public Color getBorderColor() {
+        return new Color(101, 204, 255, 200);
+    }
+
+    @Override
+    public Color getNameColor() {
+        return new Color(51, 114, 134, 255);
     }
 }

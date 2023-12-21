@@ -12,6 +12,7 @@
   ],
   "hardpointSprite": "",
   "id": "arc_gevurah_mm_l",
+  "interruptibleBurst":false,
   "noImpactSounds": false,
   "noNonShieldImpactSounds": false,
   "noShieldImpactSounds": false,

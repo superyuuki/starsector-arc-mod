@@ -1,0 +1,76 @@
+{
+  "variantId": "arc_gevurah_precursor",
+  "hullId": "arc_gevurah",
+  "displayName": "Precursor",
+  "goalVariant": true,
+  "fluxCapacitors": 20,
+  "fluxVents": 0,
+  "quality": 1,
+  "hullMods": [
+    "targetingunit"
+  ],
+  "weaponGroups": [
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0001": "arc_gevurah_spinal",
+        "WS0002": "arc_dusk"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0005": "arc_tenebre",
+        "WS0006": "arc_tenebre",
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0018": "diableavionics_recson",
+        "WS0019": "diableavionics_recson",
+        "WS0010": "diableavionics_recson",
+        "WS0011": "diableavionics_recson"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0012": "arc_glanz",
+        "WS0013": "arc_glanz",
+        "WS0016": "arc_glanz",
+        "WS0017": "arc_glanz",
+        "WS0014": "arc_umbra",
+        "WS0015": "arc_umbra",
+        "WS0009": "diableavionics_raptor"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0030": "arc_blackbox",
+        "WS0031": "arc_blackbox"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "ALTERNATING",
+      "weapons": {
+        "WS0003": "arc_gevurah_mm_l",
+        "WS0004": "arc_gevurah_mm_r",
+        "WS0007": "arc_macross",
+        "WS0008": "arc_macross"
+      }
+    },
+  ],
+  "modules": [],
+  "wings": [
+    "arc_mura_wing",
+    "arc_teshuvah_wing"
+  ]
+}

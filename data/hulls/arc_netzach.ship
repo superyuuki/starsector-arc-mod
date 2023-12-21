@@ -9,12 +9,12 @@
   "center": [130, 192.5],
   "collisionRadius": 229,
   "shieldCenter": [0, 0],
-  "shieldRadius": 200.5,
+  "shieldRadius": 210.5,
   "viewOffset": 0,
   "builtInMods": [
+    "automated",
     "arc_coronal_hypershunt",
-    "arc_laminate_armor",
-    "diableavionics_universaldecksExtra"
+    "arc_laminate_armor"
   ],
   "builtInWeapons": {
     "WS0001": "arc_netzach_spinal",

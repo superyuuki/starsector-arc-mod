@@ -1,0 +1,56 @@
+{
+  "variantId": "arc_malkuth_prototype",
+  "hullId": "arc_malkuth",
+  "displayName": "Prototype",
+  "goalVariant": true,
+  "fluxCapacitors": 10,
+  "fluxVents": 8,
+  "quality": 1,
+  "hullMods": [
+    "advancedoptics",
+    "targetingunit"
+  ],
+  "weaponGroups": [
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0001": "arc_stygan"
+      }
+    },
+    {
+          "autofire": true,
+          "mode": "ALTERNATING",
+          "weapons": {
+            "WS0006": "arc_blackbox",
+            "WS0007": "arc_blackbox",
+          }
+        },
+    {
+      "autofire": false,
+      "mode": "ALTERNATING",
+      "weapons": {
+        "WS0010": "arc_alphastar",
+        "WS0011": "arc_alphastar"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0002": "lightneedler",
+        "WS0003": "lightneedler"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0009": "arc_umbra",
+        "WS00091": "arc_glanz"
+      }
+    }
+  ],
+  "modules": [],
+  "wings": []
+}

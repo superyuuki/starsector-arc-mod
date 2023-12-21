@@ -1,17 +1,27 @@
 {
   "combatSmall": {
-    "arc_daat_prototype":2,
-    "arc_tiferet_prototype":2
+    "arc_aux_laminar_standard": 2,
+    "arc_malkuth_prototype":2,
+    "arc_malkuth_precursor":1
   },
   "combatMedium": {
-    "arc_gevurah_prototype":2,
-    "arc_daat_prototype":2
+    "arc_aux_haze_standard": 2,
+    "arc_daat_prototype":3,
+    "arc_daat_precursor":2,
+    "arc_yesod_prototype":1,
+    "arc_daat_rdg_slaughter":0.5
+  },
+  "combatLarge": {
+    "arc_gevurah_prototype":3,
+    "arc_gevurah_precursor":1
   },
   "combatCapital":{
     "arc_netzach_prototype":1,
-    "arc_sephiroth_prototype":1
+    "arc_kether_prototype":1,
+    "arc_aux_maelstrom_standard": 3
   },
   "carrierMedium": {
-    "arc_chokmah_prototype": 2
+    "arc_chokmah_prototype": 2,
+    "arc_chokmah_precursor": 2
   }
 }

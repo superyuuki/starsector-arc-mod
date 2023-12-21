@@ -34,10 +34,10 @@
       "autofire": true,
       "mode": "LINKED",
       "weapons": {
-        "WS0008": "diableavionics_glaux",
-        "WS0009": "diableavionics_glaux",
-        "WS0010": "diableavionics_glaux",
-        "WS0011": "diableavionics_glaux"
+        "WS0008": "arc_macross",
+        "WS0009": "arc_macross",
+        "WS0010": "arc_macross",
+        "WS0011": "arc_macross"
       }
     },
     {

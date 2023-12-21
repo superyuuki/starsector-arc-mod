@@ -9,29 +9,33 @@
 	"collisionClass":"MISSILE_NO_FF",
 	"explosionColor":[200,165,200,255],
 	"explosionRadius":80,
-		"maxFlightTime":15,
+	"maxFlightTime":7,
 	"onHitEffect": "arc.weapons.mml.MacrossOnHitEffect",
-	"engineSpec":{"turnAcc":600,
-		"turnRate":150,
-		"acc":850,
-		"dec":80},
+	"armingTime":0.3,
+	"noEngineGlowTime":0.3,
+	"engineSpec":{"turnAcc":800,
+		"turnRate":175,
+		"acc":1200,
+		"dec":800},
 	"engineSlots":[{"id":"ES1",
 					"loc":[-3, 0],
 				    "style":"CUSTOM",
 					"styleSpec":{
 						"mode":"QUAD_STRIP",
 						"engineColor":[170,2,170,255],
-						"contrailDuration":0.75,
-						"contrailWidthMult":0.6,
-						"contrailWidthAddedFractionAtEnd":2.5,
+						"contrailDuration":0.45,
+						"contrailWidthMult":0.4,
+						"contrailWidthAddedFractionAtEnd":2.2,
 						"contrailMinSeg":5, # min segment length, in pixels
 						"contrailMaxSpeedMult":0.75f,
 						"contrailAngularVelocityMult":0.3f,
 						"contrailColor":[140,120,140,120],
-						"glowSizeMult":2f,
+						"glowSizeMult":0.8f,
 						"type":"SMOKE" # GLOW or SMOKE; additive or regular blend mode
 					},
 				    "width":6.0,
 				    "length":20.0,
-				    "angle":180.0}]
+				    "angle":180.0}
+	],
+
 }

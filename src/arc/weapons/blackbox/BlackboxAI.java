@@ -39,50 +39,7 @@ public class BlackboxAI implements MissileAIPlugin, GuidedMissileAI {
         LOITER
     }
 
-    static MissileAPI pick(CombatEntityAPI source,  Vector2f lookAround, float direction, Integer searchCone, Integer maxRange) {
-        CombatEngineAPI engine = Global.getCombatEngine();
-        boolean allAspect = searchCone >= 360;
-        WeightedRandomPicker<MissileAPI> missilePicker = new WeightedRandomPicker<>();
-        List<MissileAPI> missiles = engine.getMissiles();
-        if (missiles.isEmpty()) {
-            return null;
-        } else {
-            Iterator<MissileAPI> i$ = missiles.iterator();
-
-            while (true) {
-                MissileAPI m;
-                do {
-                    do {
-                        do {
-                            do {
-                                do {
-                                    do {
-                                        do {
-                                            if (!i$.hasNext()) {
-                                                if (!missilePicker.isEmpty()) {
-                                                    return missilePicker.pick();
-                                                }
-
-                                                return null;
-                                            }
-
-                                            m = i$.next();
-                                        } while (m.isFading());
-                                    } while (m.getOwner() == source.getOwner());
-                                } while (m.getCollisionClass() == CollisionClass.NONE);
-                            } while (!CombatUtils.isVisibleToSide(m, source.getOwner()));
-                        } while (!MathUtils.isPointWithinCircle(lookAround, m.getLocation(), (float) maxRange));
-                    } while (!allAspect && !(Math.abs(MathUtils.getShortestRotation(direction, VectorUtils.getAngle(source.getLocation(), m.getLocation()))) < (float) (searchCone / 2)));
-                } while (m.getCustomData().get(HAS_LOCK) != null);
-
-                missilePicker.add(m, m.getDamageAmount());
-            }
-        }
-
-    }
-
     final MissileAPI missile;
-
     final float MAX_SPEED;
 
     CombatEntityAPI currentTarget;
@@ -147,10 +104,8 @@ public class BlackboxAI implements MissileAIPlugin, GuidedMissileAI {
 
         if (!Global.getCombatEngine().isEntityInPlay(currentTarget) || (currentTarget != null && currentTarget.getOwner()==missile.getOwner() ) || (currentTarget != null && currentTarget.isExpired()) || (currentTarget != null && currentTarget instanceof ShipAPI && !((ShipAPI) currentTarget).isPiece())) {
 
-            if (currentTarget instanceof MissileAPI) {
-                currentTarget.setCustomData(HAS_LOCK, null);
-                currentTarget = null;
-            }
+            currentTarget.setCustomData(HAS_LOCK, null);
+            currentTarget = null;
 
         }
 

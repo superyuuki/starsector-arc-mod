@@ -1,11 +1,11 @@
 package arc.weapons.blackbox;
 
-import arc.Index;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.util.IntervalUtil;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
+import org.lazywizard.lazylib.combat.CombatUtils;
 import org.lwjgl.util.vector.Vector2f;
 
 import java.awt.*;
@@ -15,13 +15,15 @@ public class BlackboxStageOneAI implements MissileAIPlugin, GuidedMissileAI {
      final String specToSpawn;
      final MissileAPI missile;
      final CombatEntityAPI target;
-     final IntervalUtil intervalUtil = new IntervalUtil(0.3f, 0.7f);
+     final BlackboxEveryFrameEffect parent;
+     final IntervalUtil intervalUtil = new IntervalUtil(0.5f, 1.2f);
 
 
-    public BlackboxStageOneAI(String specToSpawn, MissileAPI missile, CombatEntityAPI target) {
+    public BlackboxStageOneAI(String specToSpawn, MissileAPI missile, CombatEntityAPI target, BlackboxEveryFrameEffect parent) {
         this.specToSpawn = specToSpawn;
         this.missile = missile;
         this.target = target;
+        this.parent = parent;
     }
 
     @Override
@@ -55,8 +57,10 @@ public class BlackboxStageOneAI implements MissileAIPlugin, GuidedMissileAI {
             );
 
             MissileAPI childAsMissile = (MissileAPI) child;
+            CombatUtils.applyForce(childAsMissile, facing, 3f);
 
-            childAsMissile.setMissileAI(new BlackboxStageTwoAI(childAsMissile, target));
+            childAsMissile.setOwner(parent.ship.getOwner());
+            childAsMissile.setMissileAI(new BlackboxStageTwoAI(childAsMissile, parent, target));
 
             Global.getCombatEngine().removeEntity(missile); //PDM launched!
         }

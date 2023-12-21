@@ -1,0 +1,54 @@
+{
+  "id": "arc_yesod_spinal",
+  "specClass": "projectile",
+  "type": "ENERGY",
+  "size": "LARGE",
+  "collisionClass": "RAY",
+  "collisionClassByFighter": "RAY_FIGHTER",
+  "turretSprite":"",
+  "hardpointSprite":"",
+  "hardpointGlowSprite":"graphics/ARC/weapons/spinal/yesod_spinal_glow.png",
+
+  "renderAboveAllWeapons": 0,
+  "glowColor": [255, 255, 255, 255],
+  "hitGlowRadius": 600,
+  "turretOffsets": [
+    0,
+    0
+  ],
+  "turretAngleOffsets": [
+    0
+  ],
+  "hardpointOffsets": [
+    0,
+    0
+  ],
+  "hardpointAngleOffsets": [
+    0
+  ],
+  "fringeColor": [
+    255,
+    64,
+    10,
+    255
+  ],
+  "coreColor": [
+    255,
+    220,
+    10,
+    255
+  ],
+  "animationType":"GLOW_AND_FLASH",
+  "muzzleFlashSpec":{"length":80.0,   # only used if animationType = MUZZLE_FLASH
+    "spread":5.0,
+    "particleSizeMin":15.0,
+    "particleSizeRange":10.0,
+    "particleDuration":0.14,
+    "particleCount":30,
+    "particleColor":[155,255,100,255]},
+  "barrelMode":"ALTERNATING",
+  "everyFrameEffect": "arc.weapons.absolution.AbsolutionEveryFrameEffect",
+
+  "projectileSpecId":"arc_dusk_super_shot",
+  "fireSoundTwo":"arc_yesod_spinal_fire"
+}

@@ -1,0 +1,29 @@
+
+
+{
+  "id":"arc_dusk_shot",
+  "specClass":"projectile",
+  "spawnType":"BALLISTIC",
+  "collisionClass":"PROJECTILE_FF",
+  "collisionClassByFighter":"PROJECTILE_FIGHTER",
+  "length":0,
+  "hitGlowRadius":50,
+  "width":0,
+  "fadeTime":0.1,
+  "size":[19,33],
+  "center":[9.5,16.5],
+  "collisionRadius":16,
+  "fringeColor":[122,219,230, 130],
+  "coreColor":[122,219,230, 255],
+  "glowRadius":0,
+  "glowColor":[122,219,230, 255],
+  "bulletSprite":"",
+  "onHitEffect": "arc.weapons.dusk.DuskOnHit",
+  "textureType":"ROUGH",  # now also used for "BALLISTIC_AS_BEAM", if specified
+  "textureScrollSpeed":5,
+  "pixelsPerTexel":1.0,
+  "passThroughMissiles":true,
+  "passThroughFighters":true,
+}
+
+

@@ -13,6 +13,7 @@
   "hardpointSprite": "",
   "id": "arc_gevurah_mm_r",
   "noImpactSounds": false,
+  "interruptibleBurst":false,
   "noNonShieldImpactSounds": false,
   "noShieldImpactSounds": false,
   "projectileSpecId": "arc_mml_missile",

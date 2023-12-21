@@ -3,7 +3,7 @@
 	"type":"PHASE_CLOAK",
 	"aiType":"PHASE_CLOAK",
 
-	"statsScript":"arc.shipsystems.whitespace.WhitespaceGrazerStats",
+	"statsScript":"arc.shipsystems.whitespace.WhitespaceBoosterStats",
 	"runScriptWhilePaused":true, # only for the player's ship
 	"runScriptWhileIdle":true,  # this means unapply() never gets called
 	"blockActionsWhileChargingDown":false,
@@ -18,8 +18,8 @@
 	"clampTurnRateAfter":true,
 	"clampMaxSpeedAfter":true,
 	
-	"engineGlowColor":[150,20,0,255],
-    "engineGlowContrailColor":[150,20,0,30],
+	"engineGlowColor":[99,160,149,160],
+    "engineGlowContrailColor":[60,180,155,50],
     "engineGlowLengthMult": 0.1,
     "engineGlowWidthMult":0.5,
     "engineGlowGlowMult": 8,
@@ -36,6 +36,6 @@
 
 
 	"aiHints":{
-            "averageSpeedMult":3,
+            "averageSpeedMult":2,
     }
 }

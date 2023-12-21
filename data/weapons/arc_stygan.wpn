@@ -10,19 +10,19 @@
 	"hardpointSprite":"graphics/arc/weapons/arc_stygan.png",
 	"hardpointGlowSprite":"graphics/arc/weapons/arc_stygan_glow.png",
 	"turretOffsets":[
-	5, -3,
-	5, -2,
-	5, 0,
-	5, 2,
-        5, 3
+	8, -4,
+	8, -4,
+	8, 4,
+	8, 4,
+        8, 4
 	],
 	"turretAngleOffsets":[-2, -0.75, 0, 0.75, 2],
 	"hardpointOffsets":[
-	5, -3,
-        5, -1,
-	5, 0,
-        5, 1,
-        5, 3
+	20, -4,
+		20, -4,
+		20, 4,
+		20, 4,
+		20, 4
 	],
 	"hardpointAngleOffsets":[-2,  -0.75, 0, 0.75, 2],
 	"barrelMode":"LINKED",

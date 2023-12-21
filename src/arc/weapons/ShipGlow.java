@@ -1,5 +1,7 @@
 package arc.weapons;
 
+import arc.Index;
+import arc.hullmod.ARCData;
 import arc.util.ARCUtils;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
@@ -7,24 +9,23 @@ import com.fs.starfarer.api.graphics.SpriteAPI;
 
 import java.awt.*;
 
+import static arc.weapons.ShipLights.*;
+
 public class ShipGlow implements EveryFrameWeaponEffectPlugin {
 
+    //THIS ONE IS IMPORTANT
     //TODO use variable focus for colors
 
     //private static final float[] COLOR_NORMAL = {255f/255f, 140f/255f, 80f/255f};
-    private static final float[] COLOR_NORMAL = {255f/255f, 255f/255f, 255f/255f};
-    private static final float[] COLOR_OVERDRIVE = {255f/255f, 160f/255f, 20f/255f};
-    private static final float MAX_JITTER_DISTANCE = 0.8f;
-    private static final float MAX_OPACITY = 1.0f;
     private static final float MIN_OPACITY = 0.2f;
     private static final float SCROLL_TIME = 1f;
     private static final float GLOW_HEIGHT = 0.1f;
     //private static final float TRIGGER_PERCENTAGE = 0.3f;
 
     private boolean runOnce = false;
-    private float HEIGHT;
-    private float TEX_HEIGHT_MULT;
-	private float time;
+    float HEIGHT;
+    float TEX_HEIGHT_MULT;
+    float time;
 
     @Override
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
@@ -76,8 +77,7 @@ public class ShipGlow implements EveryFrameWeaponEffectPlugin {
 		
 		// scrolling
 
-        
-		
+
 		SpriteAPI sprite=weapon.getSprite();
 		float scrollPercent = time / SCROLL_TIME;
 				
@@ -97,18 +97,25 @@ public class ShipGlow implements EveryFrameWeaponEffectPlugin {
 		
 		sprite.setAdditiveBlend();
 
-        fluxBrightness = Math.max(MIN_OPACITY,Math.min(fluxBrightness,1f));
-        Color colorToUse = new Color(COLOR_NORMAL[0], COLOR_NORMAL[1], COLOR_NORMAL[2], fluxBrightness*MAX_OPACITY);
+        ARCData data = (ARCData) ship.getCustomData().get(Index.ARC_DATA);
 
-        // Mix in color for overdrive
-        if (systemBrightness > 0f) {
-            colorToUse = new Color(
-				ARCUtils.lerp(COLOR_NORMAL[0], COLOR_OVERDRIVE[0], systemBrightness),
-                    ARCUtils.lerp(COLOR_NORMAL[1], COLOR_OVERDRIVE[1], systemBrightness),
-                    ARCUtils.lerp(COLOR_NORMAL[2], COLOR_OVERDRIVE[2], systemBrightness),
-                    Math.min(1f,1f)//ArcUtils.lerp(fluxBrightness, 1f, systemBrightness) * MAX_OPACITY, 1f)
-				);
+        if (data == null) return;
+
+        Color colorToUse = null;
+
+        switch (data.mode) {
+
+            case ASSAULT:
+                colorToUse = ASSAULT; break;
+            case REPAIR:
+                colorToUse = REPAIR; break;
+            case BERSERK:
+                colorToUse = BERSERK; break;
+
         }
+
+        colorToUse = new Color(colorToUse.getRed(), colorToUse.getGreen(), colorToUse.getBlue(), 255);
+
 
         //And finally actually apply the color
         sprite.setColor(colorToUse);

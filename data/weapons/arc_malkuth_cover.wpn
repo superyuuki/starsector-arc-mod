@@ -1,0 +1,25 @@
+{
+  "id": "arc_malkuth_cover",
+  "specClass":"beam",
+  "type": "DECORATIVE",
+  "size": "SMALL",
+  "turretSprite": "graphics/ARC/ships/malkuth/cover.png",
+  "showDamageWhenDecorative":true,
+  "hardpointSprite": "",
+  "turretOffsets": [
+    0,
+    0
+  ],
+  "turretAngleOffsets": [
+    0
+  ],
+  "hardpointOffsets": [
+    0,
+    0
+  ],
+  "hardpointAngleOffsets": [
+    0
+  ],
+  "animationType": "NONE",
+  "textureType": ROUGH
+}

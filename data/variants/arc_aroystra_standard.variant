@@ -1,0 +1,23 @@
+{
+  "variantId": "arc_aroystra_standard",
+  "hullId": "arc_aroystra",
+  "displayName": "Beam Funnel",
+  "goalVariant": false,
+  "fluxCapacitors": 0,
+  "fluxVents": 0,
+  "quality": 1,
+  "permaMods": [],
+  "hullMods": [
+  ],
+  "weaponGroups": [
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0001": "diableavionics_burchel"
+      }
+    }
+  ],
+  "modules": [],
+  "wings": []
+}

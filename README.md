@@ -22,5 +22,10 @@ Lastly, extract the contents of the zip file into your mods folder.
 
 # CREDITS
 - Tartiflette, for literally everything (some scripts, every single sprite)
+- ApproLight (Sound assets)
+- Tecrys (Shield Sprite)
+- Starficz (AI utils)
+- Nia Tahl (Funny explosion sprite)
 - raycrasher, for the original mod
-- ApproLight (TODO remove sound assets on release)
+- Kissa (code)
+- the dme guy (beacon and procgen code)

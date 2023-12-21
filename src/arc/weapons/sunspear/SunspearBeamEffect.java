@@ -1,5 +1,6 @@
 package arc.weapons.sunspear;
 
+import arc.StopgapUtils;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.loading.DamagingExplosionSpec;
@@ -15,6 +16,7 @@ import org.lwjgl.Sys;
 import org.lwjgl.util.vector.Vector2f;
 
 import java.awt.*;
+import java.util.Iterator;
 import java.util.Random;
 
 public class SunspearBeamEffect implements BeamEffectPlugin {
@@ -38,6 +40,16 @@ public class SunspearBeamEffect implements BeamEffectPlugin {
         if (combatEngineAPI.isPaused()) return;
 
         Vector2f beamTarget = beamAPI.getTo();
+
+        Global.getCombatEngine().addSmoothParticle(
+                beamAPI.getTo(),
+                new Vector2f(),
+                5f,
+                10f,
+                2f,
+                beamAPI.getCoreColor()
+        );
+
         intervalUtil.advance(amount);
         cachedRippleDistortion.advance(amount);
         if (!shouldCachedRippleDistortionExist) {
@@ -64,6 +76,7 @@ public class SunspearBeamEffect implements BeamEffectPlugin {
         }
 
         if (beamAPI.getBrightness() <= 0.6) return;
+
 
         MagicLensFlare.createSharpFlare(
                 combatEngineAPI,
@@ -105,9 +118,11 @@ public class SunspearBeamEffect implements BeamEffectPlugin {
         blast.setDetailedExplosionFlashRadius(190f);
         blast.setDetailedExplosionFlashDuration(0.4f);
 
-        for (ShipAPI ship : CombatUtils.getShipsWithinRange(beamTarget, 300f)) {
+        for (Iterator<ShipAPI> it = StopgapUtils.getShipsWithinRange(beamTarget, 300f); it.hasNext(); ) {
+            ShipAPI ship = it.next();
             CombatUtils.applyForce(ship, new Vector2f(RANDOM.nextFloat() * 20, RANDOM.nextFloat() * 20), 900.0f);
         }
+
 
 
 

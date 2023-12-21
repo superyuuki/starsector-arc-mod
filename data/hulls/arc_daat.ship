@@ -1,5 +1,5 @@
 {
-  "hullName": "Hokhma",
+  "hullName": "Daat",
   "hullId": "arc_daat",
   "hullSize": "DESTROYER",
   "spriteName": "graphics/ARC/ships/daat.png",
@@ -12,10 +12,10 @@
   "shieldRadius": 141,
   "viewOffset": 0,
   "builtInMods": [
+    "automated",
     "arc_coronal_hypershunt",
     "arc_laminate_armor",
     "arc_variable_sheath",
-    "diableavionics_universaldecksExtra"
 
   ],
   "builtInWeapons": {
@@ -28,7 +28,7 @@
     {
       "id": "WS0001",
       "size": "SMALL",
-      "type": "HYBRID",
+      "type": "ENERGY",
       "mount": "TURRET",
       "arc": 232,
       "angle": 0,
@@ -55,7 +55,7 @@
     {
       "id": "WS0004",
       "size": "SMALL",
-      "type": "ENERGY",
+      "type": "HYBRID",
       "mount": "TURRET",
       "arc": 186,
       "angle": 90,
@@ -64,7 +64,7 @@
     {
       "id": "WS0005",
       "size": "SMALL",
-      "type": "ENERGY",
+      "type": "HYBRID",
       "mount": "TURRET",
       "arc": 186,
       "angle": -90,
@@ -73,7 +73,7 @@
     {
       "id": "WS0006",
       "size": "SMALL",
-      "type": "HYBRID",
+      "type": "ENERGY",
       "mount": "TURRET",
       "arc": 247,
       "angle": 180,

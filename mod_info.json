@@ -1,10 +1,10 @@
 {
 	"id":"arc",
 	"name":"ARC",
-	"author":"Raycrasher, superyuuki",
-	"version":"0.2",
-	"description":"Created by Raycrasher, extended by superyuuki",
-	"gameVersion": "0.95.1a-RC6",
+	"author":"superyuuki, Raycrasher",
+	"version":"0.2.5",
+	"description":"superyuuki (original by Raycrasher)",
+	"gameVersion": "0.96a-RC8",
 	"jars": [
 		"./jars/starsector-arc-mod.jar"
 	],

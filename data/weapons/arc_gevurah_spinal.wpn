@@ -17,17 +17,20 @@
 	"hardpointOffsets":[0,0],
 	"hardpointAngleOffsets":[0],
 	"barrelMode":"ALTERNATING", # or LINKED.  whether barrels fire at the same time or alternate.
-	#"animationType":"GLOW",
 	"animationType":"GLOW_AND_FLASH",
-	"muzzleFlashSpec":{"length":50.0,   # only used if animationType = MUZZLE_FLASH
-					   "spread":5.0,
-					   "particleSizeMin":15.0,
-					   "particleSizeRange":10.0,
-					   "particleDuration":0.12,
-					   "particleCount":15,
-					   "particleColor":[155,100,255,255]},	
+	"muzzleFlashSpec":{"length":80.0,   # only used if animationType = MUZZLE_FLASH
+		"spread":5.0,
+		"particleSizeMin":15.0,
+		"particleSizeRange":10.0,
+		"particleDuration":0.09,
+		"particleCount":30,
+		"particleColor":[155,255,100,255]},
 	"autocharge":true,  # whether the weapon will continue charging and fire if the LMB is tapped instead of held
 	"requiresFullCharge":true,  # for pulse weapons - whether the weapon will fire at a lower strength partial charge
-	"projectileSpecId":"amblaster_shot",  # projectile that will be fired
-	"fireSoundTwo":"antimatter_blaster_fire",
+	"projectileSpecId":"arc_dusk_shot",  # projectile that will be fired,
+	"interruptibleBurst":false,
+
+
+	"fireSoundTwo":"arc_dusk",
+	"everyFrameEffect":"arc.weapons.dusk.DuskEveryFrameEffect"
 }

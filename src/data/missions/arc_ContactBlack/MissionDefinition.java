@@ -43,8 +43,8 @@ public class MissionDefinition implements MissionDefinitionPlugin {
         api.addToFleet(FleetSide.ENEMY, "arc_netzach_prototype", FleetMemberType.SHIP, "ARC God's Hand", true);
         api.addToFleet(FleetSide.ENEMY, "arc_daat_prototype", FleetMemberType.SHIP, "ARC Will of the Maker", true);
         api.addToFleet(FleetSide.ENEMY, "arc_gevurah_prototype", FleetMemberType.SHIP, "ARC Lay Down Your Arms", true);
-        api.addToFleet(FleetSide.ENEMY, "arc_tiferet_prototype", FleetMemberType.SHIP, "ARC Holy Fist", true);
-        api.addToFleet(FleetSide.ENEMY, "arc_tiferet_prototype", FleetMemberType.SHIP, "ARC Divine Will", true);
+        api.addToFleet(FleetSide.ENEMY, "arc_malkuth_prototype", FleetMemberType.SHIP, "ARC Holy Fist", true);
+        api.addToFleet(FleetSide.ENEMY, "arc_malkuth_prototype", FleetMemberType.SHIP, "ARC Divine Will", true);
 
         final float width = 15000.0f;
         final float height = 30000.0f;

@@ -1,5 +1,6 @@
 package arc.weapons.stygan;
 
+import arc.util.ARCUtils;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.loading.DamagingExplosionSpec;
@@ -38,7 +39,23 @@ public class StyganBeamEffect implements BeamEffectPlugin {
                 new Color(255,200,160)
         );
 
-        float blastDamage = beam.getWeapon().getDerivedStats().getBurstDamage() * 0.06f; //*9 = 54% extra damage, so i lied :P
+        float multiplier = 0.2f;
+
+        if (beam.getDamageTarget() != null && beam.getDamageTarget() instanceof ShipAPI) {
+            ShipAPI ship = (ShipAPI) beam.getDamageTarget();
+
+            multiplier = ARCUtils.decideBasedOnHullSize(
+                    ship,
+                    0.03f,
+                    0.0625f,
+                    0.125f,
+                    0.25f
+            );
+        }
+
+        float blastDamage = beam.getWeapon().getDerivedStats().getBurstDamage() * multiplier;
+        // * 5 so vs frigates you get 5 * 0.1 * 1130 = ~500 HE scattered damage, LOL
+        // vs cruisers you get 5 * 0.9 * 1130 = 5000 HE scattered damage xD
 
 
         DamagingExplosionSpec blast = new DamagingExplosionSpec(0.2f,
@@ -53,7 +70,8 @@ public class StyganBeamEffect implements BeamEffectPlugin {
                 0.6f,
                 40,
                 new Color(231, 151, 112, 218),
-                new Color(255, 115,0, 42));
+                new Color(255, 115,0, 42)
+        );
         blast.setDamageType(DamageType.HIGH_EXPLOSIVE);
         blast.setShowGraphic(true);
         blast.setDetailedExplosionFlashColorCore(new Color(231, 151, 112, 218));

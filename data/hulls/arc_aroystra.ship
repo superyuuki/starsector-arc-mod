@@ -1,0 +1,62 @@
+{
+  "bounds": [
+    16,
+    1,
+    -1,
+    8,
+    -11,
+    -0,
+    -1,
+    -8,
+    16,
+    -1
+  ],
+  "builtInWeapons": {
+    "WS0001": "diableavionics_burchel"
+  },
+  "center": [
+    9,
+    12
+  ],
+  "collisionRadius": 20.5,
+  "engineSlots": [
+    {
+      "angle": 180,
+      "contrailSize": 9,
+      "length": 21.5,
+      "location": [
+        -10,
+        -0
+      ],
+      "style": "HIGH_TECH",
+      "width": 9
+    }
+  ],
+  "height": 30,
+  "hullId": "arc_aroystra",
+  "hullName": "Snap Drone",
+  "hullSize": "FIGHTER",
+  "shieldCenter": [
+    3,
+    0
+  ],
+  "shieldRadius": 17,
+  "spriteName": "graphics/arc/ships/aroystra/aroystra.png",
+  "style": "HIGH_TECH",
+  "viewOffset": 0,
+  "weaponSlots": [
+    {
+      "angle": 0,
+      "arc": 8,
+      "id": "WS0001",
+      "locations": [
+        16,
+        -0
+      ],
+      "mount": "HIDDEN",
+      "size": "SMALL",
+      "type": "BUILT_IN"
+    }
+  ],
+  "width": 18
+}

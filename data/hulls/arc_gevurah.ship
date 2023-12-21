@@ -12,9 +12,9 @@
   "shieldRadius": 195.5,
   "viewOffset": 0,
   "builtInMods": [
+    "automated",
     "arc_coronal_hypershunt",
-    "arc_laminate_armor",
-    "diableavionics_universaldecksExtra"
+    "arc_laminate_armor"
   ],
   "builtInWeapons": {
     "WS0001": "arc_gevurah_spinal",
@@ -164,7 +164,7 @@
     {
       "id": "WS0016",
       "size": "SMALL",
-      "type": "ENERGY",
+      "type": "SYNERGY",
       "mount": "TURRET",
       "arc": 230,
       "angle": 90,
@@ -173,7 +173,7 @@
     {
       "id": "WS0017",
       "size": "SMALL",
-      "type": "ENERGY",
+      "type": "SYNERGY",
       "mount": "TURRET",
       "arc": 230,
       "angle": -90,

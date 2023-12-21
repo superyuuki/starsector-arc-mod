@@ -26,7 +26,7 @@ public class VentAcceleratorPart implements IHullmodPart<ARCData> {
                 BASE_VENT_BONUS,
                 ARCUtils.remap(
                         0f,
-                        1.4f,
+                        1.6f,
                         BASE_VENT_BONUS,
                         MAX_VENT_BONUS,
                         shipAPI.getFluxLevel()
@@ -54,6 +54,16 @@ public class VentAcceleratorPart implements IHullmodPart<ARCData> {
         }
 
 
+    }
+
+    @Override
+    public boolean hasData() {
+        return true;
+    }
+
+    @Override
+    public boolean makesNewData() {
+        return true;
     }
 
     @Override

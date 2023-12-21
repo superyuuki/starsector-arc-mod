@@ -1,0 +1,41 @@
+{
+	"id":"arc_alphastar_missile",
+	"specClass":"missile",	
+	"missileType":"MISSILE",
+    "onHitEffect":"arc.weapons.alphastar.AlphastarOnHitEffect",
+	"sprite":"graphics/arc/missiles/arc_alphastar.png",
+	"size":[8,22],	
+	"center":[4,11],
+	"collisionRadius":12,
+	"collisionClass":"MISSILE_NO_FF",
+	"explosionColor":[130,230,230,255],  # purely visual, will get a white additively blended core on top of this color
+	"explosionRadius":150, # purely visual,
+    "armingTime":0.5,
+    "noEngineGlowTime":0.5,
+	"engineSpec":{
+            "turnAcc":80,
+            "turnRate":40,
+            "acc":1400,
+            "dec":100},	  
+	"engineSlots":[
+                        {"id":"ES1",
+			"loc":[-8, 0],
+			"style":"CUSTOM",
+                          "styleSpec":{
+                            "mode":"QUAD_STRIP",
+                            "engineColor":[130,180,230,255],
+                            "contrailDuration":0.2,
+                            "contrailWidthMult":0.5,
+                            "contrailWidthAddedFractionAtEnd":3.3,
+                            "contrailMinSeg":3, # min segment length, in pixels
+                            "contrailMaxSpeedMult":0.75f,
+                            "contrailAngularVelocityMult":1.3f,
+                            "contrailColor":[130,180,230,255],
+                            "glowSizeMult":f,
+                            "type":"SMOKE" # GLOW or SMOKE; additive or regular blend mode
+                          },
+			"width":8.0,
+			"length":20.0,
+			"angle":180.0},
+    ],				    
+}

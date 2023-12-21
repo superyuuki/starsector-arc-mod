@@ -1,0 +1,33 @@
+{
+	"id":"arc_busterstar_mirv",
+	"specClass":"missile",	
+	"missileType":"ROCKET",
+	"sprite":"graphics/arc/missiles/arc_busterstar_mirv.png",
+	"size":[10,24],	
+	"center":[5,12],
+	"collisionRadius":12,
+	"collisionClass":"MISSILE_NO_FF",
+	"explosionColor":[0,165,255,255],  # purely visual, will get a white additively blended core on top of this color
+	"explosionRadius":125, # purely visual
+	"flameoutTime":3,
+	"engineSpec":
+                        {"turnAcc":90,
+                        "turnRate":90,
+                        "acc":50,
+                        "dec":50},
+	"engineSlots":[
+                        {"id":"ES1",
+			"loc":[-9, -3],
+			"style":"HIGH_TECH",
+                        "width":4.0,
+			"length":20.0,
+			"angle":320.0},
+
+			{"id":"ES2",
+			"loc":[-9, 3],
+			"style":"HIGH_TECH",
+			"width":4.0,
+			"length":20.0,
+			"angle":40.0}],			    
+}
+

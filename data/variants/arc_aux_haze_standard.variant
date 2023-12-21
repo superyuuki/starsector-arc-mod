@@ -1,0 +1,61 @@
+{
+    "displayName": "Standard",
+    "fluxCapacitors": 9,
+    "fluxVents": 30,
+    "goalVariant": true,
+    "hullId": "arc_aux_haze",
+    "hullMods": [
+        "targetingunit"
+    ],
+    "permaMods": [],
+    "sMods": [],
+    "variantId": "arc_aux_haze_standard",
+    "weaponGroups": [
+        {
+            "autofire": false,
+            "mode": "ALTERNATING",
+            "weapons": {
+                "WS0005": "diableavionics_thunderboltpod",
+                "WS0006": "diableavionics_thunderboltpod"
+            }
+        },
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0001": "diableavionics_recson2",
+                "WS0002": "diableavionics_recson2",
+                "WS0003": "diableavionics_recson2",
+                "WS0004": "diableavionics_recson2"
+            }
+        },
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0016": "sabot",
+                "WS0017": "sabot",
+                "WS0020": "sabot",
+                "WS0021": "sabot"
+            }
+        },
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0007": "arc_glanz",
+                "WS0014": "arc_glanz"
+            }
+        },
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0008": "arc_umbra",
+                "WS0009": "arc_umbra",
+                "WS0012": "arc_umbra",
+                "WS0013": "arc_umbra"
+            }
+        }
+    ]
+}

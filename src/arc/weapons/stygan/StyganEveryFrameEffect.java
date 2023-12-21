@@ -1,12 +1,10 @@
 package arc.weapons.stygan;
 
-import arc.weapons.ArcBaseEveryFrameWeaponEffect;
+import arc.weapons.ArcChargeupWeaponEffect;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.CombatEngineAPI;
-import com.fs.starfarer.api.combat.EveryFrameWeaponEffectPlugin;
 import com.fs.starfarer.api.combat.WeaponAPI;
 import org.lazywizard.lazylib.FastTrig;
-import org.lazywizard.lazylib.MathUtils;
 import org.lwjgl.util.vector.Vector2f;
 
 import java.awt.*;
@@ -14,17 +12,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 //Credit to SCY
-public class StyganEveryFrameEffect extends ArcBaseEveryFrameWeaponEffect {
+public class StyganEveryFrameEffect extends ArcChargeupWeaponEffect {
 
 
     private float timer=0, randomization=0;
     private Vector2f muzzle= new Vector2f();
     private boolean runOnce=false, hasFired=false;
     private List<Float> ANGLES = new ArrayList();
-    private float originalRange;
 
     @Override
-    public void advanceSub (float amount, CombatEngineAPI engine, WeaponAPI weapon) {
+    public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
+        super.advance(amount, engine, weapon);
 
         //game paused, no script
         if (engine.isPaused()) {
@@ -41,7 +39,7 @@ public class StyganEveryFrameEffect extends ArcBaseEveryFrameWeaponEffect {
             } else if(weapon.getSlot().isTurret()){
                 muzzle=weapon.getSpec().getTurretFireOffsets().get(2);
             }
-            originalRange = weapon.getSpec().getMaxRange();
+            float originalRange = weapon.getSpec().getMaxRange();
         }
 
         //move the offsets while firing

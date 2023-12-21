@@ -1,0 +1,18 @@
+{
+	"id":"arc_aroystra_screen",
+	"type":"STAT_MOD",
+	"aiType":"CUSTOM",
+	"aiScript":"arc.shipsystems.aroy.AroystraScreenAI",
+	
+	"statsScript":"arc.shipsystems.aroy.AroystraScreenStats",
+
+	"useSound":"drone_launch",
+	"outOfUsesSound":"gun_out_of_ammo",
+	
+	"aiHints":{
+	}
+}
+
+
+
+

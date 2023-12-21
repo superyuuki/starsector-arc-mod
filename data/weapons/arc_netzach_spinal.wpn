@@ -2,6 +2,7 @@
   "id": "arc_netzach_spinal",
   "specClass": "beam",
   "beamEffect": "arc.weapons.sunspear.SunspearBeamEffect",
+  "everyFrameEffect":"arc.weapons.sunspear.SunspearBeamMineEffect",
   "type": "ENERGY",
   "size": "LARGE",
   "collisionClass": "RAY",

@@ -6,7 +6,7 @@
 	"size":[4,10],
 	"center":[2,4],
 	"collisionRadius":6,
-	"collisionClass":"PROJECTILE_NO_FF",
+	"collisionClass":"MISSILE_NO_FF",
 	"explosionColor":[255,165,50,255],
 	"explosionRadius":50,
 	"maxFlightTime":3,

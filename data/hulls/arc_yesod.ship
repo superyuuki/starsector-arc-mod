@@ -1,0 +1,171 @@
+{
+  "hullName": "Yesod",
+  "hullId": "arc_yesod",
+  "hullSize": "DESTROYER",
+  "spriteName": "graphics/ARC/ships/yesod/arc_yesod.png",
+  "height": 360,
+  "width": 166,
+  "center": [83, 180.5],
+  "collisionRadius": 188,
+  "shieldCenter": [-0.5, 0],
+  "shieldRadius": 200,
+  "viewOffset": 0,
+  "style": "MIDLINE",
+  "builtInMods": [
+    "automated",
+    "advancedcore",
+    "arc_coronal_hypershunt",
+    "arc_laminate_armor"
+  ],
+  "builtInWeapons": {
+    "WS0001": "arc_yesod_spinal",
+  },
+  "weaponSlots":
+  [
+    {
+      "id": "WS0001",
+      "size": "LARGE",
+      "type": "ENERGY",
+      "mount": "HARDPOINT",
+      "arc": 0,
+      "angle": 0,
+      "locations": [178, 0]
+    },
+    {
+      "id": "WS0002",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 45,
+      "angle": 90,
+      "locations": [121, 21]
+    },
+    {
+      "id": "WS0003",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 45,
+      "angle": 90,
+      "locations": [104, 22]
+    },
+    {
+      "id": "WS0004",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 45,
+      "angle": 90,
+      "locations": [87, 23]
+    },
+    {
+      "id": "WS0005",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 45,
+      "angle": 90,
+      "locations": [70.5, 24.5]
+    },
+    {
+      "id": "WS0006",
+      "size": "SMALL",
+      "type": "MISSILE",
+      "mount": "HARDPOINT",
+      "arc": 0,
+      "angle": 90,
+      "locations": [53, 25]
+    },
+    {
+      "id": "WS0007",
+      "size": "SMALL",
+      "type": "MISSILE",
+      "mount": "HARDPOINT",
+      "arc": 0,
+      "angle": 90,
+      "locations": [38, 28]
+    },
+    {
+      "id": "WS0008",
+      "size": "SMALL",
+      "type": "MISSILE",
+      "mount": "HARDPOINT",
+      "arc": 0,
+      "angle": 270,
+      "locations": [-49, -30]
+    },
+    {
+      "id": "WS0009",
+      "size": "SMALL",
+      "type": "MISSILE",
+      "mount": "HARDPOINT",
+      "arc": 0,
+      "angle": 270,
+      "locations": [-34, -27]
+    },
+    {
+      "id": "LB 1",
+      "size": "LARGE",
+      "type": "LAUNCH_BAY",
+      "mount": "HIDDEN",
+      "arc": 360,
+      "angle": 0,
+      "locations": [
+        -31.5, 30.5,
+        -52, 32,
+        -28, 30.5
+      ]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-128.5, -10.5],
+      "length": 30,
+      "width": 10,
+      "angle": 180,
+      "contrailSize": 30,
+      "style": "HIGH_TECH"
+    },
+    {
+      "location": [-127.5, -3],
+      "length": 30,
+      "width": 10,
+      "angle": 180,
+      "contrailSize": 30,
+      "style": "HIGH_TECH"
+    },
+    {
+      "location": [-101, 16.5],
+      "length": 30,
+      "width": 10,
+      "angle": 180,
+      "contrailSize": 30,
+      "style": "HIGH_TECH"
+    },
+    {
+      "location": [-100.5, 24],
+      "length": 30,
+      "width": 10,
+      "angle": 180,
+      "contrailSize": 30,
+      "style": "HIGH_TECH"
+    }
+  ],
+  "bounds": [
+    8.5, 42,
+    182.5, 16,
+    179.5, -7.5,
+    -10, -30,
+    -52, -41.5,
+    -42.5, -62,
+    -53.5, -67.5,
+    -64, -49,
+    -65, -85,
+    -76, -85.5,
+    -86.5, -45.5,
+    -144, -24,
+    -129, 4,
+    -108.5, 3,
+    -103, 36
+  ]
+}

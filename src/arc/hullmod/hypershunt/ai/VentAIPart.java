@@ -24,17 +24,12 @@ import java.util.List;
 public class VentAIPart implements IHullmodPart<ARCData> {
 
 
-    final IntervalUtil ventEvery = new IntervalUtil(0.05f, 0.2f); //simulate a human's reaction time
+    final IntervalUtil debugText = new IntervalUtil(0.3f,0.3f);
 
 
     @Override
     public void advanceSafely(CombatEngineAPI engineAPI, ShipAPI ship, float timestep, ARCData customData) {
-        ventEvery.advance(timestep);
-        if (!ventEvery.intervalElapsed()) return;
-
-        if (customData.mode == ARCData.Mode.BERSERK || customData.mode == ARCData.Mode.GLIDE_DRIVE) {
-            return; //Don't hyper vent while berserking or glide driving
-        }
+        debugText.advance(timestep);
 
         if (ship.getSystem().isActive()) return; //Don't activate using system
         if (ship == Global.getCombatEngine().getPlayerShip() && ship.getAI() == null) return; //dont use this on the player ship
@@ -45,14 +40,6 @@ public class VentAIPart implements IHullmodPart<ARCData> {
         float fluxLevel = fluxTracker.getFluxLevel();
         if (fluxTracker.isOverloadedOrVenting()) return;
 
-
-        VentingGivesArmorPart.Data data  = (VentingGivesArmorPart.Data) ship.getCustomData().get(VentingGivesArmorPart.VENTING_ARMOR);
-
-        if (data == null) {
-        }
-
-        if (data == null) return;
-        if (data.cooldown != 0) return; //No point in doing any of this if our armor/gun isn't ready to vent yet
 
         //check all these every tick
         //use armor to block shield damage fluxLevel > 0.05f && fluxLevel < 0.6f &&
@@ -69,42 +56,71 @@ public class VentAIPart implements IHullmodPart<ARCData> {
                 )
         );
 
+
+
         for (WeaponAPI weaponAPI : ship.getUsableWeapons()) {
             if (weaponAPI.getSpec().hasTag("hyper") && weaponAPI.isFiring()) return;
-            if (weaponAPI.getSpec().hasTag("STRIKE") && weaponAPI.isFiring()) return;
+            if (weaponAPI.getSpec().hasTag("strike") && weaponAPI.isFiring()) return;
+            //if (weaponAPI.getSpec().hasTag("strike") && weaponAPI.isFiring()) return;
+
         }
 
         //todo MORE CONSERVATIVE for firgates
 
         float tooMuchArmorDamageThreshold = ARCUtils.decideBasedOnHullSize(
                 ship,
-                0.3f,
-                0.4f,
-                0.4f,
-                0.5f
+                0.1f,
+                0.12f,
+                0.15f,
+                0.18f
         );
 
-        boolean tooMuchArmorDamage = ARCUtils.tooMuchArmorDamagePossible(
+        float durationToCheck = ship.getFluxTracker().getTimeToVent();
+
+        float armorDamage = ARCUtils.armorDamagePossible(
                 ship,
                 tooMuchArmorDamageThreshold,
                 2500f,
-                1f,
+                durationToCheck,
                 damageMult
         );
+/*
+        CMUtils.getGuiDebug().putText(VentAIPart.class, ship.getId() + ship.hashCode(), armorDamage + "");
+
+        if (debugText.intervalElapsed()) {
+            Global.getCombatEngine().addFloatingText(ship.getLocation(), "incoming armor: " + (int)armorDamage, 30f, Color.RED, ship, 1f, 0.5f);
+        }*/
+
+        boolean tooMuchArmorDamage = armorDamage >= (ship.getArmorGrid().getArmorRating() * tooMuchArmorDamageThreshold) ;
+        boolean tooMuchShieldDamage = ARCUtils.tooMuchShieldDamageIncoming(ship, 0.07f, 1300f, durationToCheck);
+
+
+        if (tooMuchArmorDamage) {
+            ship.setJitterUnder(ship, Color.RED, 4f, 4, 2f);
+        }
+
+        if (tooMuchShieldDamage) {
+            ship.setJitterUnder(ship, Color.BLUE, 4f, 4, 2f);
+        }
+
+
+
+        VentingGivesArmorPart.Data data  = (VentingGivesArmorPart.Data) ship.getCustomData().get(VentingGivesArmorPart.VENTING_ARMOR);
+
+        if (data == null) return;
+        if (data.cooldown != 0) return; //No point in doing any of this if our armor/gun isn't ready to vent yet
 
 
 
 
-        if (fluxLevel > 0.05f && fluxLevel < 0.4f && ARCUtils.tooMuchShieldDamageIncoming(ship, 0.07f, 1300f, 1f)) {
+
+
+        if (fluxLevel > 0.05f && fluxLevel < 0.55f && tooMuchShieldDamage) {
             //anti shield vent
 
             if (tooMuchArmorDamage) {
-                engineAPI.addFloatingText(ship.getLocation(), "opportunistic vent, but scared!", 20f, Color.RED, ship, 2f, 2f);
-
                 return;
             }
-
-            engineAPI.addFloatingText(ship.getLocation(), "opportunistic vent!", 20f, Color.RED, ship, 2f, 2f);
 
             FluxTrackerAPI fluxTracker1 = ship.getFluxTracker();
 
@@ -122,7 +138,7 @@ public class VentAIPart implements IHullmodPart<ARCData> {
             } else {
                 //back down, but still armor vent
 
-                ship.getAIFlags().setFlag(ShipwideAIFlags.AIFlags.BACK_OFF_MIN_RANGE, 2f, 600f- ship.getCollisionRadius()*0.5f);
+                ship.getAIFlags().setFlag(ShipwideAIFlags.AIFlags.BACK_OFF, 2f);
                 ship.giveCommand(ShipCommand.VENT_FLUX, null, 0);
             }
 
@@ -131,21 +147,22 @@ public class VentAIPart implements IHullmodPart<ARCData> {
         }
 
 
-        if (flags.hasFlag(ShipwideAIFlags.AIFlags.DO_NOT_USE_SHIELDS) && fluxLevel < 0.4f && fluxLevel > 0.05f) { //super efficient damper) {
+
+
+        if (flags.hasFlag(ShipwideAIFlags.AIFlags.DO_NOT_USE_SHIELDS) && fluxLevel < 0.55f && fluxLevel > 0.05f && (Math.random() < 0.4f)) { //super efficient damper) {
 
             if (tooMuchArmorDamage) {
-                engineAPI.addFloatingText(ship.getLocation(), "shield drop vent, but scared!", 20f, Color.RED, ship, 2f, 2f);
 
                 return;
             }
 
-            engineAPI.addFloatingText(ship.getLocation(), "shield drop vent!", 20f, Color.RED, ship, 2f, 2f);
 
             FluxTrackerAPI fluxTracker1 = ship.getFluxTracker();
 
             //as long as the time is low...
 
-            if (ship.getMutableStats().getVentRateMult().getModifiedValue() > 3 && ship.getFluxLevel() < 0.6f) {
+            //TODO instead of 2 select by personality
+            if (ship.getMutableStats().getVentRateMult().getModifiedValue() > 2 && ship.getFluxLevel() < 0.65f) {
 
                 ship.getAIFlags().setFlag(ShipwideAIFlags.AIFlags.DO_NOT_BACK_OFF, fluxTracker1.getTimeToVent() + 2f);
                 ship.getAIFlags().setFlag(ShipwideAIFlags.AIFlags.DO_NOT_BACK_OFF_EVEN_WHILE_VENTING, fluxTracker1.getTimeToVent() + 2f);
@@ -157,7 +174,7 @@ public class VentAIPart implements IHullmodPart<ARCData> {
             } else {
                 //back down, but still armor vent
 
-                ship.getAIFlags().setFlag(ShipwideAIFlags.AIFlags.BACK_OFF_MIN_RANGE, 2f, 600f- ship.getCollisionRadius()*0.5f);
+                ship.getAIFlags().setFlag(ShipwideAIFlags.AIFlags.BACK_OFF, 2f);
                 ship.giveCommand(ShipCommand.VENT_FLUX, null, 0);
             }
 
@@ -189,12 +206,15 @@ public class VentAIPart implements IHullmodPart<ARCData> {
 
         List<ShipAPI> nearbyEnemies = AIUtils.getNearbyEnemies(ship, 2000f);
         for (ShipAPI enemy : nearbyEnemies) {
+            //TODO this should consider ship weapons rather than hull size
+
+
             switch (enemy.getHullSize()) {
                 case CAPITAL_SHIP:
                     dangerFactor+= Math.max(
                             0, 3 - MathUtils.getDistanceSquared(
                                             enemy.getLocation(), ship.getLocation()
-                            ) /1000000
+                            ) /1000 * 1000
                     );
                     break;
                 case CRUISER:
@@ -219,10 +239,11 @@ public class VentAIPart implements IHullmodPart<ARCData> {
         //TODO AND no armor AND
         //TODO right now this lets shots through
 
-        CMUtils.getGuiDebug().putText(VentAIPart.class, "a", "a");
+
+
+
 
         if (decisionLevel >=MathUtils.getRandomNumberInRange(1.1f, 1.6f)) {
-            engineAPI.addFloatingText(ship.getLocation(), "vent, decision " + decisionLevel + " and damger " + dangerFactor, 20f, Color.RED, ship, 2f, 2f);
 
 
             FluxTrackerAPI fluxTracker1 = ship.getFluxTracker();
@@ -233,7 +254,10 @@ public class VentAIPart implements IHullmodPart<ARCData> {
 
                 ship.getAIFlags().setFlag(ShipwideAIFlags.AIFlags.DO_NOT_BACK_OFF, fluxTracker1.getTimeToVent() + 2f);
                 ship.getAIFlags().setFlag(ShipwideAIFlags.AIFlags.DO_NOT_BACK_OFF_EVEN_WHILE_VENTING, fluxTracker1.getTimeToVent() + 2f);
-                ship.getAIFlags().setFlag(ShipwideAIFlags.AIFlags.MANEUVER_TARGET, fluxTracker1.getTimeToVent() + 3f);
+                //ship.getAIFlags().setFlag(ShipwideAIFlags.AIFlags.MANEUVER_TARGET, fluxTracker1.getTimeToVent() + 3f);
+                //ship.getAIFlags().setFlag(ShipwideAIFlags.AIFlags.MANEUVER_RANGE_FROM_TARGET, fluxTracker1.getTimeToVent() + 1f, 500f); //TODO
+                ship.getAIFlags().removeFlag(ShipwideAIFlags.AIFlags.BACK_OFF);
+
                 //close that gap, these are ANGRY ships
 
 
@@ -241,12 +265,22 @@ public class VentAIPart implements IHullmodPart<ARCData> {
             } else {
                 //back down, but still armor vent
 
-                ship.getAIFlags().setFlag(ShipwideAIFlags.AIFlags.BACK_OFF_MIN_RANGE, 2f, 600f- ship.getCollisionRadius()*0.5f);
+                ship.getAIFlags().setFlag(ShipwideAIFlags.AIFlags.BACK_OFF, 2f);
                 ship.giveCommand(ShipCommand.VENT_FLUX, null, 0);
             }
 
 
         }
+    }
+
+    @Override
+    public boolean hasData() {
+        return true;
+    }
+
+    @Override
+    public boolean makesNewData() {
+        return true;
     }
 
     @Override

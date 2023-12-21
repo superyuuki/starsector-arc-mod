@@ -13,6 +13,8 @@
   "hardpointSprite": "",
   "id": "arc_mml",
   "projectileSpecId": "arc_mml_missile",
+  "interruptibleBurst":false,
+
   "size": "LARGE",
   "smokeSpec": {
     "blowbackDuration": 0.45,

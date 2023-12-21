@@ -1,0 +1,26 @@
+{
+    "displayName": "Standard",
+    "fluxCapacitors": 0,
+    "fluxVents": 3,
+	"goalVariant": true,
+    "hullId": "arc_aux_laminar",
+    "hullMods": ["heavyarmor"],
+	"permaMods": [],	
+    "quality": 0,
+    "variantId": "arc_aux_laminar_standard",
+    "weaponGroups": [
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0002": "hammer",
+                "WS0003": "hammer"
+            }
+        },
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {"WS0001": "lightneedler"}
+        }
+    ]
+}

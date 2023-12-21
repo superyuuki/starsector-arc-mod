@@ -37,6 +37,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
+
+import data.scripts.util.MagicUI;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
 import org.lwjgl.input.Keyboard;
@@ -83,7 +85,7 @@ public class BaseRandomARCMission implements MissionDefinitionPlugin {
         }
     };
 
-    public static final float STATION_CHANCE = 0.25f;
+    public static final float STATION_CHANCE = 0f;
     public static final float STATION_CHANCE_PLAYER = 0.4f; // Decides whether the station should be on player or enemy side
 
     // Types of objectives that may be randomly used
@@ -96,14 +98,21 @@ public class BaseRandomARCMission implements MissionDefinitionPlugin {
 
     // This is to force specific (Domain Drones and Remnants are handled elsewhere) hidden from intel factions to be available in Test Mode
     protected static final Set<String> FORCE_AVAILABLE_IN_TEST = new HashSet<>(Arrays.asList("OCI",
+            "uaf",
+            "derelict",
+            "omega",
             "blade_breakers",
             "draco",
+            "enigma",
+            "remnant",
+            "armaarmatura",
+            "arc",
             "fang",
             "mess",
             "junk_pirates_technicians"));
 
     // Variant Test Mode hulls will be listed in exactly this order
-    protected static final List<String> TEST_HULLS = new ArrayList<>(Arrays.asList("arc_tiferet",
+    protected static final List<String> TEST_HULLS = new ArrayList<>(Arrays.asList("arc_malkuth",
             "arc_daat",
             "arc_gevurah",
             "arc_netzach"
@@ -114,6 +123,10 @@ public class BaseRandomARCMission implements MissionDefinitionPlugin {
 
     static
     {
+        QUALITY_FACTORS.put("armaarmatura", 0.5f);
+        QUALITY_FACTORS.put("ii", 0.5f);
+        QUALITY_FACTORS.put("uaf", 0.5f);
+        QUALITY_FACTORS.put("enigma", 0.8f);
         QUALITY_FACTORS.put("magellan_protectorate", 0.5f);
         QUALITY_FACTORS.put("arc", 0.6f); //super high tech, but scattered among the stars
         QUALITY_FACTORS.put("default", 0.5f);
@@ -208,7 +221,7 @@ public class BaseRandomARCMission implements MissionDefinitionPlugin {
     // If true, ship variants are randomized like in the campaign
     protected static boolean randomMode = false;
     // Adds admiral AI to player side
-    protected static boolean useAdmiralAI = false;
+    protected static boolean useAdmiralAI = true;
     // If false, enemy gets no point advantage over player
     protected static boolean useDifficultyModifier = true;
     // THI variant dump. Only works if variant test mode is also on
@@ -375,8 +388,17 @@ public class BaseRandomARCMission implements MissionDefinitionPlugin {
         }
 
         // You don't need a difficulty modifier when you're playing against ARC :)
-        int playerFP = generateFleet(player, api, FleetSide.PLAYER, (int) (size * difficulty * 1.6), stationPlayer);
-        int enemyFP = generateFleet(enemy, api, FleetSide.ENEMY, (int)(size * 0.8), stationEnemy);
+        int playerFP;
+        int enemyFP;
+        if (player.getId().equals("arc")) {
+            playerFP = generateFleet(player, api, FleetSide.PLAYER, (int) (size * 0.8), stationPlayer);
+            enemyFP = generateFleet(enemy, api, FleetSide.ENEMY, (int)(size * difficulty * 1.2), stationEnemy);
+
+        } else {
+            playerFP = generateFleet(player, api, FleetSide.PLAYER, (int) (size * difficulty * 1.2), stationPlayer);
+            enemyFP = generateFleet(enemy, api, FleetSide.ENEMY, (int)(size * 0.8), stationEnemy);
+        }
+
 
         // Set up the map
         float width = 13000f + 13000f * (sizeForMap / 200);

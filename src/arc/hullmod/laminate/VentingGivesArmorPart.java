@@ -1,5 +1,6 @@
 package arc.hullmod.laminate;
 
+import arc.plugin.RunnableQueuePlugin;
 import arc.util.ARCUtils;
 import arc.hullmod.IHullmodPart;
 import com.fs.starfarer.api.Global;
@@ -13,7 +14,7 @@ import java.awt.*;
 public class VentingGivesArmorPart implements IHullmodPart<VentingGivesArmorPart.Data> {
 
     public static final String VENTING_ARMOR =  "arc_venting_armor";
-    public static final float COOLDOWN = 600f;
+    public static final float COOLDOWN = 200f;
 
     public static class Data {
         boolean startedVenting = false;
@@ -49,7 +50,7 @@ public class VentingGivesArmorPart implements IHullmodPart<VentingGivesArmorPart
                 Color.GREEN,
                 Color.WHITE,
                 fillLevel,
-                "ARMOR",
+                "CHROMA",
                 100 - (int) ((damageMult) * 100)
         );
 
@@ -60,7 +61,6 @@ public class VentingGivesArmorPart implements IHullmodPart<VentingGivesArmorPart
 
         float fluxLevel = shipAPI.getFluxLevel();
         if (shipAPI.getFluxTracker().isVenting()) {
-
 
 
 
@@ -84,8 +84,8 @@ public class VentingGivesArmorPart implements IHullmodPart<VentingGivesArmorPart
             if (customData.cooldown > 0 || !customData.startedVenting) return;
 
             if (customData.lastMultiplier < 0.90f) {
-                shipAPI.addAfterimage(new Color(170, 254, 255, 230), 0f, 0f, 0f, 0f, 0f, 0f, 0.75f, 0.33f, true, true, true);
-                shipAPI.addAfterimage(new Color(170, 254, 255, 150), 0f, 0f, 0f, 0f, 15f, 0f, 0.75f, 0.33f, true, false, false);
+                shipAPI.addAfterimage(new Color(170, 254, 255, (int) (130 * (1.0 - fluxLevel))), 0f, 0f, 0f, 0f, 0f, 0f, 0.75f, 0.33f, true, true, true);
+                shipAPI.addAfterimage(new Color(170, 254, 255, (int) (50 * (1.0 - fluxLevel))), 0f, 0f, 0f, 0f, 15f, 0f, 0.75f, 0.33f, true, false, false);
 
             }
 
@@ -109,14 +109,31 @@ public class VentingGivesArmorPart implements IHullmodPart<VentingGivesArmorPart
 
                 //unmodify damage absorption
 
-                shipAPI.getMutableStats().getHullDamageTakenMult().unmodifyMult(VENTING_ARMOR);
-                shipAPI.getMutableStats().getArmorDamageTakenMult().unmodifyMult(VENTING_ARMOR);
+                RunnableQueuePlugin.queueTask(() -> {
+                    if (customData.startedVenting) return; //otherwise..
+
+                    //iframes
+                    shipAPI.getMutableStats().getHullDamageTakenMult().unmodifyMult(VENTING_ARMOR);
+                    shipAPI.getMutableStats().getArmorDamageTakenMult().unmodifyMult(VENTING_ARMOR);
+                }, 5);
+
+
 
                 return;
             }
         }
 
 
+    }
+
+    @Override
+    public boolean hasData() {
+        return true;
+    }
+
+    @Override
+    public boolean makesNewData() {
+        return true;
     }
 
     @Override

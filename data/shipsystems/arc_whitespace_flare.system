@@ -1,0 +1,41 @@
+{
+	"id":"arc_whitespace_flare",
+	"type":"PHASE_CLOAK",
+	"aiType":"PHASE_CLOAK",
+	"statsScript":"arc.shipsystems.whitespace.WhitespaceFlareStats",
+	"runScriptWhilePaused":true, # only for the player's ship
+	"runScriptWhileIdle":true,  # this means unapply() never gets called
+	"blockActionsWhileChargingDown":false,
+	
+	"phaseHighlight":"_glow1",
+	"phaseDiffuse":"_glow2",
+	
+	
+	"effectColor1":[255,175,255,255],
+	"effectColor2":[255,0,255,150],
+	
+	"clampTurnRateAfter":true,
+	"clampMaxSpeedAfter":true,
+	
+	"engineGlowColor":[150,20,0,255],
+    "engineGlowContrailColor":[150,20,0,30],
+    "engineGlowLengthMult": 0.1,
+    "engineGlowWidthMult":0.5,
+    "engineGlowGlowMult": 3,
+	
+	"soundFilterType":"LOWPASS",
+	"soundFilterGain":0.8,
+	"soundFilterGainHF":0.25,
+	
+	"shipAlpha":1, # handled in stats script, don't change
+
+	"useSound":"arc_whitespace_in",
+	"loopSound":"arc_whitespace_loop",
+
+	"deactivateSound":"phase_cloak_deactivate",
+	"outOfUsesSound":"phase_cloak_collision",
+
+	"aiHints":{
+	        "averageSpeedMult":2,
+    }
+}

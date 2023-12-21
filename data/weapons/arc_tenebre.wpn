@@ -1,0 +1,30 @@
+{
+	"specClass":"beam",
+	"id":"arc_tenebre",
+	"everyFrameEffect":"arc.weapons.tenebre.TenebreBeamMineEffect",
+	"type":"ENERGY",
+	"size":"MEDIUM",
+	"displayArcRadius":600,
+	"turretSprite":"graphics/arc/weapons/arc_tenebre.png",
+	"turretGlowSprite":"graphics/arc/weapons/arc_tenebre_glow.png",
+	"hardpointSprite":"graphics/arc/weapons/arc_tenebre.png",
+	"hardpointGlowSprite":"graphics/arc/weapons/arc_tenebre_glow.png",
+	"turretOffsets":[21, 0],
+	"turretAngleOffsets":[0],
+	"hardpointOffsets":[30, 0],
+	"hardpointAngleOffsets":[0],
+	"fringeColor":[100,15,15,255],
+	"coreColor":[95,165,200,255],
+	"glowColor":[232,128,35,255],
+
+	"width":50.0,
+
+	"textureType":CHUNKY,
+	"textureScrollSpeed":428.0,
+	"pixelsPerTexel":5.0,
+
+	"pierceSet":[PROJECTILE_FF,PROJECTILE_NO_FF,PROJECTILE_FIGHTER, ASTEROID],
+        "animationType":"GLOW",
+	"fireSoundOne":"arc_hadron",
+	"fireSoundTwo":"arc_hadron_loop",
+}

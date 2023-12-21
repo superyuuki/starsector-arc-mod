@@ -1,5 +1,8 @@
 package arc.hullmod.hypershunt;
 
+import arc.Index;
+import arc.VentType;
+import arc.hullmod.hypershunt.ai.TurnIntoIEDAIPart;
 import arc.util.ARCUtils;
 import arc.hullmod.ARCBaseHullmod;
 import arc.hullmod.IHullmodPart;
@@ -19,58 +22,51 @@ import static arc.hullmod.VentAcceleratorPart.MAX_VENT_BONUS;
 //offensive core
 public class CoronalHypershunt extends ARCBaseHullmod {
 
-	static {
-		HashMap<HullSize, Float> fluxRedirection = new LinkedHashMap<>();
 
-		fluxRedirection.put(HullSize.FIGHTER, -50f);
-		fluxRedirection.put(HullSize.FRIGATE, -45f);
-		fluxRedirection.put(HullSize.DESTROYER, -40f);
-		fluxRedirection.put(HullSize.CRUISER, -35f);
-		fluxRedirection.put(HullSize.CAPITAL_SHIP, -30f);
 
-		FLUX_REDUCTION = fluxRedirection;
-
-		HashMap<HullSize, Float> maxTimeMult = new LinkedHashMap<>();
-
-		maxTimeMult.put(HullSize.FIGHTER, 1.8f);
-		maxTimeMult.put(HullSize.FRIGATE, 1.6f);
-		maxTimeMult.put(HullSize.DESTROYER, 1.4f);
-		maxTimeMult.put(HullSize.CRUISER, 1.3f);
-		maxTimeMult.put(HullSize.CAPITAL_SHIP, 1.1f);
-
-		MAX_TIME_MULT = maxTimeMult;
-
-		Set<String> badMods = new HashSet<>();
-
-		badMods.add("safetyoverrides");
-		badMods.add("heavyarmor");
-		badMods.add("fluxcoil");
-		badMods.add("fluxdistributor");
-		badMods.add("fluxbreakers");
-		badMods.add("eis_aquila");
-		badMods.add("eis_vanagloria");
-		badMods.add("converted_hangar");
-		badMods.add("roider_fighterClamps");
-
-		BAD_HULLMODS = badMods;
+	static final Map<HullSize,Float> FLUX_REDUCTION = new HashMap<>(); static {
+		FLUX_REDUCTION.put(HullSize.FIGHTER, -50f);
+		FLUX_REDUCTION.put(HullSize.FRIGATE, -55f);
+		FLUX_REDUCTION.put(HullSize.DESTROYER, -45f);
+		FLUX_REDUCTION.put(HullSize.CRUISER, -40f);
+		FLUX_REDUCTION.put(HullSize.CAPITAL_SHIP, -35f);
 	}
-	static final String CORONAL_MICROSHUNT = "arc_microshunt";
+	static final Map<HullSize, Float> MAX_TIME_MULT = new HashMap<>(); static {
+		MAX_TIME_MULT.put(HullSize.FIGHTER, 1.8f);
+		MAX_TIME_MULT.put(HullSize.FRIGATE, 1.6f);
+		MAX_TIME_MULT.put(HullSize.DESTROYER, 1.4f);
+		MAX_TIME_MULT.put(HullSize.CRUISER, 1.3f);
+		MAX_TIME_MULT.put(HullSize.CAPITAL_SHIP, 1.1f);
+	}
+	
+	static final Set<String> BAD_HULLMODS = new HashSet<>(); static {
+		BAD_HULLMODS.add("safetyoverrides");
+		BAD_HULLMODS.add("heavyarmor");
+		BAD_HULLMODS.add("fluxcoil");
+		BAD_HULLMODS.add("fluxdistributor");
+		BAD_HULLMODS.add("fluxbreakers");
+		BAD_HULLMODS.add("eis_aquila");
+		BAD_HULLMODS.add("eis_vanagloria");
+		BAD_HULLMODS.add("converted_hangar");
+		BAD_HULLMODS.add("roider_fighterClamps");
 
-	static final Map<HullSize,Float> FLUX_REDUCTION;
-	static final Map<HullSize, Float> MAX_TIME_MULT;
-	static final Set<String> BAD_HULLMODS;
+	}
 
-	static final float OVERLOAD_TIME = 90f;
-	static final float UNFOLD_RATE = 3f;
+	static final float OVERLOAD_TIME = 40f;
+	static final float UNFOLD_RATE = 2.2f;
 
-	static final float SUPPLY = 40f;
-	static final float REPAIR_TIME = -80f;
+	static final float SUPPLY = 200f;
+	static final float REPAIR_TIME = -15f;
+	static final float SHIELD_EFF = 10f;
+	static final float HULL_MULTI = 3.5f; //reduce by this
 
 	static final String BAD_HULLMOD_NOTIFICATION_SOUND = "cr_allied_critical";
 
 	@SuppressWarnings("unchecked")
 	public CoronalHypershunt() {
 		super(new IHullmodPart[]{
+				new TurnIntoIEDAIPart(),
+				new IEDPart()
 		});
 	}
 
@@ -80,6 +76,9 @@ public class CoronalHypershunt extends ARCBaseHullmod {
 		return true;
 	}
 
+
+
+	VentType ventType = VentType.LAMINATE; //TODO we're leaking memory lol
 	public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id) {
 		//good
 		stats.getEnergyWeaponFluxCostMod().modifyPercent(id, FLUX_REDUCTION.get(hullSize));
@@ -88,10 +87,28 @@ public class CoronalHypershunt extends ARCBaseHullmod {
 
 
 		//bad
-		stats.getOverloadTimeMod().modifyPercent(id, OVERLOAD_TIME);
-		stats.getSuppliesPerMonth().modifyFlat(id, SUPPLY);
+		if (hullSize == HullSize.FIGHTER) {
+			stats.getOverloadTimeMod().modifyPercent(id, -OVERLOAD_TIME); //lol get trolled
+		} else {
+			stats.getOverloadTimeMod().modifyPercent(id, OVERLOAD_TIME);
+		}
 
-		stats.getCombatWeaponRepairTimeMult().modifyPercent(id, REPAIR_TIME);
+		stats.getSuppliesPerMonth().modifyPercent(id, SUPPLY);
+		stats.getShieldAbsorptionMult().modifyPercent(id, SHIELD_EFF);
+		stats.getCombatWeaponRepairTimeMult().modifyPercent(id, -REPAIR_TIME);
+		stats.getHullBonus().modifyMult(id, 1/HULL_MULTI);
+
+		boolean doSwitch = true;
+
+		for (VentType toCompare : HULLMODS_NEXT.keySet()) {
+			if (stats.getVariant().getHullMods().contains(toCompare.ID)) doSwitch = false;
+		}
+
+		if(doSwitch){
+
+			ventType = HULLMODS_NEXT.get(ventType);
+			stats.getVariant().addMod(ventType.ID);
+		}
 
 	}
 
@@ -137,7 +154,9 @@ public class CoronalHypershunt extends ARCBaseHullmod {
 		tooltip.addPara("• %s weapons have %s reduced flux costs", pad, good, "All weapons", ARCUtils.slashesOf(FLUX_REDUCTION));
 		tooltip.addPara("• Shield deployment is %s faster", pad, good, (int)(UNFOLD_RATE * 100) + "%");
 		tooltip.addPara("• Supply usage increased by %s", pad, bad, ((int)(SUPPLY)) + "%");
+		tooltip.addPara("• Hull durability decreased by", pad, bad, ((int)(HULL_MULTI)) + "x");
 		tooltip.addPara("• Weapon repair time increased by %s", pad, bad, ((int)(REPAIR_TIME)) + "%");
+		tooltip.addPara("• Shield efficiency decreased by %s", pad, bad, ((int)(SHIELD_EFF)) + "%");
 
 		tooltip.addPara("This ship can %s", pad, Misc.getStoryBrightColor(), "access Archotech Research weapons and fighters");
 
@@ -153,7 +172,7 @@ public class CoronalHypershunt extends ARCBaseHullmod {
 		tooltip.addPara("", pad, h, "");
 
 
-		tooltip.addSectionHeading("Incompatibilities", bad, Misc.getStoryDarkColor(), Alignment.MID, 0f);
+		tooltip.addSectionHeading("Incompatibilities", Misc.getGrayColor(), Misc.getDarkHighlightColor(), Alignment.MID, 0f);
 		tooltip.addPara("", pad, h, "");
 		TooltipMakerAPI text = tooltip.beginImageWithText("graphics/ARC/icons/arc_incompatible.png", 40);
 		text.addPara("This ship cannot install the following hullmods", 0f);
@@ -175,6 +194,11 @@ public class CoronalHypershunt extends ARCBaseHullmod {
 		}
 
 		tooltip.addImageWithText(0f);
+		tooltip.addPara("", pad, h, "");
+
+
+
+
 
 
 
@@ -182,79 +206,16 @@ public class CoronalHypershunt extends ARCBaseHullmod {
 
 	}
 
-	//    private static float debuff=0;
 
-	//    private static final Map<String,Float> HULLMOD_DEBUFF = new HashMap<>();
-//    static{
-//        HULLMOD_DEBUFF.put("safetyoverrides",0.2f);
-////        HULLMOD_DEBUFF.put("unstable_injector",0.15f);
-////        HULLMOD_DEBUFF.put("auxiliarythrusters",0.15f);
-////        HULLMOD_DEBUFF.put("SCY_lightArmor",0.15f);
-//    }
-	private  final Set<String> BLOCKED_HULLMODS = new HashSet<>();
-	{
-		// These hullmods will automatically be removed
-		// This prevents unexplained hullmod blocking
-		BLOCKED_HULLMODS.add("safetyoverrides");
-	}
 
-	private final Map<String, Integer> SWITCH_TO = new HashMap<>();
-	{
-		SWITCH_TO.put("diableavionics_versant_harvest_LEFT",1);
-		SWITCH_TO.put("diableavionics_versant_harvestB_LEFT",2);
-		SWITCH_TO.put("diableavionics_versant_harvestC_LEFT",0);
-	}
-
-	private final Map<Integer,String> SWITCH = new HashMap<>();
-	{
-		SWITCH.put(0,"diableavionics_selector_auto");
-		SWITCH.put(1,"diableavionics_selector_burst");
-		SWITCH.put(2,"diableavionics_selector_semi");
-	}
-
-	private final String leftslotID = "GUN_LEFT";
-	private final String rightslotID = "GUN_RIGHT";
-
-	@Override
-	public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id) {
-
-		//trigger a weapon switch if none of the selector hullmods are present
-		boolean toSwitch=true;
-		for(int i=0; i<SWITCH.size(); i++){
-			if(stats.getVariant().getHullMods().contains(SWITCH.get(i))){
-				toSwitch=false;
-			}
-		}
-
-		//remove the weapons to change and swap the hullmod for the next fire mode
-		if(toSwitch){
-			//select new fire mode
-			int selected;
-			boolean random=false;
-			if(stats.getVariant().getWeaponSpec(leftslotID)!=null){
-				selected=SWITCH_TO.get(stats.getVariant().getWeaponSpec(leftslotID).getWeaponId());
-
-			} else {
-				selected=MathUtils.getRandomNumberInRange(0, SWITCH_TO.size()-1);
-				random=true;
-			}
-
-			//add the proper hullmod
-			stats.getVariant().addMod(SWITCH.get(selected));
-		}
-	}
-
-	@Override
-	public String getDescriptionParam(int index, HullSize hullSize) {
-		if (index == 0) return txt("hm_warning");
-		if (index == 1) return Global.getSettings().getHullModSpec("safetyoverrides").getDisplayName();
-		return null;
+	static final Map<VentType, VentType> HULLMODS_NEXT = new HashMap<>(); static {
+		HULLMODS_NEXT.put(VentType.LAMINATE, VentType.LAMINATE);
 	}
 
 
+	boolean runOnce = false;
 	@Override
 	public void advanceInCombat(ShipAPI ship, float amount) {
-
 		super.advanceInCombat(ship, amount);
 
 		CombatEngineAPI combat = Global.getCombatEngine();
@@ -262,15 +223,44 @@ public class CoronalHypershunt extends ARCBaseHullmod {
 		if (combat.isPaused()) return;
 
 
-		//  Burst Surger / Variable Surger
-		if (ship.isPhased()) {
-			ship.getMutableStats().getBallisticAmmoRegenMult().modifyMult(CORONAL_MICROSHUNT, 2);
-			ship.getMutableStats().getEnergyAmmoRegenMult().modifyMult(CORONAL_MICROSHUNT, 2);
-			ship.getMutableStats().getBallisticRoFMult().modifyMult(CORONAL_MICROSHUNT, 2);
-		} else {
-			ship.getMutableStats().getBallisticAmmoRegenMult().unmodify(CORONAL_MICROSHUNT);
-			ship.getMutableStats().getEnergyAmmoRegenMult().unmodify(CORONAL_MICROSHUNT);
+		//TODO is this bad to do every frame? oh well..
+		final ShieldAPI shield = ship.getShield();
+		final float radius = ship.getHullSpec().getShieldSpec().getRadius();
+		String inner;
+		String outer;
+		if (radius >= 256.0f) {
+			inner = "graphics/ARC/fx/hexshield256.png";
+			outer = "graphics/ARC/fx/shields256ring.png";
 		}
+		else if (radius >= 128.0f) {
+			inner = "graphics/ARC/fx/hexshield128.png";
+			outer = "graphics/ARC/fx/shields128ring.png";
+		}
+		else {
+			inner = "graphics/ARC/fx/hexshield64.png";
+			outer = "graphics/ARC/fx/shields64ring.png";
+		}
+
+
+		Color toUseForStuff = new Color(50, 120, 160, 130);
+
+		if (ship.getShield() != null) {
+			ship.setJitterShields(true);
+			ship.getShield().setInnerColor(toUseForStuff);
+			ship.setJitterUnder(ship, toUseForStuff, 0.5f * 3.0f, (int)(3.0f * 0.6), 1);
+
+			shield.setRadius(radius, inner, outer);
+			shield.setInnerRotationRate(0.0f); //super slow
+			shield.setRingRotationRate(0f); //do not rotate, use circle
+		}
+
+
+
+
+
+
+		//  Burst Surger / Variable Surger
+
 
 		//   Venting AI
 

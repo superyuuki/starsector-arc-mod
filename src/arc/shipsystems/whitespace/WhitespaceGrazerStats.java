@@ -28,10 +28,10 @@ public class WhitespaceGrazerStats extends BaseShipSystemScript {
     public static final float FLUX_CAP_FOR_USE = 0.91f;
 
     //These are for the speed and mobility bonuses: experiment as you see fit
-    public static final float MAX_SPEED_MULT = 3f;
-    public static final float ACCELERATION_MULT = 6f;
-    public static final float MAX_TURN_SPEED_MULT = 3f;
-    public static final float TURN_ACCELERATION_MULT = 6f;
+    public static final float MAX_SPEED_MULT = 2.5f;
+    public static final float ACCELERATION_MULT = 5f;
+    public static final float MAX_TURN_SPEED_MULT = 2f;
+    public static final float TURN_ACCELERATION_MULT = 4f;
 
     //These are just used to display our status messages, ignore them
     private Object STATUSKEY1 = new Object();
@@ -157,6 +157,10 @@ public class WhitespaceGrazerStats extends BaseShipSystemScript {
         stats.getAcceleration().modifyMult(id,1f + (ACCELERATION_MULT-1f)* effectLevel);
         stats.getDeceleration().modifyMult(id,1f + (ACCELERATION_MULT-1f)* effectLevel);
 
+        //funny
+        stats.getEnergyAmmoRegenMult().modifyMult(id, 1.5f);
+        stats.getBallisticAmmoRegenMult().modifyMult(id, 1.5f);
+
         if (ship.getOwner() != 0) {
             stats.getFluxDissipation().modifyMult(id, 1.5f); //fuck player stat
         }
@@ -190,6 +194,9 @@ public class WhitespaceGrazerStats extends BaseShipSystemScript {
 		stats.getAcceleration().unmodify(id);
 		stats.getDeceleration().unmodify(id);
         stats.getFluxDissipation().unmodify(id); //fuck player stat
+
+        stats.getEnergyAmmoRegenMult().unmodify(id );
+        stats.getBallisticAmmoRegenMult().unmodify(id);
 
     }
 

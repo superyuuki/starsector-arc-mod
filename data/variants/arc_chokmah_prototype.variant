@@ -3,18 +3,51 @@
   "hullId": "arc_chokmah",
   "displayName": "Prototype",
   "goalVariant": true,
-  "fluxCapacitors": 20,
-  "fluxVents": 0,
+  "fluxCapacitors": 30,
+  "fluxVents": 10,
   "quality": 1,
   "hullMods": [
+    "targetingunit",
+    "hardenedshieldemitter",
+  ],
+  "weaponGroups": [
+    {
+      "autofire": true,
+      "mode": "ALTERNATING",
+      "weapons": {
+        "WS0101": "arc_busterstar_mirv",
+        "WS0100": "arc_busterstar_mirv",
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "ALTERNATING",
+      "weapons": {
+        "WS0007": "atropos",
+        "WS0008": "atropos",
+        "WS0009": "atropos",
+        "WS0010": "atropos"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0001": "arc_glanz",
+        "WS0002": "arc_glanz",
+        "WS0003": "arc_umbra",
+        "WS0004": "arc_umbra",
+        "WS0005": "arc_umbra",
+        "WS0006": "arc_umbra",
+      }
+    }
 
   ],
-  "weaponGroups": [],
   "modules": [],
   "wings": [
     "arc_teshuvah_wing",
-    "arc_teshuvah_wing",
-    "arc_teshuvah_wing",
-    "arc_teshuvah_wing"
+    "arc_mura_wing",
+    "arc_mura_wing",
+    "arc_mura_wing"
   ]
 }

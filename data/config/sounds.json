@@ -13,15 +13,35 @@
 	],
 	"arc_whitespace_in":
 	[
-		{"file":"sounds/ARC/whitespace_in.wav","pitch":1,"volume":1.5}
+		{"file":"sounds/ARC/whitespace_in.wav","pitch":1,"volume":1},
+		{"file":"sounds/ARC/whitespace_in.wav","pitch":1.2,"volume":1},
+		{"file":"sounds/ARC/whitespace_in.wav","pitch":0.9,"volume":1}
+
+
 	],
 	"arc_whitespace_loop":
 	[
-		{"file":"sounds/ARC/whitespace_loop.wav","pitch":1,"volume":1.5}
+		{"file":"sounds/ARC/whitespace_loop.wav","pitch":1,"volume":1.2}
+	],
+	"arc_hadron_loop":
+	[
+		{"file":"sounds/ARC/arc_hadron_loop.wav","pitch":1,"volume":1.2}
 	],
 	"arc_machinegun":
 	[
-		{"file":"sounds/ARC/machinegun.wav","pitch":1.5,"volume":0.2}
+		{"file":"sounds/ARC/arc_machinegun.wav","pitch":1,"volume":0.4},
+		{"file":"sounds/ARC/arc_machinegun.wav","pitch":1,"volume":0.43},
+		{"file":"sounds/ARC/arc_machinegun.wav","pitch":1,"volume":0.34},
+		{"file":"sounds/ARC/arc_machinegun.wav","pitch":1	,"volume":0.37}
+
+	],
+	"arc_hadron":
+	[
+		{"file":"sounds/ARC/arc_hadron1.wav","pitch":1,"volume":1.1},
+		{"file":"sounds/ARC/arc_hadron1.wav","pitch":1.1,"volume":1},
+		{"file":"sounds/ARC/arc_hadron2.wav","pitch":1,"volume":1.1},
+		{"file":"sounds/ARC/arc_hadron2.wav","pitch":1.1	,"volume":1}
+
 	],
 	"arc_beam_chargeup":
 	[
@@ -39,20 +59,139 @@
 	[
 		{"file":"sounds/ARC/hypershunt_explode.ogg","pitch":1.2,"volume":1.0}
 	],
-	"arc_theristicus":
+	"arc_umbra_fire":
 	[
-		{"file":"sounds/ARC/arc_theristicus.wav","pitch":0.9,"volume":0.2}
+
+		{"file":"sounds/ARC/ballistic/arc_umbra_fire.wav","pitch":1,"volume":0.5}
+
+
+	],
+	"arc_glance_fire":
+	[
+
+		{"file":"sounds/ARC/energy/arc_glance_fire.wav","pitch":1.4,"volume":0.5}
+
+	],
+	"arc_dusk":
+	[
+
+		{"file":"sounds/ARC/energy/arc_dusk1.wav","pitch":1.0,"volume":0.95},
+		{"file":"sounds/ARC/energy/arc_dusk1.wav","pitch":0.9,"volume":0.98},
+		{"file":"sounds/ARC/energy/arc_dusk1.wav","pitch":1.1,"volume":0.8},
+		{"file":"sounds/ARC/energy/arc_dusk1.wav","pitch":1.05,"volume":0.85}
+
+	],
+	"arc_dusk_spinal":
+	[
+
+		{"file":"sounds/ARC/energy/arc_dusk_spinal.wav","pitch":1,"volume":1},
+		{"file":"sounds/ARC/energy/arc_dusk_spinal.wav","pitch":0.75,"volume":1.2},
+		{"file":"sounds/ARC/energy/arc_dusk_spinal.wav","pitch":1.25,"volume":0.8}
+
+
+
+	],
+	"arc_dusk_charge":
+	[
+
+		{"file":"sounds/ARC/energy/arc_dusk_charge.wav","pitch":0.6,"volume":0.25},
+		{"file":"sounds/ARC/energy/arc_dusk_charge.wav","pitch":0.7,"volume":0.25},
+		{"file":"sounds/ARC/energy/arc_dusk_charge.wav","pitch":0.5,"volume":0.25},
+		{"file":"sounds/ARC/energy/arc_dusk_charge.wav","pitch":0.8,"volume":0.25}
+
+
+	],
+	"arc_glance_charge":
+	[
+
+		{"file":"sounds/ARC/energy/arc_glance_charge.wav","pitch":0.6,"volume":0.25},
+		{"file":"sounds/ARC/energy/arc_glance_charge.wav","pitch":0.7,"volume":0.25},
+		{"file":"sounds/ARC/energy/arc_glance_charge.wav","pitch":0.5,"volume":0.25},
+		{"file":"sounds/ARC/energy/arc_glance_charge.wav","pitch":0.8,"volume":0.25}
+
+
+	],
+	"arc_dusk_charge_spinal":
+	[
+
+		{"file":"sounds/ARC/energy/arc_dusk_charge.wav","pitch":0.3,"volume":0.7}
+
+	],
+	"arc_dusk_hit":
+	[
+
+		{"file":"sounds/ARC/energy/arc_dusk_hit.wav","pitch":1,"volume":0.7},
+		{"file":"sounds/ARC/energy/arc_dusk_hit2.wav","pitch":1,"volume":0.7},
+		{"file":"sounds/ARC/energy/arc_dusk_hit3.wav","pitch":1,"volume":0.7},
+		{"file":"sounds/ARC/energy/arc_dusk_hit4.wav","pitch":1,"volume":0.7}
+
+
 	],
 	"arc_degeneracy":
 	[
-		{"file":"sounds/ARC/degeneracy.wav","pitch":0.95,"volume":0.7}
+		{"file":"sounds/ARC/missiles/arc_hyper_explode.wav","pitch":1,"volume":0.7},
+		{"file":"sounds/ARC/missiles/arc_hyper_explode2.wav","pitch":1,"volume":0.65},
+		{"file":"sounds/ARC/missiles/arc_hyper_explode3.wav","pitch":1,"volume":0.7},
+		{"file":"sounds/ARC/missiles/arc_hyper_explode.wav","pitch":0.8,"volume":0.9},
+		{"file":"sounds/ARC/missiles/arc_hyper_explode2.wav","pitch":0.8,"volume":0.85},
+		{"file":"sounds/ARC/missiles/arc_hyper_explode3.wav","pitch":0.8,"volume":0.9}
+
+
 	],
 	"arc_stygan":
 	[
-		{"file":"sounds/ARC/arc_stygan.ogg","pitch":1.1,"volume":1.3}
+		{"file":"sounds/ARC/arc_stygan.ogg","pitch":1.1,"volume":1.6},
+		{"file":"sounds/ARC/arc_stygan.ogg","pitch":1.4,"volume":1.7},
+		{"file":"sounds/ARC/arc_stygan.ogg","pitch":1.0,"volume":1.6}
+
+
 	],
 	"arc_stygan_mini":
 	[
-		{"file":"sounds/ARC/arc_stygan_mini.wav","pitch":1,"volume":0.4}
+		{"file":"sounds/ARC/arc_stygan_mini.wav","pitch":0.9,"volume":0.4},
+		{"file":"sounds/ARC/arc_stygan_mini.wav","pitch":0.8,"volume":0.3}
+
+
+
+	],
+
+	"arc_alphastar_firing":
+	[
+		{"file":"sounds/ARC/missiles/arc_alphastar_firing.wav","pitch":0.95,"volume":0.6},
+		{"file":"sounds/ARC/missiles/arc_alphastar_firing.wav","pitch":1,"volume":0.7}
+
+	],
+	"arc_macross_explode":
+	[
+		{"file":"sounds/ARC/missiles/arc_macross_explode1.wav","pitch":1.5,"volume":0.3},
+		{"file":"sounds/ARC/missiles/arc_macross_explode1.wav","pitch":1.7,"volume":0.3},
+		{"file":"sounds/ARC/missiles/arc_macross_explode1.wav","pitch":1.4,"volume":0.4},
+		{"file":"sounds/ARC/missiles/arc_macross_explode1.wav","pitch":1.3,"volume":0.5}
+
+	],
+	"arc_alphastar_explosion":
+	[
+		{"file":"sounds/ARC/missiles/arc_alphastar_explode_big.wav","pitch":1,"volume":1}
+
+	],
+	"arc_alphastar_explosion_little":
+	[
+		{"file":"sounds/ARC/missiles/arc_alphastar_explode_little.wav","pitch":1,"volume":1}
+
+	],
+	"arc_yesod_spinal_charge":
+	[
+		{"file":"sounds/ARC/ballistic/arc_yesod_spinal_charge.wav","pitch":1,"volume":1}
+
+	],
+	"arc_yesod_spinal_fire":
+	[
+		{"file":"sounds/ARC/ballistic/arc_yesod_spinal_fire.wav","pitch":1,"volume":1}
+
+	],
+	"arc_busterstar_firing":
+	[
+		{"file":"sounds/ARC/missiles/arc_busterstar_firing.wav","pitch":1,"volume":1}
+
 	]
 }

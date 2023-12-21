@@ -11,25 +11,29 @@ public abstract class ArcBaseEveryFrameWeaponEffect implements EveryFrameWeaponE
     @Override
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
 
-        if (!weapon.getShip().getVariant().hasHullMod(Index.ARC_BASE_HULLMOD)) {
-            weapon.disable(true);
-            engine.addFloatingText(
-                    weapon.getLocation(),
-                    "No Whitespace Core!",
-                    5f,
-                    Color.RED,
-                    weapon.getShip(),
-                    1f,
-                    1f
-            );
-        } else {
-            advanceSub(amount, engine, weapon);
+        boolean hasBase = weapon.getShip().getVariant().hasHullMod(Index.BASE_HULLMOD);
+        boolean hasAux = weapon.getShip().getVariant().hasHullMod(Index.AUX_HULLMOD);
+
+        if (!hasAux && !hasBase) {
+            if (!weapon.isDisabled()) {
+                weapon.disable(true);
+                engine.addFloatingText(
+                        weapon.getLocation(),
+                        "No Whitespace Core!",
+                        20f,
+                        Color.RED,
+                        weapon.getShip(),
+                        1f,
+                        1f
+                );
+            }
         }
+
 
 
     }
 
-    protected abstract void advanceSub(float amount, CombatEngineAPI engine, WeaponAPI weaponAPI);
+
 
 
 }

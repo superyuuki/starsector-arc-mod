@@ -1,0 +1,53 @@
+{
+  "variantId": "arc_chokmah_precursor",
+  "hullId": "arc_chokmah",
+  "displayName": "Precursor",
+  "goalVariant": true,
+  "fluxCapacitors": 30,
+  "fluxVents": 10,
+  "quality": 1,
+  "hullMods": [
+    "targetingunit",
+    "hardenedshieldemitter"
+  ],
+  "weaponGroups": [
+    {
+      "autofire": true,
+      "mode": "ALTERNATING",
+      "weapons": {
+        "WS0101": "arc_busterstar_mirv",
+        "WS0100": "arc_busterstar_mirv",
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "ALTERNATING",
+      "weapons": {
+        "WS0007": "diableavionics_banishsmall",
+        "WS0008": "diableavionics_banishsmall",
+        "WS0009": "diableavionics_banishsmall",
+        "WS0010": "diableavionics_banishsmall"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0001": "arc_glanz",
+        "WS0002": "arc_glanz",
+        "WS0003": "arc_umbra",
+        "WS0004": "arc_umbra",
+        "WS0005": "arc_umbra",
+        "WS0006": "arc_umbra",
+      }
+    }
+
+  ],
+  "modules": [],
+  "wings": [
+    "arc_deveikuth_wing",
+    "arc_teshuvah_wing",
+    "arc_mura_wing",
+    "arc_mura_wing"
+  ]
+}

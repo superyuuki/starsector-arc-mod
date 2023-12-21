@@ -1,6 +1,7 @@
 package arc.hullmod.coordinator;
 
 import arc.Index;
+import arc.StopgapUtils;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.graphics.SpriteAPI;
@@ -10,6 +11,7 @@ import org.lazywizard.lazylib.combat.CombatUtils;
 import org.lwjgl.util.vector.Vector2f;
 
 import java.awt.*;
+import java.util.Iterator;
 
 public class VariableCoordinator extends BaseHullMod {
 
@@ -19,18 +21,18 @@ public class VariableCoordinator extends BaseHullMod {
 
     final IntervalUtil intervalUtil = new IntervalUtil(0.1f, 0.1f);
 
-    static final String BUFF = "arc_variable_buff";
-    static final String DEBUFF = "arc_variable_debuff";
+    public static final String BUFF = "arc_variable_buff";
+    public static final String DEBUFF = "arc_variable_debuff";
 
-    static class Buff {
-        int power = 50;
-        boolean isInRangeThisTick = false;
+    public static class Buff {
+        public int power = 50;
+        public boolean isInRangeThisTick = false;
 
     }
 
-    static class Debuff {
-        int power = 50;
-        boolean isInRangeThisTick = false;
+    public static class Debuff {
+        public int power = 50;
+        public boolean isInRangeThisTick = false;
     }
 
 
@@ -64,7 +66,7 @@ public class VariableCoordinator extends BaseHullMod {
                         new Vector2f(location.getX(), location.getY()),
                         new Vector2f(diameter, diameter),
                         this.rotation,
-                        isPlayer ? Index.ARC_ALLIED : Index.ARC_HOSTILE,
+                        isPlayer ? Index.ALLIED : Index.HOSTILE,
                         false,
                         CombatEngineLayers.BELOW_SHIPS_LAYER
                 );
@@ -83,10 +85,13 @@ public class VariableCoordinator extends BaseHullMod {
 
 
         //buff allies, curse enemies
-        for (ShipAPI otherShip : CombatUtils.getShipsWithinRange(ship.getLocation(), 2000f)) {
+        for (Iterator<ShipAPI> it = StopgapUtils.getShipsWithinRange(ship.getLocation(), 2000f); it.hasNext(); ) {
+            ShipAPI otherShip = it.next();
 
-            if (otherShip.isFighter()) continue;;
-            if (otherShip.equals(ship)) continue;;
+            if (otherShip.isFighter()) continue;
+            ;
+            if (otherShip.equals(ship)) continue;
+            ;
 
             if (otherShip.getOwner() == ship.getOwner()) {
                 Buff buff = (Buff) otherShip.getCustomData().get(BUFF);

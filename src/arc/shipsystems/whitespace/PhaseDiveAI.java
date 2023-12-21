@@ -2,13 +2,17 @@
 //Attempts to give the Phase Dive some decent AI
 package arc.shipsystems.whitespace;
 
+import arc.StopgapUtils;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.util.IntervalUtil;
+import javafx.scene.paint.Stop;
 import org.lazywizard.lazylib.CollisionUtils;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.combat.AIUtils;
 import org.lazywizard.lazylib.combat.CombatUtils;
 import org.lwjgl.util.vector.Vector2f;
+
+import java.util.Iterator;
 
 public class PhaseDiveAI implements ShipSystemAIScript {
 
@@ -166,7 +170,7 @@ public class PhaseDiveAI implements ShipSystemAIScript {
 
 		//First check all "dumb" projectiles...
 		float totalDamage = 0f;
-		for (DamagingProjectileAPI proj : CombatUtils.getProjectilesWithinRange(ship.getLocation(), radiusToCheck)) {
+		for (DamagingProjectileAPI proj : StopgapUtils.getProjectilesWithinRange(ship.getLocation(),radiusToCheck)) {
 			//Ignore friendlies
 			if (proj.getOwner() == ship.getOwner()) {
 				continue;
@@ -184,7 +188,8 @@ public class PhaseDiveAI implements ShipSystemAIScript {
 		}
 
 		//...then check missiles
-		for (MissileAPI msl : CombatUtils.getMissilesWithinRange(ship.getLocation(), radiusToCheck)) {
+		for (Iterator<MissileAPI> it = StopgapUtils.getMissilesWithinRange(ship.getLocation(), radiusToCheck); it.hasNext(); ) {
+			MissileAPI msl = it.next();
 			//Ignore friendlies
 			if (msl.getOwner() == ship.getOwner()) {
 				continue;

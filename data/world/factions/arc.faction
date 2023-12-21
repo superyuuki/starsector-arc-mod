@@ -1,7 +1,7 @@
 {
   "id":"arc",
-  "color":[10,20,40,144],
-  "secondaryUIColor":[10,20,40,144],
+  "color":[34, 73, 86,144],
+  "secondaryUIColor":[34, 73, 86,200],
   "secondarySegments":5,
 
   "displayName":"ARC",
@@ -118,7 +118,7 @@
     "shipQuality":5,
     "numShips":1,
 
-    "shipSize":4,
+    "shipSize":3,
     "aggression":5,
 
     "combatFreighterProbability":0.25,   #diable decision

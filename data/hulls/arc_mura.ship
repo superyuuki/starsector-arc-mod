@@ -1,0 +1,295 @@
+{
+  "bounds": [
+    12.5,
+    -1.5,
+    -3.5,
+    -12.5,
+    -13.5,
+    -6,
+    -13.5,
+    6,
+    -3.5,
+    12.5,
+    12.5,
+    1.5
+  ],
+  "builtInWeapons": {
+    "HEAD": "arc_mura_head",
+    "LEFTGUN": "arc_mura_gunL",
+    "RIGHTGUN": "arc_mura_gunR",
+    "TRANSFORM_04": "arc_mura_back",
+    "TRANSFORM_05": "arc_mura_chest",
+    "TRANSFORM_06": "arc_mura_headDeco",
+    "TRANSFORM_07": "arc_mura_pauldronL",
+    "TRANSFORM_08": "arc_mura_pauldronR",
+    "DRILL": "arc_mura_drill"
+  },
+  "center": [
+    10,
+    17
+  ],
+  "collisionRadius": 35,
+  "engineSlots": [
+    {
+      "angle": -180,
+      "contrailSize": 6,
+      "length": 12,
+      "location": [
+        -14,
+        4.5
+      ],
+      "style": "HIGH_TECH",
+      "width": 6
+    },
+    {
+      "angle": 180,
+      "contrailSize": 6,
+      "length": 12,
+      "location": [
+        -14,
+        -4.5
+      ],
+      "style": "HIGH_TECH",
+      "width": 6
+    },
+    {
+      "angle": 180,
+      "contrailSize": 128,
+      "length": 24,
+      "location": [
+        -18,
+        3.5
+      ],
+      "style": "HIGH_TECH",
+      "width": 4
+    },
+    {
+      "angle": -180,
+      "contrailSize": 128,
+      "length": 24,
+      "location": [
+        -18,
+        -3.5
+      ],
+      "style": "HIGH_TECH",
+      "width": 4
+    },
+    {
+      "angle": 180,
+      "contrailSize": 128,
+      "length": 16,
+      "location": [
+        -17,
+        8.5
+      ],
+      "style": "HIGH_TECH",
+      "width": 3
+    },
+    {
+      "angle": -180,
+      "contrailSize": 128,
+      "length": 16,
+      "location": [
+        -17,
+        -8.5
+      ],
+      "style": "HIGH_TECH",
+      "width": 3
+    }
+  ],
+  "height": 31,
+  "hullId": "arc_mura",
+  "hullName": "Mura",
+  "hullSize": "FIGHTER",
+  "shieldCenter": [
+    0,
+    -0
+  ],
+  "shieldRadius": 35,
+  "spriteName": "graphics/da/ships/valiant/diableavionics_valiant.png",
+  "style": "HIGH_TECH",
+  "viewOffset": 0,
+  "weaponSlots": [
+    {
+      "angle": 0,
+      "arc": 20,
+      "id": "DRILL",
+      "locations": [
+        20,
+        0
+      ],
+      "mount": "TURRET",
+      "size": "SMALL",
+      "type": "BUILT_IN"
+    },
+    {
+      "angle": 0,
+      "arc": 135,
+      "id": "HEAD",
+      "locations": [
+        1,
+        -0
+      ],
+      "mount": "TURRET",
+      "size": "SMALL",
+      "type": "DECORATIVE"
+    },
+    {
+      "angle": 15,
+      "arc": 90,
+      "id": "LEFTGUN",
+      "locations": [
+        0,
+        10
+      ],
+      "mount": "TURRET",
+      "size": "SMALL",
+      "type": "DECORATIVE"
+    },
+    {
+      "angle": -15,
+      "arc": 90,
+      "id": "RIGHTGUN",
+      "locations": [
+        0,
+        -10
+      ],
+      "mount": "TURRET",
+      "size": "SMALL",
+      "type": "DECORATIVE"
+    },
+    {
+      "angle": 0,
+      "arc": 0,
+      "id": "TRANSFORM_00",
+      "locations": [
+        0,
+        10
+      ],
+      "mount": "TURRET",
+      "size": "SMALL",
+      "type": "DECORATIVE"
+    },
+    {
+      "angle": 0,
+      "arc": 0,
+      "id": "TRANSFORM_01",
+      "locations": [
+        0,
+        -10
+      ],
+      "mount": "TURRET",
+      "size": "SMALL",
+      "type": "DECORATIVE"
+    },
+    {
+      "angle": 15,
+      "arc": 90,
+      "id": "TRANSFORM_02",
+      "locations": [
+        0,
+        10
+      ],
+      "mount": "TURRET",
+      "size": "SMALL",
+      "type": "DECORATIVE"
+    },
+    {
+      "angle": -15,
+      "arc": 90,
+      "id": "TRANSFORM_03",
+      "locations": [
+        0,
+        -10
+      ],
+      "mount": "TURRET",
+      "size": "SMALL",
+      "type": "DECORATIVE"
+    },
+    {
+      "angle": 0,
+      "arc": 0,
+      "id": "TRANSFORM_04",
+      "locations": [
+        -11,
+        -0
+      ],
+      "mount": "TURRET",
+      "size": "SMALL",
+      "type": "DECORATIVE"
+    },
+    {
+      "angle": 0,
+      "arc": 270,
+      "id": "TRANSFORM_05",
+      "locations": [
+        17,
+        -0
+      ],
+      "mount": "TURRET",
+      "size": "MEDIUM",
+      "type": "DECORATIVE"
+    },
+    {
+      "angle": 0,
+      "arc": 270,
+      "id": "TRANSFORM_06",
+      "locations": [
+        2,
+        -0
+      ],
+      "mount": "TURRET",
+      "size": "SMALL",
+      "type": "DECORATIVE"
+    },
+    {
+      "angle": 15,
+      "arc": 90,
+      "id": "TRANSFORM_07",
+      "locations": [
+        0,
+        10
+      ],
+      "mount": "TURRET",
+      "size": "SMALL",
+      "type": "DECORATIVE"
+    },
+    {
+      "angle": -15,
+      "arc": 90,
+      "id": "TRANSFORM_08",
+      "locations": [
+        0,
+        -10
+      ],
+      "mount": "TURRET",
+      "size": "SMALL",
+      "type": "DECORATIVE"
+    },
+    {
+      "angle": 15,
+      "arc": 90,
+      "id": "TRANSFORM_09",
+      "locations": [
+        0,
+        10
+      ],
+      "mount": "TURRET",
+      "size": "SMALL",
+      "type": "DECORATIVE"
+    },
+    {
+      "angle": -15,
+      "arc": 90,
+      "id": "TRANSFORM_10",
+      "locations": [
+        0,
+        -10
+      ],
+      "mount": "TURRET",
+      "size": "SMALL",
+      "type": "DECORATIVE"
+    }
+  ],
+  "width": 20
+}

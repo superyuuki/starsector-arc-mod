@@ -1,0 +1,54 @@
+{
+	"id":"arc_busterstar_warhead",
+	"specClass":"missile",	
+	"missileType":"ROCKET",
+	"sprite":"graphics/arc/missiles/arc_busterstar_warhead.png",
+	"size":[10,24],	
+	"center":[5,12],
+	"collisionRadius":12,
+	"collisionClass":"MISSILE_NO_FF",
+	"explosionColor":[128,0,255,96],  # purely visual, will get a white additively blended core on top of this color
+	"explosionRadius":300, # purely visual
+	"explosionSpec":{"duration":0.1f, # not visual
+                        "radius":300,
+                        "coreRadius":200, # full damage within core radius
+                        "collisionClass":HITS_SHIPS_AND_ASTEROIDS,
+                        "collisionClassByFighter":HITS_SHIPS_AND_ASTEROIDS,
+                        "particleSizeMin":3.0,
+                        "particleSizeRange":3.0,
+                        "particleDuration":1,
+                        "particleCount":25,
+                        "particleColor":[27,118,253,255]},
+	"flameoutTime":0.5, # total time from flameout to full fadeout
+	"noEngineGlowTime":0.5, # time spent without the engine glow being rendered				 
+	"engineSpec":{
+                        "turnAcc":240,
+			"turnRate":80,
+			"acc":250,
+			"dec":0},
+	"engineSlots":[
+                        {
+                        "id":"ES1",
+			"loc":[-11, 0],
+                        "style":"CUSTOM",
+                        "styleSpec":{
+                                "mode":"QUAD_STRIP", # PARTICLES or QUAD_STRIP, determines which params are used
+                                "engineColor":[30,255,210,155],
+                                "contrailDuration":1.5,
+                                "contrailWidthMult":1,
+                                "contrailWidthAddedFractionAtEnd":2.5,  # can be negative. makes trail spread out/narrow at the end
+                                "contrailMinSeg":10, # min segment length, in pixels
+                                "contrailMaxSpeedMult":0.5f,
+                                "contrailAngularVelocityMult":0.5f,
+                                "contrailColor":[30,103,180,165],
+                                "glowSizeMult":3.5f,
+
+                          "type":"SMOKE" # GLOW or SMOKE; additive or regular blend mode
+                        },
+                        "width":8.0,
+                        "length":20.0,
+                        "angle":180.0
+                        }
+                    ],
+	"onHitEffect":"arc.weapons.buster.BusterOnHit",
+}

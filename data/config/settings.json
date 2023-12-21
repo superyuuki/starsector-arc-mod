@@ -1,22 +1,39 @@
 {
 
 	"plugins":{
-		"VariableBuffPlugin":"arc.hullmod.coordinator.VariableBuffPlugin"
+		"VariableBuffPlugin":"arc.plugin.VariableBuffPlugin",
+		"RunnableQueuePlugin":"arc.plugin.RunnableQueuePlugin",
+		"PenetrationPlugin":"arc.plugin.PenetrationPlugin",
+		"MacrossProximityDetonatePlugin": "arc.plugin.MacrossProximityDetonatePlugin"
 	},
 
 	"designTypeColors":{
-        "Archotech Research":[50,50,50,150],
-		"Archotech Research (Auxiliary)":[50,50,70,200]
+        "Archotech Research":[34, 73, 86, 255],
+		"Archotech Research (Auxiliary)":[34, 73, 86,180]
 
 	},
 
 	"graphics": {
 		"fx": {
+			"trail_clean":"graphics/arc/fx/trail_clean.png",
+			"trail_ring":"graphics/arc/fx/trail_ring.png",
+			"trail_beam":"graphics/arc/fx/trail_beam.png",
+
+
 			"targeting":"graphics/ARC/fx/targeting.png",
 			"blast_flash":"graphics/ARC/fx/blast_flash.png",
 			"blast_core":"graphics/ARC/fx/blast_core.png",
+			"blast_shock1":"graphics/ARC/fx/blast_shock1.png",
+
 			"blast_diffuse":"graphics/ARC/fx/blast_diffuse.png",
 			"blast_outer":"graphics/ARC/fx/blast_outer.png",
+
+			"hexshield64":"graphics/ARC/fx/hexshield64.png",
+			"hexshield128":"graphics/ARC/fx/hexshield128.png",
+			"hexshield256":"graphics/ARC/fx/hexshield256.png",
+
+
+
 
 			"tac_warning": "graphics/ARC/fx/tac_warning.png"
 		},

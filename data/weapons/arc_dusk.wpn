@@ -1,0 +1,33 @@
+{
+	"specClass":"projectile",
+	"id":"arc_dusk",
+	"type":"ENERGY",
+	"size":"MEDIUM",
+	"displayArcRadius":700,
+	"turretSprite":"graphics/arc/weapons/arc_dusk.png",
+	"turretGunSprite":"graphics/da/weapons/diableavionics_srab_turret_recoil.png",
+	"hardpointSprite":"graphics/arc/weapons/arc_dusk.png",
+	"hardpointGunSprite":"graphics/da/weapons/diableavionics_srab_turret_recoil.png",
+	"visualRecoil":5.0,
+	"renderHints":[RENDER_BARREL_BELOW],	
+	"glowColor":[220,188,231,250],
+	"turretOffsets":[21, 0],
+	"turretAngleOffsets":[0],
+	"hardpointOffsets":[30, 0],
+	"hardpointAngleOffsets":[0],
+	"barrelMode":"ALTERNATING",
+	"animationType":"GLOW_AND_FLASH",
+	"muzzleFlashSpec":{"length":80.0,   # only used if animationType = MUZZLE_FLASH
+		"spread":5.0,
+		"particleSizeMin":15.0,
+		"particleSizeRange":10.0,
+		"particleDuration":0.14,
+		"particleCount":30,
+		"particleColor":[155,255,100,255]},
+	"projectileSpecId":"arc_dusk_shot",
+	"fireSoundTwo":"arc_dusk",
+
+	"autocharge": true,
+
+	"everyFrameEffect":"arc.weapons.dusk.DuskEveryFrameEffect",
+}

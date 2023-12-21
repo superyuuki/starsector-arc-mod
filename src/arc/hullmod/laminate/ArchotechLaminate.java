@@ -50,12 +50,12 @@ public class ArchotechLaminate extends ARCBaseHullmod {
         tooltip.addSectionHeading("Passive Ability - Chroma Field", Misc.getPositiveHighlightColor(), Misc.getStoryDarkColor(), Alignment.MID, 0f);
 
         tooltip.addPara("", pad, h, "");
-        tooltip.addPara("When the ship is venting, generate a damper that reduces damage based on the flux vented and lingers after venting", pad, h, "");
-        tooltip.addPara("When venting %s of total flux capacity, reduce damage by %s, scaling down as flux increases", pad, Misc.getPositiveHighlightColor(), (int)(MIN_FLUX_LEVEL * 100f) + "%", (int)(MIN_DAMAGE_REDUCTION * 100f) + "%");
-        tooltip.addPara("When venting %s of total flux capacity, increase beam res by a flat %s", pad, Misc.getPositiveHighlightColor(), (int)(MIN_FLUX_LEVEL * 100f) + "%", (int)(BEAM_RES * 100f) + "%");
+        tooltip.addPara("• When the ship is venting, generate a damper that reduces damage based on the flux vented and lingers after venting", pad, h, "");
+        tooltip.addPara("• When venting %s of total flux capacity, reduce damage by %s, scaling down as flux increases", pad, Misc.getPositiveHighlightColor(), (int)(MIN_FLUX_LEVEL * 100f) + "%", (int)(MIN_DAMAGE_REDUCTION * 100f) + "%");
+        tooltip.addPara("• When venting %s of total flux capacity, increase beam res by a flat %s", pad, Misc.getPositiveHighlightColor(), (int)(MIN_FLUX_LEVEL * 100f) + "%", (int)(BEAM_RES * 100f) + "%");
+        tooltip.addPara("• At high flux, emit a shockwave that scales with the flux being vented", pad, h, "");
         tooltip.addPara("", pad, h, "");
-        tooltip.addPara("Above %s of total flux capacity venting will do nothing", pad, Misc.getGrayColor(), ""  + (int)(MAX_FLUX_LEVEL * 100));
-        tooltip.addPara("After use goes on cooldown", pad, Misc.getHighlightColor());
+        tooltip.addPara("• Above %s of total flux capacity venting will do nothing", pad, Misc.getGrayColor(), ""  + (int)(MAX_FLUX_LEVEL * 100));
     }
     @Override
     public void applyEffectsBeforeShipCreation(ShipAPI.HullSize hullSize, MutableShipStatsAPI stats, String id) {

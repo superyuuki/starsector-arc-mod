@@ -1,19 +1,39 @@
 package arc.util;
 
-import arc.hullmod.hypershunt.ai.VentAIPart;
+import arc.Index;
+import arc.StopgapUtils;
+import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
+import com.fs.starfarer.api.util.Misc;
 import org.dark.shaders.distortion.DistortionShader;
 import org.dark.shaders.distortion.WaveDistortion;
 import org.lazywizard.lazylib.CollisionUtils;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
+import org.lazywizard.lazylib.combat.AIUtils;
 import org.lazywizard.lazylib.combat.CombatUtils;
 import org.lwjgl.util.vector.Vector2f;
 
-import java.util.Map;
-import java.util.logging.Logger;
+import java.awt.*;
+import java.util.*;
+import java.util.List;
 
 public class ARCUtils {
+
+
+    public static void spawnMine(final ShipAPI shipAPI, final Vector2f vector2f, String weapon) {
+        final MissileAPI missileAPI = (MissileAPI)Global.getCombatEngine().spawnProjectile(shipAPI, null, weapon, vector2f, (float)Math.random() * 360.0f, null);
+        if (shipAPI != null) {
+            Global.getCombatEngine().applyDamageModifiersToSpawnedProjectileWithNullWeapon(shipAPI, WeaponAPI.WeaponType.MISSILE, false, missileAPI.getDamage());
+        }
+        final float n = 0.05f;
+        missileAPI.getVelocity().scale(0.0f);
+        missileAPI.fadeOutThenIn(n);
+        missileAPI.setFlightTime(missileAPI.getMaxFlightTime() - 0.0f);
+        missileAPI.addDamagedAlready(shipAPI);
+        missileAPI.setNoMineFFConcerns(true);
+    }
+
     public static float lerp(float x, float y, float alpha) {
         return (1f - alpha) * x + alpha * y;
     }
@@ -53,6 +73,7 @@ public class ARCUtils {
     }
 
 
+    @Deprecated
     public static <T> T decideBasedOnHullSize(ShipAPI shipAPI, T frigate, T destroyer, T cruiser, T cap) {
         switch (shipAPI.getHullSize()) {
             case DESTROYER:
@@ -66,7 +87,21 @@ public class ARCUtils {
         }
     }
 
-    static Logger logger = Logger.getLogger(String.valueOf(VentAIPart.class));
+    public static <T> T decideBasedOnHullSize(ShipAPI shipAPI, T small, T frigate, T destroyer, T cruiser, T cap) {
+        switch (shipAPI.getHullSize()) {
+            case FIGHTER:
+                return small;
+            case DESTROYER:
+                return destroyer;
+            case CRUISER:
+                return cruiser;
+            case CAPITAL_SHIP:
+                return cap;
+            default:
+                return frigate;
+        }
+    }
+
 
     public static void spawnWave (Vector2f loc, Vector2f vel, float size, float intensity, boolean flip, float angle, float arc, float edgeSmooth, float fadeIn, float last, float fadeOut, float growthTime, float shrinkTime){
 
@@ -102,145 +137,223 @@ public class ARCUtils {
     }
 
     public static boolean tooMuchShieldDamageIncoming (ShipAPI ship, float threshhold, float radiusToCheck, float durationToCheck) {
-        //If we don't have a shield, always return false
-        if (ship.getShield() == null || ship.getShield().getType().equals(ShieldAPI.ShieldType.NONE)) {
-            return false;
-        }
 
-        //First check all "dumb" projectiles...
+        if (ship.getShield() == null) return false;
+        if (ship.getShield().isOff()) return false; //lol
+
         float totalDamage = 0f;
-        for (DamagingProjectileAPI proj : CombatUtils.getProjectilesWithinRange(ship.getLocation(), radiusToCheck)) {
-            //Ignore friendlies
+
+        for (DamagingProjectileAPI proj : getProjectilesInRange(ship.getLocation(), radiusToCheck)) {
             if (proj.getOwner() == ship.getOwner()) {
                 continue;
             }
 
-            //Calculate the velocity vector of the projectile some time in the future, and check if this projectile would feasonably collide with us at that point
-            Vector2f projDest = Vector2f.add((Vector2f)(new Vector2f(proj.getVelocity()).scale(durationToCheck)), proj.getLocation(), new Vector2f(0f, 0f));
-            if (!CollisionUtils.getCollides(proj.getLocation(), projDest, ship.getShield().getLocation(), ship.getShield().getRadius())) {
-                //If it doesn't collide, ignore it
-                continue;
-            }
+            //guided missiles may always hit, TODO change this to ignore near misses or use partial derivatives
+            if (proj instanceof MissileAPI && ((MissileAPI)proj).isGuided()) {
+                MissileAPI guided = (MissileAPI) proj;
+                Vector2f testPoint = ship.getLocation();
 
-            //If it's passed all checks, we add its damage (with consideration for damage type) to our counter
-            totalDamage += proj.getDamageAmount() * proj.getDamageType().getShieldMult();
-        }
+                // for guided, do some complex math to figure out the time it takes to hit
+                float missileTurningRadius = (float) (guided.getMaxSpeed() / (guided.getMaxTurnRate() * Math.PI / 180));
+                float missileCurrentAngle = VectorUtils.getFacing(guided.getVelocity());
+                Vector2f missileCurrentLocation = guided.getLocation();
+                float missileTargetAngle = VectorUtils.getAngle(missileCurrentLocation, testPoint);
+                float missileRotationNeeded = MathUtils.getShortestRotation(missileCurrentAngle, missileTargetAngle);
+                Vector2f missileRotationCenter = MathUtils.getPointOnCircumference(guided.getLocation(), missileTurningRadius, missileCurrentAngle + (missileRotationNeeded > 0 ? 90 : -90));
 
-        //...then check missiles
-        for (MissileAPI msl : CombatUtils.getMissilesWithinRange(ship.getLocation(), radiusToCheck)) {
-            //Ignore friendlies
-            if (msl.getOwner() == ship.getOwner()) {
-                continue;
-            }
+                float missileRotationSeconds = 0;
+                do {
+                    missileRotationSeconds += Math.abs(missileRotationNeeded)/guided.getMaxTurnRate();
+                    missileCurrentAngle = missileTargetAngle;
+                    missileCurrentLocation = MathUtils.getPointOnCircumference(missileRotationCenter, missileTurningRadius, missileCurrentAngle + (missileRotationNeeded > 0 ? -90 : 90));
 
-            //Non-guided missiles use the same threat calculation vector as projectiles, while guided ones are assumed to
-            //always be capable of hitting
-            if (!msl.isGuided()) {
-                Vector2f projDest = Vector2f.add((Vector2f)(new Vector2f(msl.getVelocity()).scale(durationToCheck)), msl.getLocation(), new Vector2f(0f, 0f));
-                if (CollisionUtils.getCollides(msl.getLocation(), projDest, ship.getShield().getLocation(), ship.getShield().getRadius())) {
-                    //If it doesn't collide, ignore it
-                    continue;
+                    missileTargetAngle = VectorUtils.getAngle(missileCurrentLocation, testPoint);
+                    missileRotationNeeded = MathUtils.getShortestRotation(missileCurrentAngle, missileTargetAngle);
+                } while (missileRotationSeconds < durationToCheck && Math.abs(missileRotationNeeded) > 1f);
+
+                float radius = Misc.getTargetingRadius(missileCurrentLocation, ship, false);
+                float missileStraightSeconds = (MathUtils.getDistance(missileCurrentLocation, testPoint)-radius) / guided.getMaxSpeed();
+
+                if ((missileRotationSeconds + missileStraightSeconds < durationToCheck) && (missileRotationSeconds + missileStraightSeconds < guided.getMaxFlightTime() - guided.getFlightTime())){
+                    totalDamage = totalDamage + ( proj.getDamage().getDamage() * proj.getDamage().getType().getShieldMult() * ship.getShield().getFluxPerPointOfDamage()  );
                 }
+
+            } else {
+                Vector2f testPoint = ship.getLocation();
+                float radius = Misc.getTargetingRadius(proj.getLocation(), ship, false);
+                float maxSpeed = (proj instanceof MissileAPI) ? ((MissileAPI) proj).getMaxSpeed() : proj.getMoveSpeed();
+                Vector2f futureProjectileLocation = Vector2f.add(proj.getLocation(), VectorUtils.resize(new Vector2f(proj.getVelocity()), durationToCheck*maxSpeed), null);
+                float hitDistance = MathUtils.getDistance(testPoint, proj.getLocation()) - radius;
+                float travelTime = hitDistance/proj.getMoveSpeed();
+                Vector2f futureTestPoint = Vector2f.add(testPoint, (Vector2f) new Vector2f(ship.getVelocity()).scale(travelTime), null);
+
+                boolean collides = CollisionUtils.getCollides(proj.getLocation(), futureProjectileLocation, futureTestPoint, radius);
+                if (collides) {
+                    totalDamage = totalDamage + ( proj.getDamage().getDamage() * proj.getDamage().getType().getShieldMult() * ship.getShield().getFluxPerPointOfDamage()  );
+                }
+
             }
 
-            //If it's passed all checks, we add its damage (with consideration for damage type) to our counter
-            totalDamage += msl.getDamageAmount() * msl.getDamageType().getShieldMult();
-        }
 
+        }
 
 
         //If our total incoming damage is higher than our threshhold, we return true. Otherwise, we return false
-        return totalDamage >= (ship.getMaxFlux() / ship.getShield().getFluxPerPointOfDamage()) * threshhold;
+        return totalDamage >= ship.getMaxFlux() * threshhold;
     }
 
 
     public static float calculateDamageToArmor(DamageAPI damage, float armorRating, float damperCoefficient) {
-        float damageAmount = damage.getDamage();
-        float armorMultiplier = 1f - armorRating / (armorRating + 100f);
+        float damageAmount = damage.getDamage() * damage.getType().getArmorMult() * damperCoefficient;
+        damageAmount = damageAmount * (damageAmount / (damageAmount + armorRating));
 
-        return damageAmount * damage.getType().getArmorMult() * armorMultiplier* damperCoefficient;
+        return damageAmount;
+    }
+
+    public static List<DamagingProjectileAPI> getProjectilesInRange(Vector2f location, float range)
+    {
+        List<DamagingProjectileAPI> projectiles = new ArrayList<>();
+
+        for (DamagingProjectileAPI tmp : Global.getCombatEngine().getProjectiles())
+        {
+            if (MathUtils.isWithinRange(tmp.getLocation(), location, range))
+            {
+                projectiles.add(tmp);
+            }
+        }
+
+        //TODO sort by closest
+
+        return projectiles;
     }
 
 
 
-    //TODO optimize this shits (vectorize and cache)
-    public static boolean tooMuchArmorDamagePossible(ShipAPI ship, float threshhold, float radiusToCheck, float durationToCheck, float multiplyAllDamageBy) {
+    //optimize this shits (vectorize and cache)
+    //could do some quadtree stuff lol
 
-        //TODO this is wrong, since the ship will always think it has max armor even when low
+    public static float armorDamagePossible(ShipAPI ship, float threshhold, float radiusToCheck, float durationToCheck, float multiplyAllDamageBy) {
+
         float armorRatingForCalculation = ship.getArmorGrid().getArmorRating();
-
-
-
         float totalDamage = 0f;
-        //count potential beam strikes
-        for (ShipAPI enemy : CombatUtils.getShipsWithinRange(ship.getLocation(), radiusToCheck * 2)) {
-            if (enemy.getOwner() == ship.getOwner()) continue; //it's not an emey
 
-            for (WeaponAPI weaponAPI : enemy.getAllWeapons()) {
-                //we don't care about disabled weapons or out of range weapons
-                if (weaponAPI.isDisabled()) continue;
-                if (MathUtils.getDistance(ship.getLocation(), enemy.getLocation()) < weaponAPI.getRange()) continue;
-
-                float trueAngle = VectorUtils.getAngle(enemy.getLocation(), ship.getLocation());
-                float desireAngle = weaponAPI.getCurrAngle();
-
-                if (Math.abs(trueAngle-desireAngle) > 30) continue; //we don't care, it's probably gonna miss anyways
-
-                //we care about beams
-                if (weaponAPI.isBeam()) {
-                    totalDamage = (totalDamage +calculateDamageToArmor(weaponAPI.getDamage(), armorRatingForCalculation, multiplyAllDamageBy)) / 2;
-                }
-
-                //we care about insta hits
-                if (weaponAPI.getProjectileSpeed() > 800) { //TODO and it can hit us right now
-                    totalDamage = totalDamage + calculateDamageToArmor(weaponAPI.getDamage(), armorRatingForCalculation, multiplyAllDamageBy);
-                }
-
-            }
-        }
-
-        //First check all "dumb" projectiles...
-
-        for (DamagingProjectileAPI proj : CombatUtils.getProjectilesWithinRange(ship.getLocation(), radiusToCheck)) {
-            //Ignore friendlies
+        for (DamagingProjectileAPI proj : getProjectilesInRange(ship.getLocation(), radiusToCheck)) {
             if (proj.getOwner() == ship.getOwner()) {
                 continue;
             }
 
-            //Calculate the velocity vector of the projectile some time in the future, and check if this projectile would feasonably collide with us at that point
-            Vector2f projDest = Vector2f.add((Vector2f)(new Vector2f(proj.getVelocity()).scale(durationToCheck)), proj.getLocation(), new Vector2f(0f, 0f));
-            if (!CollisionUtils.getCollides(proj.getLocation(), projDest, ship.getShield().getLocation(), ship.getShield().getRadius())) {
-                //If it doesn't collide, ignore it
+            //guided missiles may always hit, TODO change this to ignore near misses or use partial derivatives
+            if (proj instanceof MissileAPI && ((MissileAPI)proj).isGuided()) {
+                totalDamage = totalDamage + calculateDamageToArmor(proj.getDamage(), armorRatingForCalculation, multiplyAllDamageBy);
                 continue;
             }
 
+            Vector2f projDest = Vector2f.add(
+                    (Vector2f)(new Vector2f(proj.getVelocity()).scale(durationToCheck)),
+                    proj.getLocation(),
+                    new Vector2f(0f, 0f)
+            );
+
+            Vector2f loc = ship.getLocation();
+            float radius = ship.getCollisionRadius();
+
+            if (ship.getShield() != null) {
+                loc = ship.getShield().getLocation();
+                radius = ship.getCollisionRadius();
+            }
+
+            boolean collides = CollisionUtils.getCollides(
+                    proj.getLocation(),
+                    projDest,
+                    loc,
+                    radius
+            );
+
+            if (!collides) continue;
             totalDamage = totalDamage + calculateDamageToArmor(proj.getDamage(), armorRatingForCalculation, multiplyAllDamageBy);
+
         }
 
-        //...then check missiles
-        for (MissileAPI msl : CombatUtils.getMissilesWithinRange(ship.getLocation(), radiusToCheck)) {
-            //Ignore friendlies
-            if (msl.getOwner() == ship.getOwner()) {
-                continue;
-            }
+        //count weapons
+        for (Iterator<ShipAPI> it = StopgapUtils.getShipsWithinRange(ship.getLocation(), radiusToCheck); it.hasNext(); ) {
+            ShipAPI enemy = it.next();
 
-            //Non-guided missiles use the same threat calculation vector as projectiles, while guided ones are assumed to
-            //always be capable of hitting
-            if (!msl.isGuided()) {
-                Vector2f projDest = Vector2f.add((Vector2f)(new Vector2f(msl.getVelocity()).scale(durationToCheck)), msl.getLocation(), new Vector2f(0f, 0f));
-                if (CollisionUtils.getCollides(msl.getLocation(), projDest, ship.getShield().getLocation(), ship.getShield().getRadius())) {
-                    //If it doesn't collide, ignore it
+            if (enemy.getOwner() == ship.getOwner()) continue; //it's not an emey
+            if (!enemy.isAlive() || enemy.getFluxTracker().isOverloadedOrVenting() || enemy.getFluxLevel() > 0.9 || enemy.isPiece()) continue;
+
+            for (WeaponAPI weaponAPI : enemy.getAllWeapons()) {
+                //we don't care about disabled weapons or out of range weapons
+                if (weaponAPI.isDisabled()) continue;
+                if (MathUtils.getDistance(ship.getLocation(), enemy.getLocation()) > weaponAPI.getRange()) continue;
+
+                float trueAngle = VectorUtils.getAngle(enemy.getLocation(), ship.getLocation());
+                float desireAngle = weaponAPI.getCurrAngle();
+
+                //ignore guns that cannot hit us
+                if (Math.abs(trueAngle-desireAngle) > 15) continue;
+
+                if (weaponAPI.isBeam()) {
+                    totalDamage = totalDamage + calculateDamageToArmor(weaponAPI.getDamage(), armorRatingForCalculation, multiplyAllDamageBy);
+
+                    weaponAPI.beginSelectionFlash();
+
                     continue;
                 }
-            }
 
-            //If it's passed all checks, we add its damage (with consideration for damage type) to our counter
-            totalDamage = totalDamage + calculateDamageToArmor(msl.getDamage(), armorRatingForCalculation, multiplyAllDamageBy);
+
+                Vector2f directional = VectorUtils.getDirectionalVector(
+                        weaponAPI.getLocation(),
+                        ship.getLocation()
+                );
+
+                directional.scale(weaponAPI.getProjectileSpeed());
+                directional.scale(durationToCheck);
+
+                Vector2f projDest = Vector2f.add(
+                        ship.getLocation(),
+                        directional,
+                        new Vector2f(0f, 0f)
+                );
+
+                boolean collides = CollisionUtils.getCollides(
+                        weaponAPI.getLocation(),
+                        projDest,
+                        ship.getLocation(),
+                        ship.getCollisionRadius()
+                );
+
+                //If it doesn't collide, ignore it
+                if (!collides) {
+                    continue;
+                }
+
+
+                //we care about beams
+
+                //we care about insta hits
+                if (weaponAPI.getProjectileSpeed() > 800) { //TODO and it can hit us right now
+                    totalDamage = totalDamage + calculateDamageToArmor(weaponAPI.getDamage(), armorRatingForCalculation, multiplyAllDamageBy);
+                    weaponAPI.beginSelectionFlash();
+
+
+                }
+
+            }
         }
 
 
 
-        //If our total incoming damage is higher than our threshhold, we return true. Otherwise, we return false
-        return totalDamage >= (ship.getArmorGrid().getArmorRating()) * threshhold;
+        return totalDamage;
     }
+
+
+
+
+
+    //credits starficz
+
+
+
+
+
 }

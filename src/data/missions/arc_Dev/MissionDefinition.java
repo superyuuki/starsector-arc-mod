@@ -20,13 +20,18 @@ public class MissionDefinition implements MissionDefinitionPlugin {
 
         api.addBriefingItem("kill them all!");
         api.addToFleet(FleetSide.PLAYER, "wolf_Assault", FleetMemberType.SHIP, "ARC watcher", true);
-        api.addToFleet(FleetSide.PLAYER, "arc_netzach_prototype", FleetMemberType.SHIP, "ARC bummo", true);
-        api.addToFleet(FleetSide.PLAYER, "arc_daat_prototype", FleetMemberType.SHIP, "ARC oops", true);
-        api.addToFleet(FleetSide.PLAYER, "arc_gevurah_prototype", FleetMemberType.SHIP, "ARC smelly balls", true);
-        api.addToFleet(FleetSide.PLAYER, "arc_tiferet_prototype", FleetMemberType.SHIP, "ARC bean", true);
-        api.addToFleet(FleetSide.PLAYER, "arc_tiferet_prototype", FleetMemberType.SHIP, "ARC nuggy", true);
-        api.addToFleet(FleetSide.PLAYER, "arc_chokmah_prototype", FleetMemberType.SHIP, "ARC what", true);
+        api.addToFleet(FleetSide.PLAYER, "arc_kether_prototype", FleetMemberType.SHIP, "ARC seph", true);
+        api.addToFleet(FleetSide.PLAYER, "arc_netzach_prototype", FleetMemberType.SHIP, "ARC netz", true);
+        api.addToFleet(FleetSide.PLAYER, "arc_daat_prototype", FleetMemberType.SHIP, "ARC daat", true);
+        api.addToFleet(FleetSide.PLAYER, "arc_gevurah_prototype", FleetMemberType.SHIP, "ARC gev", true);
+        api.addToFleet(FleetSide.PLAYER, "arc_malkuth_prototype", FleetMemberType.SHIP, "ARC tif", true);
+        api.addToFleet(FleetSide.PLAYER, "arc_chokmah_prototype", FleetMemberType.SHIP, "ARC chokm", true);
+        api.addToFleet(FleetSide.PLAYER, "arc_yesod_prototype", FleetMemberType.SHIP, "ARC ys", true);
 
+        api.addToFleet(FleetSide.PLAYER, "arc_mura_standard", FleetMemberType.SHIP, "ARC mura", true);
+        api.addToFleet(FleetSide.PLAYER, "arc_teshuvah_standard", FleetMemberType.SHIP, "ARC tesh", true);
+        api.addToFleet(FleetSide.PLAYER, "arc_deveikuth_standard", FleetMemberType.SHIP, "ARC devei", true);
+        api.addToFleet(FleetSide.PLAYER, "arc_aroystra_standard", FleetMemberType.SHIP, "ARC aro", true);
 
 
         api.addToFleet(FleetSide.ENEMY, "paragon_Elite", FleetMemberType.SHIP, false);

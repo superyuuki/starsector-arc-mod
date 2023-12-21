@@ -8,11 +8,10 @@ import com.fs.starfarer.api.combat.*;
 import java.awt.*;
 
 public class ShipLights implements EveryFrameWeaponEffectPlugin {
-    private static final int[] COLOR_NORMAL = {255, 255, 255};
-    private static final int[] COLOR_VENTING = {255, 80, 80};
 
-
-    private static final int MAX_OPACITY = 255;
+    static final Color ASSAULT = new Color(255, 255, 255, 255);
+    static final Color REPAIR = new Color(136, 234, 71, 218);
+    static final Color BERSERK = new Color(96, 22, 22, 204);
 
     @Override
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
@@ -49,27 +48,24 @@ public class ShipLights implements EveryFrameWeaponEffectPlugin {
 
         ARCData data = (ARCData) ship.getCustomData().get(Index.ARC_DATA);
 
+        if (data == null) return;
+
+        Color colorToUse = null;
 
         switch (data.mode) {
 
-            case SUPPRESSION:
-                break;
-            case JAMMER:
-                break;
-            case GLIDE:
-                break;
+            case ASSAULT:
+                colorToUse = ASSAULT; break;
+            case REPAIR:
+                colorToUse = REPAIR; break;
             case BERSERK:
-                break;
-            case GLIDE_DRIVE:
-                break;
+                colorToUse = BERSERK; break;
+
         }
 
-        currentBrightness = Math.min(1f, currentBrightness);
-        Color colorToUse = new Color(COLOR_NORMAL[0], COLOR_NORMAL[1], COLOR_NORMAL[2], (int)(currentBrightness*MAX_OPACITY));
+        colorToUse = new Color(colorToUse.getRed(), colorToUse.getGreen(), (int)colorToUse.getBlue(), (int)(255 * Math.min(1f, currentBrightness)));
 
-        if (isVenting) {
-            colorToUse = new Color(COLOR_VENTING[0], COLOR_VENTING[1], COLOR_VENTING[2], (int)(currentBrightness*MAX_OPACITY));
-        }
+
 
         //And finally actually apply the color
         weapon.getSprite().setColor(colorToUse);

@@ -1,10 +1,11 @@
 package arc.weapons.blackbox;
 
+import arc.Index;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.loading.DamagingExplosionSpec;
-import data.scripts.util.MagicLensFlare;
 import data.scripts.util.MagicRender;
+import org.lazywizard.lazylib.CollisionUtils;
 import org.lazywizard.lazylib.FastTrig;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
@@ -12,74 +13,61 @@ import org.lazywizard.lazylib.combat.AIUtils;
 import org.lwjgl.util.vector.Vector2f;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BlackboxStageTwoAI implements MissileAIPlugin, GuidedMissileAI {
 
     static final float DAMPING = 0.05f;
-    static final int NUM_PARTICLES = 10;
 
     final MissileAPI missile;
+    final BlackboxEveryFrameEffect parent;
     CombatEntityAPI currentTarget;
 
 
-    public BlackboxStageTwoAI(MissileAPI missile, CombatEntityAPI currentTarget) {
+    public BlackboxStageTwoAI(MissileAPI missile, BlackboxEveryFrameEffect parent, CombatEntityAPI currentTarget) {
         this.missile = missile;
+        this.parent = parent;
         this.currentTarget = currentTarget;
     }
 
+    //TODO this is probably laggy and bad
+    CombatEntityAPI getNextBest() {
+        for (BlackboxEveryFrameEffect.RankingStruct struct : BlackboxEveryFrameEffect.getTargets(parent.ship, 2000)) {
+            if (parent.handledTargetStorage.contains(struct.entityAPI)) continue;
+            parent.handledTargetStorage.add(struct.entityAPI);
+
+            return struct.entityAPI;
+        }
+
+
+        return null;
+
+    }
 
     @Override
     public void advance(float v) {
 
-        if (currentTarget.isExpired() || !Global.getCombatEngine().isInPlay(currentTarget) || currentTarget == null || (currentTarget instanceof ShipAPI && !((ShipAPI) currentTarget).isAlive())) {
-            if(MagicRender.screenCheck(0.1f, missile.getLocation())){
-                Global.getCombatEngine().addHitParticle(
-                        missile.getLocation(),
-                        new Vector2f(),
-                        100,
-                        1,
-                        0.25f,
-                        Color.darkGray
-                );
-                for (int i=0; i<NUM_PARTICLES; i++){
-                    float axis = (float)Math.random()*360;
-                    float range = (float)Math.random()*100;
-                    Global.getCombatEngine().addHitParticle(
-                            MathUtils.getPointOnCircumference(missile.getLocation(), range/5, axis),
-                            MathUtils.getPointOnCircumference(new Vector2f(), range, axis),
-                            2+(float)Math.random()*2,
-                            1,
-                            1+(float)Math.random(),
-                            Color.darkGray
-                    );
-                }
-                Global.getCombatEngine().applyDamage(
-                        missile,
-                        missile.getLocation(),
-                        missile.getHitpoints() * 2f,
-                        DamageType.FRAGMENTATION,
-                        0f,
-                        false,
-                        false,
-                        missile
-                );
-            } else {
-                Global.getCombatEngine().removeEntity(missile);
-            }
-            return;
-        }
-
         if (missile.isFizzling() || missile.isFading() || missile.isExpired() ) {
+            parent.handledTargetStorage.remove(currentTarget);
+
+            return; //i am ballin
+            //i am faded
+        }
+
+        if (currentTarget == null ||currentTarget.isExpired() || !Global.getCombatEngine().isInPlay(currentTarget) || (currentTarget instanceof ShipAPI && !((ShipAPI) currentTarget).isAlive())) {
+            currentTarget = getNextBest();
+
+            if (currentTarget != null) {
+                BlackboxEveryFrameEffect.doTargeting(parent.ship, currentTarget);
+            }
+
             return;
         }
 
-        float dist = MathUtils.getDistanceSquared(missile.getLocation(), currentTarget.getLocation());
-        if (dist<4000){
 
-            proximityFuse();
 
-            return;
-        }
+
         Vector2f lead = AIUtils.getBestInterceptPoint(
                 missile.getLocation(),
                 missile.getMaxSpeed() * 1.25f,
@@ -118,91 +106,210 @@ public class BlackboxStageTwoAI implements MissileAIPlugin, GuidedMissileAI {
         if (Math.abs(aimAngle) < Math.abs(missile.getAngularVelocity()) * DAMPING) {
             missile.setAngularVelocity(aimAngle / DAMPING);
         }
+
+        //exploding
+
+        float dist = MathUtils.getDistanceSquared(missile.getLocation(), currentTarget.getLocation());
+
+
+
+        if (dist < (50 * 50)){
+
+            parent.handledTargetStorage.remove(currentTarget);
+
+            if (currentTarget instanceof ShipAPI) {
+                shapedCharge();
+            } else {
+                proximityFuse();
+            }
+
+            if (missile == null) return; //?????
+            if (Global.getCombatEngine().isInPlay(missile)) {
+                Global.getCombatEngine().removeEntity(missile);
+            }
+
+
+
+
+
+
+            return;
+        }
+
     }
 
-    void proximityFuse(){
+    static final Color color1 = new Color(231, 151, 112, 218);
+    static final Color color2 = new Color(176, 90, 38,255);
+    static final float radius = 120;
+    static final float coreRadius = 60;
 
-        CombatEngineAPI engine = Global.getCombatEngine();
+    //stolen from diable
+    static Vector2f penetration(CombatEntityAPI target, Vector2f point, float direction){
+        //check if the point is within the ship
+        if(CollisionUtils.isPointWithinBounds(point, target) && target instanceof ShipAPI){
+            ShipAPI ship = (ShipAPI)target;
+            //find the state of the armor at the impact point
+            if(ship.getArmorGrid().getCellAtLocation(point)!=null){
+                List<Integer> armorCell = new ArrayList<>();
+                for(int i : ship.getArmorGrid().getCellAtLocation(point)){
+                    armorCell.add(i);
+                }
+                float armorAmount = ship.getArmorGrid().getArmorValue(armorCell.get(0),armorCell.get(1));
 
-        Color color1 = null;
-        Color color2 = null;
 
-        if (currentTarget == null || currentTarget instanceof MissileAPI) {
-            color1 = new Color(231, 151, 112, 218);
-            color2 = new Color(176, 90, 38,255);
-        }
+                //        //debug
+                //        Global.getCombatEngine().addFloatingText(point, ""+armorAmount, 15, Color.BLUE, ship, 0.1f, 0.1f);
 
-        if (currentTarget instanceof ShipAPI) {
-            color1 = new Color(95, 166, 178);
-            color2 = new Color(51, 114, 134);
-        }
 
-        float radius = 0;
-        float coreRadius = 0;
-
-        if (currentTarget == null || currentTarget instanceof MissileAPI) {
-
-            radius = 200;
-            coreRadius = 120;
-        }
-        if (currentTarget instanceof ShipAPI) {
-            radius = 50;
-            coreRadius = 30;
-        }
-
-        double damage = missile.getDamageAmount();
-
-        if (currentTarget instanceof ShipAPI) {
-            damage = damage * 2;
+                //find the level of protection it offers
+                float penAmount = 1 - Math.min(1, armorAmount/ 100);
+                //apply modifiers
+                penAmount*=ship.getMutableStats().getArmorDamageTakenMult().getModifiedValue();
+                //find the actual penetration distance
+                float penDepth = Math.max(3, penAmount*20);
+                //return the actual hole
+                return MathUtils.getPoint(point, penDepth, direction);
+            } else {
+                //if the point is outside the armor grid, just return the max distance
+                return MathUtils.getPoint(point, 20, direction);
+            }
         } else {
-            damage = damage / 2;
+            //if the point is outside the bounds, just return the max distance
+            return MathUtils.getPoint(point, 20, direction);
         }
+    }
 
+
+    void shapedCharge() {
         DamagingExplosionSpec boom = new DamagingExplosionSpec(
                 0.2f,
-                radius,
-                coreRadius,
-                missile.getDamageAmount(),
-                20,
+                20f,
+                5f,
+                0,
+                0,
                 CollisionClass.PROJECTILE_NO_FF,
                 CollisionClass.PROJECTILE_FIGHTER,
                 2,
-                5,
-                5,
-                25,
+                3,
+                3,
+                10,
                 color1,
                 color2
         );
 
+        boom.setDamageType(DamageType.HIGH_EXPLOSIVE);
 
-        if (currentTarget instanceof ShipAPI) {
-            //TODO custom explosion: small and energy
-            boom.setDamageType(DamageType.ENERGY);
-        } else {
-            //TODO custom explosion: large and fragmentation
-            boom.setDamageType(DamageType.FRAGMENTATION);
-        }
-
-        boom.setSoundSetId("explosion_flak");
+        boom.setSoundSetId("prox_charge_explosion");
         boom.setUseDetailedExplosion(false);
 
-        if (currentTarget instanceof ShipAPI) {
-            MagicLensFlare.createSharpFlare(
-                    Global.getCombatEngine(),
-                    missile.getSource(),
-                    currentTarget.getLocation(),
-                    15,
-                    700,
-                    15,
+        Global.getCombatEngine().spawnDamagingExplosion(boom, missile.getSource(), missile.getLocation());
+
+        Vector2f wound = currentTarget.getLocation();
+
+        //recursive damage spots
+        for(int i=1; i<=5; i++){
+
+//                    wound = penetration(ship,wound,projectile.getFacing());
+            wound = penetration(currentTarget,wound,currentTarget.getFacing());
+
+            Global.getCombatEngine().applyDamage(
+                    currentTarget,
+                    wound,
+                    missile.getBaseDamageAmount(),
+                    DamageType.HIGH_EXPLOSIVE,
+                    missile.getBaseDamageAmount(),
+                    false,
+                    true,
+                    missile.getSource()
+            );
+
+            //debug
+//                    engine.addFloatingText(wound, projectile.getBaseDamageAmount()/5+"",10, Color.green, target, 0.1f,0.1f);
+        }
+
+        //visual fluff
+        //use the end wound to find a penetration vector
+        Vector2f.sub(wound, currentTarget.getLocation(), wound);
+
+        for(int i=1;i<=14;i++){
+            float mult = (float)i/25;
+            Vector2f pos = new Vector2f();
+            Vector2f.add(currentTarget.getLocation(), (Vector2f)(new Vector2f(wound)).scale(mult), pos);
+            Vector2f vel = MathUtils.getRandomPointInCone(currentTarget.getVelocity(), MathUtils.getRandomNumberInRange(10-5*mult,30-20*mult), missile.getFacing()-5, missile.getFacing()+5);
+
+            //smoke
+            float grey = MathUtils.getRandomNumberInRange(0.1f+mult/4, 0.2f+mult/2);
+            Global.getCombatEngine().addNebulaParticle(
+                    pos, (Vector2f)(new Vector2f(vel)).scale(2),
+                    MathUtils.getRandomNumberInRange(35-mult*25, 45-mult*30),
+                    MathUtils.getRandomNumberInRange(1+mult*2, 1+mult*5),
+                    mult/2,
+                    0.1f,
+                    MathUtils.getRandomNumberInRange(0.5f+mult, 2f+mult),
+                    new Color(
+                            grey,
+                            grey,
+                            grey,
+                            MathUtils.getRandomNumberInRange(0.2f, 0.5f)
+                    ),
+                    false
+            );
+
+            //flames
+            Global.getCombatEngine().addSwirlyNebulaParticle(
+                    pos, vel,
+                    MathUtils.getRandomNumberInRange(30-mult*25, 40-mult*30),
+                    MathUtils.getRandomNumberInRange(1+mult, 1+mult*2),
+                    0.05f,
+                    0.05f,
+                    MathUtils.getRandomNumberInRange(0.05f+(mult/4), 0.1f+(mult/2)),
+                    new Color(
+                            1f,
+                            MathUtils.getRandomNumberInRange(0.75f-mult*0.75f, 1f-mult*0.75f),
+                            0,
+                            1f),
+                    true
+            );
+            Global.getCombatEngine().addHitParticle(
+                    pos,
+                    vel,
+                    MathUtils.getRandomNumberInRange(35-mult*25, 45-mult*30),
+                    1,
+                    MathUtils.getRandomNumberInRange(0.05f+mult/20, 0.05f+mult/10),
+                    Color.white
+            );
+
+
+
+        }
+
+    }
+    void proximityFuse() {
+
+            float damage = missile.getDamageAmount();
+
+            DamagingExplosionSpec boom = new DamagingExplosionSpec(
+                    0.2f,
+                    radius,
+                    coreRadius,
+                    damage,
+                    damage,
+                    CollisionClass.PROJECTILE_NO_FF,
+                    CollisionClass.PROJECTILE_FIGHTER,
+                    2,
+                    5,
+                    5,
+                    25,
                     color1,
                     color2
             );
-        }
 
+            boom.setDamageType(DamageType.FRAGMENTATION);
 
-        engine.spawnDamagingExplosion(boom, missile.getSource(), missile.getLocation());
+            boom.setSoundSetId("explosion_flak");
+            boom.setUseDetailedExplosion(false);
 
-        engine.removeEntity(missile);
+            Global.getCombatEngine().spawnDamagingExplosion(boom, missile.getSource(), missile.getLocation());
     }
 
     @Override

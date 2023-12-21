@@ -1,33 +1,42 @@
 package arc.weapons.blackbox;
 
 import arc.Index;
+import arc.StopgapUtils;
+import arc.plugin.RunnableQueuePlugin;
+import arc.util.ARCUtils;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
+import com.fs.starfarer.api.loading.WingRole;
+import com.fs.starfarer.api.util.DelayedActionScript;
 import com.fs.starfarer.api.util.IntervalUtil;
 import data.scripts.util.MagicRender;
-import org.lazywizard.lazylib.CollisionUtils;
+import org.jetbrains.annotations.NotNull;
 import org.lazywizard.lazylib.MathUtils;
+import org.lazywizard.lazylib.VectorUtils;
 import org.lazywizard.lazylib.combat.CombatUtils;
 import org.lwjgl.util.vector.Vector2f;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
+/**
+ * TODO this needs a rewrite it sucks and lags the game
+ */
 public class BlackboxEveryFrameEffect implements EveryFrameWeaponEffectPlugin {
-
 
 
     WeaponAPI weapon;
     ShipAPI ship;
     List<CombatEntityAPI> handledTargetStorage;
-    Color colorForThisBurst;
 
     int maximumBurst = 3;
     int range = 0;
     float beep = 0;
 
-    final IntervalUtil rangeIncrease = new IntervalUtil(0.1f, 0.1f);
+    final IntervalUtil rangeIncrease = new IntervalUtil(0.06f, 0.06f);
 
 
 
@@ -37,22 +46,23 @@ public class BlackboxEveryFrameEffect implements EveryFrameWeaponEffectPlugin {
     public void fire(float amount) {
         beep-=amount;
 
-        for (CombatEntityAPI possibleTarget : getThreatTargets()) {
-            if (handledTargetStorage.contains(possibleTarget)) continue;
-            handledTargetStorage.add(possibleTarget); //TODO if this breaks it neds to go at the start
+
+
+        for (RankingStruct struct : getTargets(ship, range)) {
+            if (handledTargetStorage.contains(struct.entityAPI)) continue;
+            handledTargetStorage.add(struct.entityAPI); //TODO if this breaks it neds to go at the start
             maximumBurst--;
 
             if (maximumBurst <= 0) {
                 return;
             }
 
-
             //sound
             if(ship.getOwner() == 0 && beep<=0){
                 beep=0.075f;
                 Global.getSoundPlayer().playSound(
                         "diableavionics_virtuousTarget_beep",
-                        1,1,
+                        MathUtils.getRandomNumberInRange(0.8f, 1.1f),1,
                         ship.getLocation(),
                         ship.getVelocity()
                 );
@@ -63,7 +73,7 @@ public class BlackboxEveryFrameEffect implements EveryFrameWeaponEffectPlugin {
 
 
             Vector2f firepoint = weapon.getFirePoint(MathUtils.getRandomNumberInRange(0,5));
-            float facing = weapon.getArcFacing();
+            float facing = weapon.getCurrAngle();
 
 
             for (int a = 0; a < 3; ++a) {
@@ -72,8 +82,12 @@ public class BlackboxEveryFrameEffect implements EveryFrameWeaponEffectPlugin {
 
                 float size = MathUtils.getRandomNumberInRange(10f, 30f);
                 float duration = MathUtils.getRandomNumberInRange(0.3f, 1f);
+
                 Global.getCombatEngine().addSmokeParticle(firepoint, vel, size, 30f, duration, Color.lightGray);
             }
+
+            Vector2f vel = MathUtils.getRandomPointInCone(new Vector2f(), (float) (10), facing - 181f, facing - 179f);
+            Vector2f direc = VectorUtils.getDirectionalVector(firepoint, vel);
 
             Global.getSoundPlayer().playSound(
                     "sabot_srm_fire",
@@ -88,67 +102,46 @@ public class BlackboxEveryFrameEffect implements EveryFrameWeaponEffectPlugin {
                     Index.BLACKBOX_STAGE_ONE,
                     firepoint,
                     90,
-                    null
+                    direc
             );
 
 
+            Vector2f newVelocity = new Vector2f();
+            Vector2f.add(vel, ship.getVelocity(), newVelocity);
 
-
-
-            //TODO play missile launch noises
+            child.getVelocity().set(newVelocity.x, newVelocity.y);
+            CombatUtils.applyForce(child, direc, MathUtils.getRandomNumberInRange(2f, 6f));
 
 
             MissileAPI childAsMissile = (MissileAPI) child;
-            childAsMissile.setMissileAI(new BlackboxStageOneAI(Index.BLACKBOX_STAGE_TWO, childAsMissile, possibleTarget));
+            childAsMissile.setMissileAI(new BlackboxStageOneAI(Index.BLACKBOX_STAGE_TWO, childAsMissile, struct.entityAPI, this));
 
+
+            int delay = MathUtils.getRandomNumberInRange(10,22);
+            weapon.setRefireDelay(delay);
 
             //HUD only part
-            if (!Global.getCombatEngine().isUIShowingHUD()) return;
 
-            MagicRender.objectspace(
-                    Global.getSettings().getSprite("fx","targeting"),
-                    possibleTarget,
-                    new Vector2f(),
-                    new Vector2f(),
-                    new Vector2f(64,64),
-                    new Vector2f(0,0),
-                    45,
-                    0,
-                    false,
-                    colorForThisBurst,
-                    false,
-                    0,
-                    0,
-                    2, 1, 0.2f,
-                    0.5f, 1f, 0.5f,
-                    true,
-                    CombatEngineLayers.BELOW_INDICATORS_LAYER
-            );
 
-            //swirly stolen from diable
-            if(MagicRender.screenCheck(0.2f, possibleTarget.getLocation())){
-                MagicRender.objectspace(
-                        Global.getSettings().getSprite("fx","targeting"),
-                        possibleTarget, //anchor
-                        new Vector2f(), //offset
-                        new Vector2f(), //velocity
-                        new Vector2f(192,192), //size
-                        new Vector2f(-256,-256), //growth
-                        45, //angle
-                        360, //spin
-                        false, //parented
-                        colorForThisBurst,
-                        false, //additive
-                        0, 0, //jitter
-                        0, 0, 0, //flicker
-                        0.35f, 0.05f, 0.1f, //timing
-                        true,
-                        CombatEngineLayers.BELOW_INDICATORS_LAYER
-                );
-            }
 
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     @Override
     public void advance(float amount, CombatEngineAPI combatEngineAPI, WeaponAPI weaponAPI) {
@@ -160,15 +153,6 @@ public class BlackboxEveryFrameEffect implements EveryFrameWeaponEffectPlugin {
             this.weapon = weaponAPI;
             this.ship = weapon.getShip();
             this.handledTargetStorage = new ArrayList<>(); //TODO
-
-            //TODO enemy coloring when facing against arc ships
-            this.colorForThisBurst = new Color(
-                    MathUtils.getRandomNumberInRange(0, 255),
-                    MathUtils.getRandomNumberInRange(0,255),
-                    MathUtils.getRandomNumberInRange(0,255),
-                    255
-            );
-
         }
 
 
@@ -182,46 +166,177 @@ public class BlackboxEveryFrameEffect implements EveryFrameWeaponEffectPlugin {
                 range += weapon.getRange() / 8f; //scan bigger and bigger
             }
 
-            fire(amount);
+            RunnableQueuePlugin.queueTask(() -> fire(amount), MathUtils.getRandomNumberInRange(1,4));
         }
 
         if (!weaponAPI.isFiring() && weaponAPI.getChargeLevel() <= 0.1f) {
             handledTargetStorage.clear();
-            maximumBurst = 3; //reload virtual ammo counter to max
+            maximumBurst = ARCUtils.decideBasedOnHullSize(
+                    ship,
+                    MathUtils.getRandomNumberInRange(2,3),
+                    MathUtils.getRandomNumberInRange(2,4),
+                    MathUtils.getRandomNumberInRange(3,4),
+                    MathUtils.getRandomNumberInRange(4,5)
+            ); //reload virtual ammo counter to max
             range = 0;
         }
 
     }
 
-    //TODO caching
-    List<CombatEntityAPI> getThreatTargets() {
-        List<CombatEntityAPI> out = new ArrayList<>();
 
-        for (MissileAPI msl : CombatUtils.getMissilesWithinRange(ship.getLocation(), range)) {
-            if (msl.getOwner() == ship.getOwner()) {
-                continue;
-            }
+    static class RankingStruct implements Comparable<RankingStruct> {
+        final CombatEntityAPI entityAPI;
+        final float ranking;
 
-
-            if (!msl.isGuided()) {
-                Vector2f projDest = Vector2f.add((Vector2f)(new Vector2f(msl.getVelocity()).scale(2.5f)), msl.getLocation(), new Vector2f(0f, 0f));
-                if (CollisionUtils.getCollides(msl.getLocation(), projDest, ship.getShield().getLocation(), ship.getShield().getRadius())) {
-                    continue;
-                }
-            }
-
-            out.add(msl); //the missile can hit us an therefore is a threat
+        public RankingStruct(CombatEntityAPI entityAPI, float ranking) {
+            this.entityAPI = entityAPI;
+            this.ranking = ranking;
         }
 
-        for (ShipAPI shipAPI : CombatUtils.getShipsWithinRange(ship.getLocation(), range)) {
+        @Override
+        public int compareTo(@NotNull BlackboxEveryFrameEffect.RankingStruct o) {
+            return Float.compare(ranking, o.ranking);
+        }
+    }
+    static List<RankingStruct> getTargets(CombatEntityAPI entity, int range) {
+        List<RankingStruct> structs = new ArrayList<>();
+
+        for (Iterator<MissileAPI> it = StopgapUtils.getMissilesWithinRange(entity.getLocation(), range); it.hasNext(); ) {
+            MissileAPI msl = it.next();
+            if (msl.getOwner() == entity.getOwner()) continue;
+
+            //farther missiles should get more priority
+
+            float damage = msl.getDamageAmount();
+            float damageMappedToCost = damage / 4000; // a reaper is worth 1 cost point, increase linearly
+
+            float speed = msl.getMaxSpeed();
+            float speedMappedToCost = speed / 600; //a fast missile is worth 1 cost point, increase linearly
+
+            float rangeSquared = MathUtils.getDistanceSquared(msl.getLocation(), entity.getLocation());
+            float rangeMappedToCost = rangeSquared / 700 / 700; //penalize closer missiles since anti-missiles work better vs ranged missiles
+
+            float damageTypeCost = 0f;
+            if (msl.getDamageType() == DamageType.KINETIC && entity instanceof ShipAPI) {
+                //we hate kinetic missiles since they put us at large risk
+
+                damageTypeCost += ((ShipAPI)entity).getFluxLevel();
+            }
+
+            //extra 1f for being a missile
+            structs.add(new RankingStruct(msl, 1f + damageTypeCost + speedMappedToCost + rangeMappedToCost + damageMappedToCost));
+
+        }
+
+        for (Iterator<ShipAPI> it = StopgapUtils.getShipsWithinRange(entity.getLocation(), range); it.hasNext(); ) {
+            ShipAPI shipAPI = it.next();
             if (!shipAPI.isFighter() || !shipAPI.isAlive() || shipAPI.isPiece() || shipAPI.isPhased() || shipAPI.isAlly()) continue;
-            if (ship.getOwner() == shipAPI.getOwner()) continue;
+            if (entity.getOwner() == shipAPI.getOwner()) continue;
 
+            float shipTypeCost = 0f;
+            if (shipAPI.getWing() != null && shipAPI.getWing().getRole() == WingRole.BOMBER) {
+                shipTypeCost+= 2f; //oh ew
+            }
 
-            out.add(shipAPI); //this fighter is a threat
+            float rangeSquared = MathUtils.getDistanceSquared(entity.getLocation(), entity.getLocation());
+            float rangeMappedToCost = rangeSquared / 1000 / 1000; //penalize closer fighters since anti-missiles work better vs ranged
+
+            float speed = shipAPI.getMaxSpeed();
+            float speedMappedToCost = Math.max(2f, 1 / (speed / 150)); //penalize faster fighters to get higher intercept rates, since these aren't proxy fused
+
+            //TODO some other way of evaluating if a ship is a threat
+            structs.add(new RankingStruct(shipAPI, shipTypeCost + rangeMappedToCost + speedMappedToCost));
         }
 
-        return out;
+
+        Collections.sort(structs);
+
+        return structs;
+
+
     }
 
+    //TODO caching
+
+
+    public static void doTargeting(ShipAPI missileOwner, CombatEntityAPI target) {
+
+        if (!Global.getCombatEngine().isUIShowingHUD()) return;
+
+        Color toUse = Index.ALLIED;
+
+        if (missileOwner.getOwner() != target.getOwner()) { //this ship is an enemy!
+            toUse = Index.HOSTILE;
+
+            Vector2f playerLoc = Global.getCombatEngine().getPlayerShip().getLocation();
+            Vector2f entityLoc = target.getLocation();
+
+            if (MathUtils.getDistanceSquared(playerLoc, entityLoc) > 500 * 500) { //dont alert the player if farther than 500 units
+                return;
+            }
+        }
+
+        if (!checkEntityIsOkToPlayTarget(target)) return; //do not play effects if it is dumb
+
+        MagicRender.objectspace(
+                Global.getSettings().getSprite("fx","targeting"),
+                target,
+                new Vector2f(),
+                new Vector2f(),
+                new Vector2f(64,64),
+                new Vector2f(0,0),
+                45,
+                0,
+                false,
+                toUse,
+                true,
+                0,
+                0,
+                2, 1, 0.2f,
+                0.5f, 1f, 0.5f,
+                true,
+                CombatEngineLayers.BELOW_INDICATORS_LAYER
+        );
+
+        //swirly stolen from diable
+        if(MagicRender.screenCheck( 0.2f, target.getLocation() )){
+            MagicRender.objectspace(
+                    Global.getSettings().getSprite("fx","targeting"),
+                    target, //anchor
+                    new Vector2f(), //offset
+                    new Vector2f(), //velocity
+                    new Vector2f(192,192), //size
+                    new Vector2f(-256,-256), //growth
+                    45, //angle
+                    360, //spin
+                    false, //parented
+                    toUse,
+                    true, //additive
+                    0, 0, //jitter
+                    0, 0, 0, //flicker
+                    0.35f, 0.05f, 0.1f, //timing
+                    true,
+                    CombatEngineLayers.BELOW_INDICATORS_LAYER
+            );
+        }
+    }
+    public static boolean checkEntityIsOkToPlayTarget(CombatEntityAPI entityAPI) {
+        if (entityAPI instanceof ShipAPI) {
+            return true;
+        }
+
+        if (entityAPI instanceof MissileAPI) {
+            MissileAPI missile = (MissileAPI) entityAPI;
+
+            if (missile.getDamageAmount() * missile.getDamageType().getArmorMult() > 200) {
+                return true;
+            }
+
+            if (missile.getMaxSpeed() > 300) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

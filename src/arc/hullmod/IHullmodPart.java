@@ -7,13 +7,9 @@ public interface IHullmodPart<T> {
 
     void advanceSafely(CombatEngineAPI engineAPI, ShipAPI shipAPI, float timestep, T customData);
 
-    default boolean hasData() {
-        return true;
-    }
+    boolean hasData();
 
-    default boolean makesNewData() {
-        return true;
-    }
+    boolean makesNewData();
 
     T makeNew();
     String makeKey();

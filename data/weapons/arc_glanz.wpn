@@ -6,19 +6,20 @@
   "collisionClass":"RAY",
   "collisionClassByFighter":"RAY_FIGHTER",
   "everyFrameEffect":"arc.weapons.glanz.GlanzEveryFrameEffect",
-  "turretSprite":"graphics/arc/weapons/arc_glanz.png",
-  "hardpointSprite":"graphics/arc/weapons/arc_glanz.png",
-  "turretUnderSprite":"graphics/arc/weapons/arc_glanz.png",
-  "hardpointUnderSprite":"graphics/arc/weapons/arc_glanz.png",
+  "turretSprite":"",
+  "hardpointSprite":"",
+  "turretUnderSprite":"graphics/arc/weapons/arc_glanz_turret.png",
+  "hardpointUnderSprite":"graphics/arc/weapons/arc_glanz_hardpoint.png",
+  "turretGlowSprite":"graphics/arc/weapons/arc_glanz_turret_glow.png",
+  "hardpointGlowSprite":"graphics/arc/weapons/arc_glanz_hardpoint_glow.png",
+
 
   "turretOffsets":[
     5, 1,
-    3, -2,
-    3, 2,
+    5, -0,
     5, -1,
   ],
   "turretAngleOffsets":[
-    0,
     0,
     0,
     0,
@@ -26,12 +27,10 @@
 
   "hardpointOffsets":[
     5, 1,
-    3, -2,
-    3, 2,
+    5, 0,
     5, -1
   ],
   "hardpointAngleOffsets":[
-    0,
     0,
     0,
     0,
@@ -46,5 +45,7 @@
   "pierceSet":[PROJECTILE_FF,PROJECTILE_NO_FF,PROJECTILE_FIGHTER],
   "glowColor":[232,128,35,255],
   "animationType":"GLOW",
-  "fireSoundOne":"burst_pd_fire"
+  #"fireSoundTwo":"arc_glance_fire",
+  "fireSoundOne":"arc_glance_charge",
+  "beamEffect": "arc.weapons.glanz.GlanzBeamEffect"
 }

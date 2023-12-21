@@ -1,20 +1,26 @@
 package arc.deco;
 
+import arc.weapons.ArcChargeupWeaponEffect;
 import com.fs.starfarer.api.combat.CombatEngineAPI;
 import com.fs.starfarer.api.combat.EveryFrameWeaponEffectPlugin;
 import com.fs.starfarer.api.combat.WeaponAPI;
 import com.fs.starfarer.api.graphics.SpriteAPI;
 
-public class DeveikuthAnimation implements EveryFrameWeaponEffectPlugin {
+import java.awt.*;
+
+public class DeveikuthAnimation extends ArcChargeupWeaponEffect {
 
     private boolean runOnce=false, hidden=false;
     private SpriteAPI barrel;
     private float barrelwidth=0, recoil=0;
-    private final float maxRecoil=5;
 
+    public DeveikuthAnimation() {
+        super(new Color(51, 77, 134, 255), 2, false);
+    }
 
     @Override
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
+        super.advance(amount, engine, weapon);
 
         if(engine.isPaused() || hidden || weapon.getShip().getOriginalOwner()==-1){return;}
 
@@ -34,6 +40,7 @@ public class DeveikuthAnimation implements EveryFrameWeaponEffectPlugin {
         } else {
             recoil=Math.max(0, recoil-(amount));
         }
-        barrel.setCenterX(barrelwidth-(recoil*maxRecoil));
+        float maxRecoil = 5;
+        barrel.setCenterX(barrelwidth-(recoil* maxRecoil));
     }
 }

@@ -3,11 +3,10 @@
   "hullId": "arc_daat",
   "displayName": "Prototype",
   "goalVariant": true,
-  "fluxCapacitors": 20,
-  "fluxVents": 0,
+  "fluxCapacitors": 16,
+  "fluxVents": 8,
   "quality": 1,
   "hullMods": [
-
   ],
   "weaponGroups": [
     {
@@ -21,17 +20,17 @@
       "autofire": false,
       "mode": "LINKED",
       "weapons": {
-              "WS0011": "sabot",
-              "WS0012": "sabot",
-              "WS0007": "sabotpod"
+              "WS0011": "arc_alphastar",
+              "WS0012": "arc_alphastar",
+              "WS0007": "arc_macross"
       }
     },
     {
       "autofire": true,
       "mode": "ALTERNATING",
       "weapons": {
-        "WS0009": "heavyneedler",
-        "WS0008": "heavyneedler"
+        "WS0009": "arc_dusk",
+        "WS0008": "arc_dusk"
       }
     },
     {
@@ -46,10 +45,10 @@
       "autofire": true,
       "mode": "LINKED",
       "weapons": {
-        "WS0001": "arc_theristicus",
-        "WS0004": "arc_glanz",
-        "WS0005": "arc_glanz",
-        "WS0006": "arc_theristicus"
+        "WS0001": "arc_glanz",
+        "WS0004": "arc_umbra",
+        "WS0005": "arc_umbra",
+        "WS0006": "arc_glanz"
       }
     }
   ],
