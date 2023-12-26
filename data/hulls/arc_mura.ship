@@ -15,8 +15,6 @@
   ],
   "builtInWeapons": {
     "HEAD": "arc_mura_head",
-    "LEFTGUN": "arc_mura_gunL",
-    "RIGHTGUN": "arc_mura_gunR",
     "TRANSFORM_04": "arc_mura_back",
     "TRANSFORM_05": "arc_mura_chest",
     "TRANSFORM_06": "arc_mura_headDeco",

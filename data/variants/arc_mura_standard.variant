@@ -9,14 +9,6 @@
   "variantId": "arc_mura_standard",
   "weaponGroups": [
     {
-      "autofire": false,
-      "mode": "ALTERNATING",
-      "weapons": {
-        "LEFTGUN": "arc_mura_gunL",
-        "RIGHTGUN": "arc_mura_gunR"
-      }
-    },
-    {
       "autofire": true,
       "mode": "LINKED",
       "weapons": {
