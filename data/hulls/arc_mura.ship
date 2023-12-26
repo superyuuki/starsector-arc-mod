@@ -133,30 +133,6 @@
       "type": "DECORATIVE"
     },
     {
-      "angle": 15,
-      "arc": 90,
-      "id": "LEFTGUN",
-      "locations": [
-        0,
-        10
-      ],
-      "mount": "TURRET",
-      "size": "SMALL",
-      "type": "DECORATIVE"
-    },
-    {
-      "angle": -15,
-      "arc": 90,
-      "id": "RIGHTGUN",
-      "locations": [
-        0,
-        -10
-      ],
-      "mount": "TURRET",
-      "size": "SMALL",
-      "type": "DECORATIVE"
-    },
-    {
       "angle": 0,
       "arc": 0,
       "id": "TRANSFORM_00",
