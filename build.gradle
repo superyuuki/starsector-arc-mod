@@ -1,12 +1,27 @@
 import groovy.json.JsonSlurper
 
+buildscript {
+    repositories {
+        maven {
+            url "https://repo.superyuuki.com/releases"
+        }
+    }
+
+    dependencies {
+        classpath 'me.tatarka:gradle-retrolambda:3.7.2-FIX'
+    }
+}
+
 plugins {
     id 'java'
 }
 
+apply plugin: 'me.tatarka.retrolambda'
+
 compileJava.options.encoding = 'UTF-8'
 
 repositories {
+
     mavenCentral()
     flatDir {
         dirs 'libs'
@@ -27,14 +42,8 @@ java {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
 }
-
-// where to find sources
 sourceSets.main.java.srcDirs = ['src/']
-
-// build everything and make a jar
 build {
-
-
     doLast {
         copy {
             from jar
@@ -111,3 +120,8 @@ def readModInfoJson() {
     return slurper.parse(jsonFile)
 }
 
+retrolambda {
+    javaVersion JavaVersion.VERSION_1_7
+    defaultMethods false
+    incremental false
+}

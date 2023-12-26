@@ -55,6 +55,8 @@ public class VentingGivesArmorPart implements IHullmodPart<VentingGivesArmorPart
         );
 
 
+
+
         customData.cooldown = customData.cooldown - 1;
         if (customData.cooldown < 0) customData.cooldown = 0;
 

@@ -12,7 +12,6 @@ import java.awt.*;
 public class ArchotechAux extends ARCBaseHullmod {
 
     //bonus
-    static float UNFOLD_RATE = 50f;
     static float SHIELD_EFF = 0.35f;
     static float CAP = 20f;
 
@@ -26,7 +25,6 @@ public class ArchotechAux extends ARCBaseHullmod {
 
     @Override
     public void applyEffectsBeforeShipCreation(ShipAPI.HullSize hullSize, MutableShipStatsAPI stats, String id) {
-        stats.getShieldUnfoldRateMult().modifyFlat(id, UNFOLD_RATE);
         stats.getShieldAbsorptionMult().modifyFlat(id, -SHIELD_EFF);
         stats.getFluxDissipation().modifyPercent(id, DISSP);
         stats.getFluxCapacity().modifyPercent(id, CAP);
