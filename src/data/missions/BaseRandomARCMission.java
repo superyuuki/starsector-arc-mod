@@ -106,10 +106,14 @@ public class BaseRandomARCMission implements MissionDefinitionPlugin {
             "enigma",
             "remnant",
             "armaarmatura",
+
+            "sephira_conclave",
+            "sephira_nightravens",
             "arc",
             "fang",
             "mess",
-            "junk_pirates_technicians"));
+            "junk_pirates_technicians"
+    ));
 
     // Variant Test Mode hulls will be listed in exactly this order
     protected static final List<String> TEST_HULLS = new ArrayList<>(Arrays.asList("arc_malkuth",
@@ -123,6 +127,8 @@ public class BaseRandomARCMission implements MissionDefinitionPlugin {
 
     static
     {
+        QUALITY_FACTORS.put("sephira_conclave", 0.5f);
+        QUALITY_FACTORS.put("sephira_nightravens", 0.5f);
         QUALITY_FACTORS.put("armaarmatura", 0.5f);
         QUALITY_FACTORS.put("ii", 0.5f);
         QUALITY_FACTORS.put("uaf", 0.5f);
@@ -134,9 +140,7 @@ public class BaseRandomARCMission implements MissionDefinitionPlugin {
         QUALITY_FACTORS.put(Factions.DERELICT, 0f);         // Old and worn out von Neumann probes that are are very poorly equipped
         QUALITY_FACTORS.put(Factions.DIKTAT, 0.5f);         // Bog standard dictatorship with average gear
         QUALITY_FACTORS.put(Factions.HEGEMONY, 0.5f);       // Comsec approved average gear
-        QUALITY_FACTORS.put(Factions.INDEPENDENT, 0.5f);    // Independents with average gear
         QUALITY_FACTORS.put(Factions.LIONS_GUARD, 0.75f);   // Elite subdivision of the Diktat with above average gear
-        QUALITY_FACTORS.put(Factions.LUDDIC_CHURCH, 0.25f); // Luddites are pacifists and poorly equipped
         QUALITY_FACTORS.put(Factions.LUDDIC_PATH, 0f);      // Fanatics who are very poorly equipped
         QUALITY_FACTORS.put(Factions.PERSEAN, 0.55f);       // Space NATO has slightly above average gear
         QUALITY_FACTORS.put(Factions.PIRATES, 0f);          // Criminals who are very poorly equipped
